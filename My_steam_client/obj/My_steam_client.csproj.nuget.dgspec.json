@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\projects\\cs\\Course_project(my_steam)\\My_steam_client\\My_steam_client.csproj": {}
+    "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\My_steam_client.csproj": {}
   },
   "projects": {
-    "D:\\projects\\cs\\Course_project(my_steam)\\My_steam_client\\My_steam_client.csproj": {
+    "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\My_steam_client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projects\\cs\\Course_project(my_steam)\\My_steam_client\\My_steam_client.csproj",
+        "projectUniqueName": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\My_steam_client.csproj",
         "projectName": "My_steam_client",
-        "projectPath": "D:\\projects\\cs\\Course_project(my_steam)\\My_steam_client\\My_steam_client.csproj",
+        "projectPath": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\My_steam_client.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\projects\\cs\\Course_project(my_steam)\\My_steam_client\\obj\\",
+        "outputPath": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\IDE\\VS_common\\NuGetPackages"
