@@ -9,9 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Templates\" />
     <Folder Include="Scripts\" />
-    <Folder Include="Converters\" />
   </ItemGroup>
 
 </Project>
