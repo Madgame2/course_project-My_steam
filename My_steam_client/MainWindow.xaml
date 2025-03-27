@@ -9,20 +9,25 @@
 
     <Grid>
         <!-- Основной контент -->
-        <Grid x:Name="MainGrid"/>
+        <Grid x:Name="MainGrid">
+        </Grid>
 
         <!-- SideBar, помещаем поверх основного Grid -->
         <local:SideBar 
-            Width="250" 
-            HeightPercent="90.0" 
-            Background="Gray" 
-            BorderRadius="20" 
-            VerticalAlignment="Center" HorizontalAlignment="Left">
-            <local:SideBar.RenderTransform>
-                <TranslateTransform X="-200"/>
-            </local:SideBar.RenderTransform>
-            <Button>hello</Button>
-            <Button>hello</Button>
+    Width="250" 
+    HeightPercent="90.0" 
+    Background="Gray" 
+    BorderRadius="20" 
+    VerticalAlignment="Center" 
+    HorizontalAlignment="Left"
+    RenderTransformOrigin="0,0"
+    Style="{StaticResource SideBar_styles}">
+            <StackPanel Style="{StaticResource Main_buttons}">
+                <Button>hello</Button>
+                <Button>hello</Button>
+                <Button>hello</Button>
+                <Button>hello</Button>
+            </StackPanel>
         </local:SideBar>
     </Grid>
 </Window>

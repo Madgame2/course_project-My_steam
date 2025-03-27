@@ -27,12 +27,11 @@
         </MultiBinding>
     </UserControl.Height>
 
-
     <Border x:Name="border"
             Background="{Binding Background, ElementName=RootControl}"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch">
-        <StackPanel x:Name="Main_contaner" 
+        <Grid x:Name="Main_contaner" 
                    ClipToBounds="False"/>
     </Border>
 </UserControl>
