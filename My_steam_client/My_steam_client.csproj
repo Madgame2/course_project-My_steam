@@ -9,7 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="resources\images\shopping-cart-svgrepo-com.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Scripts\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="resources\images\shopping-cart-svgrepo-com.png" />
   </ItemGroup>
 
 </Project>

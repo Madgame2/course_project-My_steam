@@ -14,7 +14,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Diagnostics;
 
 namespace My_steam_client.Templates
 {
@@ -30,8 +29,7 @@ namespace My_steam_client.Templates
         {
             InitializeComponent();
 
-            this.MouseEnter += (s, e) => Debug.WriteLine("Мышь наведена");
-            this.MouseLeave += (s, e) => Debug.WriteLine("Мышь ушла");
+
 
             this.Loaded += (s, e) =>
             {

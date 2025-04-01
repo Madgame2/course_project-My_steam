@@ -21,5 +21,8 @@
     <Page Update="Templates\SideBar.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Templates\Templates.xaml">
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 </Project>

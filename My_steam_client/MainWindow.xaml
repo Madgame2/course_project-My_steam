@@ -8,8 +8,12 @@
         Title="MainWindow" Height="450" Width="800">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="77*"/>
+            <RowDefinition Height="68*"/>
+        </Grid.RowDefinitions>
         <!-- Основной контент -->
-        <Grid x:Name="MainGrid">
+        <Grid x:Name="MainGrid" Grid.RowSpan="2">
         </Grid>
 
         <!-- SideBar, помещаем поверх основного Grid -->
@@ -18,15 +22,16 @@
     HeightPercent="90.0" 
     Background="Gray" 
     BorderRadius="20" 
-    VerticalAlignment="Center" 
+    VerticalAlignment="Top" 
     HorizontalAlignment="Left"
     RenderTransformOrigin="0,0"
-    Style="{StaticResource SideBar_styles}">
+    Style="{StaticResource SideBar_styles}" Margin="0,22,0,0" Grid.RowSpan="2">
             <StackPanel Style="{StaticResource Main_buttons}">
                 <Button>hello</Button>
                 <Button>hello</Button>
                 <Button>hello</Button>
                 <Button>hello</Button>
+                <local:SideButton Height="50" IconHeight="45" Icon="D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\resources\images\shopping-cart-svgrepo-com.png">hjkhkjh</local:SideButton>
             </StackPanel>
         </local:SideBar>
     </Grid>
