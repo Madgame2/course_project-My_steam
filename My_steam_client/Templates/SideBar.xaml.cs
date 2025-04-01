@@ -71,6 +71,15 @@ namespace My_steam_client.Templates
                 typeof(SideBar),
                 new PropertyMetadata(50.0));
 
+        public static readonly DependencyProperty AnimationProgressProperty =
+            DependencyProperty.Register(nameof(AnimationProgress),typeof(double),typeof(SideBar),new PropertyMetadata(0.0));
+
+        public double AnimationProgress
+        {
+            get =>(double)GetValue(AnimationProgressProperty);
+            set => SetValue(AnimationProgressProperty, value);
+        }
+
         public double BorderRadius
         {
             get => (double)GetValue(BorderRadiusProperty);

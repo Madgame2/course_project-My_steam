@@ -2,6 +2,37 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:My_steam_client.Templates">
 
+    <Style TargetType="local:SideButton" BasedOn="{StaticResource SideButtonTemplate}">
+        <Setter Property="Background" Value="Red"/>
+        <Setter Property="IconTranslateX" Value="135"/>
+
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsMouseOver,RelativeSource={RelativeSource AncestorType=local:SideBar}}" Value="True">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetProperty="(local:SideButton.IconTranslateX)"
+                                To="-15"
+                                Duration="0:0:0.2"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.EnterActions>
+
+                <DataTrigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetProperty="(local:SideButton.IconTranslateX)"
+                                To="135"
+                                Duration="0:0:0.2"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.ExitActions>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    
     <Style TargetType="local:SideBar" x:Key="SideBar_styles">
         
         <!-- Устанавливаем RenderTransform с TranslateTransform -->
@@ -10,7 +41,7 @@
                 <TranslateTransform X="-200"/>
             </Setter.Value>
         </Setter>
-        <Setter Property="Padding" Value="10,0,10,0"/>
+        <Setter Property="Padding" Value="0,0,0,0"/>
 
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
@@ -35,9 +66,6 @@
                             Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
                             To="-200"
                             Duration="0:0:0.2">
-                                <DoubleAnimation.EasingFunction>
-                                    <CubicEase EasingMode="EaseIn"/>
-                                </DoubleAnimation.EasingFunction>
                             </DoubleAnimation>
                         </Storyboard>
                     </BeginStoryboard>

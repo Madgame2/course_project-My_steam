@@ -24,6 +24,24 @@ namespace My_steam_client.Templates
         public static readonly DependencyProperty IconHeightProperty =
             DependencyProperty.Register(nameof(IconHeight), typeof(double), typeof(SideButton), new PropertyMetadata(50.0));
 
+        public static readonly DependencyProperty IconTranslateXProperty =
+            DependencyProperty.Register(nameof(IconTranslateX), typeof(double), typeof(SideButton), new PropertyMetadata(0.0));
+
+        public static readonly DependencyProperty IconTranslateYProperty =
+            DependencyProperty.Register(nameof(IconTranslateY), typeof(double), typeof(SideButton), new PropertyMetadata(0.0));
+
+        public double IconTranslateX
+        {
+            get => (double)GetValue(IconTranslateXProperty);
+            set => SetValue(IconTranslateXProperty, value);
+        }
+
+        public double IconTranslateY
+        {
+            get => (double)GetValue(IconTranslateYProperty);
+            set => SetValue(IconTranslateYProperty, value);
+        }
+
         public string Icon
         {
             get => (string)GetValue(IconProperty);

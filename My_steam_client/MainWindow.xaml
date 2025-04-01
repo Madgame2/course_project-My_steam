@@ -31,7 +31,7 @@
                 <Button>hello</Button>
                 <Button>hello</Button>
                 <Button>hello</Button>
-                <local:SideButton Height="50" IconHeight="45" Icon="D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\resources\images\shopping-cart-svgrepo-com.png">hjkhkjh</local:SideButton>
+                <local:SideButton Height="50" IconHeight="30" Icon="D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\resources\images\shopping-cart-svgrepo-com.png">Магазин</local:SideButton>
             </StackPanel>
         </local:SideBar>
     </Grid>
