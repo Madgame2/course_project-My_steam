@@ -2,6 +2,7 @@
 using SharpVectors.Renderers.Wpf;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -13,44 +14,70 @@ using System.Windows.Media.Imaging;
 
 namespace My_steam_client.Converters
 {
-    class ImageSourceConverter : IValueConverter
+    public class ImageSourceConverter : IMultiValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is string imagePath)
+            if (values.Length < 2 || values[0] is not string imagePath)
+                return null;
+
+            string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "resources", imagePath);
+
+            if (!File.Exists(fullPath))
+                return null;
+
+            string extension = Path.GetExtension(fullPath).ToLower();
+
+            if (extension == ".svg")
             {
-                // Формируем полный путь к файлу
-                string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "resources", imagePath);
+                var settings = new WpfDrawingSettings();
+                var converter = new FileSvgReader(settings);
+                DrawingGroup drawing = converter.Read(fullPath);
 
-                if (File.Exists(fullPath))
+                if (drawing != null)
                 {
-                    string extension = Path.GetExtension(fullPath).ToLower();
-
-                    if (extension == ".svg")
+                    if (values[1] is Brush newColor && newColor!= null)
                     {
-                        var settings = new WpfDrawingSettings();
-                        var converter = new FileSvgReader(settings);
-                        DrawingGroup drawing = converter.Read(fullPath);
+                        SetColor(drawing, newColor);
+                    }
 
-                        if (drawing != null)
-                        {
-                            return new DrawingImage(drawing);
-                        }
-                    }
-                    else
-                    {
-                        return new BitmapImage(new Uri(fullPath, UriKind.Absolute));
-                    }
+                    
+                    return new DrawingImage(drawing);
                 }
+            }
+            else
+            {
+                return new BitmapImage(new Uri(fullPath, UriKind.Absolute));
             }
 
             return null;
         }
 
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+            => throw new NotImplementedException();
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        private void SetColor(DrawingGroup drawing, Brush color)
         {
-            throw new NotImplementedException();
+            foreach (var child in drawing.Children)
+            {
+                if (child is GeometryDrawing geometryDrawing)
+                {
+                    if (geometryDrawing.Pen != null)
+                    {
+                        geometryDrawing.Pen.Brush = color;
+                    }
+
+                    if (geometryDrawing.Brush != null)
+                    {
+                        geometryDrawing.Brush = color;
+                    }
+                }
+                else if (child is DrawingGroup group)
+                {
+                    SetColor(group, color);
+                }
+            }
         }
     }
+
 }

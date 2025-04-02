@@ -23,12 +23,17 @@
                                 Background="{TemplateBinding Background}"
                                 Height="{TemplateBinding Height}"
                                 Panel.ZIndex="1">
-                                <Image x:Name="IconImage" Source="{Binding Path=Icon, RelativeSource={RelativeSource AncestorType=local:SideButton},Converter={StaticResource UniversalImageConverter}}"
+                                <Image x:Name="IconImage"
                                     Width="{TemplateBinding IconWidth}"
                                     Height="{TemplateBinding IconHeight}"
                                     VerticalAlignment="Center"
                                     Grid.Column="0">
-
+                                    <Image.Source>
+                                        <MultiBinding Converter="{StaticResource UniversalImageConverter}">
+                                            <Binding Path="Icon" RelativeSource="{RelativeSource AncestorType=local:SideButton}"/>
+                                            <Binding Path="SvgStrokeColor" RelativeSource="{RelativeSource AncestorType=local:SideButton}"/>
+                                        </MultiBinding>
+                                    </Image.Source>
                                 </Image>
 
                                 <Border.RenderTransform>

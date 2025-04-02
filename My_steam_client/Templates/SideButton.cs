@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace My_steam_client.Templates
@@ -29,6 +30,15 @@ namespace My_steam_client.Templates
 
         public static readonly DependencyProperty IconTranslateYProperty =
             DependencyProperty.Register(nameof(IconTranslateY), typeof(double), typeof(SideButton), new PropertyMetadata(0.0));
+
+        public static readonly DependencyProperty SvgStrokeColorProperty =
+            DependencyProperty.Register(nameof(SvgStrokeColor),typeof(Brush),typeof(SideButton),new PropertyMetadata(null));
+
+        public Brush SvgStrokeColor
+        {
+            get => (Brush)GetValue(SvgStrokeColorProperty);
+            set =>SetValue(SvgStrokeColorProperty, value);
+        }
 
         public double IconTranslateX
         {
