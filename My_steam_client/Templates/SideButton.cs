@@ -16,7 +16,7 @@ namespace My_steam_client.Templates
 
         public static readonly DependencyProperty IconProperty =
             DependencyProperty.Register(nameof(Icon), typeof(string), typeof(SideButton),
-                new PropertyMetadata(null, (d, e) => ((SideButton)d).UpdateIconImage()));
+                new PropertyMetadata(null));
 
         public static readonly DependencyProperty IconWidthProperty =
             DependencyProperty.Register(nameof(IconWidth), typeof(double), typeof(SideButton), new PropertyMetadata(50.0));

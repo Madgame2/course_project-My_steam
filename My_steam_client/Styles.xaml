@@ -3,7 +3,7 @@
                     xmlns:local="clr-namespace:My_steam_client.Templates">
 
     <Style TargetType="local:SideButton" BasedOn="{StaticResource SideButtonTemplate}">
-        <Setter Property="Background" Value="Red"/>
+        <Setter Property="Background" Value="Gray"/>
         <Setter Property="IconTranslateX" Value="135"/>
 
         <Style.Triggers>

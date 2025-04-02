@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "k3yKyzbPDLo=",
+  "dgSpecHash": "gJe/SnMvjWA=",
   "success": true,
   "projectFilePath": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\My_steam_client.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\sharpvectors\\1.8.4.2\\sharpvectors.1.8.4.2.nupkg.sha512"
+  ],
   "logs": []
 }

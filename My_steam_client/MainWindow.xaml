@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:My_steam_client.Templates"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        WindowState="Maximized">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -31,7 +32,7 @@
                 <Button>hello</Button>
                 <Button>hello</Button>
                 <Button>hello</Button>
-                <local:SideButton Height="50" IconHeight="30" Icon="D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\resources\images\shopping-cart-svgrepo-com.png">Магазин</local:SideButton>
+                <local:SideButton Height="60" IconHeight="30" Icon="images\cart-trolley-ui-5-svgrepo-com.svg">Магазин</local:SideButton>
             </StackPanel>
         </local:SideBar>
     </Grid>

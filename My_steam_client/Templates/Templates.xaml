@@ -1,6 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:My_steam_client.Templates">
+                    xmlns:local="clr-namespace:My_steam_client.Templates"
+                    xmlns:conv="clr-namespace:My_steam_client.Converters">
+
+    <conv:ImageSourceConverter x:Key="UniversalImageConverter"/>
 
     <Style x:Key="SideButtonTemplate" TargetType="{x:Type local:SideButton}">
         <Setter Property="Template">
@@ -16,16 +19,23 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <Image x:Name="IconImage" Source="{Binding IconImage, RelativeSource={RelativeSource TemplatedParent}}"
-                               Width="{TemplateBinding IconWidth}"
-                               Height="{TemplateBinding IconHeight}"
-                               VerticalAlignment="Center"
-                               Grid.Column="0">
-                                <Image.RenderTransform>
+                            <Border
+                                Background="{TemplateBinding Background}"
+                                Height="{TemplateBinding Height}"
+                                Panel.ZIndex="1">
+                                <Image x:Name="IconImage" Source="{Binding Path=Icon, RelativeSource={RelativeSource AncestorType=local:SideButton},Converter={StaticResource UniversalImageConverter}}"
+                                    Width="{TemplateBinding IconWidth}"
+                                    Height="{TemplateBinding IconHeight}"
+                                    VerticalAlignment="Center"
+                                    Grid.Column="0">
+
+                                </Image>
+
+                                <Border.RenderTransform>
                                     <TranslateTransform X="{Binding IconTranslateX, RelativeSource={RelativeSource TemplatedParent}}"
-                                                    Y="{Binding IconTranslateY, RelativeSource={RelativeSource TemplatedParent}}"/>
-                                </Image.RenderTransform>
-                            </Image>
+                                                        Y="{Binding IconTranslateY, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                </Border.RenderTransform>
+                            </Border>
                             <ContentPresenter Content="{TemplateBinding Content}" 
                                           HorizontalAlignment="Center" 
                                           VerticalAlignment="Center"
