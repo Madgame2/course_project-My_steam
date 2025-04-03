@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\converters\\imagesourceconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:converters\\imagesourceconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\styles.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:styles.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\converters\\imagesourceconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:converters\\imagesourceconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\templates\\templates.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -28,10 +32,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\resources\\images\\cart-trolley-ui-5-svgrepo-com.svg||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:resources\\images\\cart-trolley-ui-5-svgrepo-com.svg||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\converters\\percentageconverter .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -76,7 +76,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -84,7 +84,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "cart-trolley-ui-5-svgrepo-com.svg",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\resources\\images\\cart-trolley-ui-5-svgrepo-com.svg",
               "RelativeDocumentMoniker": "resources\\images\\cart-trolley-ui-5-svgrepo-com.svg",
@@ -92,32 +92,29 @@
               "RelativeToolTip": "resources\\images\\cart-trolley-ui-5-svgrepo-com.svg",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAP8SURBVDhPrZRdbJNVGMd/p33b9Qtqt9HZbe2woKxsbGDYpk5DQAkTFcQPjJgY44XGEI3GmBBMNNmVNxoWojei8VITgyzGCwgRyRjJZM5JlvERt0C3dVu3rt3bD7r3bc/xYt0o4CX/5Mn5/uc85/zOgfsppZS4u6\u002Bnp\u002BdYc3PzB6VxlFIrcwGQUpLP58lms71Hjhw5PDExEbvT4S719PSMSillsVj83ygUCnJ4eFgODg7K48eP/xyJRDaVr7eWNwC6uroOd3R0VEsFBSOFzF1GZL7DmP0Rc/o3AP6dNNne1oHT6Qzb7fb6qampy4lEInGPob39NdHY2n74aq6i\u002BvpUP2sL3\u002BCc/ZZC7AyITUgVpBC/yMQcNDzSjs/n01wu18bKysrglStXLqTT6fSyoRC4H93nCz33zudrAqFn2iI2\u002B66aY3hnTjM8vpVf9A8ZqzjElta9yLlRMqabC0M3GBoaQtd1q8/ni5w/f/6nVCoV0wAczXu8Dfvf/\u002BTp7fXvvrxlzLVdfkriWo7\u002B7FGuh19kwnBycWyGrHmDV/xNNLZuoB4/hmHg8XgYGRlZzdIC4O96r7Mjsu6Ng00Da9tyH4vF4TxTopvcugPYsuA2C4TW13Jprkhf8iHEmhDV1VUEAgG8Xi9Wq3WVAgtAQ8Bz4IXG0aoW8ysxP2jiavmBLY8d4OC2AK\u002B3VJOZnsNnr0C4nQwmbMznLaX9KChDC0AD2Lwu9dTj3u\u002BdmXEHX5ufMfmHDbPwD1IpFJJ8UaNKs2Cz2xifWyKZNqhd60ApQNxmFECrDWj2t1pO19uiY\u002BKc5QvlbtstwsrC8mxKpgrzloFhmCwVChSUKg0r1F0PQJu8GtqfHP\u002B1YiDzthoN7in\u002BefGadWuNSygpUUohlQIUQirqkLQGPfg99pLZna8IQFN67NXZm3VL54o7MbNKczttls5wtdhW58br0NDzJgM3kkSTOVCKoM\u002BFx6GtJLB8jmXS8pP5zmS24vf\u002BGW1zSEs11ITrxJnpHGeuz6IME82uUfRUkSy6WIgv8KxFYLPc/gJWUl6RpbAonHuPLh2Kzcx/eW10PHFzOq0M9xoIrUdsfJilugbiShCPJwg7CjzfXIPdunLL98p69E38Ox5Mhi/1X\u002B1rCNjMTMps1DPSPRlfJDGf4lZiAVt6kaYHND7auYFKtx2EWEVGCEE0GuXUqVMndF2PWdfXMhCbYVfEPrujLt43Eqhvde1\u002B4slGv63IJq9Ge62bfU1\u002BXtpai8OmLW\u002BjhAuAsFiIRifo7e09oev6vV9Zd3d3n5RSmqZZCkOaxnIYq7G0WpqmKc\u002BePSuDwWAbK2CXSyn118mTJztL9WV0SgiV95Wzp\u002Bv638DCnU73Sf8B3E0j/55GTsEAAAAASUVORK5CYII=",
-              "WhenOpened": "2025-04-02T20:57:36.444Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-02T20:57:36.444Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "XamlReader.cs",
               "DocumentMoniker": "C:\\Users\\User\\AppData\\Local\\Temp\\.vsdbgsrc\\ee34aec267e065140087abd7fd236fad482e6d3ee1f4162ad1b181c8d9923474\\XamlReader.cs",
               "ToolTip": "C:\\Users\\User\\AppData\\Local\\Temp\\.vsdbgsrc\\ee34aec267e065140087abd7fd236fad482e6d3ee1f4162ad1b181c8d9923474\\XamlReader.cs",
               "ViewState": "AgIAAO4BAAAAAAAAAAAawP4BAAACAAAAAQAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-02T17:28:32.589Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-02T17:28:32.589Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "ImageSourceConverter.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\Converters\\ImageSourceConverter.cs",
               "RelativeDocumentMoniker": "Converters\\ImageSourceConverter.cs",
               "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\Converters\\ImageSourceConverter.cs",
               "RelativeToolTip": "Converters\\ImageSourceConverter.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAawEgAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAawDoAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-02T17:05:34.529Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-02T17:05:34.529Z"
             },
             {
               "$type": "Document",
@@ -131,7 +128,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "SideButton.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\Templates\\SideButton.cs",
               "RelativeDocumentMoniker": "Templates\\SideButton.cs",
@@ -139,12 +136,11 @@
               "RelativeToolTip": "Templates\\SideButton.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAAACYAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-01T09:20:15.914Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-01T09:20:15.914Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Templates.xaml",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\Templates\\Templates.xaml",
               "RelativeDocumentMoniker": "Templates\\Templates.xaml",
@@ -168,12 +164,12 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
-              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\MainWindow.xaml",
-              "RelativeToolTip": "MainWindow.xaml",
+              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\MainWindow.xaml*",
+              "RelativeToolTip": "MainWindow.xaml*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-03-13T22:38:48.082Z",
               "EditorCaption": ""
@@ -192,7 +188,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "SideBar.xaml.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\Templates\\SideBar.xaml.cs",
               "RelativeDocumentMoniker": "Templates\\SideBar.xaml.cs",
@@ -200,8 +196,7 @@
               "RelativeToolTip": "Templates\\SideBar.xaml.cs",
               "ViewState": "AgIAADUAAAAAAAAAAAAgwEoAAAB7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-18T08:54:03.009Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-18T08:54:03.009Z"
             },
             {
               "$type": "Document",
