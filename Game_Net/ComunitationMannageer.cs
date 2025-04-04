@@ -34,5 +34,18 @@ namespace Game_Net
 
             _restClient = new RestClient(newClient);
         }
+
+
+        public async Task<string> SendMessageRest(string endpoint, string jsonData) {
+
+            if (string.IsNullOrEmpty(jsonData))
+            {
+                return await _restClient.GetAsync(endpoint);
+            }
+            else
+            {
+                return await _restClient.PostAsync(endpoint, jsonData);
+            }
+        }
     }
 }
