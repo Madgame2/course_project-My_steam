@@ -8,16 +8,14 @@ internal class Program
         var httpClient = new HttpClient();
 
 
-        IRestClient restClient = new RestClient(httpClient);
+        var comMannager = new ComunitationMannageer(httpClient);
+        var pingServis = new PingService(comMannager);
+
+        comMannager.addNewUrl(new ServerSettings { protocol = Protocol.Http, host = "localhost", port = "5254" });
+
+        ServerStatus status = await pingServis.PingAync();
 
 
-        restClient.setBaseAddres("https://Google.com");
-
-        string getResponnce = await restClient.GetAsync("/api/data");
-        Console.WriteLine(getResponnce);
-
-        string jsonData = "{ \"name\": \"John\", \"age\": 30 }";
-        string postResponse = await restClient.PostAsync("/api/submit", jsonData);
-        Console.WriteLine("POST-ответ: " + postResponse);
+        Console.WriteLine(status);
     }
 }
