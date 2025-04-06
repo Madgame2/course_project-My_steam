@@ -32,6 +32,8 @@
                                         <MultiBinding Converter="{StaticResource UniversalImageConverter}">
                                             <Binding Path="Icon" RelativeSource="{RelativeSource AncestorType=local:SideButton}"/>
                                             <Binding Path="SvgStrokeColor" RelativeSource="{RelativeSource AncestorType=local:SideButton}"/>
+                                            <Binding Path="HoverImageCollor" RelativeSource="{RelativeSource AncestorType=local:SideButton}"/>
+                                            <Binding Path="IsMouseOver" RelativeSource="{RelativeSource AncestorType=local:SideButton}"/>
                                         </MultiBinding>
                                     </Image.Source>
                                 </Image>
@@ -44,9 +46,28 @@
                             <ContentPresenter Content="{TemplateBinding Content}" 
                                           HorizontalAlignment="Center" 
                                           VerticalAlignment="Center"
-                                          Grid.Column="1"/>
+                                          Grid.Column="1"
+                                          x:Name="ContentPresenter"/>
                     </Grid>
                     </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ContentPresenter" Property="TextElement.Foreground">
+                                <Setter.Value>
+                                    <Binding Path="HoverTextBrush" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="SvgStrokeColor">
+                                <Setter.Value>
+                                    <Binding Path="HoverImageCollor" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

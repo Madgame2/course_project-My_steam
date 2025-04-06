@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using My_steam_client.Templates;
 
 namespace My_steam_client
 {
@@ -19,6 +20,13 @@ namespace My_steam_client
         public MainWindow()
         {
             InitializeComponent();
+
+            NavigateTo(new Shop_Component(this));
+        }
+
+        public void NavigateTo(UserControl userControl)
+        {
+            RootContent.Content = userControl;
         }
     }
 }

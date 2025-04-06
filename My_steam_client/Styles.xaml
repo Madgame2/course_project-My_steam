@@ -2,9 +2,13 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:My_steam_client.Templates">
 
+
     <Style TargetType="local:SideButton" BasedOn="{StaticResource SideButtonTemplate}">
+        <Setter Property="SvgStrokeColor" Value="#FF3F3F3F"/>
         <Setter Property="Background" Value="Gray"/>
         <Setter Property="IconTranslateX" Value="135"/>
+        <Setter Property="HoverTextBrush" Value="#FF710086"/>
+        <Setter Property="HoverImageCollor" Value="#FF710086"/>
 
         <Style.Triggers>
             <DataTrigger Binding="{Binding IsMouseOver,RelativeSource={RelativeSource AncestorType=local:SideBar}}" Value="True">

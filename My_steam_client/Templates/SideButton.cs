@@ -33,7 +33,21 @@ namespace My_steam_client.Templates
 
         public static readonly DependencyProperty SvgStrokeColorProperty =
             DependencyProperty.Register(nameof(SvgStrokeColor),typeof(Brush),typeof(SideButton),new PropertyMetadata(null));
+        public static readonly DependencyProperty HoverTextBrushProperty =
+            DependencyProperty.Register(nameof(HoverTextBrush), typeof(Brush), typeof(SideButton), new PropertyMetadata(Brushes.Gray));
+        public static readonly DependencyProperty HoverImageCollorProperty =
+            DependencyProperty.Register(nameof(HoverImageCollor), typeof(Brush), typeof(SideButton), new PropertyMetadata(Brushes.Gray));
 
+        public Brush HoverImageCollor
+        {
+            get =>(Brush)GetValue(HoverImageCollorProperty);
+            set =>SetValue(HoverImageCollorProperty, value);
+        }
+        public Brush HoverTextBrush
+        {
+            get => (Brush)GetValue(HoverTextBrushProperty);
+            set => SetValue(HoverTextBrushProperty, value);
+        }
         public Brush SvgStrokeColor
         {
             get => (Brush)GetValue(SvgStrokeColorProperty);

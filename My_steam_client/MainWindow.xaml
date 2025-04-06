@@ -15,6 +15,7 @@
         </Grid.RowDefinitions>
         <!-- Основной контент -->
         <Grid x:Name="MainGrid" Grid.RowSpan="2">
+            <ContentControl x:Name="RootContent" />
         </Grid>
 
         <!-- SideBar, помещаем поверх основного Grid -->

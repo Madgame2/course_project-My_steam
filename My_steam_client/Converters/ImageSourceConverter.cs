@@ -18,63 +18,66 @@ namespace My_steam_client.Converters
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            if (values.Length < 2 || values[0] is not string imagePath)
+            // Проверяем, что передали всё, что нужно
+            if (values.Length < 4 || values[0] is not string imagePath)
                 return null;
 
-            string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "resources", imagePath);
+            // Берём цвета и флаг
+            var normalBrush = values[1] as Brush;
+            var hoverBrush = values[2] as Brush;
+            var isOver = values[3] as bool? == true;
+
+            // Выбираем нужный цвет
+            var colorToApply = isOver
+                ? hoverBrush
+                : normalBrush;
+
+            // Собираем полный путь к ресурсу
+            string fullPath = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "resources",
+                imagePath);
 
             if (!File.Exists(fullPath))
                 return null;
 
-            string extension = Path.GetExtension(fullPath).ToLower();
-
-            if (extension == ".svg")
+            string ext = Path.GetExtension(fullPath).ToLowerInvariant();
+            if (ext == ".svg")
             {
+                // Читаем SVG
                 var settings = new WpfDrawingSettings();
-                var converter = new FileSvgReader(settings);
-                DrawingGroup drawing = converter.Read(fullPath);
-
-                if (drawing != null)
+                var reader = new FileSvgReader(settings);
+                DrawingGroup drawing = reader.Read(fullPath);
+                if (drawing != null && colorToApply != null)
                 {
-                    if (values[1] is Brush newColor && newColor!= null)
-                    {
-                        SetColor(drawing, newColor);
-                    }
-
-                    
-                    return new DrawingImage(drawing);
+                    // Меняем цвет всех фигур
+                    ApplyColor(drawing, colorToApply);
                 }
+                return drawing != null
+                    ? new DrawingImage(drawing)
+                    : null;
             }
             else
             {
+                // Обычный растровый формат
                 return new BitmapImage(new Uri(fullPath, UriKind.Absolute));
             }
-
-            return null;
         }
-
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
             => throw new NotImplementedException();
 
-        private void SetColor(DrawingGroup drawing, Brush color)
+        private void ApplyColor(DrawingGroup group, Brush brush)
         {
-            foreach (var child in drawing.Children)
+            foreach (var child in group.Children)
             {
-                if (child is GeometryDrawing geometryDrawing)
+                if (child is GeometryDrawing gd)
                 {
-                    if (geometryDrawing.Pen != null)
-                    {
-                        geometryDrawing.Pen.Brush = color;
-                    }
-
-                    if (geometryDrawing.Brush != null)
-                    {
-                        geometryDrawing.Brush = color;
-                    }
+                    if (gd.Pen != null) gd.Pen.Brush = brush;
+                    if (gd.Brush != null) gd.Brush = brush;
                 }
-                else if (child is DrawingGroup group)
+                else if (child is DrawingGroup dg)
                 {
-                    SetColor(group, color);
+                    ApplyColor(dg, brush);
                 }
             }
         }
