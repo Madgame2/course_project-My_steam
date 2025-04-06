@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:My_steam_client.Templates"
+        xmlns:groups="clr-namespace:My_steam_client.Controls"
         mc:Ignorable="d"
         Title="MainWindow" Height="727" Width="1292"
         WindowState="Maximized">
@@ -29,10 +30,10 @@
     RenderTransformOrigin="0,0"
     Style="{StaticResource SideBar_styles}" Margin="0,22,0,0" Grid.RowSpan="2">
             <StackPanel Style="{StaticResource Main_buttons}">
-                <local:SideButton Height="60" IconHeight="30" Icon="images\cart-trolley-ui-5-svgrepo-com.svg">Магазин</local:SideButton>
-                <local:SideButton Height="60" IconHeight="30" Icon="images\cart-trolley-ui-5-svgrepo-com.svg">Библиотекка</local:SideButton>
-                <local:SideButton Height="60" IconHeight="30" Icon="images\cart-trolley-ui-5-svgrepo-com.svg">Статистика</local:SideButton>
-                <local:SideButton Height="60" IconHeight="30" Icon="images\cart-trolley-ui-5-svgrepo-com.svg">Сообшество</local:SideButton>
+                <local:SideButton Height="60" IconHeight="30" Icon="images\cart-trolley-ui-5-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav">Магазин</local:SideButton>
+                <local:SideButton Height="60" IconHeight="30" Icon="images\cart-trolley-ui-5-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav">Библиотекка</local:SideButton>
+                <local:SideButton Height="60" IconHeight="30" Icon="images\cart-trolley-ui-5-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav">Статистика</local:SideButton>
+                <local:SideButton Height="60" IconHeight="30" Icon="images\cart-trolley-ui-5-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav">Сообшество</local:SideButton>
             </StackPanel>
         </local:SideBar>
     </Grid>

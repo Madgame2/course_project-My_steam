@@ -9,6 +9,8 @@
         <Setter Property="IconTranslateX" Value="135"/>
         <Setter Property="HoverTextBrush" Value="#FF710086"/>
         <Setter Property="HoverImageCollor" Value="#FF710086"/>
+        <Setter Property="ActiveTextColor" Value="#FF710086"/>
+        <Setter Property="ActiveImageColor" Value="#FF710086"/>
 
         <Style.Triggers>
             <DataTrigger Binding="{Binding IsMouseOver,RelativeSource={RelativeSource AncestorType=local:SideBar}}" Value="True">

@@ -33,7 +33,9 @@
                                             <Binding Path="Icon" RelativeSource="{RelativeSource AncestorType=local:SideButton}"/>
                                             <Binding Path="SvgStrokeColor" RelativeSource="{RelativeSource AncestorType=local:SideButton}"/>
                                             <Binding Path="HoverImageCollor" RelativeSource="{RelativeSource AncestorType=local:SideButton}"/>
+                                            <Binding Path="ActiveImageColor" RelativeSource="{RelativeSource AncestorType=local:SideButton}"/>
                                             <Binding Path="IsMouseOver" RelativeSource="{RelativeSource AncestorType=local:SideButton}"/>
+                                            <Binding Path="IsChecked" RelativeSource="{RelativeSource AncestorType=local:SideButton}"/>
                                         </MultiBinding>
                                     </Image.Source>
                                 </Image>
@@ -64,8 +66,12 @@
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="ContentPresenter" Property="TextElement.Foreground">
+                                <Setter.Value>
+                                    <Binding Path="ActiveTextColor" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                </Setter.Value>
+                            </Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

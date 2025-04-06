@@ -6,12 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace My_steam_client.Templates
 {
-    class SideButton : Button
+    class SideButton : ToggleButton
     {
 
 
@@ -33,11 +34,30 @@ namespace My_steam_client.Templates
 
         public static readonly DependencyProperty SvgStrokeColorProperty =
             DependencyProperty.Register(nameof(SvgStrokeColor),typeof(Brush),typeof(SideButton),new PropertyMetadata(null));
+
         public static readonly DependencyProperty HoverTextBrushProperty =
             DependencyProperty.Register(nameof(HoverTextBrush), typeof(Brush), typeof(SideButton), new PropertyMetadata(Brushes.Gray));
+
         public static readonly DependencyProperty HoverImageCollorProperty =
             DependencyProperty.Register(nameof(HoverImageCollor), typeof(Brush), typeof(SideButton), new PropertyMetadata(Brushes.Gray));
 
+        public static readonly DependencyProperty ActiveTextColorProperty =
+            DependencyProperty.Register(nameof(ActiveTextColor),typeof(Brush),typeof(SideButton),new PropertyMetadata(Brushes.Black));
+
+        public static readonly DependencyProperty ActiveImageColorProperty =
+            DependencyProperty.Register(nameof(ActiveImageColor),typeof(Brush),typeof(SideButton),new PropertyMetadata(Brushes.Black));
+
+
+        public Brush ActiveImageColor
+        {
+            get=>(Brush)GetValue(ActiveImageColorProperty);
+            set=> SetValue(ActiveImageColorProperty, value);
+        }
+        public Brush ActiveTextColor
+        {
+            get => (Brush)GetValue(ActiveTextColorProperty);
+            set => SetValue(ActiveTextColorProperty, value);
+        }
         public Brush HoverImageCollor
         {
             get =>(Brush)GetValue(HoverImageCollorProperty);
@@ -115,7 +135,8 @@ namespace My_steam_client.Templates
 
         static SideButton()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(SideButton),
+            DefaultStyleKeyProperty.OverrideMetadata(
+                typeof(SideButton),
                 new FrameworkPropertyMetadata(typeof(SideButton)));
         }
     }

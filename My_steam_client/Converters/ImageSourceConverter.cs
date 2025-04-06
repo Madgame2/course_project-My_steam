@@ -19,18 +19,22 @@ namespace My_steam_client.Converters
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             // Проверяем, что передали всё, что нужно
-            if (values.Length < 4 || values[0] is not string imagePath)
+            if (values.Length < 6 || values[0] is not string imagePath)
                 return null;
 
             // Берём цвета и флаг
             var normalBrush = values[1] as Brush;
             var hoverBrush = values[2] as Brush;
-            var isOver = values[3] as bool? == true;
+            var ActiveBrush = values[3] as Brush;
+            var isOver = values[4] as bool? == true;
+            var isChecked = values[5] as bool? == true;
 
             // Выбираем нужный цвет
             var colorToApply = isOver
                 ? hoverBrush
                 : normalBrush;
+
+            colorToApply = isChecked ? ActiveBrush : colorToApply;
 
             // Собираем полный путь к ресурсу
             string fullPath = Path.Combine(
