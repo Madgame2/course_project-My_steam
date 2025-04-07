@@ -13,6 +13,12 @@
     <Compile Update="Templates\SideBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Templates\Slider.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Templates\SliderComponent.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
@@ -25,6 +31,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\SideBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Templates\Slider.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Templates\SliderComponent.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\Templates.xaml">

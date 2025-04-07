@@ -40,3 +40,7 @@ D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\
 D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\bin\Debug\net8.0-windows\resources\images\cart-trolley-ui-5-svgrepo-com.svg
 D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\obj\Debug\net8.0-windows\Templates\Shop_Component.g.cs
 D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\obj\Debug\net8.0-windows\Templates\Shop_Component.baml
+D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\obj\Debug\net8.0-windows\Templates\Slider.g.cs
+D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\obj\Debug\net8.0-windows\Templates\Slider.baml
+D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\obj\Debug\net8.0-windows\Templates\SliderComponent.g.cs
+D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\obj\Debug\net8.0-windows\Templates\SliderComponent.baml

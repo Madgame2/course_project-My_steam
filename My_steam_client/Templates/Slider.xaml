@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="My_steam_client.Templates.Slider"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:My_steam_client.Templates"
+             xmlns:conv="clr-namespace:My_steam_client.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             x:Name="RootComponetn">
+
+    <UserControl.Resources>
+        <conv:PrecentSizeConverter x:Key="PrecentSizeConverter"/>
+    </UserControl.Resources>
+    
+    <Grid x:Name="SlideBar"
+          Background="Blue">
+        <Grid.Width>
+            <MultiBinding  Converter="{StaticResource PrecentSizeConverter}" ConverterParameter="Width">
+                <Binding ElementName="RootComponetn" Path="ActualWidth"/>
+                <Binding ElementName="RootComponetn" Path="ActualHeight"/>
+                <Binding Path="PrecentWidth" ElementName="RootComponetn"/>
+                <Binding Path="PrecentHeight" ElementName="RootComponetn"/>
+            </MultiBinding>
+        </Grid.Width>
+        <Grid.Height>
+                <MultiBinding  Converter="{StaticResource PrecentSizeConverter}" ConverterParameter="Height">
+                <Binding ElementName="RootComponetn" Path="ActualWidth"/>
+                <Binding ElementName="RootComponetn" Path="ActualHeight"/>
+                <Binding Path="PrecentWidth" ElementName="RootComponetn"/>
+                <Binding Path="PrecentHeight" ElementName="RootComponetn"/>
+                </MultiBinding>
+            </Grid.Height>
+
+
+        <StackPanel x:Name="Stack_contaner"
+                    Loaded="SliderLoaded"
+                    Orientation="{Binding StackMode, ElementName=RootComponetn}">
+            
+        </StackPanel>
+     </Grid>
+</UserControl>

@@ -5,8 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:My_steam_client.Templates"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="727" d:DesignWidth="1292">
     <Grid>
-        <TextBlock Background="Yellow">Hello</TextBlock>
+        <local:Slider PrecentHeight="50"
+                      PrecentWidth="100"
+                      StackMode="Horizontal"
+                      ComponentWidth="200"
+                      ComponetnsMargin="5,0,5,0">
+            <local:SliderComponent Background="Azure"></local:SliderComponent>
+            <local:SliderComponent Background="Azure"></local:SliderComponent>
+            <local:SliderComponent Background="Azure"></local:SliderComponent>
+            <local:SliderComponent Background="Azure"></local:SliderComponent>
+        </local:Slider>
     </Grid>
 </UserControl>
