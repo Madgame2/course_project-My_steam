@@ -7,11 +7,18 @@
              mc:Ignorable="d" 
              d:DesignHeight="727" d:DesignWidth="1292">
     <Grid>
-        <local:Slider PrecentHeight="50"
+
+        <local:Slider Height="350"
                       PrecentWidth="100"
                       StackMode="Horizontal"
                       ComponentWidth="200"
-                      ComponetnsMargin="5,0,5,0">
+                      CompoentHeight="300"
+                      ComponetnsMargin="5,0,5,0"
+                      VisibleElements="4">
+            <local:SliderComponent Background="Azure"></local:SliderComponent>
+            <local:SliderComponent Background="Azure"></local:SliderComponent>
+            <local:SliderComponent Background="Azure"></local:SliderComponent>
+            <local:SliderComponent Background="Azure"></local:SliderComponent>
             <local:SliderComponent Background="Azure"></local:SliderComponent>
             <local:SliderComponent Background="Azure"></local:SliderComponent>
             <local:SliderComponent Background="Azure"></local:SliderComponent>

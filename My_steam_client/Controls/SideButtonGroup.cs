@@ -30,7 +30,7 @@ namespace My_steam_client.Controls
                 _groups[newGroup] = list;
             }
 
-            list .Add(button);
+            list.Add(button);
 
             button.Checked += (s, _) =>
             {
