@@ -47,12 +47,12 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Border Grid.Row="0" x:Name="VisibleArea" Background="CadetBlue">
-                <StackPanel x:Name="Stack_contaner"
-                            Loaded="SliderLoaded"
-                            Orientation="{Binding StackMode, ElementName=RootComponetn}">
+            <Border Grid.Row="0" x:Name="VisibleArea" Background="CadetBlue" ClipToBounds="True">
+                <Canvas x:Name="Stack_contaner"
+                            Loaded="SliderLoaded">
+                    
                 
-                </StackPanel>
+                </Canvas>
             </Border>
 
             <ItemsControl Grid.Row="1"
@@ -66,8 +66,16 @@
 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Width="30" Height="6" Margin="5">
-                            <Rectangle Height="6"/>
+                        <Button Width="30" Height="8" Margin="5"
+                                Command="{Binding DataContext.selectPageCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                CommandParameter="{Binding Index}">
+                            <Rectangle Height="8"/>
+
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="LightBlue"/>
+                                </Style>
+                            </Button.Style>
                         </Button>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

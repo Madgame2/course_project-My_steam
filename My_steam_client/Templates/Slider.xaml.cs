@@ -5,6 +5,9 @@ using System.Windows.Controls;
 using System.Windows.Markup;
 using My_steam_client.Controls;
 using System.Windows.Input;
+using System.Diagnostics;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
 
 namespace My_steam_client.Templates
 {
@@ -84,13 +87,15 @@ namespace My_steam_client.Templates
 
         public ObservableCollection<PageIndicator> PageIndicators { get; set; } = new();
 
-        public ICommand selectPageCommand => new RelayCommand<int>(OnPageSelected);
+        public ICommand selectPageCommand { get; }
 
 
         private int _currentPage = 0;
 
         public Slider()
         {
+            selectPageCommand = new RelayCommand<int>(OnPageSelected);
+
             InitializeComponent();
             DataContext = this;
         }
@@ -104,7 +109,25 @@ namespace My_steam_client.Templates
 
         private void UpdateVisibleComponents()
         {
+            Debug.WriteLine(_currentPage);
 
+            double offSetX = -1 * _currentPage * (VisibleElements * (ComponentWidth + ComponetnsMargin.Left + ComponetnsMargin.Right));
+
+            if (Stack_contaner.RenderTransform is not TranslateTransform transform)
+            {
+                transform = new TranslateTransform();
+                Stack_contaner.RenderTransform = transform;
+            }
+
+
+            var animation = new DoubleAnimation
+            {
+                To = offSetX,
+                Duration = TimeSpan.FromMilliseconds(300),
+                EasingFunction = new CubicEase { EasingMode = EasingMode.EaseInOut }
+            };
+
+            transform.BeginAnimation(TranslateTransform.XProperty, animation);
         }
 
         private void UpdateIndicators()
@@ -121,8 +144,30 @@ namespace My_steam_client.Templates
             }
         }
 
+        private void ArrangeComponents()
+        {
+            double currentX = 0;
+
+            foreach (var child in Childrens)
+            {
+                if (child is SliderComponent component)
+                {
+                    component.Width = ComponentWidth;
+                    component.Height = CompoentHeight;
+                    component.Margin = new Thickness(0);
+
+                    Canvas.SetLeft(component, currentX);
+                    Canvas.SetTop(component, 0);
+
+                    currentX += ComponentWidth + ComponetnsMargin.Left + ComponetnsMargin.Right;
+                }
+            }
+        }
+
         private void SliderLoaded(object sender, RoutedEventArgs e)
         {
+            ArrangeComponents();
+
             double visibleAreaWidht = VisibleElements * (ComponentWidth + ComponetnsMargin.Left+ ComponetnsMargin.Right);
 
             VisibleArea.Width = visibleAreaWidht;
