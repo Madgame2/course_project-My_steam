@@ -92,6 +92,8 @@ namespace My_steam_client.Templates
 
         private int _currentPage = 0;
 
+        private int pageCounts=0;
+
         public Slider()
         {
             selectPageCommand = new RelayCommand<int>(OnPageSelected);
@@ -134,9 +136,6 @@ namespace My_steam_client.Templates
         {
             PageIndicators.Clear();
 
-            int total = Childrens.Count;
-            int pageCounts = (int)Math.Ceiling((double)total / VisibleElements);
-
 
             for (int i = 0; i < pageCounts; i++)
             {
@@ -164,8 +163,37 @@ namespace My_steam_client.Templates
             }
         }
 
+        private void SwipeToRight(object sender, RoutedEventArgs e)
+        {
+            _currentPage++;
+            if (_currentPage >= pageCounts)
+            {
+                _currentPage = 0;
+            }
+
+            UpdateVisibleComponents();
+            UpdateIndicators();
+        }
+        private void SwipeToLeft(object sender, RoutedEventArgs e)
+        {
+            _currentPage--;
+            if (_currentPage <0)
+            {
+                _currentPage = pageCounts-1;
+            }
+
+            UpdateVisibleComponents();
+            UpdateIndicators();
+        }
+
+
         private void SliderLoaded(object sender, RoutedEventArgs e)
         {
+
+            int total = Childrens.Count;
+            pageCounts = (int)Math.Ceiling((double)total / VisibleElements);
+
+
             ArrangeComponents();
 
             double visibleAreaWidht = VisibleElements * (ComponentWidth + ComponetnsMargin.Left+ ComponetnsMargin.Right);

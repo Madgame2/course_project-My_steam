@@ -11,10 +11,15 @@
 
     <UserControl.Resources>
         <conv:PrecentSizeConverter x:Key="PrecentSizeConverter"/>
+
+        <Style x:Key="SideButton" TargetType="Button">
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Height" Value="100"/>
+            <Setter Property="Margin" Value="10,0,10,0"/>
+        </Style>
     </UserControl.Resources>
     
-    <Grid x:Name="SlideBar"
-          Background="Blue">
+    <Grid x:Name="SlideBar">
         <Grid.Width>
             <MultiBinding  Converter="{StaticResource PrecentSizeConverter}" ConverterParameter="Width">
                 <Binding ElementName="RootComponetn" Path="ActualWidth"/>
@@ -38,16 +43,20 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0" Background="LightCyan" />
+        <Grid Grid.Column="0">
+            <Button Style="{StaticResource SideButton}"
+                    HorizontalAlignment="Right"
+                    Click="SwipeToLeft">Left</Button>
+        </Grid>
 
         <Grid Grid.Column="1"
-              Background="Yellow"
+
               x:Name="MainGrid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Border Grid.Row="0" x:Name="VisibleArea" Background="CadetBlue" ClipToBounds="True">
+            <Border Grid.Row="0" x:Name="VisibleArea" ClipToBounds="True">
                 <Canvas x:Name="Stack_contaner"
                             Loaded="SliderLoaded">
                     
@@ -83,8 +92,10 @@
             </ItemsControl>
         </Grid>
 
-        <Grid Grid.Column="3" Background="Coral">
-            <TextBlock>hello</TextBlock>
+        <Grid Grid.Column="3">
+            <Button Style="{StaticResource SideButton}"
+                    HorizontalAlignment="Left"
+                    Click="SwipeToRight">Right</Button>
         </Grid>
     </Grid>
 </UserControl>
