@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("My_steam_server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c855593c36b5c84c25be8d183e0559856be2fa36")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e8ee8ed9b7d7cafc4b555fc68be2474f4fd6b982")]
 [assembly: System.Reflection.AssemblyProductAttribute("My_steam_server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("My_steam_server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
