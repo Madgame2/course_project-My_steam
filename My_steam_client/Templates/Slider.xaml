@@ -11,6 +11,7 @@
 
     <UserControl.Resources>
         <conv:PrecentSizeConverter x:Key="PrecentSizeConverter"/>
+        <conv:BoolIndicatorsBrushConveror x:Key="BoolIndicatorsBrushConveror"/>
 
         <Style x:Key="SideButton" TargetType="Button">
             <Setter Property="Width" Value="50"/>
@@ -78,11 +79,17 @@
                         <Button Width="30" Height="8" Margin="5"
                                 Command="{Binding DataContext.selectPageCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                 CommandParameter="{Binding Index}">
+                            <Button.Background>
+                                <MultiBinding Converter="{StaticResource BoolIndicatorsBrushConveror}">
+                                    <Binding Path="isActive"/>
+                                    <Binding RelativeSource="{RelativeSource AncestorType=UserControl}"/>
+                                </MultiBinding>
+                            </Button.Background>
                             <Rectangle Height="8"/>
 
                             <Button.Style>
                                 <Style TargetType="Button">
-                                    <Setter Property="Background" Value="LightBlue"/>
+
                                 </Style>
                             </Button.Style>
                         </Button>

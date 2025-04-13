@@ -2,7 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:My_steam_client.Templates">
 
-
+    <Style TargetType="local:Slider" x:Key="Slider_Styles">
+        <Setter Property="IndicatorsActiveBrush" Value="DodgerBlue"/>
+        <Setter Property="IndicatorsInactiveBrush" Value="LightGray"/>
+    </Style>
+    
     <Style TargetType="local:SideButton" BasedOn="{StaticResource SideButtonTemplate}">
         <Setter Property="SvgStrokeColor" Value="#FF3F3F3F"/>
         <Setter Property="Background" Value="Gray"/>

@@ -39,8 +39,25 @@ namespace My_steam_client.Templates
         public static readonly DependencyProperty VisibleElementsProperty =
             DependencyProperty.Register(nameof(VisibleElements),typeof(int),typeof(Slider),new PropertyMetadata(4));
 
+        public static readonly DependencyProperty IndicatorsActiveBrushProperty =
+            DependencyProperty.Register("IndicatorsActiveBrush", typeof(Brush), typeof(Slider), new PropertyMetadata(Brushes.DodgerBlue));
+
+        public static readonly DependencyProperty IndicatorsInactiveBrushProperty =
+            DependencyProperty.Register("IndicatorsInactiveBrush", typeof(Brush), typeof(Slider), new PropertyMetadata(Brushes.LightGray));
 
 
+
+        public Brush IndicatorsActiveBrush
+        {
+            get => (Brush)GetValue(IndicatorsActiveBrushProperty);
+            set => SetValue(IndicatorsActiveBrushProperty, value);
+        }
+
+        public Brush IndicatorsInactiveBrush
+        {
+            get => (Brush)GetValue(IndicatorsInactiveBrushProperty);
+            set => SetValue(IndicatorsInactiveBrushProperty, value);
+        }
 
         public int VisibleElements
         {
@@ -82,6 +99,7 @@ namespace My_steam_client.Templates
             get => (double)GetValue(PrecentWidthProperty);
             set => SetValue(PrecentWidthProperty, value);
         }
+
 
         public UIElementCollection Childrens => Stack_contaner.Children;
 

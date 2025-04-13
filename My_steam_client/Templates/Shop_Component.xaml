@@ -14,7 +14,8 @@
                       ComponentWidth="200"
                       CompoentHeight="300"
                       ComponetnsMargin="5,0,5,0"
-                      VisibleElements="4" Margin="0,76,0,301">
+                      VisibleElements="4" Margin="0,76,0,301"
+                      Style="{StaticResource Slider_Styles}">
             <local:SliderComponent Background="Azure"></local:SliderComponent>
             <local:SliderComponent Background="Azure"></local:SliderComponent>
             <local:SliderComponent Background="Azure"></local:SliderComponent>
