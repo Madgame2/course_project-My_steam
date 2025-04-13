@@ -10,6 +10,9 @@
     <Compile Update="Templates\Shop_Component.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Templates\Showcase.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Templates\SideBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -28,6 +31,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\Shop_Component.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Templates\Showcase.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\SideBar.xaml">

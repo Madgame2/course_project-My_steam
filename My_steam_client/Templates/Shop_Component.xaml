@@ -13,8 +13,9 @@
                 <RowDefinition Height="400"/>
                 <RowDefinition Height="500"/>
             </Grid.RowDefinitions>
-
-            <local:Slider Grid.Row="1"
+            <Grid Grid.Row="1">
+                <TextBlock Margin="369,10,-371,-10">Recomend list</TextBlock>
+            <local:Slider 
                       PrecentWidth="80"
                       StackMode="Horizontal"
                       ComponentWidth="200"
@@ -26,11 +27,19 @@
                 <local:SliderComponent Background="Azure"></local:SliderComponent>
                 <local:SliderComponent Background="Azure"></local:SliderComponent>
                 <local:SliderComponent Background="Blue"></local:SliderComponent>
-                <local:SliderComponent Background="Azure"></local:SliderComponent>
-                <local:SliderComponent Background="Azure"></local:SliderComponent>
-                <local:SliderComponent Background="Azure"></local:SliderComponent>
-                <local:SliderComponent Background="Azure"></local:SliderComponent>
-            </local:Slider>
+                    <local:SliderComponent Background="Azure"></local:SliderComponent>
+                    <local:SliderComponent Background="Azure"></local:SliderComponent>
+                    <local:SliderComponent Background="Azure"></local:SliderComponent>
+                    <local:SliderComponent Background="Azure"></local:SliderComponent>
+                    <local:SliderComponent Background="Azure"></local:SliderComponent>
+                    <local:SliderComponent Background="Azure"></local:SliderComponent>
+                    <local:SliderComponent Background="Azure"></local:SliderComponent>
+                    <local:SliderComponent Background="Azure"></local:SliderComponent>
+                </local:Slider>
+            </Grid>
+            <Grid Grid.Row="2">
+                <local:Showcase x:Name="showCase"/>
+            </Grid>
         </Grid>
     </ScrollViewer>
 </UserControl>
