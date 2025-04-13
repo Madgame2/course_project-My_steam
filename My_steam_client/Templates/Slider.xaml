@@ -73,29 +73,38 @@
                         <StackPanel Orientation="Horizontal"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
-
+                
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Width="30" Height="8" Margin="5"
-                                Command="{Binding DataContext.selectPageCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-                                CommandParameter="{Binding Index}">
+                        <Button Width="30" Height="10" Margin="5"
+        Command="{Binding DataContext.selectPageCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+        CommandParameter="{Binding Index}"
+        MouseEnter="IndicatorButton_MouseEnter"
+        MouseLeave="IndicatorButton_MouseLeave">
                             <Button.Background>
                                 <MultiBinding Converter="{StaticResource BoolIndicatorsBrushConveror}">
                                     <Binding Path="isActive"/>
                                     <Binding RelativeSource="{RelativeSource AncestorType=UserControl}"/>
                                 </MultiBinding>
                             </Button.Background>
-                            <Rectangle Height="8"/>
 
-                            <Button.Style>
-                                <Style TargetType="Button">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="border"
+                                            Background="{TemplateBinding Background}" 
+                                            BorderThickness="1" 
+                                            CornerRadius="2"
+                                            BorderBrush="Transparent">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
 
-                                </Style>
-                            </Button.Style>
+                                </ControlTemplate>
+                            </Button.Template>
                         </Button>
                     </DataTemplate>
+
                 </ItemsControl.ItemTemplate>
-                
+
             </ItemsControl>
         </Grid>
 

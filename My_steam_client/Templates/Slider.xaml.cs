@@ -8,6 +8,7 @@ using System.Windows.Input;
 using System.Diagnostics;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using My_steam_client.Converters;
 
 namespace My_steam_client.Templates
 {
@@ -45,8 +46,14 @@ namespace My_steam_client.Templates
         public static readonly DependencyProperty IndicatorsInactiveBrushProperty =
             DependencyProperty.Register("IndicatorsInactiveBrush", typeof(Brush), typeof(Slider), new PropertyMetadata(Brushes.LightGray));
 
+        public static readonly DependencyProperty IndicatorsHoverBrushProperty =
+            DependencyProperty.Register(nameof(IndicatorsHoverBrush), typeof(Brush), typeof(Slider), new PropertyMetadata(Brushes.Gray));
 
-
+        public Brush IndicatorsHoverBrush
+        {
+            get=>(Brush)GetValue(IndicatorsHoverBrushProperty);
+            set=>SetValue(IndicatorsHoverBrushProperty, value);
+        }
         public Brush IndicatorsActiveBrush
         {
             get => (Brush)GetValue(IndicatorsActiveBrushProperty);
@@ -232,5 +239,44 @@ namespace My_steam_client.Templates
 
             OnPageSelected(0);
         }
+
+
+        private void IndicatorButton_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (sender is Button button && button.Template.FindName("border", button) is Border border)
+            {
+                Brush fromBrush = border.Background;
+                Brush toBrush = IndicatorsHoverBrush;
+
+                var anim = new BrushAnimation
+                {
+                    From = fromBrush,
+                    To = toBrush,
+                    Duration = new Duration(TimeSpan.FromMilliseconds(100))
+                };
+
+                border.BeginAnimation(Border.BackgroundProperty, anim);
+            }
+        }
+
+        private void IndicatorButton_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (sender is Button button && button.Template.FindName("border", button) is Border border)
+            {
+                Brush fromBrush = border.Background;
+                // Опять пересчитай оригинальный цвет через MultiBinding, или задавай свой явно
+                Brush toBrush = (Brush)button.GetValue(Button.BackgroundProperty);
+
+                var anim = new BrushAnimation
+                {
+                    From = fromBrush,
+                    To = toBrush,
+                    Duration = new Duration(TimeSpan.FromMilliseconds(100))
+                };
+
+                border.BeginAnimation(Border.BackgroundProperty, anim);
+            }
+        }
+
     }
 }
