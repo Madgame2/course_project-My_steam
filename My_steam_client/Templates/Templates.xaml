@@ -10,7 +10,7 @@
             <Setter.Value>
                 <ControlTemplate 
                     TargetType="{x:Type local:SideButton}">
-                    <Border Background="{TemplateBinding Background}">
+                    <Border x:Name="Borrder" Background="{TemplateBinding Background}">
                     <Grid
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
@@ -19,7 +19,7 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <Border
+                            <Border x:Name="ImageBorder"
                                 Background="{TemplateBinding Background}"
                                 Height="{TemplateBinding Height}"
                                 Panel.ZIndex="1">
@@ -70,6 +70,16 @@
                             <Setter TargetName="ContentPresenter" Property="TextElement.Foreground">
                                 <Setter.Value>
                                     <Binding Path="ActiveTextColor" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="Borrder" Property="Background">
+                                <Setter.Value>
+                                    <Binding Path="ActiveBacground" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="ImageBorder" Property="Background">
+                                <Setter.Value>
+                                    <Binding Path="ActiveBacground" RelativeSource="{RelativeSource TemplatedParent}"/>
                                 </Setter.Value>
                             </Setter>
                         </Trigger>

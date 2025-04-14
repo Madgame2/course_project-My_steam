@@ -8,10 +8,30 @@
              d:DesignHeight="450" d:DesignWidth="800"
              x:Name="Root">
     <Grid>
-        <StackPanel Orientation="Vertical">
-            <ItemsControl x:Name="ItemHost" ItemsSource="{Binding _items, ElementName=Root}">
-                
-            </ItemsControl>
-        </StackPanel>
+        <ItemsControl x:Name="ItemHost" ItemsSource="{Binding _items, ElementName=Root}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid
+                        Height="150">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="80"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0" Background="Aqua">
+                            <TextBlock>Hello</TextBlock>
+                        </Grid>
+                        <Grid Grid.Column="1" Background="Azure"/>
+                        <Grid Grid.Column="2" Background="Yellow"/>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </UserControl>

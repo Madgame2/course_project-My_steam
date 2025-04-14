@@ -15,6 +15,7 @@
         <Setter Property="HoverImageCollor" Value="#FF710086"/>
         <Setter Property="ActiveTextColor" Value="#FF710086"/>
         <Setter Property="ActiveImageColor" Value="#FF710086"/>
+        <Setter Property="ActiveBacground" Value="#FF3F3F3F"/>
 
         <Style.Triggers>
             <DataTrigger Binding="{Binding IsMouseOver,RelativeSource={RelativeSource AncestorType=local:SideBar}}" Value="True">

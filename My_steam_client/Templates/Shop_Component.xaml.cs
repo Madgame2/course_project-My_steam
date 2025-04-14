@@ -28,6 +28,7 @@ namespace My_steam_client.Templates
             _mainWindow = window;
 
             showCase.addObject(new ShowCaseObject());
+            showCase.addObject(new ShowCaseObject());
         }
     }
 }

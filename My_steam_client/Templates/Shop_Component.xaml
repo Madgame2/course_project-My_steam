@@ -7,7 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="727" d:DesignWidth="1292">
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-        <Grid>
+        <Grid
+            Margin="100,0,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="400"/>
                 <RowDefinition Height="400"/>
@@ -16,9 +17,10 @@
             <Grid Grid.Row="1">
                 <TextBlock Margin="369,10,-371,-10">Recomend list</TextBlock>
             <local:Slider 
-                      PrecentWidth="80"
+                      PrecentWidth="100"
+                      PrecentHeight="100"
                       StackMode="Horizontal"
-                      ComponentWidth="200"
+                      ComponentWidth="180"
                       CompoentHeight="225"
                       ComponetnsMargin="5,0,5,0"
                       VisibleElements="4" Margin="0,76,0,6"

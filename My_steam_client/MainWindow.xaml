@@ -6,8 +6,10 @@
         xmlns:local="clr-namespace:My_steam_client.Templates"
         xmlns:groups="clr-namespace:My_steam_client.Controls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="727" Width="1292"
-        WindowState="Maximized">
+    Title="MainWindow"
+    WindowState="Maximized"
+    MinHeight="600"
+    MinWidth="1300" Width="1099">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -30,7 +32,7 @@
     RenderTransformOrigin="0,0"
     Style="{StaticResource SideBar_styles}" Margin="0,22,0,0" Grid.RowSpan="2">
             <StackPanel Style="{StaticResource Main_buttons}">
-                <local:SideButton Height="60" IconHeight="30" Icon="images\cart-trolley-ui-5-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav">Магазин</local:SideButton>
+                <local:SideButton IsChecked="True" Height="60" IconHeight="30" Icon="images\cart-trolley-ui-5-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav">Магазин</local:SideButton>
                 <local:SideButton Height="60" IconHeight="30" Icon="images\cart-trolley-ui-5-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav">Библиотекка</local:SideButton>
                 <local:SideButton Height="60" IconHeight="30" Icon="images\cart-trolley-ui-5-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav">Статистика</local:SideButton>
                 <local:SideButton Height="60" IconHeight="30" Icon="images\cart-trolley-ui-5-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav">Сообшество</local:SideButton>

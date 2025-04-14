@@ -47,7 +47,15 @@ namespace My_steam_client.Templates
         public static readonly DependencyProperty ActiveImageColorProperty =
             DependencyProperty.Register(nameof(ActiveImageColor),typeof(Brush),typeof(SideButton),new PropertyMetadata(Brushes.Black));
 
+        public static readonly DependencyProperty ActiveBacgroundProperty =
+            DependencyProperty.Register(nameof(ActiveBacground),typeof(Brush),typeof(SideButton),new PropertyMetadata(Brushes.Blue));
 
+
+        public Brush ActiveBacground
+        {
+            get=>(Brush)GetValue(ActiveBacgroundProperty);
+            set=>SetValue(ActiveBacgroundProperty, value);
+        }
         public Brush ActiveImageColor
         {
             get=>(Brush)GetValue(ActiveImageColorProperty);
@@ -111,6 +119,15 @@ namespace My_steam_client.Templates
         {
             get => (BitmapImage)GetValue(IconImageProperty);
             private set => SetValue(IconImageProperty, value);
+        }
+
+        protected override void OnClick()
+        {
+            if (IsChecked == true)
+                return;
+
+
+            base.OnClick();
         }
 
         private void UpdateIconImage()
