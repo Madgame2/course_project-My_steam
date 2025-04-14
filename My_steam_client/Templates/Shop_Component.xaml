@@ -40,7 +40,7 @@
                 </local:Slider>
             </Grid>
             <Grid Grid.Row="2">
-                <local:Showcase x:Name="showCase"/>
+                <local:Showcase x:Name="showCase" Margin="50,0,100,0"/>
             </Grid>
         </Grid>
     </ScrollViewer>

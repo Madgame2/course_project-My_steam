@@ -8,6 +8,11 @@
              d:DesignHeight="450" d:DesignWidth="800"
              x:Name="Root">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="250"/>
+        </Grid.ColumnDefinitions>
+        
         <ItemsControl x:Name="ItemHost" ItemsSource="{Binding _items, ElementName=Root}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -19,12 +24,13 @@
                     <Grid
                         Height="150">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="300"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="150"/>
                         </Grid.ColumnDefinitions>
 
-                        <Grid Grid.Column="0" Background="Aqua">
+                        <Grid Grid.Column="0" Background="Aqua"
+                              >
                             <TextBlock>Hello</TextBlock>
                         </Grid>
                         <Grid Grid.Column="1" Background="Azure"/>
