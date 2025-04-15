@@ -27,7 +27,7 @@ namespace My_steam_server.Repositories
 
         public void addUser(User user)
         {
-            user.Id =Convert.ToString( _Users.Count>0 ? _Users.Max(u=>u.Id)+1: 1);
+            user.Id = Convert.ToString(_Users.Count>0 ? _Users.Max(u=> Convert.ToInt32(u.Id))+1: 1);
             _Users.Add(user);
         }
 

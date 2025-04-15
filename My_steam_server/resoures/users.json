@@ -16,5 +16,23 @@
     "LockoutEnd": null,
     "LockoutEnabled": false,
     "AccessFailedCount": 0
+  },
+  {
+    "Nickname": null,
+    "Id": "2",
+    "UserName": "Nokio",
+    "NormalizedUserName": null,
+    "Email": "pivo@gmail.com",
+    "NormalizedEmail": null,
+    "EmailConfirmed": false,
+    "PasswordHash": "AQAAAAIAAYagAAAAEJyrQ5BwKOYQsl6fF\u002B6HVIJjJSHwd0f4Tf8jGrv72gyZ63ghF4K7RZq5/jJLCkqMaQ==",
+    "SecurityStamp": "85b6eabe-cb7d-47f7-90ba-e274680b76e3",
+    "ConcurrencyStamp": "e2d85c5f-384a-4bb4-af05-978900a090a5",
+    "PhoneNumber": null,
+    "PhoneNumberConfirmed": false,
+    "TwoFactorEnabled": false,
+    "LockoutEnd": null,
+    "LockoutEnabled": false,
+    "AccessFailedCount": 0
   }
 ]
