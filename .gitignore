@@ -32,3 +32,4 @@ packages/
 # Other
 Thumbs.db
 Desktop.ini
+appsettings.Development.json

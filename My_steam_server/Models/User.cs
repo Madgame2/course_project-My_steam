@@ -1,8 +1,9 @@
-﻿namespace My_steam_server.Models
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace My_steam_server.Models
 {
-    public class User
+    public class User : IdentityUser
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public string Nickname { get; set; }
     }
 }

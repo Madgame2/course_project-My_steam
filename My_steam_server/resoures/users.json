@@ -1,6 +1,20 @@
 [
   {
-    "Id": 1,
-    "Name": "Anton"
+    "Nickname": null,
+    "Id": "1",
+    "UserName": "Anton",
+    "NormalizedUserName": null,
+    "Email": "temp",
+    "NormalizedEmail": null,
+    "EmailConfirmed": false,
+    "PasswordHash": "AQAAAAIAAYagAAAAEDFNBzOWq8WM\u002BWvua0HMXeRKxA78sJfCCbedDUmu9cFSHP4JJyeK\u002B/mpl7MsX38Cug==",
+    "SecurityStamp": "2a3d8009-ff1d-4151-b773-9e6a56014050",
+    "ConcurrencyStamp": "47cb74b3-7331-4335-81d4-43b6f70012e6",
+    "PhoneNumber": null,
+    "PhoneNumberConfirmed": false,
+    "TwoFactorEnabled": false,
+    "LockoutEnd": null,
+    "LockoutEnabled": false,
+    "AccessFailedCount": 0
   }
 ]

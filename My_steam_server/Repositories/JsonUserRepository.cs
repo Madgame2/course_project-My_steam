@@ -27,12 +27,18 @@ namespace My_steam_server.Repositories
 
         public void addUser(User user)
         {
-            user.Id = _Users.Count>0 ? _Users.Max(u=>u.Id)+1: 1;
+            user.Id =Convert.ToString( _Users.Count>0 ? _Users.Max(u=>u.Id)+1: 1);
             _Users.Add(user);
         }
 
         public IEnumerable<User> GetAll() => _Users;
-        public User? GetById(int id) => _Users.FirstOrDefault(U => U.Id == id);
+
+        public User? GetByEmail(string email)
+        {
+            return _Users.FirstOrDefault(u => u.Email == email);
+        }
+
+        public User? GetById(int id) => _Users.FirstOrDefault(U => Convert.ToUInt32(U.Id) == id);
 
         public void SaveChanges()
         {
