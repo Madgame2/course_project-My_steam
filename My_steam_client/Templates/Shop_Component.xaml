@@ -40,7 +40,9 @@
                 </local:Slider>
             </Grid>
             <Grid Grid.Row="2">
-                <local:Showcase x:Name="showCase" Margin="50,0,100,0"/>
+                <local:Showcase x:Name="showCase" Margin="50,0,100,0"
+                                Style="{StaticResource ShowCase_styles}"
+                                HoverAnimation="MouseOverStateAnimation"/>
             </Grid>
         </Grid>
     </ScrollViewer>

@@ -3,16 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:My_steam_client.Templates"
+             xmlns:local="clr-namespace:My_steam_client"
+             xmlns:conv="clr-namespace:My_steam_client.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              x:Name="Root">
+
+    <UserControl.Resources>
+        <conv:RectToClipConverter x:Key="ClipConverter"/>
+        <conv:AnimationConverter x:Key="AnimationConverter"/>
+    </UserControl.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="300"/>
         </Grid.ColumnDefinitions>
-        
+
         <ItemsControl x:Name="ItemHost" ItemsSource="{Binding _items, ElementName=Root}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -21,21 +28,74 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Grid
-                        Height="150">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="300"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="150"/>
-                        </Grid.ColumnDefinitions>
+                    <Border x:Name="BorderElement" 
+                        Height="{Binding ElementHeight, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                            Margin="{Binding ElementMargin, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                            ClipToBounds="True"
+                            MouseEnter="OnMouseEnter" MouseLeave="OnMouseLeave"
+                            Background="{Binding ShowCaseElementBackGround, RelativeSource={RelativeSource AncestorType=UserControl}}">
 
-                        <Grid Grid.Column="0" Background="Aqua"
-                              >
-                            <TextBlock>Hello</TextBlock>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <Storyboard>
+                                        <ColorAnimation
+                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                From="Gray"
+                                To="LightGray"
+                                Duration="0:0:0.3"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimation
+                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                From="LightGray"
+                                To="Red"
+                                Duration="0:0:0.3"/>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Border.Clip>
+                            <MultiBinding Converter="{StaticResource ClipConverter}">
+                                <Binding Path="ActualWidth" RelativeSource="{RelativeSource Self}"/>
+                                <Binding Path="ActualHeight" RelativeSource="{RelativeSource Self}"/>
+                                <Binding Path="BorderRadius" ElementName="Root"/>
+                            </MultiBinding>
+                        </Border.Clip>
+                        <Grid>
+
+                            
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="250"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="150"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0" ClipToBounds="True">
+                                <Image Stretch="Fill"
+                                       HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch" 
+                                        Source="{Binding ImageURL}"/>
+                            </Grid>
+                            <Grid Grid.Column="1" ClipToBounds="True">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Text="{Binding Title}"/>
+                                <TextBlock Grid.Row="1" Text="{Binding Description}"/>
+                            </Grid>
+                            <Grid Grid.Column="2"  ClipToBounds="True">
+                                <TextBlock HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"
+                                           Text="{Binding Coast}"/>
+                            </Grid>
                         </Grid>
-                        <Grid Grid.Column="1" Background="Azure"/>
-                        <Grid Grid.Column="2" Background="Yellow"/>
-                    </Grid>
+                    </Border>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

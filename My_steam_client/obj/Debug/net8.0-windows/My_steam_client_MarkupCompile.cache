@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\App.xaml
-81878774877
-2-1891695741
-22-1682502886
+9-945710386
+3533922734
+25655654404
 206-258745680
-MainWindow.xaml;Styles.xaml;Templates\Shop_Component.xaml;Templates\Showcase.xaml;Templates\SideBar.xaml;Templates\Slider.xaml;Templates\SliderComponent.xaml;Templates\Templates.xaml;
+MainWindow.xaml;ShowcaseItemStyles.xaml;Styles.xaml;Templates\Shop_Component.xaml;Templates\Showcase.xaml;Templates\SideBar.xaml;Templates\Slider.xaml;Templates\SliderComponent.xaml;Templates\Templates.xaml;
 
 False
 

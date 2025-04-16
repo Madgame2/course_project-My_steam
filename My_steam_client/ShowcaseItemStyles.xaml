@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    >
+    <!-- Анимация для Normal состояния -->
+    <Storyboard x:Key="NormalStateAnimation">
+        <ColorAnimation
+            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+            From="Gray"
+            To="LightGray"
+            Duration="0:0:0.3"/>
+    </Storyboard>
+
+    <!-- Анимация для MouseOver состояния -->
+    <Storyboard x:Key="MouseOverStateAnimation">
+        <ColorAnimation
+            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+            From="LightGray"
+            To="Red"
+            Duration="0:0:0.3"/>
+    </Storyboard>
+
+</ResourceDictionary>

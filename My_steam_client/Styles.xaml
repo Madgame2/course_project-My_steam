@@ -2,6 +2,14 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:My_steam_client.Templates">
 
+
+    <Style TargetType="local:Showcase" x:Key="ShowCase_styles">
+        <Setter Property="ElementHeight" Value="150"/>
+        <Setter Property="ElementMargin" Value="0,5,0,5"/>
+        <Setter Property="BorderRadius" Value="10"/>
+        <Setter Property="ShowCaseElementBackGround" Value="Gray"/>
+    </Style>
+    
     <Style TargetType="local:Slider" x:Key="Slider_Styles">
         <Setter Property="IndicatorsActiveBrush" Value="DodgerBlue"/>
         <Setter Property="IndicatorsInactiveBrush" Value="LightGray"/>
@@ -90,5 +98,6 @@
         <Setter Property="Margin" Value="0,0,0,100"/>
     </Style>
 
+    <DropShadowEffect x:Key="NoShadow" ShadowDepth="0" BlurRadius="0" Opacity="0"/>
 </ResourceDictionary>
 
