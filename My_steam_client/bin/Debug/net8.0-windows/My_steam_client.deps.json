@@ -8,10 +8,19 @@
     ".NETCoreApp,Version=v8.0": {
       "My_steam_client/1.0.0": {
         "dependencies": {
+          "Microsoft.Xaml.Behaviors.Wpf": "1.1.135",
           "SharpVectors": "1.8.4.2"
         },
         "runtime": {
           "My_steam_client.dll": {}
+        }
+      },
+      "Microsoft.Xaml.Behaviors.Wpf/1.1.135": {
+        "runtime": {
+          "lib/net6.0-windows7.0/Microsoft.Xaml.Behaviors.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.135.29210"
+          }
         }
       },
       "SharpVectors/1.8.4.2": {
@@ -57,6 +66,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Microsoft.Xaml.Behaviors.Wpf/1.1.135": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-r8qBEXmQfORso2+MVHnt8PSH4761zJ0SIxgQTSEDVLU97EN2FZdG6/ZCYUPhQy+OrPKgnpYBCAs3PS6Bs7wRsg==",
+      "path": "microsoft.xaml.behaviors.wpf/1.1.135",
+      "hashPath": "microsoft.xaml.behaviors.wpf.1.1.135.nupkg.sha512"
     },
     "SharpVectors/1.8.4.2": {
       "type": "package",

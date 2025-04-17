@@ -5,6 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:My_steam_client"
              xmlns:conv="clr-namespace:My_steam_client.Converters"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:ei="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              x:Name="Root">
@@ -29,34 +31,11 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Border x:Name="BorderElement" 
-                        Height="{Binding ElementHeight, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                            Height="{Binding ElementHeight, RelativeSource={RelativeSource AncestorType=UserControl}}"
                             Margin="{Binding ElementMargin, RelativeSource={RelativeSource AncestorType=UserControl}}"
                             ClipToBounds="True"
                             MouseEnter="OnMouseEnter" MouseLeave="OnMouseLeave"
                             Background="{Binding ShowCaseElementBackGround, RelativeSource={RelativeSource AncestorType=UserControl}}">
-
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal">
-                                    <Storyboard>
-                                        <ColorAnimation
-                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                From="Gray"
-                                To="LightGray"
-                                Duration="0:0:0.3"/>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="MouseOver">
-                                    <Storyboard>
-                                        <ColorAnimation
-                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                From="LightGray"
-                                To="Red"
-                                Duration="0:0:0.3"/>
-                                    </Storyboard>
-                                </VisualState>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
 
                         <Border.Clip>
                             <MultiBinding Converter="{StaticResource ClipConverter}">

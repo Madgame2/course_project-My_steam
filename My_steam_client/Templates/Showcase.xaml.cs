@@ -31,24 +31,15 @@ namespace My_steam_client.Templates
         public static readonly DependencyProperty ShowCaseElementBackGroundProperty =
             DependencyProperty.Register(nameof(ShowCaseElementBackGround), typeof(Brush),typeof(Showcase), new PropertyMetadata(Brushes.Gray));
 
-        public static readonly DependencyProperty HoverBackgroundProperty =
-            DependencyProperty.Register(nameof(HoverBackground),typeof(Brush),typeof(Showcase),new PropertyMetadata(Brushes.LightGray));
-
 
         public static readonly DependencyProperty HoverAnimationProperty =
-            DependencyProperty.Register(nameof(HoverAnimation), typeof(string), typeof(Showcase), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(HoverAnimation),typeof(Storyboard),typeof(Showcase), new PropertyMetadata(null));
 
-        public string HoverAnimation
+        public Storyboard HoverAnimation
         {
-            get => (string)GetValue(HoverAnimationProperty);
+            get => (Storyboard)GetValue(HoverAnimationProperty);
             set => SetValue(HoverAnimationProperty, value);
         }
-        public Brush HoverBackground
-        {
-            get => (Brush)GetValue(HoverBackgroundProperty);
-            set => SetValue(HoverBackgroundProperty, value);
-        }
-
 
         public Brush ShowCaseElementBackGround
         {
@@ -93,25 +84,30 @@ namespace My_steam_client.Templates
 
         private void OnMouseEnter(object sender, MouseEventArgs e)
         {
-            if (sender is Border border)
+            if (sender is Border border && HoverAnimation is Storyboard templateSb)
             {
-                var backgroundBrush = border.Background as SolidColorBrush;
-                if (backgroundBrush != null)
-                {
-                    VisualStateManager.GoToState(border, "MouseOver", true);
-                }
+                // Клонируем так, чтобы не переиспользовать один экземпляр несколько раз
+                var sb = templateSb.Clone();
+
+                // Присваиваем каждому таймлайну цель — этот бордер
+                foreach (Timeline tl in sb.Children)
+                    Storyboard.SetTarget(tl, border);
+
+                // Запускаем
+                sb.Begin(border, true);
+
+                // Сохраним в Tag, чтобы потом остановить
+                border.Tag = sb;
             }
         }
 
         private void OnMouseLeave(object sender, MouseEventArgs e)
         {
-            if (sender is Border border)
+            if (sender is Border border && border.Tag is Storyboard sb)
             {
-                var backgroundBrush = border.Background as SolidColorBrush;
-                if (backgroundBrush != null)
-                {
-                    VisualStateManager.GoToState(border, "Normal", true);
-                }
+                // Останавливаем именно эту инстанцию
+                sb.Stop(border);
+                border.Tag = null;
             }
         }
     }

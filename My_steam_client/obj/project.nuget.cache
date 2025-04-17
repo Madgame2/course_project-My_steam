@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "gJe/SnMvjWA=",
+  "dgSpecHash": "PJxBCgGB3bQ=",
   "success": true,
   "projectFilePath": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\My_steam_client.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.135\\microsoft.xaml.behaviors.wpf.1.1.135.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\sharpvectors\\1.8.4.2\\sharpvectors.1.8.4.2.nupkg.sha512"
   ],
   "logs": []
