@@ -1,19 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace My_steam_client.Templates
 {
@@ -29,7 +19,7 @@ namespace My_steam_client.Templates
         public static readonly DependencyProperty BorderRadiusProperty =
             DependencyProperty.Register(nameof(BorderRadius),typeof(CornerRadius),typeof(Showcase),new PropertyMetadata(new CornerRadius(0)));
         public static readonly DependencyProperty ShowCaseElementBackGroundProperty =
-            DependencyProperty.Register(nameof(ShowCaseElementBackGround), typeof(Brush),typeof(Showcase), new PropertyMetadata(Brushes.Gray));
+            DependencyProperty.Register(nameof(ShowCaseElementBackGround), typeof(Color),typeof(Showcase), new PropertyMetadata(Colors.Gray));
 
 
         public static readonly DependencyProperty HoverAnimationProperty =
@@ -41,9 +31,9 @@ namespace My_steam_client.Templates
             set => SetValue(HoverAnimationProperty, value);
         }
 
-        public Brush ShowCaseElementBackGround
+        public Color ShowCaseElementBackGround
         {
-            get => (Brush)GetValue(ShowCaseElementBackGroundProperty);
+            get => (Color)GetValue(ShowCaseElementBackGroundProperty);
             set => SetValue(ShowCaseElementBackGroundProperty, value);
         }
         public CornerRadius BorderRadius
@@ -86,29 +76,56 @@ namespace My_steam_client.Templates
         {
             if (sender is Border border && HoverAnimation is Storyboard templateSb)
             {
-                // Клонируем так, чтобы не переиспользовать один экземпляр несколько раз
-                var sb = templateSb.Clone();
+                if (border.Background is SolidColorBrush scb)
+                {
+                    // Убедимся, что кисть не заморожена
+                    if (scb.IsFrozen)
+                    {
+                        scb = scb.Clone();
+                        border.Background = scb;
+                    }
 
-                // Присваиваем каждому таймлайну цель — этот бордер
-                foreach (Timeline tl in sb.Children)
-                    Storyboard.SetTarget(tl, border);
+                    var originalColor = scb.Color;
 
-                // Запускаем
-                sb.Begin(border, true);
+                    var sb = templateSb.Clone();
+                    foreach (var tl in sb.Children)
+                        Storyboard.SetTarget(tl, border);
 
-                // Сохраним в Tag, чтобы потом остановить
-                border.Tag = sb;
+                    sb.Begin(border, true);
+
+                    border.Tag = new BorderHoverInfo
+                    {
+                        HoverStoryboard = sb,
+                        OriginalColor = originalColor
+                    };
+                }
             }
         }
 
         private void OnMouseLeave(object sender, MouseEventArgs e)
         {
-            if (sender is Border border && border.Tag is Storyboard sb)
+            if (sender is Border border && border.Tag is BorderHoverInfo info)
             {
-                // Останавливаем именно эту инстанцию
-                sb.Stop(border);
+                info.HoverStoryboard?.Stop(border);
+
+                // Достаём UnhoverAnimation из ресурсов
+                if (TryFindResource("UnhoverAnimation") is Storyboard unhoverSb)
+                {
+                    var sb = unhoverSb.Clone();
+
+                    // Устанавливаем оригинальный цвет как цель To
+                    if (sb.Children[0] is ColorAnimation colorAnim)
+                    {
+                        colorAnim.To = info.OriginalColor;
+                    }
+
+                    Storyboard.SetTarget(sb.Children[0], border);
+                    sb.Begin(border, true);
+                }
+
                 border.Tag = null;
             }
         }
+
     }
 }

@@ -34,8 +34,11 @@
                             Height="{Binding ElementHeight, RelativeSource={RelativeSource AncestorType=UserControl}}"
                             Margin="{Binding ElementMargin, RelativeSource={RelativeSource AncestorType=UserControl}}"
                             ClipToBounds="True"
-                            MouseEnter="OnMouseEnter" MouseLeave="OnMouseLeave"
-                            Background="{Binding ShowCaseElementBackGround, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                            MouseEnter="OnMouseEnter" MouseLeave="OnMouseLeave">
+
+                        <Border.Background>
+                            <SolidColorBrush Color="{Binding ShowCaseElementBackGround, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+                        </Border.Background>
 
                         <Border.Clip>
                             <MultiBinding Converter="{StaticResource ClipConverter}">
