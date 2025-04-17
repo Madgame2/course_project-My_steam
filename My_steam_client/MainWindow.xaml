@@ -32,7 +32,7 @@
     RenderTransformOrigin="0,0"
     Style="{StaticResource SideBar_styles}" Margin="0,22,0,0" Grid.RowSpan="2">
             <StackPanel Style="{StaticResource Main_buttons}">
-                <local:SideButton IsChecked="True" Height="60" IconHeight="30" Icon="images\cart-trolley-ui-5-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav">Магазин</local:SideButton>
+                <local:SideButton Click="toShop" IsChecked="True" Height="60" IconHeight="30" Icon="images\cart-trolley-ui-5-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav">Магазин</local:SideButton>
                 <local:SideButton Height="60" IconHeight="30" Icon="images\cart-trolley-ui-5-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav">Библиотекка</local:SideButton>
                 <local:SideButton Height="60" IconHeight="30" Icon="images\cart-trolley-ui-5-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav">Статистика</local:SideButton>
                 <local:SideButton Height="60" IconHeight="30" Icon="images\cart-trolley-ui-5-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav">Сообшество</local:SideButton>

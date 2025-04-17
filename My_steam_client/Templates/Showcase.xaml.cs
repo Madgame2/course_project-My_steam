@@ -127,5 +127,19 @@ namespace My_steam_client.Templates
             }
         }
 
+
+        private void OnItemClicked(object sender, MouseButtonEventArgs e)
+        {
+            var border = sender as Border;
+            var dataContext = border?.DataContext as ShowCaseObject;
+
+
+            if (dataContext != null)
+            {
+                // Теперь у нас есть доступ к ShowCaseObject
+                // Например, выводим информацию об объекте
+                MessageBox.Show($"Clicked on: {dataContext.Title}, {dataContext.Description}, {dataContext.Coast}");
+            }
+        }
     }
 }

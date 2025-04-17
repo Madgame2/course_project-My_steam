@@ -17,16 +17,34 @@ namespace My_steam_client
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private Shop_Component? shopPage = null;
+
         public MainWindow()
         {
             InitializeComponent();
 
-            NavigateTo(new Shop_Component(this));
+            openShopPage();
+        }
+
+        private void openShopPage()
+        {
+            if (shopPage == null)
+            {
+                shopPage = new Shop_Component(this);
+            }
+
+            NavigateTo(shopPage);
         }
 
         public void NavigateTo(UserControl userControl)
         {
             RootContent.Content = userControl;
+        }
+
+        private void toShop(object sender, RoutedEventArgs e)
+        {
+            openShopPage();
         }
     }
 }

@@ -10,7 +10,8 @@
             <Setter.Value>
                 <ControlTemplate 
                     TargetType="{x:Type local:SideButton}">
-                    <Border x:Name="Borrder" Background="{TemplateBinding Background}">
+                    <Border x:Name="Borrder"
+                            Background="{TemplateBinding Background}">
                     <Grid
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"

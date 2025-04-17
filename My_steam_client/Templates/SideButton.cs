@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -126,9 +127,10 @@ namespace My_steam_client.Templates
             if (IsChecked == true)
                 return;
 
-
+            
             base.OnClick();
         }
+
 
         private void UpdateIconImage()
         {
