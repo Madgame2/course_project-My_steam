@@ -23,6 +23,7 @@ namespace My_steam_client
         public MainWindow()
         {
             InitializeComponent();
+            HeaderContaner.Content = new Header(this);
 
             openShopPage();
         }
@@ -45,6 +46,21 @@ namespace My_steam_client
         private void toShop(object sender, RoutedEventArgs e)
         {
             openShopPage();
+        }
+
+        private void toLib(object sender, RoutedEventArgs e)
+        {
+            NavigateTo(null);
+        }
+
+        private void toStat(object sender, RoutedEventArgs e)
+        {
+            NavigateTo(null);
+        }
+
+        private void toCommunity(object sender, RoutedEventArgs e)
+        {
+            NavigateTo(null);
         }
     }
 }

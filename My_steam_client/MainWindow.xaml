@@ -6,37 +6,81 @@
         xmlns:local="clr-namespace:My_steam_client.Templates"
         xmlns:groups="clr-namespace:My_steam_client.Controls"
         mc:Ignorable="d"
-    Title="MainWindow"
-    WindowState="Maximized"
-    MinHeight="600"
-    MinWidth="1300" Width="1099">
+        Title="MainWindow"
+        WindowStyle="None"
+        WindowState="Maximized"
+        MinHeight="600"
+        MinWidth="1300"
+        Width="1099"
+        Background="#FF252525">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="77*"/>
-            <RowDefinition Height="68*"/>
+            <RowDefinition Height="40"/>
+            <!-- Header -->
+            <RowDefinition Height="*"/>
+            <!-- Остальной контент -->
         </Grid.RowDefinitions>
-        <!-- Основной контент -->
-        <Grid x:Name="MainGrid" Grid.RowSpan="2">
-            <ContentControl x:Name="RootContent" />
-        </Grid>
 
-        <!-- SideBar, помещаем поверх основного Grid -->
-        <local:SideBar 
-    Width="250" 
-    HeightPercent="90.0" 
-    Background="Gray" 
-    BorderRadius="20" 
-    VerticalAlignment="Top" 
-    HorizontalAlignment="Left"
-    RenderTransformOrigin="0,0"
-    Style="{StaticResource SideBar_styles}" Margin="0,22,0,0" Grid.RowSpan="2">
-            <StackPanel Style="{StaticResource Main_buttons}">
-                <local:SideButton Click="toShop" IsChecked="True" Height="60" IconHeight="30" Icon="images\cart-trolley-ui-5-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav">Магазин</local:SideButton>
-                <local:SideButton Height="60" IconHeight="30" Icon="images\cart-trolley-ui-5-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav">Библиотекка</local:SideButton>
-                <local:SideButton Height="60" IconHeight="30" Icon="images\cart-trolley-ui-5-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav">Статистика</local:SideButton>
-                <local:SideButton Height="60" IconHeight="30" Icon="images\cart-trolley-ui-5-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav">Сообшество</local:SideButton>
-            </StackPanel>
-        </local:SideBar>
+        <!-- Заголовок -->
+        <ContentControl Grid.Row="0" x:Name="HeaderContaner"/>
+
+        <!-- Контейнер для остального -->
+        <Grid Grid.Row="1">
+            <Grid>
+                <!-- Слой с контентом -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1243*"/>
+                        <ColumnDefinition Width="57*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="77*"/>
+                        <RowDefinition Height="68*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Основной контент -->
+                    <Grid x:Name="MainGrid" Grid.RowSpan="2" Grid.ColumnSpan="2">
+                        <ContentControl x:Name="RootContent"/>
+                    </Grid>
+                </Grid>
+
+                <!-- Поверх основного контента, но под Header -->
+                <Border
+                    Width="250"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Left"
+                    Panel.ZIndex="999">
+
+                    <Border.Effect>
+                        <DropShadowEffect
+                            Color="#800066C0"
+                            BlurRadius="15"
+                            ShadowDepth="4"
+                            Direction="270"/>
+                    </Border.Effect>
+
+                    <!-- Sidebar с отступом сверху, чтобы не залазить на Header -->
+                    <local:SideBar 
+                        Width="250" 
+                        HeightPercent="90.0" 
+                        Background="#FF141414"
+                        BorderRadius="20" 
+                        VerticalAlignment="Top" 
+                        HorizontalAlignment="Left"
+                        RenderTransformOrigin="0,0"
+                        Margin="0,22,0,0"
+                        Style="{StaticResource SideBar_styles}">
+
+                        <StackPanel Style="{StaticResource Main_buttons}">
+                            <local:SideButton Click="toShop" IsChecked="True" Height="60" IconHeight="30" Icon="images/cart-trolley-ui-5-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav" Title="Shop"/>
+                            <local:SideButton Click="toLib" Height="60" IconHeight="30" Icon="images/cart-trolley-ui-5-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav" Title="Library"/>
+                            <local:SideButton Click="toStat" Height="60" IconHeight="30" Icon="images/cart-trolley-ui-5-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav" Title="Statistics"/>
+                            <local:SideButton Click="toCommunity" Height="60" IconHeight="30" Icon="images/cart-trolley-ui-5-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav" Title="Community"/>
+                        </StackPanel>
+                    </local:SideBar>
+                </Border>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>

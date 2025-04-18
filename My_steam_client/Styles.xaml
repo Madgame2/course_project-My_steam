@@ -9,21 +9,26 @@
         <Setter Property="BorderRadius" Value="10"/>
         <Setter Property="ShowCaseElementBackGround" Value="Gray"/>
     </Style>
-    
+
     <Style TargetType="local:Slider" x:Key="Slider_Styles">
         <Setter Property="IndicatorsActiveBrush" Value="DodgerBlue"/>
         <Setter Property="IndicatorsInactiveBrush" Value="LightGray"/>
     </Style>
-    
+
     <Style TargetType="local:SideButton" BasedOn="{StaticResource SideButtonTemplate}">
-        <Setter Property="SvgStrokeColor" Value="#FF3F3F3F"/>
-        <Setter Property="Background" Value="Gray"/>
+        <Setter Property="SvgStrokeColor" Value="#A0A0A0"/>
+        <Setter Property="Background" Value="#FF141414"/>
         <Setter Property="IconTranslateX" Value="135"/>
-        <Setter Property="HoverTextBrush" Value="#FF710086"/>
-        <Setter Property="HoverImageCollor" Value="#FF710086"/>
-        <Setter Property="ActiveTextColor" Value="#FF710086"/>
-        <Setter Property="ActiveImageColor" Value="#FF710086"/>
+        <Setter Property="HoverTextBrush" Value="#FF426FFF"/>
+        <Setter Property="HoverImageCollor" Value="#FF426FFF"/>
+        <Setter Property="ActiveTextColor" Value="#FF426FFF"/>
+        <Setter Property="ActiveImageColor" Value="#FF426FFF"/>
         <Setter Property="ActiveBacground" Value="#FF3F3F3F"/>
+        <Setter Property="TitleFontSize" Value="18"/>
+        <Setter Property="TitleFontWeight" Value="Bold"/>
+        <Setter Property="TitleFontFamily" Value="pack://application:,,,/resources/Fonts/#Rajdhani"/>
+        <Setter Property="Foreground" Value="#A0A0A0"/>
+
 
         <Style.Triggers>
             <DataTrigger Binding="{Binding IsMouseOver,RelativeSource={RelativeSource AncestorType=local:SideBar}}" Value="True">
@@ -51,9 +56,9 @@
             </DataTrigger>
         </Style.Triggers>
     </Style>
-    
+
     <Style TargetType="local:SideBar" x:Key="SideBar_styles">
-        
+
         <!-- Устанавливаем RenderTransform с TranslateTransform -->
         <Setter Property="RenderTransform">
             <Setter.Value>

@@ -46,12 +46,20 @@
                                                         Y="{Binding IconTranslateY, RelativeSource={RelativeSource TemplatedParent}}"/>
                                 </Border.RenderTransform>
                             </Border>
-                            <ContentPresenter Content="{TemplateBinding Content}" 
-                                          HorizontalAlignment="Center" 
-                                          VerticalAlignment="Center"
-                                          Grid.Column="1"
-                                          x:Name="ContentPresenter"/>
-                    </Grid>
+                            <TextBlock x:Name="ContentPresenter"
+           Grid.Column="1"
+           Text="{TemplateBinding Title}"
+           FontSize="{TemplateBinding TitleFontSize}"
+           FontWeight="{TemplateBinding TitleFontWeight}"
+           FontStyle="{TemplateBinding TitleFontStyle}"
+           FontFamily="{TemplateBinding TitleFontFamily}"
+           LineHeight="{TemplateBinding TitleLineHeight}"
+           FontStretch="{TemplateBinding TitleFontStretch}"
+           VerticalAlignment="Center"
+           HorizontalAlignment="Center"
+           TextTrimming="CharacterEllipsis"
+           Foreground="{TemplateBinding Foreground}" />
+                        </Grid>
                     </Border>
 
                     <ControlTemplate.Triggers>

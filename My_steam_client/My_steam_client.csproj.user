@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Templates\Header.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Templates\ProductPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -34,6 +37,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Styles.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Templates\Header.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\ProductPage.xaml">

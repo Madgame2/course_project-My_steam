@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="resources\Fonts\Rajdhani-Regular.ttf" />
     <None Remove="resources\images\cart-trolley-ui-5-svgrepo-com.svg" />
     <None Remove="resources\images\shopping-cart-svgrepo-com.png" />
     <None Remove="resources\images\test.jpg" />
@@ -33,6 +34,12 @@
     <Content Include="resources\images\test.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="resources\Fonts\Rajdhani-Regular.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

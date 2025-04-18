@@ -52,6 +52,77 @@ namespace My_steam_client.Templates
             DependencyProperty.Register(nameof(ActiveBacground),typeof(Brush),typeof(SideButton),new PropertyMetadata(Brushes.Blue));
 
 
+        // Заголовок текста
+        public static readonly DependencyProperty TitleProperty =
+            DependencyProperty.Register(nameof(Title), typeof(string), typeof(SideButton), new PropertyMetadata("Моё приложение"));
+
+        public string Title
+        {
+            get => (string)GetValue(TitleProperty);
+            set => SetValue(TitleProperty, value);
+        }
+
+        // Размер шрифта
+        public static readonly DependencyProperty TitleFontSizeProperty =
+            DependencyProperty.Register(nameof(TitleFontSize), typeof(double), typeof(SideButton), new PropertyMetadata(14.0));
+
+        public double TitleFontSize
+        {
+            get => (double)GetValue(TitleFontSizeProperty);
+            set => SetValue(TitleFontSizeProperty, value);
+        }
+
+        // Начертание (жирный, обычный и т.п.)
+        public static readonly DependencyProperty TitleFontWeightProperty =
+            DependencyProperty.Register(nameof(TitleFontWeight), typeof(FontWeight), typeof(SideButton), new PropertyMetadata(FontWeights.Normal));
+
+        public FontWeight TitleFontWeight
+        {
+            get => (FontWeight)GetValue(TitleFontWeightProperty);
+            set => SetValue(TitleFontWeightProperty, value);
+        }
+
+        // Стиль шрифта (обычный, курсив и т.д.)
+        public static readonly DependencyProperty TitleFontStyleProperty =
+            DependencyProperty.Register(nameof(TitleFontStyle), typeof(FontStyle), typeof(SideButton), new PropertyMetadata(FontStyles.Normal));
+
+        public FontStyle TitleFontStyle
+        {
+            get => (FontStyle)GetValue(TitleFontStyleProperty);
+            set => SetValue(TitleFontStyleProperty, value);
+        }
+
+        // Шрифт (название семейства, например Segoe UI, Consolas и т.д.)
+        public static readonly DependencyProperty TitleFontFamilyProperty =
+            DependencyProperty.Register(nameof(TitleFontFamily), typeof(FontFamily), typeof(SideButton), new PropertyMetadata(new FontFamily("Segoe UI")));
+
+        public FontFamily TitleFontFamily
+        {
+            get => (FontFamily)GetValue(TitleFontFamilyProperty);
+            set => SetValue(TitleFontFamilyProperty, value);
+        }
+
+        // Межстрочное расстояние
+        public static readonly DependencyProperty TitleLineHeightProperty =
+            DependencyProperty.Register(nameof(TitleLineHeight), typeof(double), typeof(SideButton), new PropertyMetadata(double.NaN));
+
+        public double TitleLineHeight
+        {
+            get => (double)GetValue(TitleLineHeightProperty);
+            set => SetValue(TitleLineHeightProperty, value);
+        }
+
+        // Растяжение шрифта (узкий, обычный, растянутый и т.д.)
+        public static readonly DependencyProperty TitleFontStretchProperty =
+            DependencyProperty.Register(nameof(TitleFontStretch), typeof(FontStretch), typeof(SideButton), new PropertyMetadata(FontStretches.Normal));
+
+        public FontStretch TitleFontStretch
+        {
+            get => (FontStretch)GetValue(TitleFontStretchProperty);
+            set => SetValue(TitleFontStretchProperty, value);
+        }
+
+
         public Brush ActiveBacground
         {
             get=>(Brush)GetValue(ActiveBacgroundProperty);
