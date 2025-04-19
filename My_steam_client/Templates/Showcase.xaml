@@ -30,7 +30,16 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Border x:Name="BorderElement" 
+                    <Border>
+                        <Border.Effect>
+                            <DropShadowEffect
+                            Color="#80023B6D"
+                            BlurRadius="15"
+                            ShadowDepth="4"
+                            Direction="240"
+                                />
+                        </Border.Effect>
+                        <Border x:Name="BorderElement" 
                             Height="{Binding ElementHeight, RelativeSource={RelativeSource AncestorType=UserControl}}"
                             Margin="{Binding ElementMargin, RelativeSource={RelativeSource AncestorType=UserControl}}"
                             ClipToBounds="True"
@@ -38,59 +47,60 @@
                             MouseLeave="OnMouseLeave"
                             MouseLeftButtonUp="OnItemClicked">
 
-                        <Border.Background>
-                            <SolidColorBrush Color="{Binding ShowCaseElementBackGround, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
-                        </Border.Background>
+                            <Border.Background>
+                                <SolidColorBrush Color="{Binding ShowCaseElementBackGround, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+                            </Border.Background>
 
 
-                        <Border.Style>
-                            <Style TargetType="Border">
-                                <Setter Property="Cursor" Value="Arrow"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Cursor" Value="Hand"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Border.Style>
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Cursor" Value="Arrow"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Cursor" Value="Hand"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
 
-                        <Border.Clip>
-                            <MultiBinding Converter="{StaticResource ClipConverter}">
-                                <Binding Path="ActualWidth" RelativeSource="{RelativeSource Self}"/>
-                                <Binding Path="ActualHeight" RelativeSource="{RelativeSource Self}"/>
-                                <Binding Path="BorderRadius" ElementName="Root"/>
-                            </MultiBinding>
-                        </Border.Clip>
-                        <Grid>
+                            <Border.Clip>
+                                <MultiBinding Converter="{StaticResource ClipConverter}">
+                                    <Binding Path="ActualWidth" RelativeSource="{RelativeSource Self}"/>
+                                    <Binding Path="ActualHeight" RelativeSource="{RelativeSource Self}"/>
+                                    <Binding Path="BorderRadius" ElementName="Root"/>
+                                </MultiBinding>
+                            </Border.Clip>
+                            <Grid>
 
-                            
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="250"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="150"/>
-                            </Grid.ColumnDefinitions>
 
-                            <Grid Grid.Column="0" ClipToBounds="True">
-                                <Image Stretch="Fill"
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="250"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="150"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0" ClipToBounds="True">
+                                    <Image Stretch="Fill"
                                        HorizontalAlignment="Stretch"
                                         VerticalAlignment="Stretch" 
                                         Source="{Binding ImageURL}"/>
-                            </Grid>
-                            <Grid Grid.Column="1" ClipToBounds="True">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
+                                </Grid>
+                                <Grid Grid.Column="1" ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
 
-                                <TextBlock Grid.Row="0" Text="{Binding Title}"/>
-                                <TextBlock Grid.Row="1" Text="{Binding Description}"/>
-                            </Grid>
-                            <Grid Grid.Column="2"  ClipToBounds="True">
-                                <TextBlock HorizontalAlignment="Right"
+                                    <TextBlock Grid.Row="0" Text="{Binding Title}"/>
+                                    <TextBlock Grid.Row="1" Text="{Binding Description}"/>
+                                </Grid>
+                                <Grid Grid.Column="2"  ClipToBounds="True">
+                                    <TextBlock HorizontalAlignment="Right"
                                            VerticalAlignment="Center"
                                            Text="{Binding Coast}"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
+                        </Border>
                     </Border>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>

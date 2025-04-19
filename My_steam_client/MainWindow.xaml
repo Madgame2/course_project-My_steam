@@ -12,7 +12,7 @@
         MinHeight="600"
         MinWidth="1300"
         Width="1099"
-        Background="#FF252525">
+        Background="#FF1B1A25">
 
     <Grid>
         <Grid.RowDefinitions>

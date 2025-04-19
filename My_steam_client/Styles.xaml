@@ -7,7 +7,7 @@
         <Setter Property="ElementHeight" Value="150"/>
         <Setter Property="ElementMargin" Value="0,5,0,5"/>
         <Setter Property="BorderRadius" Value="10"/>
-        <Setter Property="ShowCaseElementBackGround" Value="Gray"/>
+        <Setter Property="ShowCaseElementBackGround" Value="#FF111111"/>
     </Style>
 
     <Style TargetType="local:Slider" x:Key="Slider_Styles">
