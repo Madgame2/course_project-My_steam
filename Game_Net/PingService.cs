@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Game_Net_DTOLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -42,11 +43,11 @@ namespace Game_Net
                 {
                     using var cts = new CancellationTokenSource(timeOutMS);
 
-                    Task<string> pingTask = _comMannager.SendMessageRest("ping",Protocol.Http);
-                    string result = await Task.WhenAny(pingTask, Task.Delay(timeOutMS, cts.Token)) == pingTask ? await pingTask : throw new TimeoutException();
+                    Task<NetResponse<string>> pingTask =  _comMannager.SendMessageRest<string>("ping",Protocol.Http);
+                    var result = await Task.WhenAny(pingTask, Task.Delay(timeOutMS, cts.Token)) == pingTask ? await pingTask : throw new TimeoutException();
 
 
-                    var ServaerResponce = JsonSerializer.Deserialize<ServerStatus>(result);
+                    var ServaerResponce = JsonSerializer.Deserialize<ServerStatus>(result.data);
 
                     if (ServaerResponce != null) return ServaerResponce;
                 }

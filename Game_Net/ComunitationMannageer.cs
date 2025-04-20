@@ -1,8 +1,10 @@
 ﻿using Game_Net.Interfaces;
+using Game_Net_DTOLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Game_Net
@@ -22,7 +24,7 @@ namespace Game_Net
         {
             string protocolStr = protocol == Protocol.Http ? "Http" : "Https";
 
-            return $"{protocolStr}://{host}/{endPoint}";
+            return $"{protocolStr}://{host}:{port}/{endPoint}";
         }
     }
 
@@ -68,7 +70,7 @@ namespace Game_Net
         /// Отправляет сообщение на сервер через REST.
         /// GET — если jsonData пустой; POST — если jsonData задан.
         /// </summary>
-        public async Task<string> SendMessageRest(string endpoint,Protocol protocol, string jsonData) {
+        public async Task<NetResponse<T>> SendMessageRest<T>(string endpoint,Protocol protocol, string jsonData) {
 
             if (ServerUrls.TryGetValue(protocol, out var settings))
             {
@@ -77,30 +79,40 @@ namespace Game_Net
 
                 if (string.IsNullOrEmpty(jsonData))
                 {
-                    return await _restClient.GetAsync(fullUrl);
+                    string json = await _restClient.GetAsync(fullUrl);
+
+                    NetResponse<T> result =JsonSerializer.Deserialize<NetResponse<T>>(json);
+
+                    return result;
                 }
                 else
                 {
-                    return await _restClient.PostAsync(fullUrl, jsonData);
+                    string json = await _restClient.PostAsync(fullUrl,jsonData);
+
+                    NetResponse<T> result = JsonSerializer.Deserialize<NetResponse<T>>(json);
+
+                    return result;
                 }
             }
             else
             {
-                throw new Exception($"No such protocol {protocol}");
+                throw new UnDefindedProtocolExaption(protocol,"");
             }
         }
 
-        public async Task<string> SendMessageRest(string endpoint, Protocol protocol)
+        public async Task<NetResponse<T>> SendMessageRest<T>(string endpoint, Protocol protocol)
         {
             if (ServerUrls.TryGetValue(protocol, out var settings))
             {
-                string fullUrl = settings.fullUrl(endpoint);
+                    string json = await _restClient.GetAsync(endpoint);
 
-                return await _restClient.GetAsync(fullUrl);
+                    NetResponse<T> result =JsonSerializer.Deserialize<NetResponse<T>>(json);
+
+                    return result;
             }
             else
             {
-                throw new Exception($"No such protocol {protocol}");
+                throw new UnDefindedProtocolExaption(protocol, "");
             }
         }
     }

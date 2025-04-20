@@ -2,12 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>Game_Net_DTOLib</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\My_steam_client\Game_Net-DTOLib\Game_Net-DTOLib.csproj" />
-  </ItemGroup>
 
 </Project>

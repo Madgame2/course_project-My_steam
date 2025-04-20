@@ -20,7 +20,7 @@ namespace My_steam_server.Controllers
         public async Task<IActionResult> Register(RegisterDto dto)
         {
             var result = await _authService.RegisterAsync(dto);
-            if(!result)
+            if(!result.Success)
                 return BadRequest("Email already taken");
 
             return Ok(result);

@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Game_Net\Game_Net.csproj" />
+    <ProjectReference Include="..\My_steam_client\Game_Net-DTOLib\Game_Net-DTOLib.csproj" />
   </ItemGroup>
 
 </Project>

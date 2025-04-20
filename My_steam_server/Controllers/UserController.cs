@@ -18,15 +18,15 @@ namespace My_steam_server.Controllers
         [HttpGet]
         public IActionResult GetAllUsers()
         {
-            var users = _repository.GetAll();
+            var users = _repository.GetAllAsync();
             return Ok(users);
         }
 
         [HttpPost]
         public IActionResult AddUser(User user)
         {
-            _repository.addUser(user);
-            _repository.SaveChanges();
+            _repository.AddUserAsync(user);
+            _repository.SaveChangesAsync();
             return CreatedAtAction(nameof(GetAllUsers), new { id = user.Id }, user);
         }
     }

@@ -7,43 +7,52 @@ namespace My_steam_server.Repositories
     public class JsonUserRepository : IUserRepository
     {
         private readonly string _filePath = "";
-        private List<User> _Users;
+        private List<User> _users;
 
-        public JsonUserRepository(string File_path)
+        public JsonUserRepository(string filePath)
         {
-            _filePath = File_path;
+            _filePath = filePath;
 
-            if (File.Exists(File_path))
+            if (File.Exists(filePath))
             {
-
-                var json = File.ReadAllText(File_path);
-                _Users = JsonSerializer.Deserialize<List<User>>(json) ?? new List<User>();
+                var json = File.ReadAllText(filePath);
+                _users = JsonSerializer.Deserialize<List<User>>(json) ?? new List<User>();
             }
             else
             {
-                _Users = new List<User>();
+                _users = new List<User>();
             }
         }
 
-        public void addUser(User user)
+        public Task<IEnumerable<User>> GetAllAsync()
         {
-            user.Id = Convert.ToString(_Users.Count>0 ? _Users.Max(u=> Convert.ToInt32(u.Id))+1: 1);
-            _Users.Add(user);
+            return Task.FromResult(_users.AsEnumerable());
         }
 
-        public IEnumerable<User> GetAll() => _Users;
-
-        public User? GetByEmail(string email)
+        public Task<User?> GetByIdAsync(int id)
         {
-            return _Users.FirstOrDefault(u => u.Email == email);
+            var user = _users.FirstOrDefault(u => Convert.ToInt32(u.Id) == id);
+            return Task.FromResult(user);
         }
 
-        public User? GetById(int id) => _Users.FirstOrDefault(U => Convert.ToUInt32(U.Id) == id);
-
-        public void SaveChanges()
+        public Task<User?> GetByEmailAsync(string email)
         {
-            var json = JsonSerializer.Serialize(_Users, new JsonSerializerOptions { WriteIndented =true});
-            File.WriteAllText(_filePath, json);
+            var user = _users.FirstOrDefault(u => u.Email == email);
+            return Task.FromResult(user);
+        }
+
+        public Task AddUserAsync(User user)
+        {
+            user.Id = Convert.ToString(_users.Count > 0 ? _users.Max(u => Convert.ToInt32(u.Id)) + 1 : 1);
+            _users.Add(user);
+            return Task.CompletedTask;
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            var json = JsonSerializer.Serialize(_users, new JsonSerializerOptions { WriteIndented = true });
+            await File.WriteAllTextAsync(_filePath, json);
         }
     }
+
 }

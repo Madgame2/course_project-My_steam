@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Game_Net_DTOLib;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using My_steam_server.DTO_models;
 using My_steam_server.Interfaces;
@@ -22,19 +23,19 @@ namespace My_steam_server.Services
             _passwordHasher = passwordHasher;
         }
 
-        public async Task<string?> LoginAsync(LoginDto dto)
+        public async Task<NetResponse<string>> LoginAsync(LoginDto dto)
         {
-            var user =_userRepository.GetByEmail(dto.Email);
+            var user = await _userRepository.GetByEmailAsync(dto.Email);
             if (user == null) {
-                //Тут исключение не найден пользователь
-                return null;
+                
+                return new NetResponse<string> { resultCode = ResultCode.UserNotfound,Success=false,Message=$"user email: {dto.Email} not found",data=string.Empty};
             }
 
             var result = _passwordHasher.VerifyHashedPassword(user,user.PasswordHash, dto.Password);
             if (result == PasswordVerificationResult.Failed)
             {
                 //тут вернуть исключнение не верный паароль
-                return null;
+                return new NetResponse<string> {Success=false,resultCode=ResultCode.WrongPassword, Message=$"user email {dto.Email}\n is uncorect",data=string.Empty};
             }
 
 
@@ -52,16 +53,16 @@ namespace My_steam_server.Services
             };
 
             var token  = tokenHandler.CreateToken(tokenDescriptor);
-            return tokenHandler.WriteToken(token);
+            return new NetResponse<string> {Success=true,  data=tokenHandler.WriteToken(token) };
         }
 
-        public async Task<bool> RegisterAsync(RegisterDto dto)
+        public async Task<NetResponse<bool>> RegisterAsync(RegisterDto dto)
         {
-            var existing = _userRepository.GetByEmail(dto.Email);
+            var existing = await _userRepository.GetByEmailAsync(dto.Email);
             if (existing != null)
             {
                 // Тут в будушем помеестить исключение
-                return false;
+                return new NetResponse<bool> {Success=false, resultCode = ResultCode.EmailAlredyTaken, Message= $"email {dto.Email} aredy taken", data=false};
             }
 
             var user = new User
@@ -71,9 +72,9 @@ namespace My_steam_server.Services
             };
 
             user.PasswordHash = _passwordHasher.HashPassword(user, dto.Password);
-            _userRepository.addUser(user);
-            _userRepository.SaveChanges();
-            return true;
+            await _userRepository.AddUserAsync(user);
+            await _userRepository.SaveChangesAsync();
+            return new NetResponse<bool> {Success=true,data=true};
         }
     }
 }

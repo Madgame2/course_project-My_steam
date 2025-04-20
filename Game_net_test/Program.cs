@@ -1,11 +1,13 @@
 ﻿using Game_Net;
 using Game_Net.Interfaces;
+using My_steam_server.DTO_models;
 using System.Net.Http;
 
 internal class Program
 {
     static ComunitationMannageer comMannager;// = new ComunitationMannageer(httpClient);
     static PingService pingServis;// = new PingService(comMannager);
+    static AuthService authServis;
 
     static bool isActive = true;
 
@@ -16,9 +18,15 @@ internal class Program
 
         comMannager = new ComunitationMannageer(httpClient);
         pingServis = new PingService(comMannager);
+        authServis = new AuthService(comMannager);
 
         comMannager.addNewUrl(new ServerSettings { protocol = Protocol.Http, host = "localhost", port = "5254" });
 
+
+
+        var result= await authServis.RegisterUser(new RegisterDto { Email="memail@gmail.com",Username="memail",Password="memail"});
+
+        Console.WriteLine(result);
 
         Write_command_List();
 

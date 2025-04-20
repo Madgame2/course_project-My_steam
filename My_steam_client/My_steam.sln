@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game_Net", "..\Game_Net\Gam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game_net_test", "..\Game_net_test\Game_net_test.csproj", "{772B0E83-11AA-4C46-970F-458ECF6D3355}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game_Net-DTOLib", "Game_Net-DTOLib\Game_Net-DTOLib.csproj", "{F2D43DA8-C8A7-4267-87F5-D562B141CB11}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{772B0E83-11AA-4C46-970F-458ECF6D3355}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{772B0E83-11AA-4C46-970F-458ECF6D3355}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{772B0E83-11AA-4C46-970F-458ECF6D3355}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2D43DA8-C8A7-4267-87F5-D562B141CB11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2D43DA8-C8A7-4267-87F5-D562B141CB11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2D43DA8-C8A7-4267-87F5-D562B141CB11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2D43DA8-C8A7-4267-87F5-D562B141CB11}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

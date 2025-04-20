@@ -4,10 +4,10 @@ namespace My_steam_server.Interfaces
 {
     public interface IUserRepository
     {
-        IEnumerable<User> GetAll();
-        User? GetById(int id);
-        User? GetByEmail(string email);
-        void addUser(User user);
-        void SaveChanges();
+        Task<IEnumerable<User>> GetAllAsync();
+        Task<User?> GetByIdAsync(int id);
+        Task<User?> GetByEmailAsync(string email);
+        Task AddUserAsync(User user);
+        Task SaveChangesAsync();
     }
 }
