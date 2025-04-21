@@ -11,7 +11,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Extensions.DependencyInjection;
 using My_steam_client.AuthComponents;
+using My_steam_client.Scripts;
+using My_steam_client.Scripts.Interfaces;
 using My_steam_client.Templates;
 
 namespace My_steam_client
@@ -21,11 +24,28 @@ namespace My_steam_client
     /// </summary>
     public partial class AuthWindow : Window
     {
+        private PingPage pingPage = new PingPage();
+        private NoConnetrion noConnetrion;
+
         public AuthWindow()
         {
             InitializeComponent();
+            noConnetrion = new NoConnetrion(this);
 
-            Root.Content = new PingPage();
+            _ = startPing();
+        }
+
+        public async Task startPing()
+        {
+            Root.Content = pingPage;
+
+            var pingService = AppServices.Provider.GetRequiredService<IPingService_client>();
+
+            var result = await pingService.PingAsync();
+
+
+            if (!result) Root.Content = noConnetrion;
+            else MessageBox.Show(true.ToString());
         }
     }
 }

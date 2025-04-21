@@ -14,15 +14,13 @@
     <None Remove="resources\Gif\cute-cat.gif" />
     <None Remove="resources\Gif\Ping_icon.gif" />
     <None Remove="resources\images\cart-trolley-ui-5-svgrepo-com.svg" />
+    <None Remove="resources\images\NoConnetion.png" />
     <None Remove="resources\images\shopping-cart-svgrepo-com.png" />
     <None Remove="resources\images\test.jpg" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Scripts\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.4" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
     <PackageReference Include="SharpVectors" Version="1.8.4.2" />
     <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
@@ -38,12 +36,19 @@
     <Content Include="resources\images\cart-trolley-ui-5-svgrepo-com.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="resources\images\NoConnetion.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="resources\images\shopping-cart-svgrepo-com.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\images\test.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Game_Net\Game_Net.csproj" />
   </ItemGroup>
 
   <ItemGroup>

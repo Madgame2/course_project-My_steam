@@ -16,6 +16,9 @@
     <Compile Update="Templates\Header.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Templates\NoConnetrion.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Templates\PingPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -55,6 +58,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\Header.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Templates\NoConnetrion.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\PingPage.xaml">
