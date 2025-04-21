@@ -55,3 +55,8 @@ D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\
 D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\obj\Debug\net8.0-windows\AuthWindow.baml
 D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\obj\Debug\net8.0-windows\AuthComponents\AuthComponent.g.cs
 D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\obj\Debug\net8.0-windows\AuthComponents\AuthComponent.baml
+D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\bin\Debug\net8.0-windows\resources\Gif\cute-cat.gif
+D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\bin\Debug\net8.0-windows\WpfAnimatedGif.dll
+D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\obj\Debug\net8.0-windows\Templates\PingPage.g.cs
+D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\obj\Debug\net8.0-windows\Templates\PingPage.baml
+D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\bin\Debug\net8.0-windows\resources\Gif\Ping_icon.gif

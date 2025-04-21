@@ -57,6 +57,10 @@
             "SharpVectors": {
               "target": "Package",
               "version": "[1.8.4.2, )"
+            },
+            "WpfAnimatedGif": {
+              "target": "Package",
+              "version": "[2.0.2, )"
             }
           },
           "imports": [

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using My_steam_client.AuthComponents;
+using My_steam_client.Templates;
 
 namespace My_steam_client
 {
@@ -24,7 +25,7 @@ namespace My_steam_client
         {
             InitializeComponent();
 
-            Root.Content = new AuthComponent();
+            Root.Content = new PingPage();
         }
     }
 }
