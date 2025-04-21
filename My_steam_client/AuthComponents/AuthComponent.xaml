@@ -54,7 +54,8 @@
                                  VerticalContentAlignment="Center"
                                  FontFamily="pack://application:,,,/resources/Fonts/#Rajdhani"
                                  FontSize="14"
-                                 CaretBrush="#FF909090"/>
+                                 CaretBrush="#FF909090"
+                                 TextChanged="email_textChanged"/>
                         <PasswordBox Grid.Row="1" Height="22"
                                  VerticalAlignment="Center" Margin="10,0,100,0"
                                  Background="Transparent"
@@ -62,7 +63,8 @@
                                  VerticalContentAlignment="Center"
                                  FontFamily="pack://application:,,,/resources/Fonts/#Rajdhani"
                                  FontSize="14"
-                                 CaretBrush="#FF909090"/>
+                                 CaretBrush="#FF909090"
+                                 PasswordChanged="password_textChanged"/>
                     </Grid>
 
 
@@ -135,7 +137,8 @@
                                 <ColumnDefinition Width="0.5*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Button Grid.Column="0" Margin="10,5,5,10"
+                            <Button x:Name="LogIn_button"
+                                Grid.Column="0" Margin="10,5,5,10"
                                     Content="Login"
                                     HorizontalContentAlignment="Left"
                                     Padding="10,0,0,0"
@@ -151,7 +154,8 @@
                                     Padding="10,0,0,0"
                                     FontFamily="pack://application:,,,/resources/Fonts/#Rajdhani"
                                     FontSize="16"
-                                    HorizontalContentAlignment="Left">
+                                    HorizontalContentAlignment="Left"
+                                    Click="CancleButton_Click">
                                 <Button.Style>
                                     <Style TargetType="Button">
                                         <Setter Property="Background" Value="#FF7B7B7B"/>
