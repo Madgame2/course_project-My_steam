@@ -9,21 +9,6 @@ using System.Threading.Tasks;
 
 namespace Game_Net
 {
-    public enum ServerStatusEnum
-    {
-        Unknown,
-        Online,
-        Maintenance,
-        Ofline
-    }
-
-    public class ServerStatus
-    {
-        [JsonConverter(typeof(JsonStringEnumConverter))]
-        public ServerStatusEnum Status { get; set; }
-        public string? Message {  get; set; }
-        public DateTime TimesTamp { get; set; }
-    }
 
     public class PingService
     {
@@ -35,7 +20,7 @@ namespace Game_Net
         }
 
 
-        public async Task<ServerStatus> PingAync(int maxAttemps = 3, int timeOutMS = 3000, int retryDelayMs = 1000)
+        public async Task<PingDto> PingAync(int maxAttemps = 3, int timeOutMS = 3000, int retryDelayMs = 1000)
         {
             for (int i = 0; i < maxAttemps; i++)
             {
@@ -43,11 +28,11 @@ namespace Game_Net
                 {
                     using var cts = new CancellationTokenSource(timeOutMS);
 
-                    Task<NetResponse<string>> pingTask =  _comMannager.SendMessageRest<string>("ping",Protocol.Http);
+                    Task<NetResponse<PingDto>> pingTask =  _comMannager.SendMessageRest<PingDto>("api/ping", Protocol.Http);
                     var result = await Task.WhenAny(pingTask, Task.Delay(timeOutMS, cts.Token)) == pingTask ? await pingTask : throw new TimeoutException();
 
 
-                    var ServaerResponce = JsonSerializer.Deserialize<ServerStatus>(result.data);
+                    var ServaerResponce = result.data;
 
                     if (ServaerResponce != null) return ServaerResponce;
                 }
@@ -68,7 +53,7 @@ namespace Game_Net
             }
 
             Console.WriteLine("Server not responce");
-            return new ServerStatus { Status = ServerStatusEnum.Ofline, Message = "can't access the server" };
+            return new PingDto { date = DateTime.Now, status=ServerStatus.Unknown };
         }
     }
 }

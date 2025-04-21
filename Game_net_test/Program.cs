@@ -1,5 +1,6 @@
 ﻿using Game_Net;
 using Game_Net.Interfaces;
+using Game_Net_DTOLib;
 using My_steam_server.DTO_models;
 using System.Net.Http;
 
@@ -73,8 +74,8 @@ internal class Program
 
     private static async Task  Ping()
     {
-        ServerStatus status = await pingServis.PingAync();
+        PingDto status = await pingServis.PingAync();
 
-        Console.WriteLine(status);
+        Console.WriteLine(status.status);
     }
 }

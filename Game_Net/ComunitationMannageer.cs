@@ -102,13 +102,16 @@ namespace Game_Net
 
         public async Task<NetResponse<T>> SendMessageRest<T>(string endpoint, Protocol protocol)
         {
+
             if (ServerUrls.TryGetValue(protocol, out var settings))
             {
-                    string json = await _restClient.GetAsync(endpoint);
+                string fullUrl = settings.fullUrl(endpoint);
 
-                    NetResponse<T> result =JsonSerializer.Deserialize<NetResponse<T>>(json);
+                string json = await _restClient.GetAsync(fullUrl);
 
-                    return result;
+                NetResponse<T> result = JsonSerializer.Deserialize<NetResponse<T>>(json);
+
+                return result;
             }
             else
             {
