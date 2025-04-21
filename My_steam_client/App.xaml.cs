@@ -13,6 +13,9 @@ namespace My_steam_client
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+
+            var authWindow = new AuthWindow();
+            authWindow.Show();
         }
     }
 
