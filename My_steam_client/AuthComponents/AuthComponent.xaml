@@ -13,6 +13,24 @@
             <RowDefinition Height="0.3*"/>
         </Grid.RowDefinitions>
 
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition Width="0.15*"/>
+                <ColumnDefinition Width="0.7*"/>
+                <ColumnDefinition Width="0.1*"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="1"
+                Source="/AuthComponents/Icon.png"
+                Height="90"/>
+            <TextBlock Margin="10,0,0,0" Grid.Column="2" Text="Application Name"
+                       FontFamily="pack://application:,,,/resources/Fonts/#Rajdhani"
+                       Foreground="#FFC6C6C6"
+                       VerticalAlignment="Center"
+                       FontSize="40"
+                       FontWeight="Bold"/>
+        </Grid>
+        
         <Grid Grid.Row="1" Margin="40,0,40,0">
             <Grid>
                 <Grid.RowDefinitions>
@@ -228,7 +246,8 @@
                             Padding="10,0,0,0"
                             Foreground="#FFE6E6E6"
                             Background="#FF7B7B7B"
-                            FontSize="14"/>
+                            FontSize="14"
+                            Click="RegistratoinButton_Click"/>
                 </Grid>
             </Grid>
         </Grid>

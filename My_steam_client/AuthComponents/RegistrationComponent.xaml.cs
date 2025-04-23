@@ -17,19 +17,21 @@ using System.Windows.Shapes;
 namespace My_steam_client.AuthComponents
 {
     /// <summary>
-    /// Логика взаимодействия для AuthComponent.xaml
+    /// Логика взаимодействия для RegistrationComponent.xaml
     /// </summary>
-    public partial class AuthComponent : UserControl
+    public partial class RegistrationComponent : UserControl
     {
+        private AuthWindow _window;
+
         bool _isValidEmail = false;
         bool _isValidPassword = false;
+        bool _isValidPassword2 = false;
+        bool _isValidNickname = false;
 
-        private AuthWindow _authWindowdow;
-
-        public AuthComponent(AuthWindow window)
+        public RegistrationComponent(AuthWindow window)
         {
             InitializeComponent();
-            _authWindowdow = window;
+            _window = window;
         }
 
         private void CancleButton_Click(object sender, RoutedEventArgs e)
@@ -37,9 +39,9 @@ namespace My_steam_client.AuthComponents
             Application.Current.Shutdown();
         }
 
-        private void RegistratoinButton_Click(object sender, RoutedEventArgs e)
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            _authWindowdow.swap_to_registration();
+            _window.swap_to_authorization();
         }
 
         private bool isValidEmail(string email)
@@ -52,6 +54,7 @@ namespace My_steam_client.AuthComponents
             string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
             return Regex.IsMatch(email, pattern);
         }
+
 
         private void email_textChanged(object sender, TextChangedEventArgs e)
         {
@@ -66,15 +69,40 @@ namespace My_steam_client.AuthComponents
         {
             string password = ((PasswordBox)sender).Password;
 
-            if(string.IsNullOrEmpty(password)) _isValidPassword = false;
+            if (string.IsNullOrEmpty(password)) _isValidPassword = false;
             else _isValidPassword = true;
+
+            isValidData();
+        }
+
+        private void Confirm_password_textChanged(object sender, RoutedEventArgs e)
+        {
+            string password = ((PasswordBox)sender).Password;
+
+            if (string.IsNullOrEmpty(password)) _isValidPassword2 = false;
+            else _isValidPassword2 = true;
+
+            isValidData();
+        }
+
+        private void Nickname_textChanged(object sender, TextChangedEventArgs e)
+        {
+            string curentText = ((TextBox)sender).Text;
+
+            _isValidNickname = !string.IsNullOrEmpty(curentText);
 
             isValidData();
         }
 
         private void isValidData()
         {
-            LogIn_button.IsEnabled = _isValidPassword && _isValidEmail;
+            if (!_isValidNickname || !_isValidPassword || !_isValidPassword2 || !_isValidEmail)
+            {
+                Regist_button.IsEnabled = false;
+                return;
+            }
+
+            Regist_button.IsEnabled = true;
         }
     }
 }

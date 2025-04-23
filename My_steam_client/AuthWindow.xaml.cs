@@ -26,13 +26,27 @@ namespace My_steam_client
     {
         private PingPage pingPage = new PingPage();
         private NoConnetrion noConnetrion;
+        private RegistrationComponent registrationComponent;
+        private AuthComponent authComponent;
 
         public AuthWindow()
         {
             InitializeComponent();
             noConnetrion = new NoConnetrion(this);
+            registrationComponent = new RegistrationComponent(this);
+            authComponent = new AuthComponent(this);
 
             _ = startPing();
+        }
+
+        public void swap_to_registration()
+        {
+            Root.Content = registrationComponent;
+        }
+        public void swap_to_authorization()
+        {
+            Root.Content = authComponent;
+
         }
 
         public async Task startPing()
@@ -45,7 +59,7 @@ namespace My_steam_client
 
 
             if (!result) Root.Content = noConnetrion;
-            else MessageBox.Show(true.ToString());
+            else Root.Content = authComponent;
         }
     }
 }
