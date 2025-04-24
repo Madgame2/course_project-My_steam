@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Game_Net
 {
-    public class UnDefindedProtocolExaption:Exception
+    public class UndefinedProtocolException : Exception
     {
-        public UnDefindedProtocolExaption(Protocol protocol,string message) : base($"protocol: {protocol} is undefinded message:{message}") { }
+        public UndefinedProtocolException(Protocol protocol,string message) : base($"protocol: {protocol} is undefinded message:{message}") { }
     }
 }

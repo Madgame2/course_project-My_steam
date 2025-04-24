@@ -52,5 +52,23 @@
     "LockoutEnd": null,
     "LockoutEnabled": false,
     "AccessFailedCount": 0
+  },
+  {
+    "Nickname": null,
+    "Id": "4",
+    "UserName": "xFrorezent",
+    "NormalizedUserName": null,
+    "Email": "astakheyko@bk.ru",
+    "NormalizedEmail": null,
+    "EmailConfirmed": false,
+    "PasswordHash": "AQAAAAIAAYagAAAAEDdt1nw1a05V3VWULxJ9QrTEb7n9HFpvssgFwu6HRYt36URBtzBI8D2baERqpFANpA==",
+    "SecurityStamp": "cf13c9a1-40b4-45d1-a460-a9692ea57483",
+    "ConcurrencyStamp": "c988cdb9-ccc5-4ac7-9b8f-cf8cf29c5c34",
+    "PhoneNumber": null,
+    "PhoneNumberConfirmed": false,
+    "TwoFactorEnabled": false,
+    "LockoutEnd": null,
+    "LockoutEnabled": false,
+    "AccessFailedCount": 0
   }
 ]

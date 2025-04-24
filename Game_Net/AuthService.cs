@@ -22,35 +22,31 @@ namespace Game_Net
 
         public async Task<NetResponse<bool>> RegisterUser(RegisterDto registerDto)
         {
-            string json = "";
+            string json = JsonSerializer.Serialize(registerDto);
+
             try
             {
-                json = JsonSerializer.Serialize(registerDto);
-                
-                NetResponse<bool> ressult = await _comMannager.SendMessageRest<bool>("api/auth/register", Protocol.Https, json);
-
-                return ressult;
+                return await _comMannager.SendMessageRest<bool>("api/auth/register", Protocol.Https, json);
             }
-            catch (UnDefindedProtocolExaption exaption)
+            catch (UndefinedProtocolException ex)
             {
-                Debug.WriteLine("can't use HTTPs protocol, recomended to defind HTTPs protoclo");
+                Debug.WriteLine($"HTTPS failed: {ex.Message}");
+
                 try
                 {
-                    NetResponse<bool> ressult = await _comMannager.SendMessageRest<bool>("api/auth/register", Protocol.Http, json);
-                    return ressult;
+                    return await _comMannager.SendMessageRest<bool>("api/auth/register", Protocol.Http, json);
                 }
-                catch 
+                catch (Exception httpEx)
                 {
-                   return new NetResponse<bool> { Success = false,Message = "No definded protocols for net work" };
+                    return new NetResponse<bool> { Success = false, Message = $"Both protocols failed: {httpEx.Message}" };
                 }
-
             }
             catch (Exception ex)
             {
-                return new NetResponse<bool> {Success = false,Message= ex.Message};
+                return new NetResponse<bool> { Success = false, Message = ex.Message };
             }
-                
         }
+
 
 
         public async Task<NetResponse<string>> LoginAsync(LoginDto dto) 
@@ -63,7 +59,7 @@ namespace Game_Net
                 return await _comMannager.SendMessageRest<string>("api/auth/login", Protocol.Https, json);
 
             }
-            catch(UnDefindedProtocolExaption ex)
+            catch(UndefinedProtocolException ex)
             {
                 Debug.WriteLine("can't use HTTPs protocol, recomended to defind HTTPs protoclo");
                 try

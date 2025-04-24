@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Game_Net_DTOLib;
+using Microsoft.Extensions.DependencyInjection;
+using My_steam_client.Scripts;
+using My_steam_server.DTO_models;
 
 namespace My_steam_client.AuthComponents
 {
@@ -103,6 +95,41 @@ namespace My_steam_client.AuthComponents
             }
 
             Regist_button.IsEnabled = true;
+        }
+
+        private async void sendData(object sender, RoutedEventArgs e)
+        {
+            PasswordErrors.Text = string.Empty;
+            ConfirmPasswordErrors.Text = string.Empty;
+            EmailErrors.Text = string.Empty;
+            NicknameErrors.Text = string.Empty;
+
+            if (Password.Password != ConfirmPassword.Password) {
+                string error = "Passwords must match";
+
+                PasswordErrors.Text = error;
+                ConfirmPasswordErrors.Text = error;
+
+                return;
+            }
+
+            RegisterDto dto = new RegisterDto
+            {
+                Email = EmailBox.Text,
+                Password = Password.Password,
+                Username = NickName.Text,
+            };
+
+            var authService = AppServices.Provider.GetRequiredService<Game_Net.AuthService>();
+
+            var result = await authService.RegisterUser(dto);
+
+            if(result.resultCode == ResultCode.EmailAlredyTaken){
+                EmailErrors.Text = "this email adress already taken";
+                return;
+            };
+
+            MessageBox.Show("Registration was successful");
         }
     }
 }

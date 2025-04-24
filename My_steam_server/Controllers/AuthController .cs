@@ -21,7 +21,7 @@ namespace My_steam_server.Controllers
         {
             var result = await _authService.RegisterAsync(dto);
             if(!result.Success)
-                return BadRequest("Email already taken");
+                return Ok(result);
 
             return Ok(result);
         }
@@ -29,13 +29,13 @@ namespace My_steam_server.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginDto dto)
         {
-            var token = await _authService.LoginAsync(dto);
-            if(token == null)
+            var result = await _authService.LoginAsync(dto);
+            if(result == null)
             {
                 return Unauthorized("Invalid credentials");
             }
 
-            return Ok(new { Token = token });
+            return Ok(result);
         }
     }
 }

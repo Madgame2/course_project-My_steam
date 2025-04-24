@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using My_steam_client.Scripts.Interfaces;
 using My_steam_client.Scripts.Services;
+using Game_Net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,12 @@ namespace My_steam_client.Scripts
             {
                 var commManager = provider.GetRequiredService<Game_Net.ComunitationMannageer>();
                 return new client_PingService(commManager);
+            });
+
+            services.AddSingleton<Game_Net.AuthService>(provider =>
+            {
+                var commManager = provider.GetRequiredService<Game_Net.ComunitationMannageer>();
+                return new AuthService(commManager);
             });
 
             Provider = services.BuildServiceProvider();

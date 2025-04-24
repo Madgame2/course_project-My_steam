@@ -41,10 +41,11 @@
                 <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.2*"/>
-                        <ColumnDefinition Width="0.8*"/>
+                        <ColumnDefinition Width="0.6*"/>
+                        <ColumnDefinition Width="0.2*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0" Margin="0,0,20,0">
+                    <Grid Grid.Column="0" Margin="0,0,13,0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="0.25*"/>
                             <RowDefinition Height="0.25*"/>
@@ -75,8 +76,9 @@
                         </Grid.RowDefinitions>
 
 
-                        <TextBox Grid.Row="0" Height="22"
-                         VerticalAlignment="Center" Margin="10,0,100,0"
+                        <TextBox x:Name="EmailBox"
+                            Grid.Row="0" Height="22"
+                         VerticalAlignment="Center" Margin="10,0,10,0"
                          Background="Transparent"
                          Foreground="#FF909090"
                          VerticalContentAlignment="Center"
@@ -84,8 +86,9 @@
                          FontSize="14"
                          CaretBrush="#FF909090"
                          TextChanged="email_textChanged"/>
-                        <PasswordBox Grid.Row="1" Height="22"
-                         VerticalAlignment="Center" Margin="10,0,100,0"
+                        <PasswordBox x:Name="Password"
+                            Grid.Row="1" Height="22"
+                         VerticalAlignment="Center" Margin="10,0,10,0"
                          Background="Transparent"
                          Foreground="#FF909090"
                          VerticalContentAlignment="Center"
@@ -94,8 +97,9 @@
                          CaretBrush="#FF909090"
                          PasswordChanged="password_textChanged"/>
 
-                        <PasswordBox Grid.Row="2" Height="22"
-                         VerticalAlignment="Center" Margin="10,0,100,0"
+                        <PasswordBox x:Name="ConfirmPassword"
+                            Grid.Row="2" Height="22"
+                         VerticalAlignment="Center" Margin="10,0,10,0"
                          Background="Transparent"
                          Foreground="#FF909090"
                          VerticalContentAlignment="Center"
@@ -104,8 +108,9 @@
                          CaretBrush="#FF909090"
                          PasswordChanged="Confirm_password_textChanged"/>
 
-                        <TextBox Grid.Row="3" Height="22"
-                         VerticalAlignment="Center" Margin="10,0,100,0"
+                        <TextBox x:Name="NickName"
+                            Grid.Row="3" Height="22"
+                         VerticalAlignment="Center" Margin="10,0,10,0"
                          Background="Transparent"
                          Foreground="#FF909090"
                          VerticalContentAlignment="Center"
@@ -113,6 +118,39 @@
                          FontSize="14"
                          CaretBrush="#FF909090"
                          TextChanged="Nickname_textChanged"/>
+                    </Grid>
+                    <Grid Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.25*"/>
+                            <RowDefinition Height="0.25*"/>
+                            <RowDefinition Height="0.25*"/>
+                            <RowDefinition Height="0.25*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock x:Name="EmailErrors"
+                            Grid.Row="0" Text=""
+                                   FontFamily="pack://application:,,,/resources/Fonts/#Rajdhani"
+                                   Foreground="Red"
+                                   VerticalAlignment="Center"
+                                   TextWrapping="Wrap"/>
+                        <TextBlock x:Name="PasswordErrors"
+                            Grid.Row="1"                                   
+                                   FontFamily="pack://application:,,,/resources/Fonts/#Rajdhani"
+                                   Foreground="Red"
+                                   VerticalAlignment="Center"
+                                   TextWrapping="Wrap"/>
+                        <TextBlock x:Name="ConfirmPasswordErrors"
+                            Grid.Row="2"
+                                   FontFamily="pack://application:,,,/resources/Fonts/#Rajdhani"
+                                   Foreground="Red"
+                                   VerticalAlignment="Center"
+                                   TextWrapping="Wrap"/>
+                        <TextBlock x:Name="NicknameErrors"
+                            Grid.Row="3"                   
+                                   FontFamily="pack://application:,,,/resources/Fonts/#Rajdhani"
+                                   Foreground="Red"
+                                   VerticalAlignment="Center"
+                                   TextWrapping="Wrap"/>
                     </Grid>
 
 
@@ -141,7 +179,8 @@
                             Foreground="#FFE6E6E6"
                             FontSize="16"
                             BorderBrush="Transparent"
-                            IsEnabled="False"/>
+                            IsEnabled="False"
+                                    Click="sendData"/>
                             
                             <Button Grid.Column="1"
                             Content="Cancel"

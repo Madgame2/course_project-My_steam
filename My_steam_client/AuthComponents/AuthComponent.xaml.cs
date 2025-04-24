@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using My_steam_client.Scripts;
+using My_steam_server.DTO_models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -75,6 +78,35 @@ namespace My_steam_client.AuthComponents
         private void isValidData()
         {
             LogIn_button.IsEnabled = _isValidPassword && _isValidEmail;
+        }
+
+        private async void LogIn_button_Click(object sender, RoutedEventArgs e)
+        {
+            EmailErrors.Text = string.Empty;
+            PasswordErrors.Text = string.Empty;
+
+            var dto = new LoginDto
+            {
+                Email=EmailBox.Text,
+                Password=Password.Password
+            };
+
+            var authService = AppServices.Provider.GetRequiredService<Game_Net.AuthService>();
+
+            var result = await authService.LoginAsync(dto);
+
+            if(result.resultCode == Game_Net_DTOLib.ResultCode.WrongPassword)
+            {
+                PasswordErrors.Text = "Wrong password";
+                return;
+            }
+            else if(result.resultCode == Game_Net_DTOLib.ResultCode.UserNotfound)
+            {
+                EmailErrors.Text = "No user with such email";
+                return;
+            }
+
+            MessageBox.Show(result.Success.ToString());
         }
     }
 }

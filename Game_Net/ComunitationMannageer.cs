@@ -81,7 +81,10 @@ namespace Game_Net
                 {
                     string json = await _restClient.GetAsync(fullUrl);
 
-                    NetResponse<T> result =JsonSerializer.Deserialize<NetResponse<T>>(json);
+                    var result =JsonSerializer.Deserialize<NetResponse<T>>(json, new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive =true
+                    });
 
                     return result;
                 }
@@ -89,14 +92,17 @@ namespace Game_Net
                 {
                     string json = await _restClient.PostAsync(fullUrl,jsonData);
 
-                    NetResponse<T> result = JsonSerializer.Deserialize<NetResponse<T>>(json);
+                    var result = JsonSerializer.Deserialize<NetResponse<T>>(json, new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive =true
+                    });
 
                     return result;
                 }
             }
             else
             {
-                throw new UnDefindedProtocolExaption(protocol,"");
+                throw new UndefinedProtocolException(protocol,"");
             }
         }
 
@@ -109,13 +115,16 @@ namespace Game_Net
 
                 string json = await _restClient.GetAsync(fullUrl);
 
-                NetResponse<T> result = JsonSerializer.Deserialize<NetResponse<T>>(json);
+                var result = JsonSerializer.Deserialize<NetResponse<T>>(json, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive =true
+                });
 
                 return result;
             }
             else
             {
-                throw new UnDefindedProtocolExaption(protocol, "");
+                throw new UndefinedProtocolException(protocol, "");
             }
         }
     }
