@@ -7,9 +7,9 @@ using My_steam_server.Repositories;
 using My_steam_server.Services;
 using System.Text;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
+// Загрузка конфигурации
 builder.Configuration
     .SetBasePath(Directory.GetCurrentDirectory())
     .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
@@ -20,18 +20,23 @@ var config = builder.Configuration;
 
 
 var filePath = config["JsonRepository:UserFilePath"];
+var TokenFilepath = config["JsonRepository:TokenFilePath"];
 
-builder.Services.AddSingleton<IUserRepository, JsonUserRepository>(provider=> new JsonUserRepository(filePath));
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddSingleton<IUserRepository, JsonUserRepository>(provider => new JsonUserRepository(filePath));
+builder.Services.AddSingleton<IRefreshTokenRepository, JsonRefreshTokenRepository>(provider => new JsonRefreshTokenRepository(TokenFilepath));
 builder.Services.AddControllers();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<IPasswordHasher<User>,PasswordHasher<User>>();
+builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
+
 
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(options =>
+})
+.AddJwtBearer(options =>
 {
     var key = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"]);
     options.TokenValidationParameters = new TokenValidationParameters
@@ -41,10 +46,32 @@ builder.Services.AddAuthentication(options =>
         ValidateIssuerSigningKey = true,
         IssuerSigningKey = new SymmetricSecurityKey(key)
     };
+
+    options.Events = new JwtBearerEvents
+    {
+        OnAuthenticationFailed = context =>
+        {
+            Console.WriteLine("Authentication failed: " + context.Exception.Message);
+            return Task.CompletedTask;
+        }
+    };
 });
 
+// Добавление CORS для работы с фронтендом
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
 
 var app = builder.Build();
+
+// Использование CORS
+app.UseCors("AllowAll");
 
 app.UseRouting();
 
@@ -54,3 +81,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+

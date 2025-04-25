@@ -37,5 +37,17 @@ namespace My_steam_server.Controllers
 
             return Ok(result);
         }
+
+        [HttpPost("refresh-token")]
+        public async Task<IActionResult> RefreshToken([FromBody] string refreshToken)
+        {
+            var result  = await _authService.RefreshTokenAsync(refreshToken);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return Unauthorized(result);
+        }
     }
 }

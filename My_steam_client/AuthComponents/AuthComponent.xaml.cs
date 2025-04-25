@@ -106,7 +106,13 @@ namespace My_steam_client.AuthComponents
                 return;
             }
 
+            Tokens.TryParse(result.data, out var tokens );
+            TokenStorage.SaveTokens(tokens);
+
+            var test = TokenStorage.LoadTokens();
+
             MessageBox.Show(result.Success.ToString());
         }
+
     }
 }

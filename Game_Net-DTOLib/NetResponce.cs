@@ -13,7 +13,9 @@ namespace Game_Net_DTOLib
         EmailAlredyTaken,
         UserNotfound,
 
-        WrongPassword
+        WrongPassword,
+
+        InvalidRefreshToken
     }
 
     public class NetResponse<T>

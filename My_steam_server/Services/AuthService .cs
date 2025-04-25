@@ -13,14 +13,18 @@ namespace My_steam_server.Services
     public class AuthService:IAuthService
     {
         private readonly IUserRepository _userRepository;
+        private readonly IRefreshTokenRepository _refreshTokenRepository;
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IConfiguration _configuration;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public AuthService(IUserRepository userRepository, IConfiguration configuration, IPasswordHasher<User> passwordHasher)
+        public AuthService(IUserRepository userRepository, IPasswordHasher<User> passwordHasher, IConfiguration configuration, IRefreshTokenRepository refreshTokenRepository, IHttpContextAccessor httpContextAccessor)
         {
             _userRepository = userRepository;
-            _configuration = configuration;
             _passwordHasher = passwordHasher;
+            _configuration = configuration;
+            _refreshTokenRepository = refreshTokenRepository;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<NetResponse<string>> LoginAsync(LoginDto dto)
@@ -52,8 +56,39 @@ namespace My_steam_server.Services
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 
-            var token  = tokenHandler.CreateToken(tokenDescriptor);
-            return new NetResponse<string> {Success=true,  data=tokenHandler.WriteToken(token) };
+            var accessToken = tokenHandler.CreateToken(tokenDescriptor);
+            var refreshToken = await GenerateRefreshTokenAsync(user);
+
+            return new NetResponse<string>
+            {
+                Success = true,
+                data = new { AccessToken = tokenHandler.WriteToken(accessToken), RefreshToken = refreshToken }.ToString()
+            };
+        }
+
+        public async Task<NetResponse<string>> RefreshTokenAsync(string refreshToken)
+        {
+            var existingRefrashToken = await _refreshTokenRepository.GetByTokenAsync(refreshToken);
+            if (existingRefrashToken == null || existingRefrashToken.IsExpired)
+            {
+                return new NetResponse<string>
+                {
+                    Success = false,
+                    resultCode = ResultCode.InvalidRefreshToken,
+                    Message = "Refresh token is invalid or expired",
+                    data = string.Empty
+                };
+            }
+
+            var user = await _userRepository.GetByIdAsync(existingRefrashToken.UserId);
+            var newAccessToken = await GenerateAccessTokenAsync(user);
+            var newRefreshToken = await GenerateRefreshTokenAsync(user);
+
+            return new NetResponse<string>
+            {
+                Success = true,
+                data = new { AccessToken = newAccessToken, RefreshToken = newRefreshToken }.ToString()
+            };
         }
 
         public async Task<NetResponse<bool>> RegisterAsync(RegisterDto dto)
@@ -75,6 +110,55 @@ namespace My_steam_server.Services
             await _userRepository.AddUserAsync(user);
             await _userRepository.SaveChangesAsync();
             return new NetResponse<bool> {Success=true,data=true};
+        }
+
+        private async Task<string> GenerateAccessTokenAsync(User user)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_configuration["Jwt:key"]);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new[]
+                {
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Name, user.Email)
+            }),
+                Expires = DateTime.UtcNow.AddHours(1),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
+        }
+
+
+        private async Task<string> GenerateRefreshTokenAsync(User user)
+        {
+            var refreshToken = new RefreshToken
+            {
+                Token = Guid.NewGuid().ToString(),
+                Created = DateTime.UtcNow,
+                Expires = DateTime.UtcNow.AddDays(7),
+                CreatedByIp = GetIpAddress(), // Получаем реальный IP
+                UserId = Convert.ToInt32(user.Id)
+            };
+
+            await _refreshTokenRepository.AddAsync(refreshToken);
+            await _refreshTokenRepository.SaveChangesAsync();
+
+            return refreshToken.Token;
+        }
+
+        private string GetIpAddress()
+        {
+            var ipAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress?.ToString();
+
+            if (string.IsNullOrWhiteSpace(ipAddress))
+            {
+                ipAddress = _httpContextAccessor.HttpContext.Request.Headers["X-Forwarded-For"];
+            }
+
+            return ipAddress ?? "Unknown"; // Возвращаем "Unknown", если IP не удалось получить
         }
     }
 }
