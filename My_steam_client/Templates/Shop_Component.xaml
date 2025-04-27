@@ -25,12 +25,12 @@
                       PrecentWidth="100"
                       PrecentHeight="100"
                       StackMode="Horizontal"
-                      ComponentWidth="180"
-                      CompoentHeight="225"
-                      ComponetnsMargin="5,0,5,0"
+                      ComponentWidth="220"
+                      CompoentHeight="260"
+                      ComponetnsMargin="2.5,0,2.5,0"
                       VisibleElements="4" Margin="0,76,0,6"
                       Style="{StaticResource Slider_Styles}">
-                    <local:SliderComponent Background="Azure"></local:SliderComponent>
+                    <local:SliderComponent ImageSourceLink="D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\resources\images\test.jpg"/>
                     <local:SliderComponent Background="Azure"></local:SliderComponent>
                     <local:SliderComponent Background="Azure"></local:SliderComponent>
                     <local:SliderComponent Background="Blue"></local:SliderComponent>

@@ -12,6 +12,7 @@
     <UserControl.Resources>
         <conv:PrecentSizeConverter x:Key="PrecentSizeConverter"/>
         <conv:BoolIndicatorsBrushConveror x:Key="BoolIndicatorsBrushConveror"/>
+        <conv:imageUniverslConverter x:Key="imageUniverslConverter"/>
 
         <Style x:Key="SideButton" TargetType="Button">
             <Setter Property="Width" Value="50"/>
@@ -32,7 +33,59 @@
             <Grid Grid.Column="0">
                 <Button Style="{StaticResource SideButton}"
                     HorizontalAlignment="Right"
-                    Click="SwipeToLeft">Left</Button>
+                    Click="SwipeToLeft">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="border" BorderThickness="0">
+                                <Border.Background>
+                                    <LinearGradientBrush x:Name="borderBrush" StartPoint="1,1" EndPoint="0,1">
+                                        <GradientStop x:Name="startColor" Color="#FF14019A" Offset="0.0"/>
+                                        <GradientStop x:Name="endColor" Color="#0014019A" Offset="0.8"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+
+                                <Image Source="{Binding Source='images/Left.png', Converter={StaticResource imageUniverslConverter}}"
+                   Width="20"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"/>
+                            </Border>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetName="startColor"
+                                            Storyboard.TargetProperty="Color"
+                                            To="#FF14019A"
+                                            Duration="0:0:0.3" />
+                                                <ColorAnimation Storyboard.TargetName="endColor"
+                                            Storyboard.TargetProperty="Color"
+                                            To="#FF079DFF"
+                                            Duration="0:0:0.3" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetName="startColor"
+                                            Storyboard.TargetProperty="Color"
+                                            To="#FF14019A"
+                                            Duration="0:0:0.3" />
+                                                <ColorAnimation Storyboard.TargetName="endColor"
+                                            Storyboard.TargetProperty="Color"
+                                            To="#0014019A"
+                                            Duration="0:0:0.3" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
             </Grid>
 
             <Grid Grid.Column="1"
@@ -96,7 +149,59 @@
             <Grid Grid.Column="2">
                 <Button Style="{StaticResource SideButton}"
                     HorizontalAlignment="Left"
-                    Click="SwipeToRight">Right</Button>
+                    Click="SwipeToRight">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="border" BorderThickness="0">
+                                <Border.Background>
+                                    <LinearGradientBrush x:Name="borderBrush" StartPoint="0,1" EndPoint="1,1">
+                                        <GradientStop x:Name="startColor" Color="#FF14019A" Offset="0.0"/>
+                                        <GradientStop x:Name="endColor" Color="#0014019A" Offset="0.8"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+
+                                <Image Source="{Binding Source='images/Right.png', Converter={StaticResource imageUniverslConverter}}"
+                   Width="20"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"/>
+                            </Border>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetName="startColor"
+                                            Storyboard.TargetProperty="Color"
+                                            To="#FF14019A"
+                                            Duration="0:0:0.3" />
+                                                <ColorAnimation Storyboard.TargetName="endColor"
+                                            Storyboard.TargetProperty="Color"
+                                            To="#FF079DFF"
+                                            Duration="0:0:0.3" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetName="startColor"
+                                            Storyboard.TargetProperty="Color"
+                                            To="#FF14019A"
+                                            Duration="0:0:0.3" />
+                                                <ColorAnimation Storyboard.TargetName="endColor"
+                                            Storyboard.TargetProperty="Color"
+                                            To="#0014019A"
+                                            Duration="0:0:0.3" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
             </Grid>
         </Grid>
     </Border>

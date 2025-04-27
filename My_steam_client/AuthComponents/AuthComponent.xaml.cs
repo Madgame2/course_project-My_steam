@@ -111,7 +111,11 @@ namespace My_steam_client.AuthComponents
 
             var test = TokenStorage.LoadTokens();
 
-            MessageBox.Show(result.Success.ToString());
+            var mainWindow= new MainWindow();
+            Application.Current.MainWindow = mainWindow;
+            mainWindow.Show();
+
+            _authWindowdow.Close();
         }
 
     }

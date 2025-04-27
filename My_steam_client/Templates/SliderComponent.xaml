@@ -4,9 +4,82 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:My_steam_client.Templates"
+             xmlns:conv="clr-namespace:My_steam_client.Converters"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="450" d:DesignWidth="300">
+    <UserControl.Resources>
+        <conv:imageUniverslConverter x:Key="imageUniverslConverter"/>
+
+        <Style x:Key="PriceSection" TargetType="Border">
+            <Setter Property="Padding" Value="10,5,10,5"/>
+            <Setter Property="Background" Value="#FF3B3C5E"/>
+            <Setter Property="CornerRadius" Value="8"/>
+        </Style>
+        <Style x:Key="Header" TargetType="Border">
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+        
+        <Style x:Key="HeaderText" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Gainsboro"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/resources/Fonts/#Rajdhani"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="5,5,5,0"/>
+        </Style>
+        
+        <Style x:Key="DescriptionText" TargetType="TextBlock">
+            <Setter Property="Margin" Value="5,0,0,0"/>
+            <Setter Property="Foreground" Value="Silver"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/resources/Fonts/#Rajdhani"/>
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+
+        <Style x:Key="PriceText" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/resources/Fonts/#Rajdhani"/>
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+    </UserControl.Resources>
+
+
+    
+    <Border CornerRadius="25"
+            ClipToBounds="True"
+            Background="#FF080819">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition Height="0.2*"/>
+            </Grid.RowDefinitions>
+
+            <Image x:Name="ImageElement"
+                   Grid.Row="0"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Stretch="Fill"
+                   Source="{Binding ImageSourceLink, Converter={StaticResource imageUniverslConverter}}">
+            </Image>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.45*"/>
+                    <RowDefinition Height="0.55*"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" Margin="5,0,5,0" Style="{StaticResource Header}">
+                    <TextBlock Text="{Binding GameName}" TextWrapping="Wrap" Style="{StaticResource HeaderText}"/>
+                </Border>
+                <Border Grid.Row="1" Margin="5,0,5,0">
+                    <TextBlock Text="{Binding Description}" TextWrapping="Wrap" Style="{StaticResource DescriptionText}"/>
+                </Border>
+            </Grid>
+            <Border Grid.Row="2" Margin="5,0,10,5">
+                <Border HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                         Style="{StaticResource PriceSection}">
+                    <TextBlock Text="{Binding Price}" Style="{StaticResource PriceText}"/>
+                </Border>
+            </Border>
+        </Grid>
+    </Border>
 </UserControl>
+

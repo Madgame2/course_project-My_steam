@@ -12,7 +12,10 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/gif/ping_icon.gif")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/cart-trolley-ui-5-svgrepo-com.svg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/icon.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/left.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/no-image.svg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/noconnetion.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/right.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/shopping-cart-svgrepo-com.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/test.jpg")]
 
