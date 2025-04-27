@@ -6,5 +6,6 @@
         Task<T?> GetByIdAsync(int id);
         Task<bool> addAsync(T entity);
 
+        Task<bool> HasObject(T entity);
     }
 }

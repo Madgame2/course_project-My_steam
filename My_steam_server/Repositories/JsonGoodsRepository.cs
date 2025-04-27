@@ -20,7 +20,7 @@ namespace My_steam_server.Repositories
             
         }
 
-        public async Task<List<T>> GetAll()
+        private async Task<List<T>> GetObjets()
         {
             string json = await File.ReadAllTextAsync(_filePath);
 
@@ -29,20 +29,23 @@ namespace My_steam_server.Repositories
             return result;
         }
 
+        public async Task<List<T>> GetAll()
+        {
+            var result = await GetObjets();
+
+            return result;
+        }
+
         public async Task<T?> GetByIdAsync(int id)
         {
-            string json = await File.ReadAllTextAsync(_filePath);
-
-            var objects = JsonSerializer.Deserialize<List<T>>(json) ?? new List<T>(); 
+            var objects = await GetObjets();
 
             return objects.FirstOrDefault(e => e.Id == id);
         }
 
         public async Task<bool> addAsync(T entity)
         {
-            string json = await File.ReadAllTextAsync(_filePath);
-
-            var objects = JsonSerializer.Deserialize<List<T>>(json) ?? new List<T>();
+            var objects = await GetObjets();
 
             int id = getFreeId(objects);
 
@@ -60,7 +63,13 @@ namespace My_steam_server.Repositories
         private async Task saveAsync(List<T> data)
         {
             await using var stream = File.Create(_filePath);
-            await JsonSerializer.SerializeAsync(stream, data);
+
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true
+            };
+
+            await JsonSerializer.SerializeAsync(stream, data, options);
         }
 
 
@@ -78,6 +87,14 @@ namespace My_steam_server.Repositories
             }
 
             return curentId;
+        }
+
+        public async Task<bool> HasObject(T entity)
+        {
+
+            var objects = await GetObjets();
+
+            return objects.Any(obj => obj.Equals(entity)) ? true : false;
         }
     }
 }

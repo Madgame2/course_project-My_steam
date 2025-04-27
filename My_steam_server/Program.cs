@@ -21,13 +21,16 @@ var config = builder.Configuration;
 
 var filePath = config["JsonRepository:UserFilePath"];
 var TokenFilepath = config["JsonRepository:TokenFilePath"];
+var GoodsFilepath = config["JsonRepository:GoodsFilePath"];
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddSingleton<IUserRepository, JsonUserRepository>(provider => new JsonUserRepository(filePath));
 builder.Services.AddSingleton<IRefreshTokenRepository, JsonRefreshTokenRepository>(provider => new JsonRefreshTokenRepository(TokenFilepath));
+builder.Services.AddSingleton<IGoodRepository<Game>>(provider => new JsonGoodsRepository<Game>(GoodsFilepath));
 builder.Services.AddControllers();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IGoodsService<Game>>(provider =>new GoodsService<Game>(provider.GetRequiredService<IGoodRepository<Game>>()));
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 
 

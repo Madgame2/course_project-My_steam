@@ -9,13 +9,18 @@ namespace Game_Net_DTOLib
     public enum ResultCode
     {
         Success,
+        UnKnowError,
 
         EmailAlredyTaken,
         UserNotfound,
 
         WrongPassword,
 
-        InvalidRefreshToken
+        InvalidRefreshToken,
+
+        WrongGoodId,
+
+        ObjectAleradyExist
     }
 
     public class NetResponse<T>

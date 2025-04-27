@@ -4,6 +4,19 @@
     {
 
         public string Description { get; set; }
-        public string imageSource {  get; set; }
+        public string[] imageSource {  get; set; }
+
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is Game other)
+            {
+
+                if (Name == other.Name) return true;
+                if(imageSource == other.imageSource) return true;
+
+            }
+            return false;
+        }
     }
 }
