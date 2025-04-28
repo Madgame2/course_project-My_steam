@@ -48,5 +48,29 @@ namespace My_steam_server.Controllers
             return Ok(result);
         }
 
+
+
+        [HttpGet("Games/recomended/{count:int}")]
+        public async Task<IActionResult> GetRecomendet(int count)
+        {
+            var allObjcets = (await _goodsService_games.GetAll()).data;
+            List<GameSliderDto> result = new List<GameSliderDto>();
+
+            for(int i = 0; i < count && i < allObjcets.Count; i++)
+            {
+                var current = allObjcets[i];
+                GameSliderDto newObj = new GameSliderDto();
+
+                newObj.GameId = current.Id;
+                newObj.Name = current.Name;
+                newObj.price = current.Price;
+                newObj.Description = current.Description;
+                newObj.imageLink = current.HeaderImageSource;
+
+                result.Add(newObj);
+            }
+
+            return Ok(new NetResponse<List<GameSliderDto>> { Success=true, data=result});
+        }
     }
 }

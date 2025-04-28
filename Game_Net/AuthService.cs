@@ -76,5 +76,32 @@ namespace Game_Net
                 return new NetResponse<string> { Success = false, Message = ex.Message };
             }
         }
+
+        public async Task<NetResponse<bool>> isValid_JWT_Token(string JwtToken)
+        {
+            string json = JsonSerializer.Serialize(JwtToken);
+
+            try
+            {
+
+                return await _comMannager.SendMessageRest<bool>("api/auth/CheckToken", Protocol.Https, json);
+            }
+            catch (UndefinedProtocolException ex) { 
+                Debug.WriteLine(ex.Message);
+
+                try
+                {
+                    return await _comMannager.SendMessageRest<bool>("api/auth/CheckToken", Protocol.Http, json);
+                }
+                catch
+                {
+                    return new NetResponse<bool> { Success = false, Message = ex.Message };
+                }
+            }
+            catch
+            {
+                throw new Exception("Network error");
+            }
+        }
     }
 }

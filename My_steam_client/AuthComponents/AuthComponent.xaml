@@ -121,7 +121,7 @@
                             <RowDefinition Height="0.6*"/>
                         </Grid.RowDefinitions>
 
-                        <CheckBox Grid.Row="0"
+                        <CheckBox x:Name="StayOnline" Grid.Row="0"
           Content="Remember password?"
           FontFamily="pack://application:,,,/resources/Fonts/#Rajdhani"
           FontSize="13"

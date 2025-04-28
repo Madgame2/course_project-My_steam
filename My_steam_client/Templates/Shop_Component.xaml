@@ -21,7 +21,7 @@
                            Foreground="#FFB5B5B5"
                            FontSize="30"
                            FontWeight="Bold">Recomend list</TextBlock>
-                <local:Slider 
+                <local:Slider x:Name="RecomendSlider"
                       PrecentWidth="100"
                       PrecentHeight="100"
                       StackMode="Horizontal"
@@ -31,17 +31,6 @@
                       VisibleElements="4" Margin="0,76,0,6"
                       Style="{StaticResource Slider_Styles}">
                     <local:SliderComponent ImageSourceLink="D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\resources\images\test.jpg"/>
-                    <local:SliderComponent Background="Azure"></local:SliderComponent>
-                    <local:SliderComponent Background="Azure"></local:SliderComponent>
-                    <local:SliderComponent Background="Blue"></local:SliderComponent>
-                    <local:SliderComponent Background="Azure"></local:SliderComponent>
-                    <local:SliderComponent Background="Azure"></local:SliderComponent>
-                    <local:SliderComponent Background="Azure"></local:SliderComponent>
-                    <local:SliderComponent Background="Azure"></local:SliderComponent>
-                    <local:SliderComponent Background="Azure"></local:SliderComponent>
-                    <local:SliderComponent Background="Azure"></local:SliderComponent>
-                    <local:SliderComponent Background="Azure"></local:SliderComponent>
-                    <local:SliderComponent Background="Azure"></local:SliderComponent>
                 </local:Slider>
             </Grid>
             <Grid Grid.Row="2"

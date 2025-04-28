@@ -8,7 +8,7 @@ namespace Game_Net.Interfaces
 {
     public interface IRestClient
     {
-        Task<string> GetAsync(string endPoint);
-        Task<string> PostAsync(string endPoint, string jsonData);
+        Task<string> GetAsync(string endPoint, string token);
+        Task<string> PostAsync(string endPoint, string token, string jsonData);
     }
 }

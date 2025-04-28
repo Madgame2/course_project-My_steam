@@ -37,6 +37,9 @@ namespace Game_Net
 
         private Dictionary<Protocol, ServerSettings> ServerUrls = new Dictionary<Protocol, ServerSettings>();
 
+
+        public string JWT_token = string.Empty;
+        public string RefrashToken = string.Empty;
         public void addNewUrl(ServerSettings newSettings)
         {
             if (ServerUrls.ContainsKey(newSettings.protocol))
@@ -77,27 +80,34 @@ namespace Game_Net
 
                 string fullUrl = settings.fullUrl(endpoint);
 
-                if (string.IsNullOrEmpty(jsonData))
+                try
                 {
-                    string json = await _restClient.GetAsync(fullUrl);
 
-                    var result =JsonSerializer.Deserialize<NetResponse<T>>(json, new JsonSerializerOptions
+                    if (string.IsNullOrEmpty(jsonData))
                     {
-                        PropertyNameCaseInsensitive =true
-                    });
+                        string json = await _restClient.GetAsync(fullUrl,JWT_token);
 
-                    return result;
+                        var result = JsonSerializer.Deserialize<NetResponse<T>>(json, new JsonSerializerOptions
+                        {
+                            PropertyNameCaseInsensitive = true
+                        });
+
+                        return result;
+                    }
+                    else
+                    {
+                        string json = await _restClient.PostAsync(fullUrl, JWT_token, jsonData);
+
+                        var result = JsonSerializer.Deserialize<NetResponse<T>>(json, new JsonSerializerOptions
+                        {
+                            PropertyNameCaseInsensitive = true
+                        });
+
+                        return result;
+                    }
                 }
-                else
-                {
-                    string json = await _restClient.PostAsync(fullUrl,jsonData);
-
-                    var result = JsonSerializer.Deserialize<NetResponse<T>>(json, new JsonSerializerOptions
-                    {
-                        PropertyNameCaseInsensitive =true
-                    });
-
-                    return result;
+                catch (HttpRequestException e) {
+                    throw new Exception(e.Message);
                 }
             }
             else
@@ -113,14 +123,22 @@ namespace Game_Net
             {
                 string fullUrl = settings.fullUrl(endpoint);
 
-                string json = await _restClient.GetAsync(fullUrl);
-
-                var result = JsonSerializer.Deserialize<NetResponse<T>>(json, new JsonSerializerOptions
+                try
                 {
-                    PropertyNameCaseInsensitive =true
-                });
+                    string json = await _restClient.GetAsync(fullUrl, JWT_token);
 
-                return result;
+                    var result = JsonSerializer.Deserialize<NetResponse<T>>(json, new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    });
+
+                    return result;
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw new Exception($"Network Error {ex.Message}");
+                }
+
             }
             else
             {

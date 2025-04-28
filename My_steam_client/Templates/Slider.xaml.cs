@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using My_steam_client.Converters;
+using System.ComponentModel;
 
 namespace My_steam_client.Templates
 {
@@ -168,7 +169,7 @@ namespace My_steam_client.Templates
             }
         }
 
-        private void ArrangeComponents()
+        public void ArrangeComponents()
         {
             double currentX = 0;
 
@@ -277,6 +278,13 @@ namespace My_steam_client.Templates
                 border.BeginAnimation(Border.BackgroundProperty, anim);
             }
         }
+        public void addComponent(SliderComponent sliderComponent)
+        {
+            sliderComponent.Width = ComponentWidth;
+            sliderComponent.Height = CompoentHeight;
+            sliderComponent.Margin = ComponetnsMargin;
 
+            Stack_contaner.Children.Add(sliderComponent);
+        }
     }
 }

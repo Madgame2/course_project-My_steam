@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Game_Net;
+using Microsoft.Extensions.DependencyInjection;
 using My_steam_client.Scripts;
 using My_steam_server.DTO_models;
 using System;
@@ -106,8 +107,17 @@ namespace My_steam_client.AuthComponents
                 return;
             }
 
-            Tokens.TryParse(result.data, out var tokens );
-            TokenStorage.SaveTokens(tokens);
+            Tokens.TryParse(result.data, out var tokens);
+
+            if (StayOnline.IsChecked == true)
+            {
+                TokenStorage.SaveTokens(tokens);
+            }
+
+            var manager = AppServices.Provider.GetRequiredService<ComunitationMannageer>();
+
+            manager.JWT_token = tokens.JWT;
+            manager.RefrashToken = tokens.Refresh;
 
             var test = TokenStorage.LoadTokens();
 
@@ -117,6 +127,5 @@ namespace My_steam_client.AuthComponents
 
             _authWindowdow.Close();
         }
-
     }
 }

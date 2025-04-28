@@ -28,8 +28,10 @@ namespace My_steam_client.Templates
             DependencyProperty.Register(nameof(Description), typeof(string), typeof(SliderComponent), new PropertyMetadata("No info"));
         public static readonly DependencyProperty PriceProperty =
             DependencyProperty.Register(nameof(Price), typeof(string), typeof(SliderComponent), new PropertyMetadata("no price"));
+  
 
 
+        public int Id { get; set; }
         public string Price
         {
             get => (string)GetValue(PriceProperty);

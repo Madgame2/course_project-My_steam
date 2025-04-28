@@ -12,6 +12,7 @@ namespace Game_Net_DTOLib
         public string Name { get; set; }
         public string Description { get; set; }
         public float price { get; set; }
+        public string imageLink {  get; set; }
 
     }
 }

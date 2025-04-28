@@ -39,6 +39,12 @@ namespace My_steam_client.Scripts
                 return new AuthService(commManager);
             });
 
+            services.AddSingleton<Game_Net.StoreServices>(provider =>
+            {
+                var commManager = provider.GetRequiredService<Game_Net.ComunitationMannageer>();
+                return new StoreServices(commManager);
+            });
+
             Provider = services.BuildServiceProvider();
         }
     }
