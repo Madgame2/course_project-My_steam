@@ -698,5 +698,19 @@
     "isActive": true,
     "userId": 4,
     "user": null
+  },
+  {
+    "id": 0,
+    "token": "ca122142-2421-4323-8f1d-c31be3462697",
+    "expires": "2025-05-05T18:34:25.6539641Z",
+    "isExpired": false,
+    "created": "2025-04-28T18:34:25.6539529Z",
+    "createdByIp": "::1",
+    "revoked": null,
+    "revokedByIp": null,
+    "replacedByToken": null,
+    "isActive": true,
+    "userId": 4,
+    "user": null
   }
 ]

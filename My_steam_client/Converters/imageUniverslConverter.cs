@@ -13,45 +13,64 @@ using System.Windows.Media.Imaging;
 
 namespace My_steam_client.Converters
 {
-    public class imageUniverslConverter : IValueConverter
+    public class ImageUniversalConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value is not string path || string.IsNullOrEmpty(path))
                 return null;
 
-            path = Path.Combine(
-                AppDomain.CurrentDomain.BaseDirectory,
-                "resources",
-                path);
+            bool isWebPath = path.StartsWith("http://", StringComparison.OrdinalIgnoreCase)
+                             || path.StartsWith("https://", StringComparison.OrdinalIgnoreCase);
 
-            if (!File.Exists(path))
-                return null;
-
-            string extension = System.IO.Path.GetExtension(path)?.ToLowerInvariant();
-
-            if(extension == ".svg")
+            if (isWebPath)
             {
-                return LoadSvgImage(path);
-
+                // Это сетевой путь
+                return LoadBitmapImage(path, isWeb: true);
             }
             else
             {
-                return LoadBitmapImage(path);
+                // Это локальный путь
+                path = Path.Combine(
+                    AppDomain.CurrentDomain.BaseDirectory,
+                    "resources",
+                    path);
 
+                if (!File.Exists(path))
+                    return null;
+
+                string extension = System.IO.Path.GetExtension(path)?.ToLowerInvariant();
+
+                if (extension == ".svg")
+                {
+                    return LoadSvgImage(path);
+                }
+                else
+                {
+                    return LoadBitmapImage(path, isWeb: false);
+                }
             }
         }
 
-        private BitmapImage LoadBitmapImage(string path)
+        private BitmapImage LoadBitmapImage(string path, bool isWeb)
         {
             try
             {
                 var bitmap = new BitmapImage();
                 bitmap.BeginInit();
-                bitmap.UriSource = new Uri(path, UriKind.RelativeOrAbsolute);
                 bitmap.CacheOption = BitmapCacheOption.OnLoad;
+
+                if (isWeb)
+                {
+                    bitmap.UriSource = new Uri(path, UriKind.Absolute);
+                }
+                else
+                {
+                    bitmap.UriSource = new Uri(path, UriKind.RelativeOrAbsolute);
+                }
+
                 bitmap.EndInit();
-                bitmap.Freeze(); 
+                bitmap.Freeze();
                 return bitmap;
             }
             catch
@@ -67,55 +86,12 @@ namespace My_steam_client.Converters
                 var settings = new WpfDrawingSettings();
                 var reader = new FileSvgReader(settings);
 
-                if (Uri.IsWellFormedUriString(path, UriKind.Absolute))
+                var drawing = reader.Read(path);
+                if (drawing != null)
                 {
-                    // Абсолютный путь к SVG
-                    var drawing = reader.Read(path);
-                    if (drawing != null)
-                    {
-                        var drawingImage = new DrawingImage(drawing);
-                        drawingImage.Freeze();
-                        return drawingImage;
-                    }
-                }
-                else
-                {
-                    // Относительный путь
-                    var basePath = AppDomain.CurrentDomain.BaseDirectory;
-                    var fullPath = System.IO.Path.Combine(basePath, path);
-
-                    if (File.Exists(fullPath))
-                    {
-                        // Если файл существует по абсолютному пути
-                        var drawing = reader.Read(fullPath);
-                        if (drawing != null)
-                        {
-                            var drawingImage = new DrawingImage(drawing);
-                            drawingImage.Freeze();
-                            return drawingImage;
-                        }
-                    }
-                    else
-                    {
-                        // Если файла на диске нет, пытаемся открыть через поток ресурсов
-
-                        var resourceUri = new Uri($"pack://application:,,,/{path}", UriKind.Absolute);
-                        var streamResourceInfo = Application.GetResourceStream(resourceUri);
-
-                        if (streamResourceInfo != null)
-                        {
-                            using (var stream = streamResourceInfo.Stream)
-                            {
-                                var drawing = reader.Read(stream);
-                                if (drawing != null)
-                                {
-                                    var drawingImage = new DrawingImage(drawing);
-                                    drawingImage.Freeze();
-                                    return drawingImage;
-                                }
-                            }
-                        }
-                    }
+                    var drawingImage = new DrawingImage(drawing);
+                    drawingImage.Freeze();
+                    return drawingImage;
                 }
             }
             catch
@@ -125,10 +101,10 @@ namespace My_steam_client.Converters
             return null;
         }
 
-
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         }
     }
+
 }

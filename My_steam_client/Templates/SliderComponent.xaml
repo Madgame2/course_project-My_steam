@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="300">
     <UserControl.Resources>
-        <conv:imageUniverslConverter x:Key="imageUniverslConverter"/>
+        <conv:ImageUniversalConverter x:Key="imageUniverslConverter"/>
 
         <Style x:Key="PriceSection" TargetType="Border">
             <Setter Property="Padding" Value="10,5,10,5"/>

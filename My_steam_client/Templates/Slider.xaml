@@ -12,7 +12,7 @@
     <UserControl.Resources>
         <conv:PrecentSizeConverter x:Key="PrecentSizeConverter"/>
         <conv:BoolIndicatorsBrushConveror x:Key="BoolIndicatorsBrushConveror"/>
-        <conv:imageUniverslConverter x:Key="imageUniverslConverter"/>
+        <conv:ImageUniversalConverter x:Key="imageUniverslConverter"/>
 
         <Style x:Key="SideButton" TargetType="Button">
             <Setter Property="Width" Value="50"/>
