@@ -77,31 +77,32 @@ namespace Game_Net
             }
         }
 
-        public async Task<NetResponse<bool>> isValid_JWT_Token(string JwtToken)
+        public async Task<NetResponse<bool>> isValid_JWT_Token()
         {
-            string json = JsonSerializer.Serialize(JwtToken);
-
             try
             {
-
-                return await _comMannager.SendMessageRest<bool>("api/auth/CheckToken", Protocol.Https, json);
+                return await _comMannager.SendMessageRest<bool>("api/auth/CheckToken", Protocol.Https);
             }
-            catch (UndefinedProtocolException ex) { 
-                Debug.WriteLine(ex.Message);
+            catch (UndefinedProtocolException ex)
+            {
+                Debug.WriteLine($"HTTPS failed: {ex.Message}");
 
                 try
                 {
-                    return await _comMannager.SendMessageRest<bool>("api/auth/CheckToken", Protocol.Http, json);
+                    return await _comMannager.SendMessageRest<bool>("api/auth/CheckToken", Protocol.Http);
                 }
-                catch
+                catch (Exception innerEx)
                 {
-                    return new NetResponse<bool> { Success = false, Message = ex.Message };
+                    Debug.WriteLine($"HTTP also failed: {innerEx.Message}");
+                    return new NetResponse<bool> { Success = false, Message = "Unable to connect via HTTPS or HTTP." };
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                Debug.WriteLine($"General network error: {ex.Message}");
                 throw new Exception("Network error");
             }
         }
+
     }
 }

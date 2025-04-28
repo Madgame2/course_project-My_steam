@@ -128,7 +128,7 @@ namespace My_steam_client.Templates
             DataContext = this;
         }
 
-        private void OnPageSelected(int index)
+        public void OnPageSelected(int index)
         {
             _currentPage = index;
             UpdateVisibleComponents();
@@ -213,7 +213,7 @@ namespace My_steam_client.Templates
         }
 
 
-        private void SliderLoaded(object sender, RoutedEventArgs e)
+        public void SliderInti()
         {
 
             int total = Childrens.Count;

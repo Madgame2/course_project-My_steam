@@ -60,7 +60,11 @@ namespace My_steam_client
 
 
             if (!result) Root.Content = noConnetrion;
-            else Root.Content = authComponent;
+            else 
+            {
+                await TryAuthorization();
+                Root.Content = authComponent; 
+            }
         }
 
         private async Task TryAuthorization()
@@ -73,14 +77,15 @@ namespace My_steam_client
 
             try
             {
-                var result = await service.isValid_JWT_Token(tokens.JWT);
+                var manager = AppServices.Provider.GetRequiredService<ComunitationMannageer>();
+
+                manager.JWT_token = tokens.JWT;
+                manager.RefrashToken = tokens.Refresh;
+
+                var result = await service.isValid_JWT_Token();
 
                 if(result.data)
                 {   
-                    var manager = AppServices.Provider.GetRequiredService<ComunitationMannageer>();
-
-                    manager.JWT_token = tokens.JWT;
-                    manager.RefrashToken = tokens.Refresh;
 
                     var mainWindow = new MainWindow();
                     Application.Current.MainWindow = mainWindow;

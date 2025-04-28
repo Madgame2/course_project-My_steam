@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using My_steam_server.DTO_models;
 using My_steam_server.Interfaces;
 
@@ -48,6 +49,13 @@ namespace My_steam_server.Controllers
             }
 
             return Unauthorized(result);
+        }
+
+        [HttpGet("CheckToken")]
+        [Authorize]
+        public IActionResult IsValidToken()
+        {
+            return Ok(new Game_Net_DTOLib.NetResponse<bool> { Success = true, data = true });
         }
     }
 }

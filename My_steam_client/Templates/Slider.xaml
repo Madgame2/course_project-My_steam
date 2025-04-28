@@ -96,8 +96,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Border Grid.Row="0" x:Name="VisibleArea" ClipToBounds="True">
-                    <Canvas x:Name="Stack_contaner"
-                            Loaded="SliderLoaded">
+                    <Canvas x:Name="Stack_contaner">
 
 
                     </Canvas>

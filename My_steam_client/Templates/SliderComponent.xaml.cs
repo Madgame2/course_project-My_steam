@@ -44,8 +44,8 @@ namespace My_steam_client.Templates
         }
         public string GameName
         {
-            get => (string)GetValue(NameProperty);
-            set => SetValue(NameProperty, value);
+            get => (string)GetValue(GameNameProperty);
+            set => SetValue(GameNameProperty, value);
         }
         public string ImageSourceLink
         {

@@ -53,7 +53,7 @@ namespace My_steam_client.Templates
                 RecomendSlider.addComponent(newComponent);
             }
 
-            RecomendSlider.ArrangeComponents();
+            RecomendSlider.SliderInti();
         }
 
         private SliderComponent DtoToSliderComponent(GameSliderDto dto)
