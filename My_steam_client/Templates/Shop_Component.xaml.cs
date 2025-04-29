@@ -50,6 +50,7 @@ namespace My_steam_client.Templates
             foreach (var obj in objects) { 
                 var newComponent = DtoToSliderComponent(obj);
 
+
                 RecomendSlider.addComponent(newComponent);
             }
 
@@ -67,8 +68,20 @@ namespace My_steam_client.Templates
             newSliderComponent.ImageSourceLink = dto.imageLink;
             newSliderComponent.Price = Convert.ToString(dto.price);
 
+            newSliderComponent.Click += (s, e) =>
+            {
+                if (s is SliderComponent sliderComponent)
+                {
+                    ToGamePage(sliderComponent.Id);
+                }
+            };
 
             return newSliderComponent;
+        }
+
+        private void ToGamePage(int gameId)
+        {
+            MessageBox.Show(gameId.ToString());
         }
     }
 }
