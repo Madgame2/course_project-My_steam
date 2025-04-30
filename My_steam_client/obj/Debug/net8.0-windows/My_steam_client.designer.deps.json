@@ -122,6 +122,25 @@
           }
         }
       },
+      "Microsoft.Web.WebView2/1.0.3179.45": {
+        "runtimeTargets": {
+          "runtimes/win-arm64/native/WebView2Loader.dll": {
+            "rid": "win-arm64",
+            "assetType": "native",
+            "fileVersion": "1.0.3179.45"
+          },
+          "runtimes/win-x64/native/WebView2Loader.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "1.0.3179.45"
+          },
+          "runtimes/win-x86/native/WebView2Loader.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "1.0.3179.45"
+          }
+        }
+      },
       "Microsoft.Xaml.Behaviors.Wpf/1.1.135": {
         "runtime": {
           "lib/net6.0-windows7.0/Microsoft.Xaml.Behaviors.dll": {
@@ -265,6 +284,13 @@
       "sha512": "sha512-09hnbUJh/18gUmu5nCVFMvyzAFC4l1qyc4bwSJaKzUBqHN7aNDwmSx8dE3/MMJImbvnKq9rEtkkgnrS/OUBtjA==",
       "path": "microsoft.identitymodel.tokens/8.8.0",
       "hashPath": "microsoft.identitymodel.tokens.8.8.0.nupkg.sha512"
+    },
+    "Microsoft.Web.WebView2/1.0.3179.45": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3pokSH5CnN0G6rGhGFo1y87inxYhNxBQ2Vdf0wlvBj99KHxQJormjDACmqRnFeUsmuNFIhWwfAL1ztq7wD5qRA==",
+      "path": "microsoft.web.webview2/1.0.3179.45",
+      "hashPath": "microsoft.web.webview2.1.0.3179.45.nupkg.sha512"
     },
     "Microsoft.Xaml.Behaviors.Wpf/1.1.135": {
       "type": "package",

@@ -16,6 +16,20 @@ namespace My_steam_client.Controls
         public static void SetGroupName(DependencyObject obj,string value)=>obj.SetValue(GroupNameProperty,value);
 
 
+        public static void setAllUncehceked(string group)
+        {
+            if (_groups.ContainsKey(group))
+            {
+                var objects = _groups[group];
+
+                foreach (var item in objects)
+                {
+                    item.IsChecked = false;
+                }
+            }
+            return;
+        }
+
         private static void OnGroupNameChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is not ToggleButton button) return;

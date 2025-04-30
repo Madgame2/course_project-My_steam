@@ -19,10 +19,16 @@
     <Compile Update="Templates\Header.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Templates\ImagSlider.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Templates\NoConnetrion.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Templates\PingPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Templates\ProductComponent.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Templates\ProductPage.xaml.cs">
@@ -66,10 +72,16 @@
     <Page Update="Templates\Header.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Templates\ImagSlider.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Templates\NoConnetrion.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\PingPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Templates\ProductComponent.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\ProductPage.xaml">

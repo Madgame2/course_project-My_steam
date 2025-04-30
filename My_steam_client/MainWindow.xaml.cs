@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using My_steam_client.Controls;
 using My_steam_client.Templates;
 
 namespace My_steam_client
@@ -61,6 +62,12 @@ namespace My_steam_client
         private void toCommunity(object sender, RoutedEventArgs e)
         {
             NavigateTo(null);
+        }
+
+        public void toProductPage()
+        {
+            SideButtonGroup.setAllUncehceked("MainNav");
+            NavigateTo(new ProductComponent());
         }
     }
 }

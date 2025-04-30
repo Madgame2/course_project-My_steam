@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="My_steam_client.Templates.ProductComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:My_steam_client.Templates"
+             mc:Ignorable="d" 
+             d:DesignHeight="1080" d:DesignWidth="1920">
+    <UserControl.Resources>
+        
+    </UserControl.Resources>
+    
+    
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+    <Border>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1000"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1" Margin="0,25,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="Game name" Foreground="White"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.65*"/>
+                            <ColumnDefinition Width="0.35*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="500"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Border Margin="0,25,25,25">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="350"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Border Grid.Row="0" Margin="0,0,0,10">
+                                            <Image Stretch="Fill" Source="D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\resources\images\test.jpg"/>
+                                        </Border>
+                                        <Border Grid.Row="1">
+                                            <local:ImagSlider Background="Aqua"/>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                            <Grid Grid.Row="1"></Grid>
+                        </Grid>
+                        <Grid Grid.Column="1" Margin="0,25,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="200"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <Image Stretch="Fill" Source="D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\resources\images\test.jpg"/>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Border Padding="15" Background="Red">
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock TextWrapping="Wrap" Foreground="White" Text="Some Description"/>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock TextWrapping="Wrap" Foreground="White" Text="Rating:"/>
+                                            <TextBlock Margin="15,0,0,0" TextWrapping="Wrap" Foreground="White" Text="some rating"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock TextWrapping="Wrap" Foreground="White" Text="Release date:"/>
+                                            <TextBlock Margin="15,0,0,0" TextWrapping="Wrap" Foreground="White" Text="some date"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+                            <Grid Grid.Row="2" Background="Azure"></Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Border>
+    </ScrollViewer>
+</UserControl>

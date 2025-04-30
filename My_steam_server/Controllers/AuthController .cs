@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using My_steam_server.DTO_models;
 using My_steam_server.Interfaces;
+using My_steam_server.Models;
 
 namespace My_steam_server.Controllers
 {
@@ -40,9 +41,9 @@ namespace My_steam_server.Controllers
         }
 
         [HttpPost("refresh-token")]
-        public async Task<IActionResult> RefreshToken([FromBody] string refreshToken)
+        public async Task<IActionResult> RefreshToken([FromBody] Game_Net_DTOLib.RefreshTokenRequest refreshToken)
         {
-            var result  = await _authService.RefreshTokenAsync(refreshToken);
+            var result  = await _authService.RefreshTokenAsync(refreshToken.RefrashToken);
             if (result.Success)
             {
                 return Ok(result);

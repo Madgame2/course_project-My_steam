@@ -91,7 +91,7 @@ namespace Game_Net
                 {
                     return await _comMannager.SendMessageRest<bool>("api/auth/CheckToken", Protocol.Http);
                 }
-                catch (Exception innerEx)
+                catch (UndefinedProtocolException innerEx)
                 {
                     Debug.WriteLine($"HTTP also failed: {innerEx.Message}");
                     return new NetResponse<bool> { Success = false, Message = "Unable to connect via HTTPS or HTTP." };
@@ -103,6 +103,37 @@ namespace Game_Net
                 throw new Exception("Network error");
             }
         }
+        
+        public async Task<NetResponse<string>> sendRefrashTokenAsync()
+        {
+            var requestBody = new RefreshTokenRequest
+            {
+                RefrashToken = _comMannager.RefrashToken
+            };
 
+            var json = JsonSerializer.Serialize(requestBody);
+
+            try
+            {
+                var result = await _comMannager.SendMessageRest<string>("api/auth/refresh-token", Protocol.Https, json);
+
+                return result;
+
+            }
+            catch (UndefinedProtocolException ex)
+            {
+                try
+                {
+                    var result = await _comMannager.SendMessageRest<string>("api/auth/refresh-token", Protocol.Http, json);
+
+                    return result;
+                }
+                catch (UndefinedProtocolException)
+                {
+                    throw new Exception("No protocols to send data");
+
+                }
+            }
+        }
     }
 }

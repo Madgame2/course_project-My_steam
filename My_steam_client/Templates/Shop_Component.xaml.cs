@@ -1,6 +1,7 @@
 ﻿using Game_Net;
 using Game_Net_DTOLib;
 using Microsoft.Extensions.DependencyInjection;
+using My_steam_client.Controls;
 using My_steam_client.Scripts;
 using System;
 using System.Collections.Generic;
@@ -81,7 +82,7 @@ namespace My_steam_client.Templates
 
         private void ToGamePage(int gameId)
         {
-            MessageBox.Show(gameId.ToString());
+            _mainWindow.toProductPage();
         }
     }
 }

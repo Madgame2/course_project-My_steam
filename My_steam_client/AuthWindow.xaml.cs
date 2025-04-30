@@ -17,6 +17,7 @@ using My_steam_client.Scripts;
 using My_steam_client.Scripts.Interfaces;
 using My_steam_client.Templates;
 using Game_Net;
+using System.Net;
 
 namespace My_steam_client
 {
@@ -74,18 +75,17 @@ namespace My_steam_client
             if (tokens == null) return;
 
             var service = AppServices.Provider.GetRequiredService<AuthService>();
+            var manager = AppServices.Provider.GetRequiredService<ComunitationMannageer>();
 
             try
             {
-                var manager = AppServices.Provider.GetRequiredService<ComunitationMannageer>();
-
                 manager.JWT_token = tokens.JWT;
                 manager.RefrashToken = tokens.Refresh;
 
                 var result = await service.isValid_JWT_Token();
 
-                if(result.data)
-                {   
+                if (result.data)
+                {
 
                     var mainWindow = new MainWindow();
                     Application.Current.MainWindow = mainWindow;
@@ -94,9 +94,32 @@ namespace My_steam_client
                     this.Close();
                 }
             }
-            catch
+            catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.Unauthorized)
             {
-                return;
+                try
+                {
+                    var result = await service.sendRefrashTokenAsync();
+
+                    if (result.Success)
+                    {
+                        Tokens.TryParse(result.data, out tokens);
+
+                        manager.JWT_token = tokens.JWT;
+                        manager.RefrashToken = tokens.Refresh;
+                        TokenStorage.SaveTokens(tokens);
+
+
+                        var mainWindow = new MainWindow();
+                        Application.Current.MainWindow = mainWindow;
+                        mainWindow.Show();
+
+                        this.Close();
+                    }
+                }
+                catch (HttpRequestException ex1) when (ex1.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    return;
+                }
             }
 
         }

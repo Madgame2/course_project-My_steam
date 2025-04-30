@@ -95,7 +95,7 @@
                                 <Storyboard>
                                     <ColorAnimation 
                                     Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"
-                                    To="#FF13131F"
+                                    To="#FF1B1B28"
                                     Duration="0:0:0.3"/>
                                 </Storyboard>
                             </BeginStoryboard>

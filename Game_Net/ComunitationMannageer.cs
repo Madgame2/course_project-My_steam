@@ -80,9 +80,6 @@ namespace Game_Net
 
                 string fullUrl = settings.fullUrl(endpoint);
 
-                try
-                {
-
                     if (string.IsNullOrEmpty(jsonData))
                     {
                         string json = await _restClient.GetAsync(fullUrl,JWT_token);
@@ -105,10 +102,7 @@ namespace Game_Net
 
                         return result;
                     }
-                }
-                catch (HttpRequestException e) {
-                    throw new Exception(e.Message);
-                }
+
             }
             else
             {
@@ -123,8 +117,7 @@ namespace Game_Net
             {
                 string fullUrl = settings.fullUrl(endpoint);
 
-                try
-                {
+
                     string json = await _restClient.GetAsync(fullUrl, JWT_token);
 
                     var result = JsonSerializer.Deserialize<NetResponse<T>>(json, new JsonSerializerOptions
@@ -133,11 +126,7 @@ namespace Game_Net
                     });
 
                     return result;
-                }
-                catch (HttpRequestException ex)
-                {
-                    throw new Exception($"Network Error {ex.Message}");
-                }
+
 
             }
             else

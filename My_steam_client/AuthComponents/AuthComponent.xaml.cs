@@ -94,9 +94,11 @@ namespace My_steam_client.AuthComponents
 
             var authService = AppServices.Provider.GetRequiredService<Game_Net.AuthService>();
 
-            var result = await authService.LoginAsync(dto);
 
-            if(result.resultCode == Game_Net_DTOLib.ResultCode.WrongPassword)
+
+                var result = await authService.LoginAsync(dto);
+
+            if (result.resultCode == Game_Net_DTOLib.ResultCode.WrongPassword)
             {
                 PasswordErrors.Text = "Wrong password";
                 return;
