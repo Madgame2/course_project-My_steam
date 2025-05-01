@@ -824,5 +824,61 @@
     "isActive": true,
     "userId": 4,
     "user": null
+  },
+  {
+    "id": 0,
+    "token": "5ae6ad41-dd39-467f-afe0-211964bdb69a",
+    "expires": "2025-05-08T10:23:43.8228204Z",
+    "isExpired": false,
+    "created": "2025-05-01T10:23:43.8228202Z",
+    "createdByIp": "::1",
+    "revoked": null,
+    "revokedByIp": null,
+    "replacedByToken": null,
+    "isActive": true,
+    "userId": 4,
+    "user": null
+  },
+  {
+    "id": 0,
+    "token": "d8c62167-6299-42bb-8438-e2bdd277a68b",
+    "expires": "2025-05-08T11:28:56.6415236Z",
+    "isExpired": false,
+    "created": "2025-05-01T11:28:56.6415233Z",
+    "createdByIp": "::1",
+    "revoked": null,
+    "revokedByIp": null,
+    "replacedByToken": null,
+    "isActive": true,
+    "userId": 4,
+    "user": null
+  },
+  {
+    "id": 0,
+    "token": "65800039-ce5e-4baf-ab54-6bbff26f1b7b",
+    "expires": "2025-05-08T12:52:07.0468505Z",
+    "isExpired": false,
+    "created": "2025-05-01T12:52:07.0468503Z",
+    "createdByIp": "::1",
+    "revoked": null,
+    "revokedByIp": null,
+    "replacedByToken": null,
+    "isActive": true,
+    "userId": 4,
+    "user": null
+  },
+  {
+    "id": 0,
+    "token": "1d248a97-24bf-4b21-824e-b4114cfac096",
+    "expires": "2025-05-08T15:49:07.8515892Z",
+    "isExpired": false,
+    "created": "2025-05-01T15:49:07.8515891Z",
+    "createdByIp": "127.0.0.1",
+    "revoked": null,
+    "revokedByIp": null,
+    "replacedByToken": null,
+    "isActive": true,
+    "userId": 4,
+    "user": null
   }
 ]

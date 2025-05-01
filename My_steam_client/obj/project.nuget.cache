@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "LJA6utMZbMA=",
+  "dgSpecHash": "zsnXw6qeuyE=",
   "success": true,
   "projectFilePath": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\My_steam_client.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\markdig\\0.41.1\\markdig.0.41.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.6\\microsoft.aspnetcore.authentication.jwtbearer.8.0.6.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.bcl.memory\\9.0.0\\microsoft.bcl.memory.9.0.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\9.0.4\\microsoft.extensions.dependencyinjection.9.0.4.nupkg.sha512",

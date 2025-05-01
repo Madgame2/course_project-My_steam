@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Game_Net_DTOLib;
 
 namespace My_steam_client.Templates
 {
@@ -20,9 +9,26 @@ namespace My_steam_client.Templates
     /// </summary>
     public partial class ProductComponent : UserControl
     {
+        public List<PurchaseOption> _PurchaseOptions { get; set; }
+
         public ProductComponent()
         {
             InitializeComponent();
+
+            _PurchaseOptions = new List<PurchaseOption>
+            { 
+                new PurchaseOption { GameName = "cat", Price = "15.15" }
+            };
+
+            DataContext = this;
+            Loaded += ProductComponent_Loaded;
+        }
+
+        private async void ProductComponent_Loaded(object sender, RoutedEventArgs e)
+        {
+            Loaded -= ProductComponent_Loaded; 
+            await webView.EnsureCoreWebView2Async();
+            
         }
     }
 }
