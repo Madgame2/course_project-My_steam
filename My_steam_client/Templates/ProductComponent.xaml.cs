@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Controls;
 using Game_Net_DTOLib;
 
@@ -20,6 +21,18 @@ namespace My_steam_client.Templates
                 new PurchaseOption { GameName = "cat", Price = "15.15" }
             };
 
+            _ImageSlider._sliderImages = new ObservableCollection<SliderImage>
+            {
+                new SliderImage{ isActive = true, ImageLink="https://localhost:7199/images/test.jpg"},
+                 new SliderImage{ isActive = false, ImageLink="https://localhost:7199/images/test.jpg"},
+                  new SliderImage{ isActive = false, ImageLink="https://localhost:7199/images/test.jpg"},
+                   new SliderImage{ isActive = false, ImageLink="https://localhost:7199/images/test.jpg"},
+                    new SliderImage{ isActive = false, ImageLink="https://localhost:7199/images/test.jpg"},
+                     new SliderImage{ isActive = false, ImageLink="https://localhost:7199/images/test.jpg"},
+                      new SliderImage{ isActive = false, ImageLink="https://localhost:7199/images/test.jpg"}
+            };
+
+            _ImageSlider.selectedImage = _ImageSlider._sliderImages[0];
             DataContext = this;
             Loaded += ProductComponent_Loaded;
         }
