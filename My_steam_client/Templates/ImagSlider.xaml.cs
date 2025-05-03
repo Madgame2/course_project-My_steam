@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,10 @@ namespace My_steam_client.Templates
     /// </summary>
     public partial class ImagSlider : UserControl
     {
+        public delegate void ChandgedItem(SliderImage new_Image);
+
+
+        public event ChandgedItem ImageChaged;
         public ObservableCollection<SliderImage> _sliderImages { get; set; }
 
         public SliderImage selectedImage { get; set; }
@@ -36,6 +41,8 @@ namespace My_steam_client.Templates
         private void PreviousButton_Click(object sender, RoutedEventArgs e)
         {
             currentIndex--;
+
+            Debug.WriteLine(_sliderImages.Count);
 
             if (currentIndex < 0)
             {
@@ -64,6 +71,8 @@ namespace My_steam_client.Templates
             selectedImage.isActive=true;
 
             Scroll?.ScrollToHorizontalOffset(currentIndex * 50);
+
+            ImageChaged?.Invoke(selectedImage);
         }
 
         private void onImageClick(object sender, MouseButtonEventArgs e)

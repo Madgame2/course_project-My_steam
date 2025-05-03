@@ -40,5 +40,47 @@
     "isActive": true,
     "userId": 4,
     "user": null
+  },
+  {
+    "id": 0,
+    "token": "567380e0-6102-4350-aa36-44c7e7cbaaf8",
+    "expires": "2025-05-10T18:48:42.6098227Z",
+    "isExpired": false,
+    "created": "2025-05-03T18:48:42.609822Z",
+    "createdByIp": "::1",
+    "revoked": null,
+    "revokedByIp": null,
+    "replacedByToken": null,
+    "isActive": true,
+    "userId": 4,
+    "user": null
+  },
+  {
+    "id": 0,
+    "token": "9f6a8562-b16e-46d8-a995-aeb631d89f31",
+    "expires": "2025-05-10T19:54:05.5518461Z",
+    "isExpired": false,
+    "created": "2025-05-03T19:54:05.5518457Z",
+    "createdByIp": "::1",
+    "revoked": null,
+    "revokedByIp": null,
+    "replacedByToken": null,
+    "isActive": true,
+    "userId": 4,
+    "user": null
+  },
+  {
+    "id": 0,
+    "token": "28e3a377-34a2-442a-bbe3-4196a3041408",
+    "expires": "2025-05-10T20:59:31.2476774Z",
+    "isExpired": false,
+    "created": "2025-05-03T20:59:31.2476772Z",
+    "createdByIp": "::1",
+    "revoked": null,
+    "revokedByIp": null,
+    "replacedByToken": null,
+    "isActive": true,
+    "userId": 4,
+    "user": null
   }
 ]

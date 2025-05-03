@@ -3,13 +3,25 @@
     "Description": "Description",
     "HeaderImageSource": "https://localhost:7199/images/test.jpg",
     "imageSource": [
-      "hello",
-      "hi"
+      "https://localhost:7199/images/test.jpg",
+      "https://localhost:7199/images/cat2.jpg"
     ],
+    "ratinng": 0,
+    "ReleaseDate": "2025-05-03T14:30:00",
     "PurchaseOption": [
       {
         "PurchaseId": 0,
         "GameName": "testGame",
+        "Price": "15.15"
+      },
+      {
+        "PurchaseId": 0,
+        "GameName": "testGame1",
+        "Price": "15.15"
+      },
+      {
+        "PurchaseId": 0,
+        "GameName": "testGame1",
         "Price": "15.15"
       }
     ],

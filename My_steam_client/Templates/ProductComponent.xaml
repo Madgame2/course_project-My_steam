@@ -5,10 +5,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:My_steam_client.Templates"
+             xmlns:conv="clr-namespace:My_steam_client.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="1080" d:DesignWidth="1920">
     
     <UserControl.Resources>
+        <conv:RatingEnum_to_styles x:Key="RatingEnum_to_styles"/>
+        <conv:Enum_to_string x:Key="Enum_to_string"/>
+        <conv:ImageUniversalConverter x:Key="ImageUniversalConverter"/>
+
         <Style x:Key="BaseTextStyles" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="pack://application:,,,/resources/Fonts/#Rajdhani"/>
         </Style>
@@ -19,7 +24,7 @@
 
         <Style x:Key="Description" TargetType="TextBlock" BasedOn="{StaticResource BaseTextStyles}">
             <Setter Property="Margin" Value="0,0,0,15"/>
-            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontSize" Value="16"/>
         </Style>
 
         <Style x:Key="left" TargetType="TextBlock" BasedOn="{StaticResource BaseTextStyles}">
@@ -39,6 +44,28 @@
             <Setter Property="Foreground" Value="#FF00D1FF"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
+
+        <Style x:Key="ExtrimlyPositive" TargetType="TextBlock" BasedOn="{StaticResource rating_right}">
+            <Setter Property="Foreground" Value="#FF57EFFA"/>
+        </Style>
+        <Style x:Key="VeryPositive" TargetType="TextBlock" BasedOn="{StaticResource rating_right}">
+            <Setter Property="Foreground" Value="#FF448EBE"/>
+        </Style>
+        <Style x:Key="Positive" TargetType="TextBlock" BasedOn="{StaticResource rating_right}">
+            <Setter Property="Foreground" Value="#FF2A619A"/>
+        </Style>
+        <Style x:Key="Mixed" TargetType="TextBlock" BasedOn="{StaticResource rating_right}">
+            <Setter Property="Foreground" Value="#FFAE7D00"/>
+        </Style>
+        <Style x:Key="MostlyNegative" TargetType="TextBlock" BasedOn="{StaticResource rating_right}">
+            <Setter Property="Foreground" Value="#FFAE5E00"/>
+        </Style>
+        <Style x:Key="VeryNegative" TargetType="TextBlock" BasedOn="{StaticResource rating_right}">
+            <Setter Property="Foreground" Value="#FFF45F5F"/>
+        </Style>
+        <Style x:Key="ExtrymlyNegative" TargetType="TextBlock" BasedOn="{StaticResource rating_right}">
+            <Setter Property="Foreground" Value="Red"/>
         </Style>
 
         <Style x:Key="Header-Text" TargetType="TextBlock" BasedOn="{StaticResource BaseTextStyles}">
@@ -168,7 +195,7 @@
                         <RowDefinition Height="80"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Text="Game name" Foreground="White"
+                    <TextBlock Grid.Row="0" Text="{Binding _productDto.GameName}" Foreground="White"
                                Style="{StaticResource Header-Text}"/>
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
@@ -190,7 +217,7 @@
                                         </Grid.RowDefinitions>
 
                                         <Border Grid.Row="0" Margin="0,0,0,10">
-                                            <Image Stretch="Fill" Source="D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\resources\images\test.jpg"/>
+                                            <Image Stretch="Fill" Source="{Binding curentImageLink, Converter={StaticResource ImageUniversalConverter}}"/>
                                         </Border>
                                         <Border Grid.Row="1">
                                             <local:ImagSlider x:Name="_ImageSlider"/>
@@ -200,7 +227,7 @@
                             </Grid>
                             <Grid Grid.Row="1">
                                 <StackPanel Orientation="Vertical">
-                                    <ItemsControl ItemsSource="{Binding _PurchaseOptions}"
+                                    <ItemsControl ItemsSource="{Binding _productDto.PurchaseOptions}"
                                                   ItemTemplate="{StaticResource PurchaseOptionTemplate}"/>
                                     <wv2:WebView2 x:Name="webView"/>
                                 </StackPanel>
@@ -214,21 +241,34 @@
                             </Grid.RowDefinitions>
 
                             <Grid Grid.Row="0">
-                                <Image Stretch="Fill" Source="D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\resources\images\test.jpg"/>
+                                <Image Stretch="Fill" Source="{Binding _productDto.ImageLink}"/>
                             </Grid>
                             <Grid Grid.Row="1">
                                 <Border Padding="15"
                                         Style="{StaticResource ABoutBox}">
                                     <StackPanel Orientation="Vertical">
-                                        <TextBlock TextWrapping="Wrap" Foreground="White" Text="Some Description"
+                                        <TextBlock TextWrapping="Wrap" Foreground="White" Text="{Binding _productDto.Description}"
                                                    Style="{StaticResource Description}"/>
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock TextWrapping="Wrap" Style="{StaticResource left}" Text="Rating:"/>
-                                            <TextBlock Margin="15,0,0,0" Style="{StaticResource rating_right}" TextWrapping="Wrap" Text="some rating"/>
+                                            <TextBlock Margin="15,0,0,0" TextWrapping="Wrap" Text="{Binding _productDto.rating, Converter={StaticResource Enum_to_string}}">
+                                                <TextBlock.Style>
+                                                    <MultiBinding  Converter="{StaticResource RatingEnum_to_styles}">
+                                                        <Binding Path="_productDto.rating" />
+                                                        <Binding Source="{StaticResource ExtrimlyPositive}"/>
+                                                        <Binding Source="{StaticResource VeryPositive}"/>
+                                                        <Binding Source="{StaticResource Positive}"/>
+                                                        <Binding Source="{StaticResource Mixed}"/>
+                                                        <Binding Source="{StaticResource MostlyNegative}"/>
+                                                        <Binding Source="{StaticResource VeryNegative}"/>
+                                                        <Binding Source="{StaticResource ExtrymlyNegative}"/>
+                                                    </MultiBinding>
+                                                </TextBlock.Style>
+                                            </TextBlock>
                                         </StackPanel>
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock TextWrapping="Wrap" Style="{StaticResource left}"  Text="Release date:"/>
-                                            <TextBlock Margin="15,0,0,0" Style="{StaticResource right}" TextWrapping="Wrap" Foreground="White" Text="some date"/>
+                                            <TextBlock Margin="15,0,0,0" Style="{StaticResource right}" TextWrapping="Wrap" Foreground="White" Text="{Binding  _productDto.ReleaseDate, StringFormat='{}{0:dd.MM.yyyy}'}"/>
                                         </StackPanel>
                                     </StackPanel>
                                 </Border>

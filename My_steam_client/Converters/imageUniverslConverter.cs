@@ -1,103 +1,129 @@
 ﻿using SharpVectors.Converters;
 using SharpVectors.Renderers.Wpf;
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Diagnostics;
+using System.Net;
 
 namespace My_steam_client.Converters
 {
     public class ImageUniversalConverter : IValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is not string path || string.IsNullOrEmpty(path))
+            if (value is not string path || string.IsNullOrWhiteSpace(path))
                 return null;
 
-            bool isWebPath = path.StartsWith("http://", StringComparison.OrdinalIgnoreCase)
-                             || path.StartsWith("https://", StringComparison.OrdinalIgnoreCase);
-
-            if (isWebPath)
+            try
             {
-                // Это сетевой путь
-                return LoadBitmapImage(path, isWeb: true);
-            }
-            else
-            {
-                // Это локальный путь
-                path = Path.Combine(
-                    AppDomain.CurrentDomain.BaseDirectory,
-                    "resources",
-                    path);
+                bool isWebPath = path.StartsWith("http://", StringComparison.OrdinalIgnoreCase)
+                              || path.StartsWith("https://", StringComparison.OrdinalIgnoreCase);
 
-                if (!File.Exists(path))
-                    return null;
-
-                string extension = System.IO.Path.GetExtension(path)?.ToLowerInvariant();
-
-                if (extension == ".svg")
+                if (isWebPath)
                 {
-                    return LoadSvgImage(path);
+                    return LoadBitmapImage(path, isWeb: true);
                 }
                 else
                 {
-                    return LoadBitmapImage(path, isWeb: false);
+                    string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "resources", path);
+
+                    if (!File.Exists(fullPath))
+                    {
+                        Debug.WriteLine($"[ImageConverter] Файл не найден: {fullPath}");
+                        return null;
+                    }
+
+                    string extension = Path.GetExtension(fullPath)?.ToLowerInvariant();
+
+                    return extension switch
+                    {
+                        ".svg" => LoadSvgImage(fullPath),
+                        _ => LoadBitmapImage(fullPath,
+                                             isWeb: false)
+                    };
                 }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"[ImageConverter] Ошибка при конвертации: {ex.Message}");
+                return null;
             }
         }
 
-        private BitmapImage LoadBitmapImage(string path, bool isWeb)
+        private BitmapImage? LoadBitmapImage(string path, bool isWeb)
         {
             try
             {
-                var bitmap = new BitmapImage();
-                bitmap.BeginInit();
-                bitmap.CacheOption = BitmapCacheOption.OnLoad;
-
                 if (isWeb)
                 {
-                    bitmap.UriSource = new Uri(path, UriKind.Absolute);
+                    using var webClient = new WebClient();
+                    byte[] imageBytes = webClient.DownloadData(path);
+
+                    using var stream = new MemoryStream(imageBytes);
+                    var bitmap = new BitmapImage();
+
+                    bitmap.BeginInit();
+                    bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmap.StreamSource = stream;
+                    bitmap.EndInit();
+
+                    if (bitmap.CanFreeze)
+                        bitmap.Freeze();
+
+                    return bitmap;
                 }
                 else
                 {
-                    bitmap.UriSource = new Uri(path, UriKind.RelativeOrAbsolute);
-                }
+                    var bitmap = new BitmapImage();
 
-                bitmap.EndInit();
-                bitmap.Freeze();
-                return bitmap;
+                    bitmap.BeginInit();
+                    bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmap.UriSource = new Uri(path, UriKind.Absolute);
+                    bitmap.EndInit();
+
+                    if (bitmap.CanFreeze)
+                        bitmap.Freeze();
+
+                    return bitmap;
+                }
             }
-            catch
+            catch (Exception ex)
             {
+                Debug.WriteLine($"[ImageConverter] Ошибка загрузки изображения: {ex.Message}");
                 return null;
             }
         }
 
-        private DrawingImage LoadSvgImage(string path)
+
+        private DrawingImage? LoadSvgImage(string path)
         {
             try
             {
-                var settings = new WpfDrawingSettings();
-                var reader = new FileSvgReader(settings);
+                var settings = new WpfDrawingSettings
+                {
+                    IncludeRuntime = false,
+                    TextAsGeometry = false
+                };
 
+                var reader = new FileSvgReader(settings);
                 var drawing = reader.Read(path);
+
                 if (drawing != null)
                 {
-                    var drawingImage = new DrawingImage(drawing);
-                    drawingImage.Freeze();
-                    return drawingImage;
+                    var image = new DrawingImage(drawing);
+                    if (image.CanFreeze)
+                        image.Freeze();
+
+                    return image;
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                // Ошибка чтения SVG
+                Debug.WriteLine($"[ImageConverter] Ошибка загрузки SVG: {ex.Message}");
             }
+
             return null;
         }
 
@@ -106,5 +132,5 @@ namespace My_steam_client.Converters
             throw new NotImplementedException();
         }
     }
-
 }
+

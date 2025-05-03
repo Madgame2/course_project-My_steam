@@ -110,3 +110,4 @@ D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\
 D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\bin\Debug\net8.0-windows\Microsoft.Web.WebView2.WinForms.xml
 D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\bin\Debug\net8.0-windows\Microsoft.Web.WebView2.Wpf.xml
 D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\bin\Debug\net8.0-windows\Markdig.dll
+D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\bin\Debug\net8.0-windows\resoures\images\cat2.jpg

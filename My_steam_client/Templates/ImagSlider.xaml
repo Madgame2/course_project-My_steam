@@ -19,7 +19,7 @@
                     Margin="5,0,5,0"
                     MouseDown="onImageClick"
                     Cursor="Hand">
-                <Image Source="{Binding ImageLink}"
+                <Image Source="{Binding ImageLink, Converter={StaticResource imageUniverslConverter}}"
                        Stretch="Fill"/>
             </Border>
             <DataTemplate.Triggers>

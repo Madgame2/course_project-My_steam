@@ -11,6 +11,8 @@ namespace Game_Net_DTOLib
         public int GameId { get; set; }
         public string GameName { get; set; }
         public string Description { get; set; }
+
+        public DateTime ReleaseDate { get; set; }
         public Ratinng rating { get; set; }
 
         public string ImageLink { get; set; }
@@ -23,7 +25,7 @@ namespace Game_Net_DTOLib
     {
         Extrimly_positive,
         Very_positive,
-        Posotive,
+        Positive,
         Mixed,
         Mostly_negative,
         Very_negative,

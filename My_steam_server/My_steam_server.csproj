@@ -7,6 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="resoures\images\cat2.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="resoures\images\cat2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.6" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.8.0" />
   </ItemGroup>
@@ -14,10 +24,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Game_Net-DTOLib\Game_Net-DTOLib.csproj" />
     <ProjectReference Include="..\My_steam_client\Game_Net-DTOLib\Game_Net-DTOLib.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="resoures\images\" />
   </ItemGroup>
 
 </Project>
