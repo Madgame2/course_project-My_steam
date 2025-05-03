@@ -10,4 +10,9 @@ namespace Game_Net
     {
         public UndefinedProtocolException(Protocol protocol,string message) : base($"protocol: {protocol} is undefinded message:{message}") { }
     }
+
+    public class NotFoundExaption: Exception
+    {
+        public NotFoundExaption(string message) : base(message) { }
+    }
 }

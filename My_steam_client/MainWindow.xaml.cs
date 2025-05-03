@@ -1,15 +1,8 @@
-﻿using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using My_steam_client.Controls;
 using My_steam_client.Templates;
+using Game_Net_DTOLib;
 
 namespace My_steam_client
 {
@@ -64,10 +57,10 @@ namespace My_steam_client
             NavigateTo(null);
         }
 
-        public void toProductPage()
+        public void toProductPage(ProductDto dto)
         {
             SideButtonGroup.setAllUncehceked("MainNav");
-            NavigateTo(new ProductComponent());
+            NavigateTo(new ProductComponent(dto));
         }
     }
 }

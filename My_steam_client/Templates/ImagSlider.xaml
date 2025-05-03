@@ -17,7 +17,8 @@
                     Width="100"
                     Height="80"
                     Margin="5,0,5,0"
-                    MouseDown="onImageClick">
+                    MouseDown="onImageClick"
+                    Cursor="Hand">
                 <Image Source="{Binding ImageLink}"
                        Stretch="Fill"/>
             </Border>
@@ -35,7 +36,7 @@
             <Setter Property="Width" Value="45"/>
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="BorderBrush" Value="White"/>
-
+            <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">

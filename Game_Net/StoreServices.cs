@@ -47,5 +47,37 @@ namespace Game_Net
 
             return null;
         }
+
+
+        public async Task<ProductDto?> GetGamePageAsync(int GameId)
+        {
+            try
+            {
+                try
+                {
+                    var result = await _commMennager.SendMessageRest<ProductDto>($"api/Goods/GamePage/{GameId}", Protocol.Https);
+
+                    if (result.Success)
+                    {
+                        return result.data;
+                    }
+                }
+                catch (UndefinedProtocolException ex)
+                {
+                    var result = await _commMennager.SendMessageRest<ProductDto>($"api/Goods/GamePage/{GameId}", Protocol.Http);
+
+                    if (result.Success)
+                    {
+                        return result.data;
+                    }
+                }
+            }
+            catch(HttpRequestException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                throw new NotFoundExaption(ex.Message);
+            }
+
+            return null;
+        }
     }
 }

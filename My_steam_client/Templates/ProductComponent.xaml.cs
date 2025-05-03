@@ -12,8 +12,12 @@ namespace My_steam_client.Templates
     {
         public List<PurchaseOption> _PurchaseOptions { get; set; }
 
-        public ProductComponent()
+        private ProductDto _productDto;
+
+        public ProductComponent(ProductDto dto)
         {
+            _productDto = dto;
+
             InitializeComponent();
 
             _PurchaseOptions = new List<PurchaseOption>

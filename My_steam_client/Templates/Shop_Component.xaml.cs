@@ -5,6 +5,7 @@ using My_steam_client.Controls;
 using My_steam_client.Scripts;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -80,9 +81,25 @@ namespace My_steam_client.Templates
             return newSliderComponent;
         }
 
-        private void ToGamePage(int gameId)
+        private async Task ToGamePage(int gameId)
         {
-            _mainWindow.toProductPage();
+            try
+            {
+                var service = AppServices.Provider.GetRequiredService<StoreServices>();
+
+                var result = await service.GetGamePageAsync(gameId);
+
+                if(result != null) 
+                _mainWindow.toProductPage(result);
+            }
+            catch (NotFoundExaption) {
+
+                Debug.WriteLine("404 code");
+
+                return;
+            }
+
+            
         }
     }
 }

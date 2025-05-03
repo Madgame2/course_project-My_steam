@@ -40,6 +40,29 @@ namespace My_steam_server.Controllers
             return Ok(game);
         }
 
+        [HttpGet("GamePage/{id:int}")]
+        public async Task<IActionResult> GetGamepage(int id)
+        {
+            var result = await _goodsService_games.GetGoodByIdAsync(id);
+
+            if (result.resultCode == ResultCode.WrongGoodId) return NotFound();
+
+
+            var game = result.data;
+            var GameDto = new Game_Net_DTOLib.ProductDto {
+                GameId = game.Id,
+                GameName = game.Name,
+                Description = game.Description,
+                ImageLink = game.HeaderImageSource,
+                imagesLinks = new List<string> ( game.imageSource )  ,
+                PurchaseOptions = new List<PurchaseOption> ( game.PurchaseOption )
+            };
+
+            var response = new NetResponse<ProductDto> { Success = true, data=GameDto };
+
+            return Ok(response);
+        }
+
         [HttpGet("Game")]
         public async Task<IActionResult> GetAllGame(int id)
         {

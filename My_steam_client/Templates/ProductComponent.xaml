@@ -13,12 +13,47 @@
             <Setter Property="FontFamily" Value="pack://application:,,,/resources/Fonts/#Rajdhani"/>
         </Style>
 
+        <Style x:Key="ABoutBox" TargetType="Border">
+            <Setter Property="Background" Value="#FF272337"/>
+        </Style>
+
+        <Style x:Key="Description" TargetType="TextBlock" BasedOn="{StaticResource BaseTextStyles}">
+            <Setter Property="Margin" Value="0,0,0,15"/>
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
+
+        <Style x:Key="left" TargetType="TextBlock" BasedOn="{StaticResource BaseTextStyles}">
+            <Setter Property="Foreground" Value="Gray"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
+
+
+        <Style x:Key="right" TargetType="TextBlock" BasedOn="{StaticResource BaseTextStyles}">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
+
+        <Style x:Key="rating_right" TargetType="TextBlock" BasedOn="{StaticResource BaseTextStyles}">
+            <Setter Property="Foreground" Value="#FF00D1FF"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
+
+        <Style x:Key="Header-Text" TargetType="TextBlock" BasedOn="{StaticResource BaseTextStyles}">
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+        </Style>
+        
         <Style x:Key="PurchaseTemlate_Button" TargetType="Button">
             <Setter Property="OverridesDefaultStyle" Value="True"/>
             <Setter Property="Padding" Value="15,0,15,0"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="FontFamily" Value="pack://application:,,,/resources/Fonts/#Rajdhani"/>
+            <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Background">
                 <Setter.Value>
                     <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
@@ -133,7 +168,8 @@
                         <RowDefinition Height="80"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Text="Game name" Foreground="White"/>
+                    <TextBlock Grid.Row="0" Text="Game name" Foreground="White"
+                               Style="{StaticResource Header-Text}"/>
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="0.65*"/>
@@ -181,16 +217,18 @@
                                 <Image Stretch="Fill" Source="D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\resources\images\test.jpg"/>
                             </Grid>
                             <Grid Grid.Row="1">
-                                <Border Padding="15">
+                                <Border Padding="15"
+                                        Style="{StaticResource ABoutBox}">
                                     <StackPanel Orientation="Vertical">
-                                        <TextBlock TextWrapping="Wrap" Foreground="White" Text="Some Description"/>
+                                        <TextBlock TextWrapping="Wrap" Foreground="White" Text="Some Description"
+                                                   Style="{StaticResource Description}"/>
                                         <StackPanel Orientation="Horizontal">
-                                            <TextBlock TextWrapping="Wrap" Foreground="White" Text="Rating:"/>
-                                            <TextBlock Margin="15,0,0,0" TextWrapping="Wrap" Foreground="White" Text="some rating"/>
+                                            <TextBlock TextWrapping="Wrap" Style="{StaticResource left}" Text="Rating:"/>
+                                            <TextBlock Margin="15,0,0,0" Style="{StaticResource rating_right}" TextWrapping="Wrap" Text="some rating"/>
                                         </StackPanel>
                                         <StackPanel Orientation="Horizontal">
-                                            <TextBlock TextWrapping="Wrap" Foreground="White" Text="Release date:"/>
-                                            <TextBlock Margin="15,0,0,0" TextWrapping="Wrap" Foreground="White" Text="some date"/>
+                                            <TextBlock TextWrapping="Wrap" Style="{StaticResource left}"  Text="Release date:"/>
+                                            <TextBlock Margin="15,0,0,0" Style="{StaticResource right}" TextWrapping="Wrap" Foreground="White" Text="some date"/>
                                         </StackPanel>
                                     </StackPanel>
                                 </Border>

@@ -1,4 +1,6 @@
-﻿namespace My_steam_server.Models
+﻿using Game_Net_DTOLib;
+
+namespace My_steam_server.Models
 {
     public class Game : Good
     {
@@ -6,6 +8,8 @@
         public string Description { get; set; }
         public string[] imageSource {  get; set; }
         public string HeaderImageSource { get; set; }
+
+        public PurchaseOption[] PurchaseOption { get; set; }
 
         public override bool Equals(object? obj)
         {
