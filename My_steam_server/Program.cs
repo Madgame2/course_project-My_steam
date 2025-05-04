@@ -26,6 +26,7 @@ try
     var GoodsFilepath = config["JsonRepository:GoodsFilePath"];
 
     builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+    builder.Services.AddSingleton<IResources, ResourcesService>();
     builder.Services.AddSingleton<IUserRepository, JsonUserRepository>(provider => new JsonUserRepository(filePath));
     builder.Services.AddSingleton<IRefreshTokenRepository, JsonRefreshTokenRepository>(provider => new JsonRefreshTokenRepository(TokenFilepath));
     builder.Services.AddSingleton<IGoodRepository<Game>>(provider => new JsonGoodsRepository<Game>(GoodsFilepath));

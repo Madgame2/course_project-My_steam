@@ -10,6 +10,7 @@
         "dependencies": {
           "Game_Net": "1.0.0",
           "Markdig": "0.41.1",
+          "Markdig.Wpf": "0.5.0.1",
           "Microsoft.Extensions.DependencyInjection": "9.0.4",
           "Microsoft.Web.WebView2": "1.0.3179.45",
           "Microsoft.Xaml.Behaviors.Wpf": "1.1.135",
@@ -28,6 +29,17 @@
           "lib/net8.0/Markdig.dll": {
             "assemblyVersion": "0.41.0.0",
             "fileVersion": "0.41.1.0"
+          }
+        }
+      },
+      "Markdig.Wpf/0.5.0.1": {
+        "dependencies": {
+          "Markdig": "0.41.1"
+        },
+        "runtime": {
+          "lib/net5.0-windows7.0/Markdig.Wpf.dll": {
+            "assemblyVersion": "0.5.0.1",
+            "fileVersion": "0.5.0.1"
           }
         }
       },
@@ -294,6 +306,13 @@
       "sha512": "sha512-e9QXUg2agxd9iWV3hO5fA4Qp2avMuXFiElatzD8hp69yIEgESrdhKvDFf9y9NOlPe9jO7AA6W1JAnntLmqwRwA==",
       "path": "markdig/0.41.1",
       "hashPath": "markdig.0.41.1.nupkg.sha512"
+    },
+    "Markdig.Wpf/0.5.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lQRxu90ZqCATHTvd25yR/MxXABYA+Xcp7tmKW5jReTIgegB+AcU0+cd1GqdpM5k2KRVaD8BkBYQFdDw0lquT4w==",
+      "path": "markdig.wpf/0.5.0.1",
+      "hashPath": "markdig.wpf.0.5.0.1.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.6": {
       "type": "package",

@@ -47,5 +47,20 @@ namespace Game_Net
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
+
+        public async Task<Stream> GetStreamAsync(string endPoint, string token)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, endPoint);
+
+            if (!string.IsNullOrEmpty(token))
+            {
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            }
+
+            HttpResponseMessage response = await _httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
+            return await response.Content.ReadAsStreamAsync();
+        }
     }
 }

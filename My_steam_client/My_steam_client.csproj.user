@@ -22,6 +22,9 @@
     <Compile Update="Templates\ImagSlider.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Templates\LibraryComponent.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Templates\NoConnetrion.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -73,6 +76,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\ImagSlider.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Templates\LibraryComponent.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\NoConnetrion.xaml">

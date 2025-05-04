@@ -14,6 +14,14 @@
           }
         }
       },
+      "Markdown.Xaml/1.0.0": {
+        "runtime": {
+          "lib/net45/Markdown.Xaml.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.6": {
         "dependencies": {
           "Microsoft.IdentityModel.Protocols.OpenIdConnect": "7.1.2"
@@ -222,6 +230,13 @@
       "sha512": "sha512-e9QXUg2agxd9iWV3hO5fA4Qp2avMuXFiElatzD8hp69yIEgESrdhKvDFf9y9NOlPe9jO7AA6W1JAnntLmqwRwA==",
       "path": "markdig/0.41.1",
       "hashPath": "markdig.0.41.1.nupkg.sha512"
+    },
+    "Markdown.Xaml/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TgDok7ZwYJ419hMB432zQXI6effszN2h36eQ+MAN1zR6WEvnuY3rBnM0MDh3t55JTFdK1T5VZZmwBdJukhMr5Q==",
+      "path": "markdown.xaml/1.0.0",
+      "hashPath": "markdown.xaml.1.0.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.6": {
       "type": "package",

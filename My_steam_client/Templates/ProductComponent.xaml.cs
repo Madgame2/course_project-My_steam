@@ -4,6 +4,9 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using Game_Net_DTOLib;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Web.WebView2.Core;
+using My_steam_client.Scripts;
 
 namespace My_steam_client.Templates
 {
@@ -49,8 +52,19 @@ namespace My_steam_client.Templates
             _ImageSlider.ImageChaged += (newImage) => { curentImageLink = newImage.ImageLink; };
 
             DataContext = this;
-            Loaded += ProductComponent_Loaded;
+
+
         }
+
+        //private async void WebWiew()
+        //{
+        //    if (_productDto.MdFileSourcce == null) return;
+
+        //    var service = AppServices.Provider.GetRequiredService<Game_Net.ResourcesService>();
+        //    var mdString = await service.GetMarkdownStreamAsync(_productDto.MdFileSourcce);
+        //    //markdownViewer.Markdown = mdString;
+
+        //}
 
         private ObservableCollection<SliderImage> InitSlider(List<string> imagesSource)
         {
@@ -74,13 +88,6 @@ namespace My_steam_client.Templates
             }
 
             return result;
-        }
-
-        private async void ProductComponent_Loaded(object sender, RoutedEventArgs e)
-        {
-            Loaded -= ProductComponent_Loaded; 
-            await webView.EnsureCoreWebView2Async();
-            
         }
     }
 }

@@ -257,6 +257,10 @@
               "target": "Package",
               "version": "[0.41.1, )"
             },
+            "Markdown.Xaml": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
               "version": "[9.0.4, )"

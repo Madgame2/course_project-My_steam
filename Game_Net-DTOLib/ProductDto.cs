@@ -12,6 +12,7 @@ namespace Game_Net_DTOLib
         public string GameName { get; set; }
         public string Description { get; set; }
 
+        public string MdFileSourcce { get; set; }
         public DateTime ReleaseDate { get; set; }
         public Ratinng rating { get; set; }
 

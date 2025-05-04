@@ -9,13 +9,13 @@ namespace My_steam_client.Scripts
 {
     public static class MDReader
     {
-        public static string MDtoHTML(string mdText)
-        {
-            var pipleine = new MarkdownPipelineBuilder()
-                .UseAdvancedExtensions()
-                .Build();
+        //public static string MDtoHTML(string mdText)
+        //{
+        //    var pipleine = new MarkdownPipelineBuilder()
+        //        .UseAdvancedExtensions()
+        //        .Build();
 
-            return Markdown.ToHtml(mdText, pipleine);
-        }
+        //    return Markdown.ToHtml(mdText, pipleine);
+        //}
     }
 }

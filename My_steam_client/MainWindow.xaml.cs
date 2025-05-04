@@ -13,6 +13,7 @@ namespace My_steam_client
     {
 
         private Shop_Component? shopPage = null;
+        private LibraryComponent? libraryPage = null;
 
         public MainWindow()
         {
@@ -44,7 +45,11 @@ namespace My_steam_client
 
         private void toLib(object sender, RoutedEventArgs e)
         {
-            NavigateTo(null);
+            if (libraryPage == null) {
+                libraryPage = new LibraryComponent();
+            }
+
+            NavigateTo(libraryPage);
         }
 
         private void toStat(object sender, RoutedEventArgs e)

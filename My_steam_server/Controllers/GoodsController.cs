@@ -54,6 +54,7 @@ namespace My_steam_server.Controllers
                 GameName = game.Name,
                 Description = game.Description,
                 ImageLink = game.HeaderImageSource,
+                MdFileSourcce = game.MdFileSorce,
                 ReleaseDate = game.ReleaseDate,
                 rating = game.ratinng,
                 imagesLinks = new List<string> ( game.imageSource )  ,

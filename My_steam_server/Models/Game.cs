@@ -9,6 +9,7 @@ namespace My_steam_server.Models
         public string[] imageSource {  get; set; }
         public string HeaderImageSource { get; set; }
 
+        public string MdFileSorce {  get; set; }
         public Ratinng ratinng { get; set; }
 
         public DateTime ReleaseDate { get; set; }

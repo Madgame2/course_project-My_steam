@@ -134,5 +134,12 @@ namespace Game_Net
                 throw new UndefinedProtocolException(protocol, "");
             }
         }
+
+        public async Task<Stream?> GetResourcesAsyc(string endPoint)
+        {
+           var stream = await _restClient.GetStreamAsync(endPoint, JWT_token);
+           return stream;
+            
+        }
     }
 }

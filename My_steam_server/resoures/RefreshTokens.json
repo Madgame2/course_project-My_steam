@@ -82,5 +82,47 @@
     "isActive": true,
     "userId": 4,
     "user": null
+  },
+  {
+    "id": 0,
+    "token": "5406fceb-4deb-45e6-9937-add4cf7af764",
+    "expires": "2025-05-11T11:22:32.8474308Z",
+    "isExpired": false,
+    "created": "2025-05-04T11:22:32.8474304Z",
+    "createdByIp": "::1",
+    "revoked": null,
+    "revokedByIp": null,
+    "replacedByToken": null,
+    "isActive": true,
+    "userId": 4,
+    "user": null
+  },
+  {
+    "id": 0,
+    "token": "ab19538d-4816-43a7-92d7-4c78b57759a7",
+    "expires": "2025-05-11T12:27:46.6626644Z",
+    "isExpired": false,
+    "created": "2025-05-04T12:27:46.6626635Z",
+    "createdByIp": "::1",
+    "revoked": null,
+    "revokedByIp": null,
+    "replacedByToken": null,
+    "isActive": true,
+    "userId": 4,
+    "user": null
+  },
+  {
+    "id": 0,
+    "token": "68f18081-ea38-4296-b4ee-2733082038a3",
+    "expires": "2025-05-11T14:09:15.4252249Z",
+    "isExpired": false,
+    "created": "2025-05-04T14:09:15.4252247Z",
+    "createdByIp": "::1",
+    "revoked": null,
+    "revokedByIp": null,
+    "replacedByToken": null,
+    "isActive": true,
+    "userId": 4,
+    "user": null
   }
 ]

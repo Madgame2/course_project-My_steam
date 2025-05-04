@@ -15,6 +15,15 @@
           }
         }
       },
+      "Markdown.Xaml/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Markdown.Xaml.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Markdown.Xaml.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.6": {
         "type": "package",
         "dependencies": {
@@ -393,6 +402,18 @@
         "markdig.nuspec",
         "markdig.png",
         "readme.md"
+      ]
+    },
+    "Markdown.Xaml/1.0.0": {
+      "sha512": "TgDok7ZwYJ419hMB432zQXI6effszN2h36eQ+MAN1zR6WEvnuY3rBnM0MDh3t55JTFdK1T5VZZmwBdJukhMr5Q==",
+      "type": "package",
+      "path": "markdown.xaml/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Markdown.Xaml.dll",
+        "markdown.xaml.1.0.0.nupkg.sha512",
+        "markdown.xaml.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.6": {
@@ -1056,6 +1077,7 @@
     "net8.0-windows7.0": [
       "Game_Net >= 1.0.0",
       "Markdig >= 0.41.1",
+      "Markdown.Xaml >= 1.0.0",
       "Microsoft.Extensions.DependencyInjection >= 9.0.4",
       "Microsoft.Web.WebView2 >= 1.0.3179.45",
       "Microsoft.Xaml.Behaviors.Wpf >= 1.1.135",
@@ -1121,6 +1143,10 @@
             "target": "Package",
             "version": "[0.41.1, )"
           },
+          "Markdown.Xaml": {
+            "target": "Package",
+            "version": "[1.0.0, )"
+          },
           "Microsoft.Extensions.DependencyInjection": {
             "target": "Package",
             "version": "[9.0.4, )"
@@ -1164,5 +1190,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Пакет \"Markdown.Xaml 1.0.0\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\", а не целевой платформы проекта \"net8.0-windows7.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
+      "libraryId": "Markdown.Xaml",
+      "targetGraphs": [
+        "net8.0-windows7.0"
+      ]
+    }
+  ]
 }
