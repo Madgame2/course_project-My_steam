@@ -3,10 +3,112 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:My_steam_client.Templates"
+             xmlns:conv="clr-namespace:My_steam_client.Converters"
+             xmlns:local="clr-namespace:My_steam_client.Templates" xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="Aqua">
-            
+    <UserControl.Resources>
+        <conv:ImageUniversalConverter x:Key="ImageUniversalConverter"/>
+        <conv:LibItemConverter x:Key="LibItemConverter"/>
+
+        <Style x:Key="BaseTextStyles" TargetType="Control">
+            <Setter Property="FontFamily" Value="pack://application:,,,/resources/Fonts/#Rajdhani"/>
+        </Style>
+        <Style x:Key="BaseTextBlockStyles" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="pack://application:,,,/resources/Fonts/#Rajdhani"/>
+        </Style>
+        
+
+        <Style x:Key="GameList_border" TargetType="Border">
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="Margin" Value="0,5,5,5"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Background" Value="#FF262637"/>
+        </Style>
+
+        <Style x:Key="LibItem_border" TargetType="Border">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Padding" Value="10,5,0,5"/>
+        </Style>
+
+        <Style x:Key="LibItem_text" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyles}">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="10,0,0,0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+
+        <DataTemplate x:Key="LibItem">
+            <Grid>
+                <Rectangle Fill="#FF444444">
+                    <Rectangle.Opacity>
+                        <MultiBinding Converter="{StaticResource LibItemConverter}">
+                            <Binding Path="isActive" />
+                            <Binding Path="IsMouseOver" RelativeSource="{RelativeSource AncestorType=Border}"/>
+                            <Binding>
+                                <Binding.Source>
+                                    <sys:Double>0.4</sys:Double>
+                                </Binding.Source>
+                            </Binding>
+                            <Binding>
+                                <Binding.Source>
+                                    <sys:Double>0.2</sys:Double>
+                                </Binding.Source>
+                            </Binding>
+                        </MultiBinding>
+                    </Rectangle.Opacity>
+                </Rectangle>
+                <Border Style="{StaticResource LibItem_border}" MouseLeftButtonUp="OnItemClick">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="{Binding Path=ActualHeight, RelativeSource={RelativeSource AncestorType=Border}}"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Stretch="Fill" Grid.Column="0" Source="{Binding ImageLink, Converter={StaticResource ImageUniversalConverter}}"/>
+                        <TextBlock  Grid.Column="1" Text="{Binding GameName}" Style="{StaticResource LibItem_text}"/>
+                    </Grid>
+                </Border>
+            </Grid>
+        </DataTemplate>
+
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="30"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.25*"/>
+                <ColumnDefinition Width="0.75*"/>
+            </Grid.ColumnDefinitions>
+
+
+            <Grid Grid.Column="0">
+                <Border Style="{StaticResource GameList_border}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+
+                        <Grid Grid.Row="0">
+                            <local:SearchLable/>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden" CanContentScroll="True" PanningMode="Both">
+                                <ItemsControl ItemsSource="{Binding Library}" ItemTemplate="{StaticResource LibItem}"/>
+                            </ScrollViewer>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
+            <Grid Grid.Column="1" Background="Gainsboro"></Grid>
+        </Grid>
     </Grid>
 </UserControl>

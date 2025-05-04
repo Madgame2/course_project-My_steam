@@ -10,7 +10,7 @@
         "dependencies": {
           "Game_Net": "1.0.0",
           "Markdig": "0.41.1",
-          "Markdig.Wpf": "0.5.0.1",
+          "Markdown.Xaml": "1.0.0",
           "Microsoft.Extensions.DependencyInjection": "9.0.4",
           "Microsoft.Web.WebView2": "1.0.3179.45",
           "Microsoft.Xaml.Behaviors.Wpf": "1.1.135",
@@ -32,14 +32,11 @@
           }
         }
       },
-      "Markdig.Wpf/0.5.0.1": {
-        "dependencies": {
-          "Markdig": "0.41.1"
-        },
+      "Markdown.Xaml/1.0.0": {
         "runtime": {
-          "lib/net5.0-windows7.0/Markdig.Wpf.dll": {
-            "assemblyVersion": "0.5.0.1",
-            "fileVersion": "0.5.0.1"
+          "lib/net45/Markdown.Xaml.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
           }
         }
       },
@@ -307,12 +304,12 @@
       "path": "markdig/0.41.1",
       "hashPath": "markdig.0.41.1.nupkg.sha512"
     },
-    "Markdig.Wpf/0.5.0.1": {
+    "Markdown.Xaml/1.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-lQRxu90ZqCATHTvd25yR/MxXABYA+Xcp7tmKW5jReTIgegB+AcU0+cd1GqdpM5k2KRVaD8BkBYQFdDw0lquT4w==",
-      "path": "markdig.wpf/0.5.0.1",
-      "hashPath": "markdig.wpf.0.5.0.1.nupkg.sha512"
+      "sha512": "sha512-TgDok7ZwYJ419hMB432zQXI6effszN2h36eQ+MAN1zR6WEvnuY3rBnM0MDh3t55JTFdK1T5VZZmwBdJukhMr5Q==",
+      "path": "markdown.xaml/1.0.0",
+      "hashPath": "markdown.xaml.1.0.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.6": {
       "type": "package",
