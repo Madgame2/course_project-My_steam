@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="My_steam_client.Templates.DownLoadInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:My_steam_client.Templates"
+             xmlns:conv="clr-namespace:My_steam_client.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="60" d:DesignWidth="160">
+
+    <UserControl.Resources>
+        <conv:SizeToStringConverter x:Key="SizeToStringConverter"/>
+
+        <Style x:Key="DefoultTextStyles" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="pack://application:,,,/resources/Fonts/#Rajdhani"/>
+        </Style>
+
+        <Style x:Key="TopPart" TargetType="TextBlock" BasedOn="{StaticResource DefoultTextStyles}">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+        <Style x:Key="BottomPart" TargetType="TextBlock" BasedOn="{StaticResource DefoultTextStyles}">
+            <Setter Property="Foreground" Value="#FFC6C6C6"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,5,0,0"/>
+        </Style>
+
+        <Style x:Key="CommonBorderStyle" TargetType="Border">
+            <Setter Property="Padding" Value="6"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Border Style="{StaticResource CommonBorderStyle}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Style="{StaticResource TopPart}" Text="SPACE REQUIRED"/>
+            <TextBlock Grid.Row="1" Style="{StaticResource BottomPart}" Text="{Binding InstallSizeBytes,Converter={StaticResource SizeToStringConverter}}"/>
+        </Grid>
+    </Border>
+</UserControl>

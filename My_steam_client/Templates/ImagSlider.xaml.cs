@@ -94,6 +94,7 @@ namespace My_steam_client.Templates
                 selectedImage.isActive = true;
 
             }
+            ImageChaged?.Invoke(selectedImage);
         }
     }
 }

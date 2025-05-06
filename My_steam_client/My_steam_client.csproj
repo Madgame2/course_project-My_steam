@@ -15,10 +15,12 @@
     <None Remove="resources\Gif\cute-cat.gif" />
     <None Remove="resources\Gif\Ping_icon.gif" />
     <None Remove="resources\images\cart-trolley-ui-5-svgrepo-com.svg" />
+    <None Remove="resources\images\download.svg" />
     <None Remove="resources\images\Icon.png" />
     <None Remove="resources\images\Left.png" />
     <None Remove="resources\images\no-image.svg" />
     <None Remove="resources\images\NoConnetion.png" />
+    <None Remove="resources\images\play.svg" />
     <None Remove="resources\images\Right.png" />
     <None Remove="resources\images\Search.svg" />
     <None Remove="resources\images\shopping-cart-svgrepo-com.png" />
@@ -45,6 +47,9 @@
     <Content Include="resources\images\cart-trolley-ui-5-svgrepo-com.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="resources\images\download.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="resources\images\Icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -55,6 +60,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\images\NoConnetion.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\images\play.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\images\Right.png">

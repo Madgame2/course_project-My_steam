@@ -108,7 +108,9 @@
                     </Grid>
                 </Border>
             </Grid>
-            <Grid Grid.Column="1" Background="Gainsboro"></Grid>
+            <Grid Grid.Column="1">
+                <ContentPresenter x:Name="Root"/>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>

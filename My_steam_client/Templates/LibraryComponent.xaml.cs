@@ -54,6 +54,9 @@ namespace My_steam_client.Templates
 
             selecteditem = currentItem;
             currentItem.isActive = true;
+
+
+            Root.Content = new LibraryGamePageComponent();
         }
     }
 }

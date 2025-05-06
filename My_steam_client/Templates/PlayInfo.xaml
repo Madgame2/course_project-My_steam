@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="My_steam_client.Templates.PlayInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:My_steam_client.Templates"
+             xmlns:conv ="clr-namespace:My_steam_client.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="400">
+    <UserControl.Resources>
+        <conv:DateTimeToSting x:Key="DateTimeToSting"/>
+        <conv:TimeSpanFormatConverter x:Key="TimeSpanFormatConverter"/>
+
+        <Style x:Key="DefoultTextStyles" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="pack://application:,,,/resources/Fonts/#Rajdhani"/>
+        </Style>
+
+        <Style x:Key="TopPart" TargetType="TextBlock" BasedOn="{StaticResource DefoultTextStyles}">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+        <Style x:Key="BottomPart" TargetType="TextBlock" BasedOn="{StaticResource DefoultTextStyles}">
+            <Setter Property="Foreground" Value="#FFC6C6C6"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,5,0,0"/>
+        </Style>
+
+        <Style x:Key="CommonBorderStyle" TargetType="Border">
+            <Setter Property="Padding" Value="6"/>
+        </Style>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Border Style="{StaticResource CommonBorderStyle}" Margin="0,0,10,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Style="{StaticResource TopPart}" Grid.Row="0" Text="LAST PLAYED"/>
+                    <TextBlock Style="{StaticResource BottomPart}" Grid.Row="1" Text="{Binding lastLaynch, Converter={StaticResource DateTimeToSting}}"/>
+                </Grid>
+            </Border>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Border Style="{StaticResource CommonBorderStyle}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Style="{StaticResource TopPart}" Grid.Row="0" Text="PLAY TIME"/>
+                    <TextBlock Style="{StaticResource BottomPart}" Grid.Row="1" Text="{Binding PlayTime,Converter={StaticResource TimeSpanFormatConverter}}"/>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>
