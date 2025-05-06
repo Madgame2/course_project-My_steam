@@ -7,8 +7,8 @@ namespace My_steam_server.Interfaces
     public interface IAuthService
     {
         Task<NetResponse<bool>> RegisterAsync(RegisterDto dto);
-        Task<NetResponse<string>> LoginAsync(LoginDto dto);
-        Task<NetResponse<string>> RefreshTokenAsync(string refreshToken);
+        Task<NetResponse<LogInSecsessDto>> LoginAsync(LoginDto dto);
+        Task<NetResponse<LogInSecsessDto>> RefreshTokenAsync(string refreshToken);
 
     }
 }

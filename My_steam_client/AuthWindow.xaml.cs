@@ -84,12 +84,14 @@ namespace My_steam_client
 
                 var result = await service.isValid_JWT_Token();
 
-                if (result.data)
+                if (result.Success)
                 {
 
                     var mainWindow = new MainWindow();
                     Application.Current.MainWindow = mainWindow;
                     mainWindow.Show();
+
+                    AppServices.UserId = result.data;
 
                     this.Close();
                 }
@@ -102,7 +104,7 @@ namespace My_steam_client
 
                     if (result.Success)
                     {
-                        Tokens.TryParse(result.data, out tokens);
+                        Tokens.TryParse(result.data.tokens, out tokens);
 
                         manager.JWT_token = tokens.JWT;
                         manager.RefrashToken = tokens.Refresh;
@@ -112,6 +114,8 @@ namespace My_steam_client
                         var mainWindow = new MainWindow();
                         Application.Current.MainWindow = mainWindow;
                         mainWindow.Show();
+
+                        AppServices.UserId = result.data.id;
 
                         this.Close();
                     }

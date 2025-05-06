@@ -27,19 +27,19 @@ namespace My_steam_server.Services
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task<NetResponse<string>> LoginAsync(LoginDto dto)
+        public async Task<NetResponse<LogInSecsessDto?>> LoginAsync(LoginDto dto)
         {
             var user = await _userRepository.GetByEmailAsync(dto.Email);
             if (user == null) {
                 
-                return new NetResponse<string> { resultCode = ResultCode.UserNotfound,Success=false,Message=$"user email: {dto.Email} not found",data=string.Empty};
+                return new NetResponse<LogInSecsessDto?> { resultCode = ResultCode.UserNotfound,Success=false,Message=$"user email: {dto.Email} not found",data=default};
             }
 
             var result = _passwordHasher.VerifyHashedPassword(user,user.PasswordHash, dto.Password);
             if (result == PasswordVerificationResult.Failed)
             {
                 //тут вернуть исключнение не верный паароль
-                return new NetResponse<string> {Success=false,resultCode=ResultCode.WrongPassword, Message=$"user email {dto.Email}\n is uncorect",data=string.Empty};
+                return new NetResponse<LogInSecsessDto?> {Success=false,resultCode=ResultCode.WrongPassword, Message=$"user email {dto.Email}\n is uncorect",data=default};
             }
 
 
@@ -59,24 +59,24 @@ namespace My_steam_server.Services
             var accessToken = tokenHandler.CreateToken(tokenDescriptor);
             var refreshToken = await GenerateRefreshTokenAsync(user);
 
-            return new NetResponse<string>
+            return new NetResponse<LogInSecsessDto?>
             {
                 Success = true,
-                data = new { AccessToken = tokenHandler.WriteToken(accessToken), RefreshToken = refreshToken }.ToString()
+                data = new LogInSecsessDto {id=Convert.ToInt64(user.Id) ,tokens = new { AccessToken = tokenHandler.WriteToken(accessToken), RefreshToken = refreshToken }.ToString() }
             };
         }
 
-        public async Task<NetResponse<string>> RefreshTokenAsync(string refreshToken)
+        public async Task<NetResponse<LogInSecsessDto?>> RefreshTokenAsync(string refreshToken)
         {
             var existingRefrashToken = await _refreshTokenRepository.GetByTokenAsync(refreshToken);
             if (existingRefrashToken == null || existingRefrashToken.IsExpired)
             {
-                return new NetResponse<string>
+                return new NetResponse<LogInSecsessDto?>
                 {
                     Success = false,
                     resultCode = ResultCode.InvalidRefreshToken,
                     Message = "Refresh token is invalid or expired",
-                    data = string.Empty
+                    data = default
                 };
             }
 
@@ -84,10 +84,10 @@ namespace My_steam_server.Services
             var newAccessToken = await GenerateAccessTokenAsync(user);
             var newRefreshToken = await GenerateRefreshTokenAsync(user);
 
-            return new NetResponse<string>
+            return new NetResponse<LogInSecsessDto?>
             {
                 Success = true,
-                data = new { AccessToken = newAccessToken, RefreshToken = newRefreshToken }.ToString()
+                data = new LogInSecsessDto { id=Convert.ToInt64(user.Id), tokens= new { AccessToken = newAccessToken, RefreshToken = newRefreshToken }.ToString() }
             };
         }
 

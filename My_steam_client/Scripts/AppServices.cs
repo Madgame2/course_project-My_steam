@@ -13,7 +13,7 @@ namespace My_steam_client.Scripts
     public static class AppServices
     {
         public static ServiceProvider Provider { get; private set; }
-
+        public static long UserId { get; set; }
 
         public static void Init()
         {
@@ -49,6 +49,8 @@ namespace My_steam_client.Scripts
                 var commManager = provider.GetRequiredService<Game_Net.ComunitationMannageer>();
                 return new ResourcesService(commManager);
             });
+
+            services.AddSingleton<LibMannager>();
 
             Provider = services.BuildServiceProvider();
         }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using My_steam_client.Scripts;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -25,8 +27,12 @@ namespace My_steam_client.Templates
         public ObservableCollection<LibraryListItem> Library { get; set; }
 
         public LibraryListItem selecteditem { get; set; }
+
+        private LibMannager _LibMannager;
         public LibraryComponent()
         {
+            _LibMannager = AppServices.Provider.GetRequiredService<LibMannager>();
+
             InitializeComponent();
             DataContext = this;
 

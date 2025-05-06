@@ -109,7 +109,7 @@ namespace My_steam_client.AuthComponents
                 return;
             }
 
-            Tokens.TryParse(result.data, out var tokens);
+            Tokens.TryParse(result.data.tokens, out var tokens);
 
             if (StayOnline.IsChecked == true)
             {
@@ -126,6 +126,9 @@ namespace My_steam_client.AuthComponents
             var mainWindow= new MainWindow();
             Application.Current.MainWindow = mainWindow;
             mainWindow.Show();
+
+
+            AppServices.UserId = result.data.id;
 
             _authWindowdow.Close();
         }

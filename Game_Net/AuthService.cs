@@ -49,14 +49,14 @@ namespace Game_Net
 
 
 
-        public async Task<NetResponse<string>> LoginAsync(LoginDto dto) 
+        public async Task<NetResponse<LogInSecsessDto>> LoginAsync(LoginDto dto) 
         {
             string json = "";
 
             try
             {
                 json = JsonSerializer.Serialize(dto);
-                return await _comMannager.SendMessageRest<string>("api/auth/login", Protocol.Https, json);
+                return await _comMannager.SendMessageRest<LogInSecsessDto>("api/auth/login", Protocol.Https, json);
 
             }
             catch(UndefinedProtocolException ex)
@@ -64,24 +64,24 @@ namespace Game_Net
                 Debug.WriteLine("can't use HTTPs protocol, recomended to defind HTTPs protoclo");
                 try
                 {
-                    return await _comMannager.SendMessageRest<string>("api/auth/login", Protocol.Http, json);
+                    return await _comMannager.SendMessageRest<LogInSecsessDto>("api/auth/login", Protocol.Http, json);
                 }
                 catch
                 {
-                    return new NetResponse<string> { Success = false, Message = ex.Message };
+                    return new NetResponse<LogInSecsessDto> { Success = false, Message = ex.Message };
                 }
             }
             catch(Exception ex) {
 
-                return new NetResponse<string> { Success = false, Message = ex.Message };
+                return new NetResponse<LogInSecsessDto> { Success = false, Message = ex.Message };
             }
         }
 
-        public async Task<NetResponse<bool>> isValid_JWT_Token()
+        public async Task<NetResponse<long>> isValid_JWT_Token()
         {
             try
             {
-                return await _comMannager.SendMessageRest<bool>("api/auth/CheckToken", Protocol.Https);
+                return await _comMannager.SendMessageRest<long>("api/auth/CheckToken", Protocol.Https);
             }
             catch (UndefinedProtocolException ex)
             {
@@ -89,12 +89,12 @@ namespace Game_Net
 
                 try
                 {
-                    return await _comMannager.SendMessageRest<bool>("api/auth/CheckToken", Protocol.Http);
+                    return await _comMannager.SendMessageRest<long>("api/auth/CheckToken", Protocol.Http);
                 }
                 catch (UndefinedProtocolException innerEx)
                 {
                     Debug.WriteLine($"HTTP also failed: {innerEx.Message}");
-                    return new NetResponse<bool> { Success = false, Message = "Unable to connect via HTTPS or HTTP." };
+                    return new NetResponse<long> { Success = false, Message = "Unable to connect via HTTPS or HTTP." };
                 }
             }
             catch (Exception ex)
@@ -104,7 +104,7 @@ namespace Game_Net
             }
         }
         
-        public async Task<NetResponse<string>> sendRefrashTokenAsync()
+        public async Task<NetResponse<LogInSecsessDto>> sendRefrashTokenAsync()
         {
             var requestBody = new RefreshTokenRequest
             {
@@ -115,7 +115,7 @@ namespace Game_Net
 
             try
             {
-                var result = await _comMannager.SendMessageRest<string>("api/auth/refresh-token", Protocol.Https, json);
+                var result = await _comMannager.SendMessageRest<LogInSecsessDto>("api/auth/refresh-token", Protocol.Https, json);
 
                 return result;
 
@@ -124,7 +124,7 @@ namespace Game_Net
             {
                 try
                 {
-                    var result = await _comMannager.SendMessageRest<string>("api/auth/refresh-token", Protocol.Http, json);
+                    var result = await _comMannager.SendMessageRest<LogInSecsessDto>("api/auth/refresh-token", Protocol.Http, json);
 
                     return result;
                 }

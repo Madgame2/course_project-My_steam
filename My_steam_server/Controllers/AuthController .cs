@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Game_Net_DTOLib;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using My_steam_server.DTO_models;
 using My_steam_server.Interfaces;
 using My_steam_server.Models;
+using System.Security.Claims;
 
 namespace My_steam_server.Controllers
 {
@@ -56,7 +58,13 @@ namespace My_steam_server.Controllers
         [Authorize]
         public IActionResult IsValidToken()
         {
-            return Ok(new Game_Net_DTOLib.NetResponse<bool> { Success = true, data = true });
+            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+
+            if(userIdClaim != null && long.TryParse(userIdClaim.Value, out var userId)){
+                return Ok(new Game_Net_DTOLib.NetResponse<long> { Success = true, data = userId});
+
+            }
+            return Unauthorized();
         }
     }
 }
