@@ -36,7 +36,7 @@
         </Style>
     </UserControl.Resources>
 
-    <Control  Width="150" Height="50" Cursor="Hand">
+    <Control  Width="150" Height="50" Cursor="Hand" MouseLeftButtonDown="Control_MouseLeftButtonDown">
         <Control.Style>
             <Style TargetType="Control">
                 <Setter Property="Template">

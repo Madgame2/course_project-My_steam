@@ -31,7 +31,7 @@ namespace My_steam_client.Templates
 
         public event RoutedEventHandler Click;
 
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Price
         {
             get => (string)GetValue(PriceProperty);

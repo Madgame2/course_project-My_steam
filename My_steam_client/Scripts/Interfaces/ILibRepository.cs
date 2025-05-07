@@ -12,5 +12,7 @@ namespace My_steam_client.Scripts.Interfaces
         Task<ManifestRecord?> getRecordByIdAsync(long id);
         Task<bool?> AddRecordAsync(ManifestRecord record);
         Task<ManifestRecord[]> getRecordsByUserIdAsync(long userId);
+
+        Task<bool> UpdateRecordAsync(long id, ManifestRecord record);
     }
 }

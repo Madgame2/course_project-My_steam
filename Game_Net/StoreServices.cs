@@ -49,7 +49,7 @@ namespace Game_Net
         }
 
 
-        public async Task<ProductDto?> GetGamePageAsync(int GameId)
+        public async Task<ProductDto?> GetGamePageAsync(long GameId)
         {
             try
             {

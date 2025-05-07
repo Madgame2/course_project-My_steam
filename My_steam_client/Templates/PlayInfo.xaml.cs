@@ -23,8 +23,11 @@ namespace My_steam_client.Templates
      
         public TimeSpan PlayTime {  get; set; }
         public DateTime lastLaynch { get; set; }
-        public PlayInfo()
+        public PlayInfo(TimeSpan playTime, DateTime lastPlay)
         {
+            this.PlayTime = playTime;
+            this.lastLaynch = lastPlay;
+
             InitializeComponent();
             DataContext = this;
         }

@@ -1,4 +1,5 @@
 ﻿using My_steam_client.Scripts.Interfaces;
+using My_steam_client.Templates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace My_steam_client.Scripts
 
         public bool isOfflineMode { get; set; } = false;
 
-        private LibRepository repository = new LibRepository();
+        public LibRepository repository { get; private set; } = new LibRepository();
         public LibMannager()
         {
             var CommonPath = Path.Combine(Directory.GetCurrentDirectory(), "Common");
@@ -41,7 +42,29 @@ namespace My_steam_client.Scripts
                 throw new InvalidOperationException("Путь к директории манифеста недопустим.");
             }
 
-            File.Create(manifestFilePath).Dispose();
+            using var stream = File.Create(manifestFilePath);
+            using var writer = new StreamWriter(stream);
+            writer.Write("[]");
+            stream.Flush();
+        }
+
+        public async Task<List<LibraryListItem>> getLibAsync()
+        {
+            var objeccts = await repository.getRecordsByUserIdAsync(AppServices.UserId);
+
+            var list = new List<LibraryListItem>();
+            foreach (var item in objeccts) { 
+                var newItem = new LibraryListItem();
+
+                newItem.id = item.GameId;
+                newItem.GameName = item.GameName;
+                newItem.ImageLink = item.LibIconSource;
+                newItem.RecordId = item.RecordId;
+
+                list.Add(newItem);
+            }
+
+            return list;
         }
     }
 }

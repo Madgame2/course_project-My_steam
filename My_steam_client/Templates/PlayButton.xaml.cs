@@ -20,9 +20,16 @@ namespace My_steam_client.Templates
     /// </summary>
     public partial class PlayButton : UserControl
     {
+        public event EventHandler ButtonClicked;
+
         public PlayButton()
         {
             InitializeComponent();
+        }
+
+        private void Control_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ButtonClicked?.Invoke(this, EventArgs.Empty);
         }
     }
 }

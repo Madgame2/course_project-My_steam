@@ -81,7 +81,7 @@ namespace My_steam_client.Templates
             return newSliderComponent;
         }
 
-        private async Task ToGamePage(int gameId)
+        private async Task ToGamePage(long gameId)
         {
             try
             {

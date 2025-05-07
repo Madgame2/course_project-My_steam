@@ -11,7 +11,8 @@ namespace My_steam_client.Templates
     {
         private bool _isActive;
 
-        public int id { get; set; }
+        public long id { get; set; }
+        public long RecordId {  get; set; }
         public string ImageLink { get; set; }
         public string GameName {  get; set; }
 

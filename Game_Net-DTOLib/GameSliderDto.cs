@@ -8,7 +8,7 @@ namespace Game_Net_DTOLib
 {
     public class GameSliderDto
     {
-        public int GameId { get; set; }
+        public long GameId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public float price { get; set; }

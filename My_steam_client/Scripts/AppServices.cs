@@ -49,8 +49,12 @@ namespace My_steam_client.Scripts
                 var commManager = provider.GetRequiredService<Game_Net.ComunitationMannageer>();
                 return new ResourcesService(commManager);
             });
-
             services.AddSingleton<LibMannager>();
+            services.AddSingleton<LaunchAppService>(provider =>
+            {
+                var lib = provider.GetRequiredService<LibMannager>();
+                return new LaunchAppService(lib.repository);
+            });
 
             Provider = services.BuildServiceProvider();
         }

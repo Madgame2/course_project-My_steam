@@ -39,37 +39,39 @@
         </Style>
 
         <DataTemplate x:Key="LibItem">
-            <Grid>
-                <Rectangle Fill="#FF444444">
-                    <Rectangle.Opacity>
-                        <MultiBinding Converter="{StaticResource LibItemConverter}">
-                            <Binding Path="isActive" />
-                            <Binding Path="IsMouseOver" RelativeSource="{RelativeSource AncestorType=Border}"/>
-                            <Binding>
-                                <Binding.Source>
-                                    <sys:Double>0.4</sys:Double>
-                                </Binding.Source>
-                            </Binding>
-                            <Binding>
-                                <Binding.Source>
-                                    <sys:Double>0.2</sys:Double>
-                                </Binding.Source>
-                            </Binding>
-                        </MultiBinding>
-                    </Rectangle.Opacity>
-                </Rectangle>
-                <Border Style="{StaticResource LibItem_border}" MouseLeftButtonUp="OnItemClick">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="{Binding Path=ActualHeight, RelativeSource={RelativeSource AncestorType=Border}}"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
+            <Border MouseLeftButtonUp="OnItemClick">
+                <Grid>
+                    <Rectangle Fill="#FF444444">
+                        <Rectangle.Opacity>
+                            <MultiBinding Converter="{StaticResource LibItemConverter}">
+                                <Binding Path="isActive" />
+                                <Binding Path="IsMouseOver" RelativeSource="{RelativeSource AncestorType=Border}"/>
+                                <Binding>
+                                    <Binding.Source>
+                                        <sys:Double>0.4</sys:Double>
+                                    </Binding.Source>
+                                </Binding>
+                                <Binding>
+                                    <Binding.Source>
+                                        <sys:Double>0.2</sys:Double>
+                                    </Binding.Source>
+                                </Binding>
+                            </MultiBinding>
+                        </Rectangle.Opacity>
+                    </Rectangle>
+                    <Border Style="{StaticResource LibItem_border}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="{Binding Path=ActualHeight, RelativeSource={RelativeSource AncestorType=Border}}"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
 
-                        <Image Stretch="Fill" Grid.Column="0" Source="{Binding ImageLink, Converter={StaticResource ImageUniversalConverter}}"/>
-                        <TextBlock  Grid.Column="1" Text="{Binding GameName}" Style="{StaticResource LibItem_text}"/>
-                    </Grid>
-                </Border>
-            </Grid>
+                            <Image Stretch="Fill" Grid.Column="0" Source="{Binding ImageLink, Converter={StaticResource ImageUniversalConverter}}"/>
+                            <TextBlock  Grid.Column="1" Text="{Binding GameName}" Style="{StaticResource LibItem_text}"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Border>
         </DataTemplate>
 
     </UserControl.Resources>

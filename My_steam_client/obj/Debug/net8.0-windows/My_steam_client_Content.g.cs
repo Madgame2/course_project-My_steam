@@ -11,6 +11,7 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/gif/cute-cat.gif")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/gif/ping_icon.gif")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/cart-trolley-ui-5-svgrepo-com.svg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/cat2.jpg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/download.svg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/icon.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/left.png")]

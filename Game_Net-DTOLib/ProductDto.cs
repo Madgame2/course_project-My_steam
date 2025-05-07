@@ -8,7 +8,7 @@ namespace Game_Net_DTOLib
 {
     public class ProductDto
     {
-        public int GameId { get; set; }
+        public long GameId { get; set; }
         public string GameName { get; set; }
         public string Description { get; set; }
 

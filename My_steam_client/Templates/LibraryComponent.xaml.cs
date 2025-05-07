@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using My_steam_client.Scripts;
+using My_steam_client.Scripts.Models;
+using My_steam_client.Scripts.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -23,7 +25,6 @@ namespace My_steam_client.Templates
     /// </summary>
     public partial class LibraryComponent : UserControl
     {
-
         public ObservableCollection<LibraryListItem> Library { get; set; }
 
         public LibraryListItem selecteditem { get; set; }
@@ -36,11 +37,33 @@ namespace My_steam_client.Templates
             InitializeComponent();
             DataContext = this;
 
-            Library = new ObservableCollection<LibraryListItem>
-            {
-                new LibraryListItem{GameName="testName",
-                ImageLink="D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\resources\\images\\test.jpg"}
-            };
+            // Инициализация коллекции пустой — чтобы привязка работала
+            Library = new ObservableCollection<LibraryListItem>();
+
+            // Асинхронная загрузка данных
+            LoadLibraryAsync();
+        }
+
+
+        private async void LoadLibraryAsync()
+        {
+            //await _LibMannager.repository.AddRecordAsync(new ManifestRecord
+            //{
+            //    UserId = AppServices.UserId,
+            //    GameId = 1,
+            //    GameName = "test",
+            //    LibIconSource = "images\\cat2.jpg",
+            //    HeaderImageSource = "images\\cat2.jpg",
+            //    ExecuteFileSource = "some sapce",
+            //    SpaceRequered = 1024,
+            //    lastPlayed = DateTime.Now,
+            //    playedTime = TimeSpan.FromMinutes(1000)
+            //});
+
+            var libItems = await _LibMannager.getLibAsync();
+
+            foreach (var item in libItems)
+                Library.Add(item);
         }
 
 
@@ -62,7 +85,7 @@ namespace My_steam_client.Templates
             currentItem.isActive = true;
 
 
-            Root.Content = new LibraryGamePageComponent();
+            Root.Content = new LibraryGamePageComponent(currentItem.RecordId);
         }
     }
 }

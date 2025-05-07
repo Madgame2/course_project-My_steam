@@ -22,8 +22,10 @@ namespace My_steam_client.Templates
     {
 
         public long InstallSizeBytes { get; set; } = 0;
-        public DownLoadInfo()
+        public DownLoadInfo(long spaceRequred)
         {
+            InstallSizeBytes=spaceRequred;
+
             InitializeComponent();
             DataContext = this;
         }

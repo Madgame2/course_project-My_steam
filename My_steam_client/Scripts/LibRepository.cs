@@ -29,10 +29,7 @@ namespace My_steam_client.Scripts
             record.RecordId = getFreeId(objects);
 
             objects.Add(record);
-            objects.Sort((a, b) => a.RecordId.CompareTo(b.RecordId));
 
-            string json = JsonSerializer.Serialize(objects);
-            await File.WriteAllTextAsync(ManifestFilePath, json);
 
             return true;
         }
@@ -61,6 +58,28 @@ namespace My_steam_client.Scripts
             }
 
             return Current_id;
+        }
+        private async Task saveChanges(List<ManifestRecord> objects)
+        {
+            objects.Sort((a, b) => a.RecordId.CompareTo(b.RecordId));
+
+            string json = JsonSerializer.Serialize(objects);
+            await File.WriteAllTextAsync(ManifestFilePath, json);
+        }
+
+        public async Task<bool> UpdateRecordAsync(long id, ManifestRecord record)
+        {
+            var objectsList = await GetAllRecordsAsync();
+            var searchedRecord = objectsList.FirstOrDefault(p=>p.RecordId==id);
+
+
+            if (searchedRecord == null) return false;
+
+            searchedRecord = record;
+
+            await saveChanges(objectsList);
+
+            return true;
         }
     }
 }
