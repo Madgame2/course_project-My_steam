@@ -10,6 +10,7 @@
     <UserControl.Resources>
         <conv:ImageUniversalConverter x:Key="ImageUniversalConverter"/>
         <conv:LibItemConverter x:Key="LibItemConverter"/>
+        <conv:LibImageConvertor x:Key="LibImageConvertor"/>
 
         <Style x:Key="BaseTextStyles" TargetType="Control">
             <Setter Property="FontFamily" Value="pack://application:,,,/resources/Fonts/#Rajdhani"/>
@@ -66,7 +67,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Image Stretch="Fill" Grid.Column="0" Source="{Binding ImageLink, Converter={StaticResource ImageUniversalConverter}}"/>
+                            <Image Stretch="Fill" Grid.Column="0" Source="{Binding ImageLink, Converter={StaticResource LibImageConvertor}}"/>
                             <TextBlock  Grid.Column="1" Text="{Binding GameName}" Style="{StaticResource LibItem_text}"/>
                         </Grid>
                     </Border>

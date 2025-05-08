@@ -68,27 +68,39 @@ namespace My_steam_client.Templates
         {
             if (sender  is not PlayButton playButton) return;
 
+            if(InfoRoot.Content is PlayInfo playInfo) playInfo.lastLaynch=DateTime.Now;
+
             _ = Task.Run(async () =>
             {
                 try
                 {
                     StopButton stopButton = null!;
 
-                    // Всё, что касается UI — в Dispatcher
                     Dispatcher.Invoke(() =>
                     {
                         stopButton = new StopButton();
                         stopButton.ButtonClecked += async (s, e) =>
-                            await _launchAppService.TerminateGameAsync(manifestRecord.RecordId);
+                        {
+                            var duration = await _launchAppService.TerminateGameAsync(manifestRecord.RecordId);
+                            if (duration.HasValue && InfoRoot.Content is PlayInfo info)
+                            {
+                                info.PlayTime += duration.Value;
+                            }
+
+                            // Вернуть кнопку Play после завершения
+                            await Dispatcher.InvokeAsync(() => ButttonRoot.Content = playButton);
+                        };
                         ButttonRoot.Content = stopButton;
                     });
 
-                    await _launchAppService.LaunchAndTrackGame(
+                    var timeSpan = await _launchAppService.LaunchAndTrackGame(
                         manifestRecord.RecordId,
                         manifestRecord.GameName,
                         manifestRecord.ExecuteFileSource);
 
-                    Dispatcher.Invoke(() => ButttonRoot.Content = playButton);
+                    if (InfoRoot.Content is PlayInfo playInfo) playInfo.PlayTime += timeSpan.Value;
+
+                        Dispatcher.Invoke(() => ButttonRoot.Content = playButton);
                 }
                 catch (Exception ex)
                 {

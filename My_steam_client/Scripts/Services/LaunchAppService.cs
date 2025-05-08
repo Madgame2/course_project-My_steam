@@ -29,7 +29,7 @@ namespace My_steam_client.Scripts.Services
         {
 
         }
-        public async Task LaunchAndTrackGame(long libRecordId,string gameName, string gamePath)
+        public async Task<TimeSpan?> LaunchAndTrackGame(long libRecordId, string gameName, string gamePath)
         {
             try
             {
@@ -40,9 +40,10 @@ namespace My_steam_client.Scripts.Services
                 };
 
                 var gameProcess = Process.Start(startInfo);
+                if (gameProcess == null) return null;
+
                 var startTime = DateTime.Now;
 
-                if (gameProcess == null) return;
                 var session = new GameSession
                 {
                     RecordId = libRecordId,
@@ -53,28 +54,33 @@ namespace My_steam_client.Scripts.Services
 
                 _sessions.Add(session);
 
-                await Task.Run(async () =>
-                {
-                    gameProcess.WaitForExit();
+                var oldRecord = await _libRepository.getRecordByIdAsync(session.RecordId);
+                oldRecord.lastPlayed = DateTime.Now;
+                await _libRepository.UpdateRecordAsync(session.RecordId, oldRecord);
 
-                    DateTime endTime = DateTime.Now;
-                    TimeSpan duration = endTime - session.StartTime;
+                await Task.Run(() => gameProcess.WaitForExit());
 
-                    var oldRecord = await _libRepository.getRecordByIdAsync(session.RecordId);
-                    oldRecord.playedTime += duration;
-                    await _libRepository.UpdateRecordAsync(session.RecordId, oldRecord);
+                DateTime endTime = DateTime.Now;
+                TimeSpan duration = endTime - session.StartTime;
 
-                    _sessions.Remove(session);
-                });
+                oldRecord = await _libRepository.getRecordByIdAsync(session.RecordId);
+                oldRecord.playedTime += duration;
+                await _libRepository.UpdateRecordAsync(session.RecordId, oldRecord);
+
+                _sessions.Remove(session);
+
+                return duration;
             }
-            catch (Exception ex) { 
+            catch (Exception ex)
+            {
                 Debug.WriteLine(ex.Message);
+                return null;
             }
         }
-        public async Task TerminateGameAsync(long libRecordId)
+        public async Task<TimeSpan?> TerminateGameAsync(long libRecordId)
         {
             var session = _sessions.FirstOrDefault(p => p.RecordId == libRecordId);
-            if (session == null) return;
+            if (session == null) return null;
 
             var process = session.Process;
             process.Kill();
@@ -83,12 +89,14 @@ namespace My_steam_client.Scripts.Services
             TimeSpan duration = endTime - session.StartTime;
 
             var oldRecord = await _libRepository.getRecordByIdAsync(libRecordId);
-            if (oldRecord == null) return;
+            if (oldRecord == null) return null;
 
             oldRecord.playedTime += duration;
             await _libRepository.UpdateRecordAsync(session.RecordId, oldRecord);
 
             _sessions.Remove(session);
+
+            return duration;
         }
 
     }

@@ -63,23 +63,28 @@ namespace My_steam_client.Scripts
         {
             objects.Sort((a, b) => a.RecordId.CompareTo(b.RecordId));
 
-            string json = JsonSerializer.Serialize(objects);
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true // включаем отступы
+            };
+
+            string json = JsonSerializer.Serialize(objects, options);
             await File.WriteAllTextAsync(ManifestFilePath, json);
         }
 
         public async Task<bool> UpdateRecordAsync(long id, ManifestRecord record)
         {
             var objectsList = await GetAllRecordsAsync();
-            var searchedRecord = objectsList.FirstOrDefault(p=>p.RecordId==id);
+            var index = objectsList.FindIndex(p => p.RecordId == id);
 
+            if (index == -1) return false;
 
-            if (searchedRecord == null) return false;
-
-            searchedRecord = record;
+            objectsList[index] = record;
 
             await saveChanges(objectsList);
 
             return true;
         }
+
     }
 }

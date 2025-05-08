@@ -11,16 +11,17 @@ namespace My_steam_client.Scripts
     public class LibMannager
     {
         public string manifestFilePath { get; private set; }
-
+        public string LibRootPath {  get; private set; }
         public bool isOfflineMode { get; set; } = false;
 
         public LibRepository repository { get; private set; } = new LibRepository();
         public LibMannager()
         {
-            var CommonPath = Path.Combine(Directory.GetCurrentDirectory(), "Common");
-            manifestFilePath = Path.Combine(CommonPath, "Lib/LibInit.json");
+            LibRootPath = Path.Combine(Directory.GetCurrentDirectory(), "Common");
+            manifestFilePath = Path.Combine(LibRootPath, "Lib/LibInit.json");
 
             if (!isLibInited()) initLib();
+            checkLibStuct();
 
             LibRepository.ManifestFilePath = manifestFilePath;
         }
@@ -41,6 +42,8 @@ namespace My_steam_client.Scripts
             {
                 throw new InvalidOperationException("Путь к директории манифеста недопустим.");
             }
+
+
 
             using var stream = File.Create(manifestFilePath);
             using var writer = new StreamWriter(stream);
@@ -65,6 +68,12 @@ namespace My_steam_client.Scripts
             }
 
             return list;
+        }
+
+        private void checkLibStuct()
+        {
+            var LibResourses = Path.Combine(LibRootPath, "LidResources");
+            if (!Directory.Exists(LibResourses)) Directory.CreateDirectory(LibResourses);
         }
     }
 }
