@@ -73,6 +73,9 @@
     <Compile Update="Templates\SliderComponent.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Templates\StopButton.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="AuthComponents\AuthComponent.xaml">
@@ -148,6 +151,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\SliderComponent.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Templates\StopButton.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\Templates.xaml">

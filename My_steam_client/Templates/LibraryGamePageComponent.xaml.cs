@@ -56,21 +56,7 @@ namespace My_steam_client.Templates
             {
                 var PlayButton = new PlayButton();
                 ButttonRoot.Content = PlayButton;
-                PlayButton.ButtonClicked += (s, e) =>
-                {
-                    _ = Task.Run(async () =>
-                    {
-                        try
-                        {
-                            await _launchAppService.LaunchAndTrackGame(manifestRecord.RecordId, manifestRecord.GameName, manifestRecord.ExecuteFileSource);
-                        }
-                        catch (Exception ex)
-                        {
-                            // Обработай или залогируй ошибку
-                            Console.WriteLine($"Ошибка при запуске игры: {ex.Message}");
-                        }
-                    });
-                };
+                PlayButton.ButtonClicked += launchApp;
             }
             InfoRoot.Content = new PlayInfo(manifestRecord.playedTime, manifestRecord.lastPlayed);
             ActivityRoot.Content = new Activity();
@@ -78,8 +64,37 @@ namespace My_steam_client.Templates
             HeaderImageLink = manifestRecord.HeaderImageSource;
         }
 
-        private void launchApp()
+        private void launchApp(object? sender, EventArgs arg)
         {
+            if (sender  is not PlayButton playButton) return;
+
+            _ = Task.Run(async () =>
+            {
+                try
+                {
+                    StopButton stopButton = null!;
+
+                    // Всё, что касается UI — в Dispatcher
+                    Dispatcher.Invoke(() =>
+                    {
+                        stopButton = new StopButton();
+                        stopButton.ButtonClecked += async (s, e) =>
+                            await _launchAppService.TerminateGameAsync(manifestRecord.RecordId);
+                        ButttonRoot.Content = stopButton;
+                    });
+
+                    await _launchAppService.LaunchAndTrackGame(
+                        manifestRecord.RecordId,
+                        manifestRecord.GameName,
+                        manifestRecord.ExecuteFileSource);
+
+                    Dispatcher.Invoke(() => ButttonRoot.Content = playButton);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Ошибка при запуске игры: {ex.Message}");
+                }
+            });
 
         }
     }

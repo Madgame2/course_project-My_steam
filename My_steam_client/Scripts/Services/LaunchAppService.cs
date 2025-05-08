@@ -71,5 +71,25 @@ namespace My_steam_client.Scripts.Services
                 Debug.WriteLine(ex.Message);
             }
         }
+        public async Task TerminateGameAsync(long libRecordId)
+        {
+            var session = _sessions.FirstOrDefault(p => p.RecordId == libRecordId);
+            if (session == null) return;
+
+            var process = session.Process;
+            process.Kill();
+
+            DateTime endTime = DateTime.Now;
+            TimeSpan duration = endTime - session.StartTime;
+
+            var oldRecord = await _libRepository.getRecordByIdAsync(libRecordId);
+            if (oldRecord == null) return;
+
+            oldRecord.playedTime += duration;
+            await _libRepository.UpdateRecordAsync(session.RecordId, oldRecord);
+
+            _sessions.Remove(session);
+        }
+
     }
 }

@@ -14,8 +14,11 @@
     <None Remove="resources\Fonts\Rajdhani-Regular.ttf" />
     <None Remove="resources\Gif\cute-cat.gif" />
     <None Remove="resources\Gif\Ping_icon.gif" />
+    <None Remove="resources\images\330e1029061501db08c7bf7e9b37a9a2.jpg" />
+    <None Remove="resources\images\33usgd94xncz.png" />
     <None Remove="resources\images\cart-trolley-ui-5-svgrepo-com.svg" />
     <None Remove="resources\images\cat2.jpg" />
+    <None Remove="resources\images\cross.svg" />
     <None Remove="resources\images\download.svg" />
     <None Remove="resources\images\Icon.png" />
     <None Remove="resources\images\Left.png" />
@@ -45,10 +48,19 @@
     <Content Include="resources\Gif\Ping_icon.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="resources\images\330e1029061501db08c7bf7e9b37a9a2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\images\33usgd94xncz.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="resources\images\cart-trolley-ui-5-svgrepo-com.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\images\cat2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\images\cross.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\images\download.svg">

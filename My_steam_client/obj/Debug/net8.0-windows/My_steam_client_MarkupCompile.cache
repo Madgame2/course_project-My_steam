@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\App.xaml
-261002910765
-17-2103658384
-65-1981891074
+27160461298
+20-372993626
+66-225387324
 361-1701422041
-AuthComponents\AuthComponent.xaml;AuthComponents\RegistrationComponent.xaml;AuthWindow.xaml;MainWindow.xaml;ShowcaseItemStyles.xaml;Styles.xaml;Templates\Activity.xaml;Templates\DownLoadInfo.xaml;Templates\Header.xaml;Templates\ImagSlider.xaml;Templates\InstallButton.xaml;Templates\LibraryComponent.xaml;Templates\LibraryGamePageComponent.xaml;Templates\NoConnetrion.xaml;Templates\PingPage.xaml;Templates\PlayButton.xaml;Templates\PlayInfo.xaml;Templates\ProductComponent.xaml;Templates\ProductPage.xaml;Templates\SearchLable.xaml;Templates\Shop_Component.xaml;Templates\Showcase.xaml;Templates\SideBar.xaml;Templates\Slider.xaml;Templates\SliderComponent.xaml;Templates\Templates.xaml;
+AuthComponents\AuthComponent.xaml;AuthComponents\RegistrationComponent.xaml;AuthWindow.xaml;MainWindow.xaml;ShowcaseItemStyles.xaml;Styles.xaml;Templates\Activity.xaml;Templates\DownLoadInfo.xaml;Templates\Header.xaml;Templates\ImagSlider.xaml;Templates\InstallButton.xaml;Templates\LibraryComponent.xaml;Templates\LibraryGamePageComponent.xaml;Templates\NoConnetrion.xaml;Templates\PingPage.xaml;Templates\PlayButton.xaml;Templates\PlayInfo.xaml;Templates\ProductComponent.xaml;Templates\ProductPage.xaml;Templates\SearchLable.xaml;Templates\Shop_Component.xaml;Templates\Showcase.xaml;Templates\SideBar.xaml;Templates\Slider.xaml;Templates\SliderComponent.xaml;Templates\StopButton.xaml;Templates\Templates.xaml;
 
 False
 

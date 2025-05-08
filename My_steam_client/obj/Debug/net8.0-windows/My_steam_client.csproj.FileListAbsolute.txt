@@ -132,3 +132,8 @@ D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\
 D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\obj\Debug\net8.0-windows\Templates\DownLoadInfo.g.cs
 D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\obj\Debug\net8.0-windows\Templates\DownLoadInfo.baml
 D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\bin\Debug\net8.0-windows\resources\images\cat2.jpg
+D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\obj\Debug\net8.0-windows\Templates\StopButton.g.cs
+D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\bin\Debug\net8.0-windows\resources\images\cross.svg
+D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\obj\Debug\net8.0-windows\Templates\StopButton.baml
+D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\bin\Debug\net8.0-windows\resources\images\33usgd94xncz.png
+D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\bin\Debug\net8.0-windows\resources\images\330e1029061501db08c7bf7e9b37a9a2.jpg
