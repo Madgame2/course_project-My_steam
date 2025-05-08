@@ -74,9 +74,13 @@
 
                         <StackPanel Style="{StaticResource Main_buttons}">
                             <local:SideButton Click="toShop" IsChecked="True" Height="60" IconHeight="30" Icon="images/cart-trolley-ui-5-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav" Title="Shop"/>
-                            <local:SideButton Click="toLib" Height="60" IconHeight="30" Icon="images/cart-trolley-ui-5-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav" Title="Library"/>
-                            <local:SideButton Click="toStat" Height="60" IconHeight="30" Icon="images/cart-trolley-ui-5-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav" Title="Statistics"/>
-                            <local:SideButton Click="toCommunity" Height="60" IconHeight="30" Icon="images/cart-trolley-ui-5-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav" Title="Community"/>
+                            <local:SideButton Click="toLib" Height="60" IconHeight="30" Icon="images/game-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav" Title="Library"/>
+                            <local:SideButton Click="toStat" Height="60" IconHeight="30" Icon="images/graphic-progression-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav" Title="Statistics"/>
+                            <local:SideButton Click="toCommunity" Height="60" IconHeight="30" Icon="images/community-group-leader-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav" Title="Community"/>
+                        </StackPanel>
+                        <StackPanel VerticalAlignment="Bottom" Margin="0,0,0,50">
+
+                            <local:SimpleSideButton Click="toCommunity" Height="60" IconHeight="30" Icon="images/log-out-1-svgrepo-com.svg" Title="Log out"/>
                         </StackPanel>
                     </local:SideBar>
                 </Border>

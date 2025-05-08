@@ -18,10 +18,15 @@
     <None Remove="resources\images\33usgd94xncz.png" />
     <None Remove="resources\images\cart-trolley-ui-5-svgrepo-com.svg" />
     <None Remove="resources\images\cat2.jpg" />
+    <None Remove="resources\images\community-group-leader-svgrepo-com.svg" />
     <None Remove="resources\images\cross.svg" />
     <None Remove="resources\images\download.svg" />
+    <None Remove="resources\images\game-svgrepo-com.svg" />
+    <None Remove="resources\images\graphic-progression-svgrepo-com.svg" />
+    <None Remove="resources\images\graphic-svgrepo-com.svg" />
     <None Remove="resources\images\Icon.png" />
     <None Remove="resources\images\Left.png" />
+    <None Remove="resources\images\log-out-1-svgrepo-com.svg" />
     <None Remove="resources\images\no-image.svg" />
     <None Remove="resources\images\NoConnetion.png" />
     <None Remove="resources\images\play.svg" />
@@ -60,16 +65,31 @@
     <Content Include="resources\images\cat2.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="resources\images\community-group-leader-svgrepo-com.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="resources\images\cross.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\images\download.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="resources\images\game-svgrepo-com.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\images\graphic-progression-svgrepo-com.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\images\graphic-svgrepo-com.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="resources\images\Icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\images\Left.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\images\log-out-1-svgrepo-com.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\images\no-image.svg">

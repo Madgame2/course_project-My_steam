@@ -15,6 +15,50 @@
         <Setter Property="IndicatorsInactiveBrush" Value="LightGray"/>
     </Style>
 
+    <Style TargetType="local:SimpleSideButton" BasedOn="{StaticResource SimapleSideButtonTemplate}">
+        <Setter Property="SvgStrokeColor" Value="#A0A0A0"/>
+        <Setter Property="Background" Value="#FF141414"/>
+        <Setter Property="IconTranslateX" Value="135"/>
+        <Setter Property="HoverTextBrush" Value="#FF426FFF"/>
+        <Setter Property="HoverImageCollor" Value="#FF426FFF"/>
+        <Setter Property="ActiveTextColor" Value="#FF426FFF"/>
+        <Setter Property="ActiveImageColor" Value="#FF426FFF"/>
+        <Setter Property="ActiveBacground" Value="#FF3F3F3F"/>
+        <Setter Property="TitleFontSize" Value="18"/>
+        <Setter Property="TitleFontWeight" Value="Bold"/>
+        <Setter Property="TitleFontFamily" Value="pack://application:,,,/resources/Fonts/#Rajdhani"/>
+        <Setter Property="Foreground" Value="#A0A0A0"/>
+
+
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsMouseOver,RelativeSource={RelativeSource AncestorType=UserControl}}" Value="True">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetProperty="(local:SimpleSideButton.IconTranslateX)"
+                                To="-15"
+                                Duration="0:0:0.2"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.EnterActions>
+
+                <DataTrigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetProperty="(local:SimpleSideButton.IconTranslateX)"
+                                To="135"
+                                Duration="0:0:0.2"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.ExitActions>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+
+
     <Style TargetType="local:SideButton" BasedOn="{StaticResource SideButtonTemplate}">
         <Setter Property="SvgStrokeColor" Value="#A0A0A0"/>
         <Setter Property="Background" Value="#FF141414"/>
