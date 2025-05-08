@@ -98,9 +98,15 @@ namespace My_steam_client.Templates
                         manifestRecord.GameName,
                         manifestRecord.ExecuteFileSource);
 
-                    if (InfoRoot.Content is PlayInfo playInfo) playInfo.PlayTime += timeSpan.Value;
+                    Dispatcher.Invoke(() =>
+                    {
+                        if (timeSpan.HasValue && InfoRoot.Content is PlayInfo info)
+                        {
+                            info.PlayTime += timeSpan.Value;
+                        }
 
                         Dispatcher.Invoke(() => ButttonRoot.Content = playButton);
+                    });
                 }
                 catch (Exception ex)
                 {

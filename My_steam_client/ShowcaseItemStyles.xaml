@@ -5,7 +5,7 @@
     <Storyboard x:Key="HoverAnimation">
         <ColorAnimation
             Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-            To="LightGray" 
+            To="Blue" 
             Duration="0:0:0.15"/>
     </Storyboard>
 

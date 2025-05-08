@@ -74,11 +74,10 @@ namespace My_steam_client.Templates
 
         private void OnMouseEnter(object sender, MouseEventArgs e)
         {
-            if (sender is Border border && HoverAnimation is Storyboard templateSb)
+            if (sender is Border border)
             {
                 if (border.Background is SolidColorBrush scb)
                 {
-                    // Убедимся, что кисть не заморожена
                     if (scb.IsFrozen)
                     {
                         scb = scb.Clone();
@@ -87,45 +86,43 @@ namespace My_steam_client.Templates
 
                     var originalColor = scb.Color;
 
-                    var sb = templateSb.Clone();
-                    foreach (var tl in sb.Children)
-                        Storyboard.SetTarget(tl, border);
+                    // Прямо останавливаем прошлую анимацию
+                    scb.BeginAnimation(SolidColorBrush.ColorProperty, null);
 
-                    sb.Begin(border, true);
-
-                    border.Tag = new BorderHoverInfo
+                    var animation = new ColorAnimation
                     {
-                        HoverStoryboard = sb,
-                        OriginalColor = originalColor
+                        To = Colors.DimGray,
+                        Duration = TimeSpan.FromSeconds(0.15),
+                        FillBehavior = FillBehavior.HoldEnd
                     };
+
+                    scb.BeginAnimation(SolidColorBrush.ColorProperty, animation);
+
+                    border.Tag = originalColor;
                 }
             }
         }
 
         private void OnMouseLeave(object sender, MouseEventArgs e)
         {
-            if (sender is Border border && border.Tag is BorderHoverInfo info)
+            if (sender is Border border && border.Tag is Color originalColor && border.Background is SolidColorBrush scb)
             {
-                info.HoverStoryboard?.Stop(border);
+                // Прямо останавливаем прошлую анимацию
+                scb.BeginAnimation(SolidColorBrush.ColorProperty, null);
 
-                // Достаём UnhoverAnimation из ресурсов
-                if (TryFindResource("UnhoverAnimation") is Storyboard unhoverSb)
+                var animation = new ColorAnimation
                 {
-                    var sb = unhoverSb.Clone();
+                    To = originalColor,
+                    Duration = TimeSpan.FromSeconds(0.3),
+                    FillBehavior = FillBehavior.HoldEnd
+                };
 
-                    // Устанавливаем оригинальный цвет как цель To
-                    if (sb.Children[0] is ColorAnimation colorAnim)
-                    {
-                        colorAnim.To = info.OriginalColor;
-                    }
-
-                    Storyboard.SetTarget(sb.Children[0], border);
-                    sb.Begin(border, true);
-                }
-
+                scb.BeginAnimation(SolidColorBrush.ColorProperty, animation);
                 border.Tag = null;
             }
         }
+
+
 
 
         private void OnItemClicked(object sender, MouseButtonEventArgs e)
