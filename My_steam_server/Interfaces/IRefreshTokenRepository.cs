@@ -7,6 +7,7 @@ namespace My_steam_server.Interfaces
         Task<RefreshToken?> GetByTokenAsync(string token);
         Task AddAsync(RefreshToken token);
         Task RevokeAsync(RefreshToken token, string? replacedByToken = null, string? revokedByIp = null);
+        Task RemoveAsync(string token);
         Task SaveChangesAsync();
     }
 }

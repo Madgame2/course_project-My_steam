@@ -66,6 +66,16 @@ namespace My_steam_server.Services
             };
         }
 
+        public async Task<NetResponse<bool>> LogOutAsync(string RefrashToken)
+        {
+            var tokenHendler = await _refreshTokenRepository.GetByTokenAsync(RefrashToken);
+            if(tokenHendler == null) return new NetResponse<bool> { Success = false };
+
+            await _refreshTokenRepository.RemoveAsync(RefrashToken);
+
+            return new NetResponse<bool> { Success = true, data = true };
+        }
+
         public async Task<NetResponse<LogInSecsessDto?>> RefreshTokenAsync(string refreshToken)
         {
             var existingRefrashToken = await _refreshTokenRepository.GetByTokenAsync(refreshToken);

@@ -80,7 +80,7 @@
                         </StackPanel>
                         <StackPanel VerticalAlignment="Bottom" Margin="0,0,0,50">
 
-                            <local:SimpleSideButton Click="toCommunity" Height="60" IconHeight="30" Icon="images/log-out-1-svgrepo-com.svg" Title="Log out"/>
+                            <local:SimpleSideButton Click="LogOut" Height="60" IconHeight="30" Icon="images/log-out-1-svgrepo-com.svg" Title="Log out"/>
                         </StackPanel>
                     </local:SideBar>
                 </Border>

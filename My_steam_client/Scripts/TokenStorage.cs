@@ -92,5 +92,11 @@ namespace My_steam_client.Scripts
                 return null;
             }
         }
+
+        public static void DeleteTokens()
+        {
+            if(!File.Exists(FilePath)) return;
+            File.Delete(FilePath);
+        }
     }
 }

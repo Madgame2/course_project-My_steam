@@ -3,6 +3,9 @@ using System.Windows.Controls;
 using My_steam_client.Controls;
 using My_steam_client.Templates;
 using Game_Net_DTOLib;
+using My_steam_client.Scripts;
+using Microsoft.Extensions.DependencyInjection;
+using My_steam_server.Services;
 
 namespace My_steam_client
 {
@@ -66,6 +69,35 @@ namespace My_steam_client
         {
             SideButtonGroup.setAllUncehceked("MainNav");
             NavigateTo(new ProductComponent(dto));
+        }
+
+        private async void LogOut (object sender,RoutedEventArgs e)
+        {
+            var dialog = new YesNoDialog("Confirm Log out", "LOG OUT", "This will log out you from your account. You will nead re-enter your Email and password.");
+            bool? dialogResult = dialog.ShowDialog();
+
+            bool userResult = dialog.Result;
+
+            if (userResult)
+            {
+                var auth_service = AppServices.Provider.GetRequiredService<Game_Net.AuthService>();
+                var result = await auth_service.LogOutAsync();
+
+                if (result.Success)
+                {
+                    TokenStorage.DeleteTokens();
+
+                    var authWindow = new AuthWindow();
+                    Application.Current.MainWindow = authWindow;
+                    this.Close();
+
+                    authWindow.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Unadebel to Log out");
+                }
+            }
         }
     }
 }

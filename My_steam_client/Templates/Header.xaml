@@ -16,7 +16,7 @@
             </StackPanel>
 
             <!-- Название (заполняет всё оставшееся пространство) -->
-            <TextBlock Text="Моё приложение" Foreground="White" Margin="10,0" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding TitleText}" Foreground="White" Margin="10,0" VerticalAlignment="Center"/>
         </DockPanel>
     </Border>
 </UserControl>

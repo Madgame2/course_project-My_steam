@@ -24,6 +24,16 @@ namespace My_steam_server.Repositories
                 File.WriteAllText(_filePath, "[]");
             }
         }
+        public async Task RemoveAsync(string token)
+        {
+            var tokens = await LoadTokensAsync();
+            var toRemove = tokens.FirstOrDefault(rt => rt.Token == token);
+            if (toRemove is not null)
+            {
+                tokens.Remove(toRemove);
+                await SaveTokensAsync(tokens);
+            }
+        }
 
         public async Task AddAsync(RefreshToken token)
         {

@@ -10,5 +10,7 @@ namespace My_steam_server.Interfaces
         Task<NetResponse<LogInSecsessDto>> LoginAsync(LoginDto dto);
         Task<NetResponse<LogInSecsessDto>> RefreshTokenAsync(string refreshToken);
 
+        Task<NetResponse<bool>> LogOutAsync(string RefrashToken);
+
     }
 }

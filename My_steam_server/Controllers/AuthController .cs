@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using My_steam_server.DTO_models;
 using My_steam_server.Interfaces;
 using My_steam_server.Models;
+using My_steam_server.Services;
 using System.Security.Claims;
 
 namespace My_steam_server.Controllers
@@ -65,6 +66,15 @@ namespace My_steam_server.Controllers
 
             }
             return Unauthorized();
+        }
+
+        [HttpPost("log_out")]
+        [Authorize]
+        public async Task<IActionResult> LogOut([FromBody] LogOutDto request)
+        {
+            var result = await _authService.LogOutAsync(request.RefreshToken);
+
+            return Ok(result);
         }
     }
 }

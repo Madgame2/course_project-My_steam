@@ -21,12 +21,16 @@ namespace My_steam_client.Templates
     public partial class Header : UserControl
     {
 
+        public string TitleText { get; set; } = "Заголовок окна";
         private Window connntectedWidnow;
-        public Header(Window thisWindow)
+        public Header(Window thisWindow, string title= "Заголовок окна")
         {
             InitializeComponent();
+            DataContext = this;
 
+            TitleText=title;
             connntectedWidnow = thisWindow;
+            
         }
 
 

@@ -1,5 +1,6 @@
 ﻿using Game_Net_DTOLib;
 using My_steam_server.DTO_models;
+using My_steam_server.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -133,6 +134,20 @@ namespace Game_Net
                     throw new Exception("No protocols to send data");
 
                 }
+            }
+        }
+
+        public async Task<NetResponse<bool>> LogOutAsync()
+        {
+            var json = JsonSerializer.Serialize(new LogOutDto { RefreshToken=_comMannager.RefrashToken});
+
+            try
+            {
+                return await _comMannager.SendMessageRest<bool>("api/auth/log_out", Protocol.Https, json);
+            }
+            catch (UndefinedProtocolException)
+            {
+                return await _comMannager.SendMessageRest<bool>("api/auth/log_out", Protocol.Http, json);
             }
         }
     }
