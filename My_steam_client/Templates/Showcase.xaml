@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="My_steam_client.Templates.Showcase"
+﻿<UserControl xmlns:Templates="clr-namespace:My_steam_client.Templates"  x:Class="My_steam_client.Templates.Showcase"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -56,7 +56,7 @@
             <ColumnDefinition Width="300"/>
         </Grid.ColumnDefinitions>
 
-        <ItemsControl x:Name="ItemHost" ItemsSource="{Binding _items, ElementName=Root}">
+        <ItemsControl Grid.Column="0" x:Name="ItemHost" ItemsSource="{Binding _items, ElementName=Root}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Vertical"/>
@@ -140,5 +140,7 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
+        <Templates:SideFilters Grid.Column="1"
+                               Margin="10,10,0,0"/>
     </Grid>
 </UserControl>

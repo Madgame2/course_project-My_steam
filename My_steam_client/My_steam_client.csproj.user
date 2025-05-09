@@ -49,10 +49,16 @@
     <Compile Update="Templates\PlayInfo.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Templates\PriceFilterControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Templates\ProductComponent.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Templates\ProductPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Templates\SearchFilterControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Templates\SearchLable.xaml.cs">
@@ -65,6 +71,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Templates\SideBar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Templates\SideFilters.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Templates\Slider.xaml.cs">
@@ -132,10 +141,16 @@
     <Page Update="Templates\PlayInfo.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Templates\PriceFilterControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Templates\ProductComponent.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\ProductPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Templates\SearchFilterControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\SearchLable.xaml">
@@ -148,6 +163,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\SideBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Templates\SideFilters.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\Slider.xaml">
