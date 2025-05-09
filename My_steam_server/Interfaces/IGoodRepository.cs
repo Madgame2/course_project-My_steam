@@ -1,4 +1,6 @@
-﻿namespace My_steam_server.Interfaces
+﻿using Game_Net_DTOLib;
+
+namespace My_steam_server.Interfaces
 {
     public interface IGoodRepository<T>
     {
@@ -7,5 +9,7 @@
         Task<bool> addAsync(T entity);
 
         Task<bool> HasObject(T entity);
+
+        Task<List<T>> GetPagesAsync(ProductFilterDto filter);
     }
 }

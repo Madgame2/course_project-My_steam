@@ -20,7 +20,9 @@ namespace Game_Net_DTOLib
 
         WrongGoodId,
 
-        ObjectAleradyExist
+        ObjectAleradyExist,
+
+        noMoreProducts
     }
 
     public class NetResponse<T>

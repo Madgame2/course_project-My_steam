@@ -9,5 +9,6 @@ namespace My_steam_server.Interfaces
         Task<NetResponse<bool>> addGoodAsync(T good);
 
         Task<NetResponse<List<T>>> GetAll();
+        Task<NetResponse<List<T>>> GetProductsAsync(ProductFilterDto filters);
     }
 }

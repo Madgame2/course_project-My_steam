@@ -54,6 +54,8 @@ namespace My_steam_client.Templates
 
         public ObservableCollection<ShowCaseObject> _items { get; } = new();
 
+        public event EventHandler Clicked;
+
         public Showcase()
         {
             InitializeComponent();
@@ -133,9 +135,7 @@ namespace My_steam_client.Templates
 
             if (dataContext != null)
             {
-                // Теперь у нас есть доступ к ShowCaseObject
-                // Например, выводим информацию об объекте
-                MessageBox.Show($"Clicked on: {dataContext.Title}, {dataContext.Description}, {dataContext.Coast}");
+                Clicked?.Invoke(dataContext, e);
             }
         }
     }

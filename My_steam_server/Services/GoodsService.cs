@@ -52,5 +52,14 @@ namespace My_steam_server.Services
                 data = good
             };
         }
+
+        public async Task<NetResponse<List<T>>> GetProductsAsync(ProductFilterDto filters)
+        {
+            var ProductsList = await _goodRepository.GetPagesAsync(filters);
+
+            if (ProductsList.Count <= filters.PageSize) return new NetResponse<List<T>> { Success = true, resultCode = ResultCode.noMoreProducts, data = ProductsList };
+
+            return new NetResponse<List<T>> { Success=true, data = ProductsList };
+        }
     }
 }

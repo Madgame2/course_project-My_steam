@@ -26,4 +26,9 @@
     <ProjectReference Include="..\My_steam_client\Game_Net-DTOLib\Game_Net-DTOLib.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="resoures\games\" />
+    <Folder Include="resoures\images\five_nights_at_Fredys_3\" />
+  </ItemGroup>
+
 </Project>

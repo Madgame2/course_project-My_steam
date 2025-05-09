@@ -98,5 +98,13 @@ namespace My_steam_server.Controllers
 
             return Ok(new NetResponse<List<GameSliderDto>> { Success=true, data=result});
         }
+
+        [HttpGet("Games/ShowCase")]
+        public async Task<IActionResult> GetProducts([FromQuery] ProductFilterDto filter)
+        {
+            var response = await _goodsService_games.GetProductsAsync(filter);
+
+            return Ok(response);
+        }
     }
 }

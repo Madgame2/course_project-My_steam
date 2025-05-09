@@ -39,7 +39,15 @@ namespace My_steam_client.Templates
 
 
 
+            var obj1 = new ShowCaseObject();
+            var pbj2 = new ShowCaseObject();
 
+            showCase.Clicked += (sender, e) =>
+            {
+                if (sender is not ShowCaseObject showCaseObj) return;
+
+                ToGamePage(showCaseObj.GameId);
+            };
 
             showCase.addObject(new ShowCaseObject());
             showCase.addObject(new ShowCaseObject());

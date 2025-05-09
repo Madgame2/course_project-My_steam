@@ -1,4 +1,5 @@
-﻿using My_steam_server.Interfaces;
+﻿using Game_Net_DTOLib;
+using My_steam_server.Interfaces;
 using My_steam_server.Models;
 using System.Text.Json;
 
@@ -95,6 +96,22 @@ namespace My_steam_server.Repositories
             var objects = await GetObjets();
 
             return objects.Any(obj => obj.Equals(entity)) ? true : false;
+        }
+
+        public async Task<List<T>> GetPagesAsync(ProductFilterDto filter)
+        {
+            var all = await GetObjets();
+
+            var query = all
+                .OrderBy(x => x.Id)
+                .AsEnumerable();
+
+            if (filter.LastSeenId.HasValue)
+                query = query.Where(x => x.Id > filter.LastSeenId.Value);
+
+            return query
+                   .Take(filter.PageSize)
+                   .ToList();
         }
     }
 }

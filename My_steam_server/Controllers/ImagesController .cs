@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace My_steam_server.Controllers
 {
-    [Route("images")]
+    [Route("images/")]
     [ApiController]
     public class ImagesController:ControllerBase
     {
-        [HttpGet("{fileName}")]
+        [HttpGet("{*fileName}")]
         public IActionResult GetImage(string fileName)
         {
             var imageDictinary = Path.Combine(Directory.GetCurrentDirectory(), "resoures/images");
