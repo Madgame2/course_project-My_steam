@@ -23,6 +23,7 @@ obj/
 *.nupkg
 project.lock.json
 packages/
+/GamesFiles/
 
 # Rider & JetBrains specific
 .idea/
