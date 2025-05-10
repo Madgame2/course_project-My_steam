@@ -100,18 +100,33 @@ namespace My_steam_server.Repositories
 
         public async Task<List<T>> GetPagesAsync(ProductFilterDto filter)
         {
-            var all = await GetObjets();
+            var all = await GetObjets(); // предположим, что возвращает List<T>
 
             var query = all
                 .OrderBy(x => x.Id)
                 .AsEnumerable();
 
+            
             if (filter.LastSeenId.HasValue)
                 query = query.Where(x => x.Id > filter.LastSeenId.Value);
 
+            
+            if (!string.IsNullOrWhiteSpace(filter.Search))
+                query = query.Where(x =>
+                    (x as dynamic).Name.ToString().Contains(filter.Search, StringComparison.OrdinalIgnoreCase));
+
+            
+            if (filter.minPrice.HasValue)
+                query = query.Where(x => (decimal)(x as dynamic).Price >= filter.minPrice.Value);
+
+            
+            if (filter.maxPrice.HasValue)
+                query = query.Where(x => (decimal)(x as dynamic).Price <= filter.maxPrice.Value);
+
+            
             return query
-                   .Take(filter.PageSize)
-                   .ToList();
+                .Take(filter.PageSize)
+                .ToList();
         }
     }
 }

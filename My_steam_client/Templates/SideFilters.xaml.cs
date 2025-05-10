@@ -23,11 +23,16 @@ namespace My_steam_client.Templates
     public partial class SideFilters : UserControl
     {
 
-        
+        public event EventHandler applyedFilters;
         public SideFilters()
         {
             InitializeComponent();
             DataContext = new SideFiltersViewModel();
+        }
+
+        public void applyButton(object sender, RoutedEventArgs e)
+        {
+            applyedFilters?.Invoke(this, EventArgs.Empty);
         }
 
         public string getQueryFilters()

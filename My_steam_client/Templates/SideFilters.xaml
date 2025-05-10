@@ -28,12 +28,23 @@
     
     
     <Border Style="{StaticResource MainBorder}">
-        <ItemsControl ItemsSource="{Binding Filters}">
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+        <ItemsControl Grid.Row="0" ItemsSource="{Binding Filters}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
         </ItemsControl>
+
+
+            <Button Grid.Row="1" Height="60" Content="Temple" Click="applyButton"/>
+        </Grid>
     </Border>
 </UserControl>

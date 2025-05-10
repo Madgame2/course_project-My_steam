@@ -15,7 +15,7 @@ namespace My_steam_client.Templates
 
         public SideFiltersViewModel()
         {
-            Filters.Add(new SearchFilterViewModel());
+            Filters.Add(new SearchFilterViewModel ());
             Filters.Add(new PriceFilterViewModel());
         }
 

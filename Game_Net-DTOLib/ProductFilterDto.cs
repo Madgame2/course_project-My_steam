@@ -12,7 +12,7 @@ namespace Game_Net_DTOLib
         public long? LastSeenId { get; set; }
         public string? Search {  get; set; }
 
-        public decimal? _minPrice {  get; set; }
-        public decimal? _maxPrice {  get; set; }
+        public decimal? minPrice {  get; set; }
+        public decimal? maxPrice {  get; set; }
     }
 }

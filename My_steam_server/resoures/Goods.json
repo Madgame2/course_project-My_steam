@@ -14,12 +14,12 @@
     "ReleaseDate": "2025-05-03T14:30:00",
     "PurchaseOption": [
       {
-        "PurchaseId": 0,
+        "PurchaseId": 1,
         "GameName": "Купить Five Nights at Freddy's 3",
         "Price": "15.15"
       }
     ],
-    "Id": 0,
+    "Id": 1,
     "Name": "Five Nights at Freddy's 3",
     "Price": 4.99
   },

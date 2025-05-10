@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:My_steam_client.Templates"
              mc:Ignorable="d" 
              d:DesignHeight="727" d:DesignWidth="1292">
+    
     <ScrollViewer x:Name="scroll" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
         <Grid
             Margin="100,0,0,0">

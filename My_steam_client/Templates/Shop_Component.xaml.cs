@@ -32,6 +32,7 @@ namespace My_steam_client.Templates
 
         private bool HasMoreProduct = true;
         private long lastId = 0;
+        private string lastQueryString = string.Empty;
         public  Shop_Component(MainWindow window)
         {
             _mainWindow = window;
@@ -77,6 +78,7 @@ namespace My_steam_client.Templates
                 }
 
             scroll.ScrollChanged += ScrollViewer_ScrollChanged;
+            showCase.FiltersLable.applyedFilters += filtersChaged;
         }
 
         private async void InitSlider()
@@ -136,7 +138,7 @@ namespace My_steam_client.Templates
             
         }
 
-        private async void AddToShowcase()
+        private async Task AddToShowcase()
         {
             if (HasMoreProduct)
             {
@@ -145,7 +147,7 @@ namespace My_steam_client.Templates
                 var baseFilterInfo = new ProductFilterDto { LastSeenId = lastId };
 
                 var QueryString = QueryStringBuilder.ToQueryString(baseFilterInfo);
-                var result = await _storeService.tryGetProducts($"{filters}&{baseFilterInfo}");
+                var result = await _storeService.tryGetProducts($"{filters}&{QueryString}");
 
                 HasMoreProduct = result.Item1;
 
@@ -162,23 +164,41 @@ namespace My_steam_client.Templates
                         showCase.addObject(newShowCaseObj);
                         lastId = newShowCaseObj.GameId;
                     }
+
+                lastQueryString = filters;
             }
 
         }
 
-        private void ScrollViewer_ScrollChanged(object sender, ScrollChangedEventArgs e)
+        private async void ScrollViewer_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {
             var scrollViewer = sender as ScrollViewer;
 
             if(scrollViewer != null)
             {
-                bool isABottom = scrollViewer.VerticalOffset+10 >= scrollViewer.ScrollableHeight;
+                bool isABottom = scrollViewer.VerticalOffset >= scrollViewer.ScrollableHeight;
 
                 if (isABottom)
                 {
-                    AddToShowcase();
+                    await AddToShowcase();
                 }
             }
+        }
+
+        private async void filtersChaged(object? sender, EventArgs e)
+        {
+            var sideFilters = sender as SideFilters;
+            if (sideFilters == null) return;
+
+            var filtersQureu = sideFilters.getQueryFilters();
+
+            if (lastQueryString == filtersQureu) return;
+
+            HasMoreProduct = true;
+            lastId = 0;
+            showCase.Items.Clear();
+
+            //await AddToShowcase();
         }
     }
 }
