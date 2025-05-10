@@ -8,5 +8,6 @@ namespace My_steam_client.Scripts.Interfaces
 {
     public interface IFilter
     {
+        IEnumerable<KeyValuePair<string, string>> ToQueryParameters();
     }
 }

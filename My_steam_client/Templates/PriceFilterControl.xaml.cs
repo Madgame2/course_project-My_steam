@@ -23,7 +23,7 @@ namespace My_steam_client.Templates
         public PriceFilterControl()
         {
             InitializeComponent();
-            DataContext = new PriceFilterViewModel();
+            //DataContext = new PriceFilterViewModel();
         }
     }
 }

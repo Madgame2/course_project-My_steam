@@ -29,6 +29,9 @@ namespace My_steam_client.Templates
         private MainWindow _mainWindow;
         private StoreServices _storeService;
 
+
+        private bool HasMoreProduct = true;
+        private long lastId = 0;
         public  Shop_Component(MainWindow window)
         {
             _mainWindow = window;
@@ -37,11 +40,14 @@ namespace My_steam_client.Templates
 
             InitializeComponent();
 
-
+            InitShowCase();
 
             var obj1 = new ShowCaseObject();
             var pbj2 = new ShowCaseObject();
+        }
 
+        private async void InitShowCase()
+        {
             showCase.Clicked += (sender, e) =>
             {
                 if (sender is not ShowCaseObject showCaseObj) return;
@@ -49,11 +55,31 @@ namespace My_steam_client.Templates
                 ToGamePage(showCaseObj.GameId);
             };
 
-            showCase.addObject(new ShowCaseObject());
-            showCase.addObject(new ShowCaseObject());
+            var baseFilterInfo = new ProductFilterDto {};
+            var QueryString = QueryStringBuilder.ToQueryString(baseFilterInfo);
+
+            var result = await _storeService.tryGetProducts(QueryString);
+
+            HasMoreProduct = result.Item1;
+
+            if (result.Item2 != null)
+                foreach (var item in result.Item2)
+                {
+                    var newShowCaseObj = new ShowCaseObject();
+                    newShowCaseObj.Title = item.title;
+                    newShowCaseObj.Description = item.description;
+                    newShowCaseObj.ImageURL = item.headerImageSource;
+                    newShowCaseObj.Coast = Convert.ToString(item.price);
+                    newShowCaseObj.GameId = item.productId;
+
+                    showCase.addObject(newShowCaseObj);
+                    lastId = newShowCaseObj.GameId;
+                }
+
+            scroll.ScrollChanged += ScrollViewer_ScrollChanged;
         }
 
-        private async Task InitSlider()
+        private async void InitSlider()
         {
             var objects = await _storeService.GetSliderObjects(16);
 
@@ -108,6 +134,51 @@ namespace My_steam_client.Templates
             }
 
             
+        }
+
+        private async void AddToShowcase()
+        {
+            if (HasMoreProduct)
+            {
+                string filters = showCase.FiltersLable.getQueryFilters();
+
+                var baseFilterInfo = new ProductFilterDto { LastSeenId = lastId };
+
+                var QueryString = QueryStringBuilder.ToQueryString(baseFilterInfo);
+                var result = await _storeService.tryGetProducts($"{filters}&{baseFilterInfo}");
+
+                HasMoreProduct = result.Item1;
+
+                if (result.Item2 != null)
+                    foreach (var item in result.Item2)
+                    {
+                        var newShowCaseObj = new ShowCaseObject();
+                        newShowCaseObj.Title = item.title;
+                        newShowCaseObj.Description = item.description;
+                        newShowCaseObj.ImageURL = item.headerImageSource;
+                        newShowCaseObj.Coast = Convert.ToString(item.price);
+                        newShowCaseObj.GameId = item.productId;
+
+                        showCase.addObject(newShowCaseObj);
+                        lastId = newShowCaseObj.GameId;
+                    }
+            }
+
+        }
+
+        private void ScrollViewer_ScrollChanged(object sender, ScrollChangedEventArgs e)
+        {
+            var scrollViewer = sender as ScrollViewer;
+
+            if(scrollViewer != null)
+            {
+                bool isABottom = scrollViewer.VerticalOffset+10 >= scrollViewer.ScrollableHeight;
+
+                if (isABottom)
+                {
+                    AddToShowcase();
+                }
+            }
         }
     }
 }

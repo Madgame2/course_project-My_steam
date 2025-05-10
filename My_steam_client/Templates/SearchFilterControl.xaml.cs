@@ -23,7 +23,7 @@ namespace My_steam_client.Templates
         public SearchFilterControl()
         {
             InitializeComponent();
-            DataContext = new SearchFilterViewModel();
+            //DataContext = new SearchFilterViewModel();
         }
     }
 }

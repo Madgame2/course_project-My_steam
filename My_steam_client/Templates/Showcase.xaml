@@ -14,6 +14,7 @@
     <UserControl.Resources>
         <conv:RectToClipConverter x:Key="ClipConverter"/>
         <conv:AnimationConverter x:Key="AnimationConverter"/>
+        <conv:ImageUniversalConverter x:Key="ImageUniversalConverter"/>
 
         <Style x:Key="DefoultTextStyles" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="pack://application:,,,/resources/Fonts/#Rajdhani"/>
@@ -30,7 +31,8 @@
 
         <Style x:Key="DescriptionBox" TargetType="TextBlock" BasedOn="{StaticResource DefoultTextStyles}">
             <Setter Property="Foreground" Value="Gray"/>
-
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="MaxWidth" Value="500"/>
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="FontWeight" Value="Regular"/>
             <Setter Property="Margin" Value="25,0,0,0"/>
@@ -56,10 +58,10 @@
             <ColumnDefinition Width="300"/>
         </Grid.ColumnDefinitions>
 
-        <ItemsControl Grid.Column="0" x:Name="ItemHost" ItemsSource="{Binding _items, ElementName=Root}">
+        <ItemsControl Grid.Column="0" x:Name="ItemHost" ItemsSource="{Binding Items, ElementName=Root}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <StackPanel Orientation="Vertical"/>
+                    <VirtualizingStackPanel  Orientation="Vertical"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
@@ -117,7 +119,7 @@
                                     <Image Stretch="Fill"
                                        HorizontalAlignment="Stretch"
                                         VerticalAlignment="Stretch" 
-                                        Source="{Binding ImageURL}"/>
+                                        Source="{Binding ImageURL, Converter={StaticResource ImageUniversalConverter}}"/>
                                 </Grid>
                                 <Grid Grid.Column="1" ClipToBounds="True">
                                     <Grid.RowDefinitions>
@@ -140,7 +142,9 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        <Templates:SideFilters Grid.Column="1"
-                               Margin="10,10,0,0"/>
+        <Templates:SideFilters 
+            x:Name="FiltersLable"
+            Grid.Column="1"
+            Margin="10,10,0,0"/>
     </Grid>
 </UserControl>

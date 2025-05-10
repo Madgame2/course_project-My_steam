@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Game_Net_DTOLib;
+using Microsoft.AspNetCore.Http;
 
 namespace Game_Net
 {
@@ -78,6 +80,29 @@ namespace Game_Net
             }
 
             return null;
+        }
+
+        public async Task<(bool,List<ShowCaseElemDto>?)> tryGetProducts(string queryString)
+        {
+            string url = $"api/Goods/Games/ShowCase?{queryString}";
+            NetResponse<List<ShowCaseElemDto>> serverResponse;
+            try
+            {
+                serverResponse = await _commMennager.SendMessageRest<List<ShowCaseElemDto>>(url, Protocol.Https);
+            }
+            catch (UndefinedProtocolException)
+            {
+                serverResponse =  await _commMennager.SendMessageRest<List<ShowCaseElemDto>>(url, Protocol.Http);
+            }
+
+            if (serverResponse.Success)
+            {
+                if(serverResponse.resultCode == ResultCode.noMoreProducts) return (false, serverResponse.data);
+
+                return (true, serverResponse.data);
+            }
+
+            return (false, default);
         }
     }
 }

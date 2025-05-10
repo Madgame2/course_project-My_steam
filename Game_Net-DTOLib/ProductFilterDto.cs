@@ -9,6 +9,10 @@ namespace Game_Net_DTOLib
     public class ProductFilterDto
     {
         public int PageSize { get; set; } = 10;
-        public int? LastSeenId { get; set; }
+        public long? LastSeenId { get; set; }
+        public string? Search {  get; set; }
+
+        public decimal? _minPrice {  get; set; }
+        public decimal? _maxPrice {  get; set; }
     }
 }

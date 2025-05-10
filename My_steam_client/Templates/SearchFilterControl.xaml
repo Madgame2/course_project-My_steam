@@ -88,7 +88,7 @@
                         <Image Grid.Column="0" Style="{StaticResource SearchImage}" Source="{Binding Source='images/Search.svg', Converter={StaticResource ImageUniversalConverter}}"/>
                         <TextBox Grid.Column="1"
                                  Style="{StaticResource SearchBox}"
-                                 Text="{Binding searchLable, UpdateSourceTrigger=PropertyChanged}" />
+                                 Text="{Binding SearchLable, UpdateSourceTrigger=PropertyChanged}" />
                     </Grid>
                 </Border>
             </Grid>

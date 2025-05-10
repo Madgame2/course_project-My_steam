@@ -102,9 +102,21 @@ namespace My_steam_server.Controllers
         [HttpGet("Games/ShowCase")]
         public async Task<IActionResult> GetProducts([FromQuery] ProductFilterDto filter)
         {
-            var response = await _goodsService_games.GetProductsAsync(filter);
+            var Showcase = await _goodsService_games.GetProductsAsync(filter);
+            var responseList = new List<ShowCaseElemDto>();
+            foreach (var item in Showcase.data)
+            {
+                var new_Item= new ShowCaseElemDto();
+                new_Item.description = item.Description;
+                new_Item.price = item.Price;
+                new_Item.title = item.Name;
+                new_Item.productId = item.Id;
+                new_Item.headerImageSource = item.HeaderImageSource;
 
-            return Ok(response);
+                responseList.Add(new_Item);
+            }
+
+            return Ok(new NetResponse<List<ShowCaseElemDto>> { Success = Showcase.Success,resultCode=Showcase.resultCode,data=responseList });
         }
     }
 }

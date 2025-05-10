@@ -52,7 +52,7 @@ namespace My_steam_client.Templates
             set => SetValue(ElementHeightProperty, value);
         }
 
-        public ObservableCollection<ShowCaseObject> _items { get; } = new();
+        public ObservableCollection<ShowCaseObject> Items { get; set; } = new();
 
         public event EventHandler Clicked;
 
@@ -61,14 +61,14 @@ namespace My_steam_client.Templates
             InitializeComponent();
         }
 
-        public void addObject(ShowCaseObject obj) { 
-          _items.Add(obj);
+        public void addObject(ShowCaseObject obj) {
+            Items.Add(obj);
         }
 
 
         public void addObject(IEnumerable<ShowCaseObject> objects) {
-            foreach (var obj in objects) { 
-                _items.Add((ShowCaseObject)obj);
+            foreach (var obj in objects) {
+                Items.Add((ShowCaseObject)obj);
             }
         }
 

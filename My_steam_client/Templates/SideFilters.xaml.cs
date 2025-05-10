@@ -29,5 +29,19 @@ namespace My_steam_client.Templates
             InitializeComponent();
             DataContext = new SideFiltersViewModel();
         }
+
+        public string getQueryFilters()
+        {
+            var viewModel = DataContext as SideFiltersViewModel;
+            if (viewModel != null)
+            {
+                var allParams = viewModel.Filters.SelectMany(f => f.ToQueryParameters()).Where(kv => !string.IsNullOrEmpty(kv.Value));
+
+                return string.Join("&", allParams.Select(kv =>
+                    $"{Uri.EscapeDataString(kv.Key)}={Uri.EscapeDataString(kv.Value)}"));
+            }
+
+            return string.Empty;
+        }
     }
 }

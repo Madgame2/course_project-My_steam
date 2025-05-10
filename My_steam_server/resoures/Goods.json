@@ -41,6 +41,83 @@
       "hello",
       "hi"
     ],
+    "Id": 1,
+    "Name": "testGame",
+    "Price": 15.15
+  },
+  {
+    "Description": "Description",
+    "HeaderImageSource": "https://localhost:7199/images/test.jpg",
+    "imageSource": [
+      "hello",
+      "hi"
+    ],
+    "Id": 1,
+    "Name": "testGame",
+    "Price": 15.15
+  },
+  {
+    "Description": "Description",
+    "HeaderImageSource": "https://localhost:7199/images/test.jpg",
+    "imageSource": [
+      "hello",
+      "hi"
+    ],
+    "Id": 1,
+    "Name": "testGame",
+    "Price": 15.15
+  },
+  {
+    "Description": "Description",
+    "HeaderImageSource": "https://localhost:7199/images/test.jpg",
+    "imageSource": [
+      "hello",
+      "hi"
+    ],
+    "Id": 1,
+    "Name": "testGame",
+    "Price": 15.15
+  },
+  {
+    "Description": "Description",
+    "HeaderImageSource": "https://localhost:7199/images/test.jpg",
+    "imageSource": [
+      "hello",
+      "hi"
+    ],
+    "Id": 1,
+    "Name": "testGame",
+    "Price": 15.15
+  },
+  {
+    "Description": "Description",
+    "HeaderImageSource": "https://localhost:7199/images/test.jpg",
+    "imageSource": [
+      "hello",
+      "hi"
+    ],
+    "Id": 1,
+    "Name": "testGame",
+    "Price": 15.15
+  },
+  {
+    "Description": "Description",
+    "HeaderImageSource": "https://localhost:7199/images/test.jpg",
+    "imageSource": [
+      "hello",
+      "hi"
+    ],
+    "Id": 1,
+    "Name": "testGame",
+    "Price": 15.15
+  },
+  {
+    "Description": "Description",
+    "HeaderImageSource": "https://localhost:7199/images/test.jpg",
+    "imageSource": [
+      "hello",
+      "hi"
+    ],
     "Id": 2,
     "Name": "testGame",
     "Price": 15.15
