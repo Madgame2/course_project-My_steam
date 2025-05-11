@@ -12,6 +12,8 @@ namespace My_steam_client.Scripts.Models
         public long UserId {  get; set; }
         public long GameId {  get; set; }
         public string GameName { get; set; }
+        public string DownloadSource {  get; set; }
+        public LibElemStatuses libElemStaus { get; set; } = LibElemStatuses.Not_instaled;
 
         public string LibIconSource { get; set; }
         public string HeaderImageSource { get; set; }

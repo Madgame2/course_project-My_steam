@@ -7,14 +7,14 @@ namespace My_steam_server.Repositories
         private string basePath = Path.Combine(Directory.GetCurrentDirectory(), "GamesFiles");
         public Task<bool> GameExistsAsync(int gameId)
         {
-            var filePath = Path.Combine(basePath, $"gmae_{gameId}.zip");
+            var filePath = Path.Combine(basePath, $"game_{gameId}.zip");
 
             return Task.FromResult(File.Exists(filePath));
         }
 
         public Task<string> GetGameFilePathAsync(int gameId)
         {
-            return Task.FromResult(Path.Combine(basePath, $"gmae_{gameId}.zip"));
+            return Task.FromResult(Path.Combine(basePath, $"game_{gameId}.zip"));
         }
     }
 }

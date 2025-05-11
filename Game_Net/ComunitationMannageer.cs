@@ -141,5 +141,9 @@ namespace Game_Net
            return stream;
             
         }
+        public async Task<Stream?> GetResourcesAsyc(string endPoint, Dictionary<string, string>? headers = null)
+        {
+            return await _restClient.GetStreamAsync(endPoint, JWT_token, headers);
+        }
     }
 }

@@ -22,6 +22,9 @@
     <Compile Update="Templates\DownLoadInfo.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Templates\ExtraButtons.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Templates\Header.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -38,6 +41,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Templates\NoConnetrion.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Templates\PauseButton.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Templates\PingPage.xaml.cs">
@@ -114,6 +120,9 @@
     <Page Update="Templates\DownLoadInfo.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Templates\ExtraButtons.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Templates\Header.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -130,6 +139,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\NoConnetrion.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Templates\PauseButton.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\PingPage.xaml">

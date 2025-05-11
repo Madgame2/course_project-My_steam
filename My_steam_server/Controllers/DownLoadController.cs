@@ -34,12 +34,13 @@ namespace My_steam_server.Controllers
                 FileMode.Open,
                 FileAccess.Read,
                 FileShare.Read,
-                bufferSize: 4096,
+                bufferSize: 81920,
                 FileOptions.Asynchronous | FileOptions.SequentialScan
             );
 
             // Устанавливаем заголовки для поддержки докачки
             Response.Headers["Accept-Ranges"] = "bytes";
+            Response.Headers["Content-Length"] = fileInfo.Length.ToString();
             Response.Headers["Content-Disposition"] = $"attachment; filename=\"game_{gameId}.zip\"";
 
             return new FileStreamResult(stream, "application/octet-stream")

@@ -53,7 +53,7 @@
                             <ContentPresenter x:Name="InfoRoot"/>
                         </Grid>
                         <Grid Grid.Column="3">
-                            
+                            <ContentPresenter x:Name="ExtraButtonsRoot" HorizontalAlignment="Right"/>
                         </Grid>
 
                     </Grid>

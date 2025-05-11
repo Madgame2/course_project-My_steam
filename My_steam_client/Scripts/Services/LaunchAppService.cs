@@ -5,6 +5,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Collections;
 
 namespace My_steam_client.Scripts.Services
 {
@@ -33,14 +35,55 @@ namespace My_steam_client.Scripts.Services
         {
             try
             {
+                Debug.WriteLine($"Attempting to launch: {gamePath}");
+
+                if (!File.Exists(gamePath))
+                {
+                    throw new FileNotFoundException($"Game executable not found at: {gamePath}");
+                }
+
+                var gameDirectory = Path.GetDirectoryName(gamePath);
+                if (string.IsNullOrEmpty(gameDirectory))
+                {
+                    throw new InvalidOperationException("Invalid game directory");
+                }
+
+                // Создаем ProcessStartInfo с базовыми настройками
                 ProcessStartInfo startInfo = new ProcessStartInfo
                 {
                     FileName = gamePath,
-                    UseShellExecute = true
+                    WorkingDirectory = gameDirectory,
+                    UseShellExecute = true,
+                    Verb = "open"
                 };
 
-                var gameProcess = Process.Start(startInfo);
-                if (gameProcess == null) return null;
+                // Пробуем запустить процесс
+                Process? gameProcess = null;
+                try
+                {
+                    gameProcess = Process.Start(startInfo);
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"First launch attempt failed: {ex.Message}");
+                    
+                    // Если первый способ не сработал, пробуем альтернативный способ
+                    startInfo = new ProcessStartInfo
+                    {
+                        FileName = "cmd.exe",
+                        Arguments = $"/c start \"\" \"{gamePath}\"",
+                        UseShellExecute = true,
+                        WorkingDirectory = gameDirectory,
+                        CreateNoWindow = true
+                    };
+                    
+                    gameProcess = Process.Start(startInfo);
+                }
+
+                if (gameProcess == null)
+                {
+                    throw new Exception("Failed to start game process");
+                }
 
                 var startTime = DateTime.Now;
 
@@ -58,7 +101,18 @@ namespace My_steam_client.Scripts.Services
                 oldRecord.lastPlayed = DateTime.Now;
                 await _libRepository.UpdateRecordAsync(session.RecordId, oldRecord);
 
-                await Task.Run(() => gameProcess.WaitForExit());
+                // Ждем завершения процесса
+                await Task.Run(() => 
+                {
+                    try
+                    {
+                        gameProcess.WaitForExit();
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine($"Error waiting for process exit: {ex.Message}");
+                    }
+                });
 
                 DateTime endTime = DateTime.Now;
                 TimeSpan duration = endTime - session.StartTime;
@@ -73,30 +127,57 @@ namespace My_steam_client.Scripts.Services
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message);
-                return null;
+                Debug.WriteLine($"Error launching game: {ex.Message}");
+                throw;
             }
         }
+
+
         public async Task<TimeSpan?> TerminateGameAsync(long libRecordId)
         {
             var session = _sessions.FirstOrDefault(p => p.RecordId == libRecordId);
             if (session == null) return null;
 
-            var process = session.Process;
-            process.Kill();
+            try
+            {
+                var process = session.Process;
+                if (!process.HasExited)
+                {
+                    try
+                    {
+                        // Сначала пробуем корректно завершить процесс
+                        process.CloseMainWindow();
+                        if (!process.WaitForExit(3000)) // Ждем 3 секунды
+                        {
+                            // Если процесс не завершился, принудительно завершаем
+                            process.Kill();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine($"Error terminating process: {ex.Message}");
+                        process.Kill(); // Принудительное завершение в случае ошибки
+                    }
+                }
 
-            DateTime endTime = DateTime.Now;
-            TimeSpan duration = endTime - session.StartTime;
+                DateTime endTime = DateTime.Now;
+                TimeSpan duration = endTime - session.StartTime;
 
-            var oldRecord = await _libRepository.getRecordByIdAsync(libRecordId);
-            if (oldRecord == null) return null;
+                var oldRecord = await _libRepository.getRecordByIdAsync(libRecordId);
+                if (oldRecord == null) return null;
 
-            oldRecord.playedTime += duration;
-            await _libRepository.UpdateRecordAsync(session.RecordId, oldRecord);
+                oldRecord.playedTime += duration;
+                await _libRepository.UpdateRecordAsync(session.RecordId, oldRecord);
 
-            _sessions.Remove(session);
+                _sessions.Remove(session);
 
-            return duration;
+                return duration;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error terminating game: {ex.Message}");
+                throw;
+            }
         }
 
     }

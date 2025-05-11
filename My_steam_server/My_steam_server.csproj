@@ -29,6 +29,7 @@
   <ItemGroup>
     <Folder Include="resoures\games\" />
     <Folder Include="resoures\images\five_nights_at_Fredys_3\" />
+    <Folder Include="GamesFiles\" />
   </ItemGroup>
 
 </Project>

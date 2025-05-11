@@ -16,19 +16,13 @@ using System.Windows.Shapes;
 namespace My_steam_client.Templates
 {
     /// <summary>
-    /// Логика взаимодействия для InstallButton.xaml
+    /// Логика взаимодействия для ExtraButtons.xaml
     /// </summary>
-    public partial class InstallButton : UserControl
+    public partial class ExtraButtons : UserControl
     {
-        public event EventHandler ButtonClicked;
-        public InstallButton()
+        public ExtraButtons()
         {
             InitializeComponent();
-        }
-
-        private void Control_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            ButtonClicked?.Invoke(this, e);
         }
     }
 }

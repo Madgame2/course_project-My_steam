@@ -16,12 +16,13 @@ using System.Windows.Shapes;
 namespace My_steam_client.Templates
 {
     /// <summary>
-    /// Логика взаимодействия для InstallButton.xaml
+    /// Логика взаимодействия для PauseButton.xaml
     /// </summary>
-    public partial class InstallButton : UserControl
+    public partial class PauseButton : UserControl
     {
-        public event EventHandler ButtonClicked;
-        public InstallButton()
+
+        public EventHandler ButtonClicked;
+        public PauseButton()
         {
             InitializeComponent();
         }

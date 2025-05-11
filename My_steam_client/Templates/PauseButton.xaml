@@ -1,15 +1,12 @@
-﻿<UserControl x:Class="My_steam_client.Templates.InstallButton"
+﻿<UserControl x:Class="My_steam_client.Templates.PauseButton"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:My_steam_client.Templates"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:conv="clr-namespace:My_steam_client.Converters"
+             xmlns:local="clr-namespace:My_steam_client.Templates"
              mc:Ignorable="d" 
-             d:DesignHeight="50" d:DesignWidth="170">
-
-
-
+             d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <conv:ImageUniversalConverter x:Key="ImageUniversalConverter"/>
 
@@ -59,12 +56,12 @@
                                     <Grid Grid.Column="0">
                                         <Image Style="{StaticResource ImagesStyles}"
                                            Stretch="Fill"
-                                           Source="{Binding Source='images/download.svg', Converter={StaticResource ImageUniversalConverter}}"
+                                           Source="{Binding Source='images/pause-svgrepo-com.svg', Converter={StaticResource ImageUniversalConverter}}"
                                            Height="20" Width="20"/>
                                     </Grid>
 
                                     <Grid Grid.Column="1">
-                                        <TextBlock Style="{StaticResource Text}" Text="Install"/>
+                                        <TextBlock Style="{StaticResource Text}" Text="Pause"/>
                                     </Grid>
                                 </Grid>
                             </Border>
@@ -103,6 +100,4 @@
             </Style>
         </Control.Style>
     </Control>
-
-
 </UserControl>

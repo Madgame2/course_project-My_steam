@@ -27,6 +27,7 @@ namespace My_steam_client.Templates
     {
         private ManifestRecord? manifestRecord;
         private LaunchAppService _launchAppService;
+        private LibMannager _LibMannager;
 
         public string HeaderImageLink { get; set; }
         public LibraryGamePageComponent(long GameId)
@@ -35,6 +36,48 @@ namespace My_steam_client.Templates
 
             InitializeComponent();
             DataContext = this;
+
+            _LibMannager.UnpackCompleted += (long id) =>
+            {
+                if (id == manifestRecord.RecordId)
+                {
+                    ReInitPage();
+                }
+            };
+        }
+
+        private async void ReInitPage()
+        {
+            manifestRecord = await _LibMannager.repository.getRecordByIdAsync(manifestRecord.RecordId);
+
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                switch (manifestRecord.libElemStaus)
+                {
+                    case LibElemStatuses.Installed:
+                        {
+                            PlayOptions();
+                            break;
+                        }
+                    case LibElemStatuses.Not_instaled:
+                        {
+                            InstallOptions();
+                            break;
+                        }
+                    case LibElemStatuses.Instalation:
+                        {
+
+                            stopInstalatinsOptions();
+                            break;
+                        }
+                    case LibElemStatuses.Pause:
+                        {
+                            ContinyInstalationOptions();
+                            break;
+                        }
+                }
+            });
+
         }
 
         private async void InitPage(long GameId)
@@ -42,26 +85,106 @@ namespace My_steam_client.Templates
             _launchAppService = AppServices.Provider.GetRequiredService<LaunchAppService>();
 
 
-            var LibMannager = AppServices.Provider.GetRequiredService<LibMannager>();
-            manifestRecord = await LibMannager.repository.getRecordByIdAsync(GameId);
+            _LibMannager = AppServices.Provider.GetRequiredService<LibMannager>();
+            manifestRecord = await _LibMannager.repository.getRecordByIdAsync(GameId);
 
             if (manifestRecord == null) throw new Exception("Un definded record");
 
-            if (string.IsNullOrEmpty(manifestRecord.ExecuteFileSource))
+
+            switch (manifestRecord.libElemStaus)
             {
-                ButttonRoot.Content = new InstallButton();
-                DownloadInfoRoot.Content = new DownLoadInfo(manifestRecord.SpaceRequered);
+                case LibElemStatuses.Installed:
+                    {
+                        PlayOptions();
+                        break;
+                    }
+                case LibElemStatuses.Not_instaled:
+                    {
+                        InstallOptions();
+                        break;
+                    }
+                case LibElemStatuses.Instalation:
+                    {
+
+                        stopInstalatinsOptions();
+                        break;
+                    }
+                case LibElemStatuses.Pause:
+                    {
+                        ContinyInstalationOptions();
+                        break;
+                    }
             }
-            else
-            {
-                var PlayButton = new PlayButton();
-                ButttonRoot.Content = PlayButton;
-                PlayButton.ButtonClicked += launchApp;
-            }
+
             InfoRoot.Content = new PlayInfo(manifestRecord.playedTime, manifestRecord.lastPlayed);
             ActivityRoot.Content = new Activity();
+            ExtraButtonsRoot.Content = new ExtraButtons();
 
             HeaderImageLink = manifestRecord.HeaderImageSource;
+        }
+
+        private void initInstal(object? sender, EventArgs e)
+        {
+            _LibMannager.addToInstalatinQueue(manifestRecord);
+
+            SwapLibElemStatus(LibElemStatuses.Instalation);
+
+            DownloadInfoRoot.Content = null;
+
+            stopInstalatinsOptions();
+        }
+
+        private void puseClicked(object? sender, EventArgs e)
+        {
+            SwapLibElemStatus(LibElemStatuses.Pause);
+
+
+            ContinyInstalationOptions();
+        }
+        private void ContinyDownoloadCleced(object? sender, EventArgs e)
+        {
+            _LibMannager.addToInstalatinQueue(manifestRecord);
+
+            SwapLibElemStatus(LibElemStatuses.Instalation);
+
+            stopInstalatinsOptions();
+        }
+
+        private async void SwapLibElemStatus(LibElemStatuses libElemStatus)
+        {
+            manifestRecord.libElemStaus = libElemStatus;
+
+            await _LibMannager.repository.UpdateRecordAsync(manifestRecord.RecordId, manifestRecord);
+        }
+
+        private void ContinyInstalationOptions()
+        {
+            var DownloadButton = new InstallButton();
+            DownloadButton.ButtonClicked += ContinyDownoloadCleced;
+
+            ButttonRoot.Content = DownloadButton;
+        }
+        private void stopInstalatinsOptions()
+        {
+            var pauseButton = new PauseButton();
+            pauseButton.ButtonClicked += puseClicked;
+
+            ButttonRoot.Content = pauseButton;
+        }
+
+        private void PlayOptions()
+        {
+            var PlayButton = new PlayButton();
+            ButttonRoot.Content = PlayButton;
+            PlayButton.ButtonClicked += launchApp;
+        }
+        private void InstallOptions()
+        {
+            var installButton = new InstallButton();
+            installButton.ButtonClicked += initInstal;
+
+            ButttonRoot.Content = installButton;
+            DownloadInfoRoot.Content = new DownLoadInfo(manifestRecord.SpaceRequered);
         }
 
         private void launchApp(object? sender, EventArgs arg)
