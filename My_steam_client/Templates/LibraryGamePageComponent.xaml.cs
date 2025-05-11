@@ -118,7 +118,30 @@ namespace My_steam_client.Templates
 
             InfoRoot.Content = new PlayInfo(manifestRecord.playedTime, manifestRecord.lastPlayed);
             ActivityRoot.Content = new Activity();
-            ExtraButtonsRoot.Content = new ExtraButtons();
+
+            var extraButtons = new ExtraButtons();
+            extraButtons.TrahsButtons.Clicked += (s, e) => {
+                var message = new YesNoDialog("Delete", "Are you sure?", "This will delete all files");
+                bool? dialogResult = message.ShowDialog();
+
+                bool userResult = message.Result;
+
+                if (userResult)
+                {
+                    try
+                    {
+                        _LibMannager.DeleteGame(manifestRecord);
+
+                        InstallOptions();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error deleting game: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+            };
+
+            ExtraButtonsRoot.Content = extraButtons;
 
             HeaderImageLink = manifestRecord.HeaderImageSource;
         }

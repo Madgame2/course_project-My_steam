@@ -22,6 +22,9 @@
     <Compile Update="Templates\DownLoadInfo.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Templates\ExtraButton.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Templates\ExtraButtons.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -118,6 +121,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\DownLoadInfo.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Templates\ExtraButton.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\ExtraButtons.xaml">

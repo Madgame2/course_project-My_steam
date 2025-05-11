@@ -1,4 +1,4 @@
-﻿D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+﻿
 FD:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\App.xaml;;
 FD:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\AuthComponents\AuthComponent.xaml;;
 FD:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\AuthComponents\RegistrationComponent.xaml;;
@@ -7,12 +7,15 @@ FD:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client
 FD:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\Styles.xaml;;
 FD:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\Templates\Activity.xaml;;
 FD:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\Templates\DownLoadInfo.xaml;;
+FD:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\Templates\ExtraButton.xaml;;
+FD:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\Templates\ExtraButtons.xaml;;
 FD:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\Templates\Header.xaml;;
 FD:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\Templates\ImagSlider.xaml;;
 FD:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\Templates\InstallButton.xaml;;
 FD:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\Templates\LibraryComponent.xaml;;
 FD:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\Templates\LibraryGamePageComponent.xaml;;
 FD:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\Templates\NoConnetrion.xaml;;
+FD:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\Templates\PauseButton.xaml;;
 FD:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\Templates\PingPage.xaml;;
 FD:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\Templates\PlayButton.xaml;;
 FD:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\Templates\PlayInfo.xaml;;

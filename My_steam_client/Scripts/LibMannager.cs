@@ -40,6 +40,28 @@ namespace My_steam_client.Scripts
             downloadQueueManager.DownloadCompleted += UnPacageGame;
         }
 
+        public async void DeleteGame(ManifestRecord manifestRecord)
+        {
+            try
+            {
+                var gameDir = Path.Combine(LibRootPath, "Lib", manifestRecord.GameName.Replace(":", "-"));
+                
+                if (Directory.Exists(gameDir))
+                {
+                    Directory.Delete(gameDir, true);
+                }
+
+                manifestRecord.libElemStaus = LibElemStatuses.Not_instaled;
+                manifestRecord.ExecuteFileSource = null;
+                await repository.UpdateRecordAsync(manifestRecord.RecordId, manifestRecord);
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine($"Error deleting game: {ex.Message}");
+                throw; 
+            }
+        }
 
         public void addToInstalatinQueue(ManifestRecord record)
         {
