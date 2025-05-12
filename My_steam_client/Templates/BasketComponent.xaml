@@ -169,10 +169,11 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Grid.Column="0" Style="{StaticResource HeadTex}" Text="Estimated total"/>
-                            <TextBlock Grid.Column="1" Style="{StaticResource HeadCost}" HorizontalAlignment="Right" Text="{Binding FinalCost}"/>
+                            <TextBlock Grid.Column="1" Style="{StaticResource HeadCost}" HorizontalAlignment="Right" Text="{Binding FinalCost, StringFormat=F2}"/>
                         </Grid>
                         <TextBlock Grid.Row="1" Style="{StaticResource MedileTex}"  Text="Sales tax will be calculated during checkout where applicable"/>
-                        <Button Grid.Row="2" Content="Continue to payment" FontFamily="pack://application:,,,/resources/Fonts/#Rajdhani" Foreground="White" FontSize="16" BorderThickness="0" Padding="0,10,0,10" Cursor="Hand">
+                        <Button Grid.Row="2" Content="Continue to payment" FontFamily="pack://application:,,,/resources/Fonts/#Rajdhani" Foreground="White" FontSize="16" BorderThickness="0" Padding="0,10,0,10" Cursor="Hand"
+                                Click="Button_Click">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Border 

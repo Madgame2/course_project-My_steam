@@ -78,12 +78,12 @@ namespace My_steam_server.Repositories
         }
 
 
-        public async Task RemoveFromCartAsync(long userId,long purchaseOptionId)
+        public async Task RemoveFromCartAsync(long userId,long CartItemId)
         {
             var user = _users.FirstOrDefault(u => u.Id == userId.ToString());
             if (user != null)
             {
-                var cartItem = user.CartItems.FirstOrDefault(item => item.PurchaseOptionId == purchaseOptionId);
+                var cartItem = user.CartItems.FirstOrDefault(item => item.CartItemId == CartItemId);
                 if (cartItem != null)
                 {
                     user.CartItems.Remove(cartItem);

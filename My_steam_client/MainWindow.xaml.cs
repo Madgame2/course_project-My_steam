@@ -56,7 +56,7 @@ namespace My_steam_client
             NavigateTo(libraryPage);
         }
 
-        private void ToBasket(object sender, RoutedEventArgs e)
+        public void ToBasket(object sender, RoutedEventArgs e)
         {
             NavigateTo(new BasketComponent());
         }

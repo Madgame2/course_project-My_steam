@@ -1,5 +1,6 @@
 ﻿using Game_Net_DTOLib;
 using My_steam_server.Interfaces;
+using My_steam_server.Models;
 
 namespace My_steam_server.Services
 {
@@ -34,6 +35,16 @@ namespace My_steam_server.Services
                 return new NetResponse<bool> { Success = false, data = false, resultCode = ResultCode.PurchouseAlredyExist };
 
             }
+        }
+
+        public async Task<NetResponse<bool>> deleteCartElem(long UserID, long CartId)
+        {
+            var user = await _userRepository.GetByIdAsync(UserID);
+            if (user == null) return new NetResponse<bool> { Success = false, data = false, resultCode = ResultCode.UnKnowError };
+
+            await _userRepository.RemoveFromCartAsync(UserID, CartId);
+
+            return new NetResponse<bool> {Success = true, data = true};
         }
 
         public async Task<NetResponse<List<Game_Net_DTOLib.CartItemDto>?>> getUserCart(long userId)

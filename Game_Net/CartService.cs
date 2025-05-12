@@ -1,4 +1,5 @@
 ﻿using Game_Net_DTOLib;
+using My_steam_server.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,8 @@ namespace Game_Net
             return true;
         }
 
+        
+
         public async Task<List<CartItemDto>> getCart(long userId)
         {
             NetResponse<List<CartItemDto>> response;
@@ -50,6 +53,25 @@ namespace Game_Net
             }
 
             return response.data;
+        }
+
+        public async Task<bool> DeleteCartElem(DeleteFromCartDTO dto)
+        {
+
+            var json = JsonSerializer.Serialize<DeleteFromCartDTO>(dto);
+            NetResponse<bool> response;
+            try
+            {
+                response = await _commManager.SendMessageRest<bool>($"api/Cart/delete", Protocol.Https, json);
+            }
+            catch (UndefinedProtocolException)
+            {
+                response = await _commManager.SendMessageRest<bool>($"api/Cart/delete", Protocol.Http, json);
+            }
+
+            if(response.Success) return true;
+
+            return false;
         }
     }
 }

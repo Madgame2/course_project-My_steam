@@ -103,7 +103,12 @@ namespace My_steam_client.Templates
                 var result = await sevice.addToCart(dto);
 
 
-                if (result) MessageBox.Show("HEEEEEEE");
+                if (result)
+                {
+                    var mainWindow = Application.Current.MainWindow as MainWindow;
+
+                    mainWindow.ToBasket(this, e);
+                }
             }
             catch(PurchouseExistExeption)
             {

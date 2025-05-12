@@ -27,11 +27,11 @@ namespace My_steam_client.Templates
     /// </summary>
     public partial class BasketComponent : INotifyPropertyChanged
     {
-        private string _finalCost = "0.0";
+        private float _finalCost = 0.0f;
         private readonly CartService _cartService;
 
         public ObservableCollection<BasketElemModel> BasketElems { get; set; } = new();
-        public string FinalCost
+        public float FinalCost
         {
             get => _finalCost;
             set
@@ -53,9 +53,6 @@ namespace My_steam_client.Templates
 
 
             InitCart();
-            //BasketElems.Add(new BasketElemModel { GameId =0, GameName="test", ImageLink= "https://localhost:7199/images/five_nights_at_Fredys_3/Header.jpg", Price=4.99f });
-            //BasketElems.Add(new BasketElemModel { GameId = 0, GameName = "test", ImageLink = "https://localhost:7199/images/five_nights_at_Fredys_3/Header.jpg", Price = 4.99f });
-
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -71,6 +68,8 @@ namespace My_steam_client.Templates
 
             foreach (var Item in Items)
             {
+
+                FinalCost += Item.Price;
                 var newElem= DtoToModel(Item);
                 BasketElems.Add(newElem);
             }
@@ -81,12 +80,29 @@ namespace My_steam_client.Templates
             return new BasketElemModel { GameName = dto.purchouseNmae, ImageLink = dto.ImageLink, Price = dto.Price, cartitemId = dto.CarItemtId };
         }
 
-        private void TextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private async void TextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             if (sender is FrameworkElement element && element.DataContext is BasketElemModel basketElem)
             {
-                BasketElems.Remove(basketElem);
+
+                var dto = new DeleteFromCartDTO { UserId=AppServices.UserId, CartId = basketElem.cartitemId };
+                var result = await _cartService.DeleteCartElem(dto);
+
+                if (result)
+                {
+                    FinalCost -= basketElem.Price;
+                    BasketElems.Remove(basketElem);
+                }
+                else
+                {
+                    MessageBox.Show("Server error, failed aatempt to delete element");
+                }
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

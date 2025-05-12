@@ -37,5 +37,15 @@ namespace My_steam_server.Controllers
 
             return Ok(result);
         }
+
+        [HttpPost("delete")]
+        public async Task<IActionResult> deleteCartItem([FromBody] Game_Net_DTOLib.DeleteFromCartDTO dto)
+        {
+            var result = await _cartService.deleteCartElem(dto.UserId, dto.CartId);
+
+            if (!result.Success && result.resultCode == ResultCode.UnKnowError) return BadRequest();
+
+            return Ok(result);
+        }
     }
 }
