@@ -69,7 +69,7 @@ namespace My_steam_server.Repositories
                 user.CartItems.Add(new CartItem
                 {
                     CartItemId = newId,
-                    UserId = userId,
+                    UserId = userId.ToString(),
                     PurchaseOptionId = purchaseOption.OptionId
                 });
 

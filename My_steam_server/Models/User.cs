@@ -7,5 +7,7 @@ namespace My_steam_server.Models
         public string Nickname { get; set; }
 
         public List<CartItem> CartItems { get; set; } = new();
+        public List<UserLibraryEntry> Library { get; set; } = new();
+
     }
 }
