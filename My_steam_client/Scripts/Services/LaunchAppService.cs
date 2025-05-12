@@ -35,7 +35,6 @@ namespace My_steam_client.Scripts.Services
         {
             try
             {
-                Debug.WriteLine($"Attempting to launch: {gamePath}");
 
                 if (!File.Exists(gamePath))
                 {
@@ -48,42 +47,31 @@ namespace My_steam_client.Scripts.Services
                     throw new InvalidOperationException("Invalid game directory");
                 }
 
-                // Создаем ProcessStartInfo с базовыми настройками
-                ProcessStartInfo startInfo = new ProcessStartInfo
+                var exeFolder = Path.GetDirectoryName(gamePath)!;
+                
+                var gameRoot = Directory.Exists(Path.Combine(exeFolder, "Config"))
+                    ? exeFolder
+                    : 
+                      Path.GetFullPath(Path.Combine(exeFolder, "..", "..", ".."));
+
+                var startInfo = new ProcessStartInfo
                 {
                     FileName = gamePath,
-                    WorkingDirectory = gameDirectory,
-                    UseShellExecute = true,
-                    Verb = "open"
+                    //Arguments = "-log",          // чтобы UE4 писал лог в консоль
+                    WorkingDirectory = gameRoot,
+                    UseShellExecute = false,          // прямой запуск
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    CreateNoWindow = false          // покажем консоль, чтобы увидеть ошибки
                 };
+                
+                var gameProcess = new Process{ StartInfo = startInfo};
+                //gameProcess.OutputDataReceived += (s, e) => { if (e.Data != null) Debug.WriteLine(e.Data); };
+                //gameProcess.ErrorDataReceived += (s, e) => { if (e.Data != null) Debug.WriteLine(e.Data); };
 
-                // Пробуем запустить процесс
-                Process? gameProcess = null;
-                try
-                {
-                    gameProcess = Process.Start(startInfo);
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine($"First launch attempt failed: {ex.Message}");
-                    
-                    // Если первый способ не сработал, пробуем альтернативный способ
-                    startInfo = new ProcessStartInfo
-                    {
-                        FileName = "cmd.exe",
-                        Arguments = $"/c start \"\" \"{gamePath}\"",
-                        UseShellExecute = true,
-                        WorkingDirectory = gameDirectory,
-                        CreateNoWindow = true
-                    };
-                    
-                    gameProcess = Process.Start(startInfo);
-                }
-
-                if (gameProcess == null)
-                {
-                    throw new Exception("Failed to start game process");
-                }
+                gameProcess.Start();
+                //gameProcess.BeginOutputReadLine();
+                //gameProcess.BeginErrorReadLine();
 
                 var startTime = DateTime.Now;
 
@@ -100,6 +88,7 @@ namespace My_steam_client.Scripts.Services
                 var oldRecord = await _libRepository.getRecordByIdAsync(session.RecordId);
                 oldRecord.lastPlayed = DateTime.Now;
                 await _libRepository.UpdateRecordAsync(session.RecordId, oldRecord);
+
 
                 // Ждем завершения процесса
                 await Task.Run(() => 

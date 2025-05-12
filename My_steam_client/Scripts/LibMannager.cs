@@ -24,6 +24,9 @@ namespace My_steam_client.Scripts
         public string LibRootPath {  get; private set; }
         public bool isOfflineMode { get; set; } = false;
 
+        private readonly HashSet<string> _execExt = new(StringComparer.OrdinalIgnoreCase)
+    { ".exe", ".bat", ".cmd" /* и т.д. */ };
+
         public LibRepository repository { get; private set; } = new LibRepository();
         public DownloadQueueManager downloadQueueManager;
         public LibMannager()
@@ -115,12 +118,6 @@ namespace My_steam_client.Scripts
                             entry.ExtractToFile(fullPath, true);
                             processedEntries++;
                             UnpackProgressChanged?.Invoke(processedEntries, totalEntries);
-
-                            // Проверяем, является ли файл исполняемым
-                            if (executablePath == null && _executableExtensions.Contains(Path.GetExtension(entry.Name).ToLower()))
-                            {
-                                executablePath = fullPath;
-                            }
                         }
                     }
                 });
@@ -132,20 +129,12 @@ namespace My_steam_client.Scripts
                 {
                     record.libElemStaus = LibElemStatuses.Installed;
                     
-                    // Если нашли исполняемый файл, обновляем путь в манифесте
-                    if (executablePath != null)
-                    {
-                        record.ExecuteFileSource = executablePath;
-                    }
-                    else
-                    {
-                        // Если не нашли исполняемый файл, ищем его в распакованной директории
                         executablePath = FindExecutableFile(extractpath);
                         if (executablePath != null)
                         {
                             record.ExecuteFileSource = executablePath;
                         }
-                    }
+                    
 
                     await repository.UpdateRecordAsync(record.RecordId, record);
                 }
@@ -159,28 +148,33 @@ namespace My_steam_client.Scripts
             }
         }
 
-        private string? FindExecutableFile(string directory)
+        private string? FindExecutableFile(string rootDir)
         {
+            if (!Directory.Exists(rootDir))
+                throw new DirectoryNotFoundException($"Directory not found: {rootDir}");
+
             try
             {
-                // Ищем все файлы с нужными расширениями
-                var files = Directory.GetFiles(directory, "*.*", SearchOption.AllDirectories)
-                    .Where(f => _executableExtensions.Contains(Path.GetExtension(f).ToLower()))
-                    .ToList();
+                var exe = Directory.EnumerateFiles(rootDir, "*.exe", SearchOption.AllDirectories)
+                                   .FirstOrDefault();
+                if (exe != null)
+                    return exe;
 
-                if (files.Any())
-                {
-                    // Если нашли несколько исполняемых файлов, предпочитаем .exe
-                    var exeFile = files.FirstOrDefault(f => Path.GetExtension(f).Equals(".exe", StringComparison.OrdinalIgnoreCase));
-                    return exeFile ?? files.First();
-                }
+
+                return Directory.EnumerateFiles(rootDir, "*.*", SearchOption.AllDirectories)
+                                .FirstOrDefault(f => _execExt.Contains(Path.GetExtension(f)));
+            }
+            catch (UnauthorizedAccessException uaEx)
+            {
+                // Логируем и возвращаем null, если нет доступа к какой-то папке
+                Console.Error.WriteLine($"Access denied while searching: {uaEx.Message}");
+                return null;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error searching for executable: {ex.Message}");
+                Console.Error.WriteLine($"Error searching for executable: {ex}");
+                return null;
             }
-
-            return null;
         }
 
         private bool isLibInited()
