@@ -35,9 +35,9 @@ namespace Game_Net_DTOLib
 
     public class PurchaseOption
     {
-        public int PurchaseId {  get; set; }
+        public long PurchaseId {  get; set; }
 
         public string GameName { get; set; }
-        public string Price { get; set; }
+        public float Price { get; set; }
     }
 }

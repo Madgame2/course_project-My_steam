@@ -13,7 +13,7 @@ namespace My_steam_server.Models
         public Ratinng ratinng { get; set; }
 
         public DateTime ReleaseDate { get; set; }
-        public Game_Net_DTOLib.PurchaseOption[] PurchaseOption { get; set; }
+        public List<PurchaseOption> PurchaseOptions { get; set; } = new();
 
         public override bool Equals(object? obj)
         {

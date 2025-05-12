@@ -45,26 +45,35 @@ namespace My_steam_server.Controllers
         {
             var result = await _goodsService_games.GetGoodByIdAsync(id);
 
-            if (result.resultCode == ResultCode.WrongGoodId) return NotFound();
-
+            if (result.resultCode == ResultCode.WrongGoodId)
+                return NotFound();
 
             var game = result.data;
-            var GameDto = new Game_Net_DTOLib.ProductDto {
+
+            // Преобразование данных в DTO
+            var gameDto = new Game_Net_DTOLib.ProductDto
+            {
                 GameId = game.Id,
                 GameName = game.Name,
                 Description = game.Description,
                 ImageLink = game.HeaderImageSource,
-                MdFileSourcce = game.MdFileSorce,
+                MdFileSourcce = game.MdFileSorce, // Проверь, чтобы название было одинаковым
                 ReleaseDate = game.ReleaseDate,
-                rating = game.ratinng,
-                imagesLinks = new List<string> ( game.imageSource )  ,
-                PurchaseOptions = new List<Game_Net_DTOLib.PurchaseOption> ( game.PurchaseOption )
+                rating = game.ratinng, // Убедись, что свойство в DTO называется правильно
+                imagesLinks = game.imageSource.ToList(), // Преобразование массива в список
+                PurchaseOptions = game.PurchaseOptions.Select(po => new Game_Net_DTOLib.PurchaseOption
+                {
+                    PurchaseId = po.OptionId, // Преобразуем из модели в DTO
+                    GameName = po.PurchaseName,
+                    Price = po.Price // Оставляем как float, без изменения в строку
+                }).ToList() // Преобразуем все варианты покупки
             };
 
-            var response = new NetResponse<ProductDto> { Success = true, data=GameDto };
+            var response = new NetResponse<ProductDto> { Success = true, data = gameDto };
 
             return Ok(response);
         }
+
 
         [HttpGet("Game")]
         public async Task<IActionResult> GetAllGame(int id)

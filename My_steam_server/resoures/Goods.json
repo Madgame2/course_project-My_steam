@@ -12,11 +12,17 @@
     "MdFileSorce": "http://localhost:5254/Resources/Markdown/Test.md",
     "ratinng": 1,
     "ReleaseDate": "2025-05-03T14:30:00",
-    "PurchaseOption": [
+    "PurchaseOptions": [
       {
-        "PurchaseId": 1,
-        "GameName": "Buy Five Nights at Freddy's 3",
-        "Price": "15.15"
+        "OptionId": 1,
+        "Price": 15.15,
+        "PurchaseName": "Buy Five night's at fredys 3",
+        "GoodsReceived": [
+          {
+            "GoodId": 1,
+            "GoodName": "Five Nights at Freddy's 3"
+          }
+        ]
       }
     ],
     "Id": 1,

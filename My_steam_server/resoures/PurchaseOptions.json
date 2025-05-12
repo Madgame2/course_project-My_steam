@@ -1,0 +1,13 @@
+[
+  {
+    "OptionId": 1,
+    "Price": 15.15,
+    "GoodsReceived": [
+      {
+        "Id": 1,
+        "GoodId": 1,
+        "PurchaseOptionId": 1
+      }
+    ]
+  }
+] 
