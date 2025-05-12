@@ -172,7 +172,7 @@
                             <TextBlock Text="{Binding Price}" Style="{StaticResource PurchaseTemlate_PriceText}"/>
                         </Border>
                         <Border Grid.Column="1">
-                            <Button Content="Add to cart" Style="{StaticResource PurchaseTemlate_Button}"/>
+                            <Button Content="Add to cart" Style="{StaticResource PurchaseTemlate_Button}" Click="Button_Click"/>
                         </Border>
                     </Grid>
                 </Border>

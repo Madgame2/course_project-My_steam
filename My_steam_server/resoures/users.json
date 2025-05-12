@@ -1,6 +1,7 @@
 [
   {
     "Nickname": null,
+    "CartItems": [],
     "Id": "1",
     "UserName": "Anton",
     "NormalizedUserName": null,
@@ -19,6 +20,7 @@
   },
   {
     "Nickname": null,
+    "CartItems": [],
     "Id": "2",
     "UserName": "Nokio",
     "NormalizedUserName": null,
@@ -37,6 +39,7 @@
   },
   {
     "Nickname": null,
+    "CartItems": [],
     "Id": "3",
     "UserName": "memail",
     "NormalizedUserName": null,
@@ -55,6 +58,15 @@
   },
   {
     "Nickname": null,
+    "CartItems": [
+      {
+        "CartItemId": 1,
+        "UserId": 4,
+        "User": null,
+        "PurchaseOptionId": 1,
+        "PurchaseOption": null
+      }
+    ],
     "Id": "4",
     "UserName": "xFrorezent",
     "NormalizedUserName": null,

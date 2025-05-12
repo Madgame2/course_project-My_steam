@@ -29,7 +29,7 @@ namespace My_steam_server.Repositories
             return Task.FromResult(_users.AsEnumerable());
         }
 
-        public Task<User?> GetByIdAsync(int id)
+        public Task<User?> GetByIdAsync(long id)
         {
             var user = _users.FirstOrDefault(u => Convert.ToInt32(u.Id) == id);
             return Task.FromResult(user);
@@ -52,6 +52,54 @@ namespace My_steam_server.Repositories
         {
             var json = JsonSerializer.Serialize(_users, new JsonSerializerOptions { WriteIndented = true });
             await File.WriteAllTextAsync(_filePath, json);
+        }
+
+        public async Task AddToCartAsync(long userId, PurchaseOption purchaseOption)
+        {
+            var user = _users.FirstOrDefault(u => u.Id == userId.ToString());
+            if (user != null)
+            {
+                var cartItem = user.CartItems.FirstOrDefault(item => item.PurchaseOptionId == purchaseOption.OptionId);
+                if (cartItem != null)
+                {
+                    throw new ArgumentException("Товар уже в корзине.");
+                }
+
+                var newId = user.CartItems.Count > 0 ? user.CartItems.Max(c => c.CartItemId) + 1 : 1;
+                user.CartItems.Add(new CartItem
+                {
+                    CartItemId = newId,
+                    UserId = userId,
+                    PurchaseOptionId = purchaseOption.OptionId
+                });
+
+                await SaveChangesAsync();
+            }
+        }
+
+
+        public async Task RemoveFromCartAsync(long userId,long purchaseOptionId)
+        {
+            var user = _users.FirstOrDefault(u => u.Id == userId.ToString());
+            if (user != null)
+            {
+                var cartItem = user.CartItems.FirstOrDefault(item => item.PurchaseOptionId == purchaseOptionId);
+                if (cartItem != null)
+                {
+                    user.CartItems.Remove(cartItem);
+                    await SaveChangesAsync();
+                }
+            }
+        }
+
+        public Task<List<CartItem>> GetCartAsync(long userId)
+        {
+            var user = _users.FirstOrDefault(u => u.Id == userId.ToString());
+            if (user != null)
+            {
+                return Task.FromResult(user.CartItems);
+            }
+            return Task.FromResult(new List<CartItem>());
         }
     }
 

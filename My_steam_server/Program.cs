@@ -24,14 +24,17 @@ try
     var filePath = config["JsonRepository:UserFilePath"];
     var TokenFilepath = config["JsonRepository:TokenFilePath"];
     var GoodsFilepath = config["JsonRepository:GoodsFilePath"];
+    var PurchousesFilepath = config["JsonRepository:PurchousesFilePath"];
+
 
     builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
     builder.Services.AddSingleton<IResources, ResourcesService>();
     builder.Services.AddSingleton<IGamesRespository, GamesRepository>();
-    builder.Services.AddSingleton<IPurchaseOptionRepository, JsonPurchaseOptionRepository>();
+    builder.Services.AddSingleton<IPurchaseOptionRepository, JsonPurchaseOptionRepository>(provider=> new JsonPurchaseOptionRepository(PurchousesFilepath));
     builder.Services.AddSingleton<IUserRepository, JsonUserRepository>(provider => new JsonUserRepository(filePath));
     builder.Services.AddSingleton<IRefreshTokenRepository, JsonRefreshTokenRepository>(provider => new JsonRefreshTokenRepository(TokenFilepath));
     builder.Services.AddSingleton<IGoodRepository<Game>>(provider => new JsonGoodsRepository<Game>(GoodsFilepath));
+    builder.Services.AddSingleton<ICartService, CartService>();
     builder.Services.AddControllers();
 
     builder.Services.AddScoped<IAuthService, AuthService>();

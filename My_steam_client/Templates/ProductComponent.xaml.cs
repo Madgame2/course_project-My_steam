@@ -3,6 +3,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using Game_Net;
 using Game_Net_DTOLib;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Web.WebView2.Core;
@@ -88,6 +89,28 @@ namespace My_steam_client.Templates
             }
 
             return result;
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var sevice = AppServices.Provider.GetRequiredService<Game_Net.CartService>();
+            var viewModel = (PurchaseOption)((FrameworkElement)sender).DataContext;
+
+
+            try
+            {
+                var dto = new AddToCarDto { useerId = AppServices.UserId, purchouseID = viewModel.PurchaseId };
+                var result = await sevice.addToCart(dto);
+
+
+                if (result) MessageBox.Show("HEEEEEEE");
+            }
+            catch(PurchouseExistExeption)
+            {
+                MessageBox.Show("This purhcouse aready exist in cart.");
+            }
+
+            
         }
     }
 }

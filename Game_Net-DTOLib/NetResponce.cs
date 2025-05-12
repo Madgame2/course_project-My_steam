@@ -22,7 +22,9 @@ namespace Game_Net_DTOLib
 
         ObjectAleradyExist,
 
-        noMoreProducts
+        noMoreProducts,
+
+        PurchouseAlredyExist
     }
 
     public class NetResponse<T>

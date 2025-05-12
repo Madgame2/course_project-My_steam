@@ -6,8 +6,19 @@ namespace My_steam_server.Repositories
 {
     public class JsonPurchaseOptionRepository : IPurchaseOptionRepository
     {
-        private readonly string _filePath = "purchase_options.json";
+        public static string _filePath = string.Empty;
         private readonly JsonSerializerOptions _options = new JsonSerializerOptions { WriteIndented = true };
+
+        public JsonPurchaseOptionRepository(string filePath)
+        {
+            _filePath = filePath;
+
+            if (!File.Exists(_filePath))
+            {
+                File.WriteAllText(_filePath, "[]");
+
+            }
+        }
 
         public async Task<List<PurchaseOption>> GetAllAsync()
         {

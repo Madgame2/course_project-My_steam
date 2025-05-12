@@ -2,11 +2,11 @@
   {
     "OptionId": 1,
     "Price": 15.15,
+    "PurchaseName": "Buy Five night's at fredys 3",
     "GoodsReceived": [
       {
-        "Id": 1,
         "GoodId": 1,
-        "PurchaseOptionId": 1
+        "GoodName": "Five Nights at Freddy's 3"
       }
     ]
   }

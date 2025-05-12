@@ -15,4 +15,9 @@ namespace Game_Net
     {
         public NotFoundExaption(string message) : base(message) { }
     }
+
+    public class  PurchouseExistExeption: Exception 
+    {
+        public PurchouseExistExeption(string message) : base(message) { }
+    }
 }
