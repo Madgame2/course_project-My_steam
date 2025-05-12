@@ -3,6 +3,7 @@
     "OptionId": 1,
     "Price": 15.15,
     "PurchaseName": "Buy Five night's at fredys 3",
+    "ImageLink": "https://localhost:7199/images/five_nights_at_Fredys_3/Header.jpg",
     "GoodsReceived": [
       {
         "GoodId": 1,

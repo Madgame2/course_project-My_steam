@@ -27,5 +27,15 @@ namespace My_steam_server.Controllers
 
             return Ok(result);
         }
+
+        [HttpGet("{UserId:long}")]
+        public async Task<IActionResult> GetUseerCart([FromRoute] long UserId)
+        {
+            var result = await _cartService.getUserCart(UserId);
+
+            if (!result.Success && result.resultCode == ResultCode.UnKnowError) return BadRequest();
+
+            return Ok(result);
+        }
     }
 }

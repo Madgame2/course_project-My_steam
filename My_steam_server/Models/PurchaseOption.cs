@@ -5,6 +5,7 @@
         public long OptionId { get; set; }
         public float Price { get; set; }
         public string PurchaseName {  get; set; }
+        public string ImageLink {  get; set; }
 
         // Один вариант может включать много товаров (в том числе саму игру)
         public List<GoodReceived> GoodsReceived { get; set; } = new();

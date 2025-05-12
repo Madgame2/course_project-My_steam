@@ -8,7 +8,7 @@ namespace My_steam_client.Templates
 {
     public class BasketElemModel
     {
-        public long GameId { get; set; }
+        public long cartitemId { get; set; }
         public string GameName { get; set; }
         public string ImageLink { get; set; }
         public float Price {  get; set; }

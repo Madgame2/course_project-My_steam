@@ -36,5 +36,20 @@ namespace Game_Net
 
             return true;
         }
+
+        public async Task<List<CartItemDto>> getCart(long userId)
+        {
+            NetResponse<List<CartItemDto>> response;
+            try
+            {
+                response = await _commManager.SendMessageRest<List<CartItemDto>>($"api/Cart/{userId}", Protocol.Https);
+            }
+            catch (UndefinedProtocolException)
+            {
+                response = await _commManager.SendMessageRest<List<CartItemDto>>($"api/Cart/{userId}", Protocol.Http);
+            }
+
+            return response.data;
+        }
     }
 }
