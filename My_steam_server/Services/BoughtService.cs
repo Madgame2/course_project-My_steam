@@ -27,33 +27,34 @@ namespace My_steam_server.Services
                 var user = await _userRepository.GetByIdAsync(userId);
                 if (user == null) return false;
 
+                // Получаем корзину и делаем копию, чтобы избежать ошибки изменения коллекции во время перебора
                 var userCarts = await _userRepository.GetCartAsync(userId);
+                var userCartsCopy = userCarts.ToList(); // Копия списка
 
-
-                foreach (var cart in userCarts)
+                foreach (var cart in userCartsCopy)
                 {
-                    var purchouseOption = cart.PurchaseOption;
-                    if (purchouseOption == null) purchouseOption = await _purchaseOptionRepository.GetByIdAsync(cart.PurchaseOptionId);
+                    var purchaseOption = cart.PurchaseOption;
+                    if (purchaseOption == null)
+                        purchaseOption = await _purchaseOptionRepository.GetByIdAsync(cart.PurchaseOptionId);
 
-                    if (purchouseOption != null)
-                        foreach (var goodReceived in purchouseOption.GoodsReceived)
+                    if (purchaseOption == null) continue;
+
+                    foreach (var goodReceived in purchaseOption.GoodsReceived)
+                    {
+                        var game = await _goodsRepository.GetByIdAsync(goodReceived.GoodId);
+                        if (game == null) continue;
+
+                        if (await _userLibraryRepository.IsGameInLibraryAsync(userId, game.Id)) continue;
+
+                        var entry = new UserLibraryEntry
                         {
-                            var Game = await _goodsRepository.GetByIdAsync(goodReceived.GoodId);
-                            if (Game == null) continue;
+                            GameId = game.Id,
+                            UserId = userId,
+                            PurchaseDate = DateTime.UtcNow
+                        };
 
-                            if (await _userLibraryRepository.IsGameInLibraryAsync(userId, Game.Id)) continue;
-
-
-                            var entry = new UserLibraryEntry
-                            {
-                                GameId = Game.Id,
-                                UserId = userId,
-                                PurchaseDate = DateTime.UtcNow
-                            };
-
-                            await _userLibraryRepository.AddToLibraryAsync(entry);
-
-                        }
+                        await _userLibraryRepository.AddToLibraryAsync(entry);
+                    }
 
                     await _userRepository.RemoveFromCartAsync(userId, cart.PurchaseOptionId);
                 }
@@ -66,5 +67,6 @@ namespace My_steam_server.Services
                 return false;
             }
         }
+
     }
 }

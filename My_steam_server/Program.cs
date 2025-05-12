@@ -25,11 +25,13 @@ try
     var TokenFilepath = config["JsonRepository:TokenFilePath"];
     var GoodsFilepath = config["JsonRepository:GoodsFilePath"];
     var PurchousesFilepath = config["JsonRepository:PurchousesFilePath"];
+    var LibFilepath = config["JsonRepository:LibFilePath"];
 
 
     builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
     builder.Services.AddSingleton<IResources, ResourcesService>();
     builder.Services.AddSingleton<IGamesRespository, GamesRepository>();
+    builder.Services.AddSingleton<IUserLibraryRepository, JsonLibRepository>(provider => new JsonLibRepository(LibFilepath));
     builder.Services.AddSingleton<IPurchaseOptionRepository, JsonPurchaseOptionRepository>(provider=> new JsonPurchaseOptionRepository(PurchousesFilepath));
     builder.Services.AddSingleton<IUserRepository, JsonUserRepository>(provider => new JsonUserRepository(filePath));
     builder.Services.AddSingleton<IRefreshTokenRepository, JsonRefreshTokenRepository>(provider => new JsonRefreshTokenRepository(TokenFilepath));

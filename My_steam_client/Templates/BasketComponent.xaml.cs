@@ -100,9 +100,18 @@ namespace My_steam_client.Templates
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (BasketElems.Count == 0) return;
 
+            var result = await _cartService.BuyAllCards(AppServices.UserId.ToString());
+
+
+            if (result)
+            {
+                BasketElems.Clear();
+                FinalCost = 0;
+            }
         }
     }
 }

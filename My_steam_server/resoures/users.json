@@ -61,15 +61,7 @@
   },
   {
     "Nickname": null,
-    "CartItems": [
-      {
-        "CartItemId": 1,
-        "UserId": "4",
-        "User": null,
-        "PurchaseOptionId": 1,
-        "PurchaseOption": null
-      }
-    ],
+    "CartItems": [],
     "Library": [],
     "Id": "4",
     "UserName": "xFrorezent",

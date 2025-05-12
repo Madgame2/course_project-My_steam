@@ -17,7 +17,7 @@ namespace My_steam_server.Controllers
             this.boughtService = boughtService;
         }
 
-        [HttpPost]
+        [HttpPost("Buy")]
         public async Task<IActionResult> BuyAll([FromBody] PurchaseDto dto)
         {
             var result = await boughtService.buyUserCart(dto.UserId);

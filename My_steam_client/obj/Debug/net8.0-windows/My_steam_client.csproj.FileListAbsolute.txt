@@ -165,4 +165,4 @@ D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\
 D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\obj\Debug\net8.0-windows\Templates\BasketComponent.g.cs
 D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\obj\Debug\net8.0-windows\Templates\BasketComponent.baml
 D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\bin\Debug\net8.0-windows\resoures\PurchaseOptions.json
-D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\bin\Debug\net8.0-windows\PurchaseOptions.json
+D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\bin\Debug\net8.0-windows\resoures\Lib.json

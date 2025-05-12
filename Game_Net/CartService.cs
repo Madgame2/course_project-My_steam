@@ -73,5 +73,23 @@ namespace Game_Net
 
             return false;
         }
+
+        public async Task<bool> BuyAllCards(string UserId)
+        {
+            var json = JsonSerializer.Serialize(new PurchaseDto { UserId = UserId, purchouseIds=new() });
+            NetResponse<bool> response;
+            try
+            {
+                response = await _commManager.SendMessageRest<bool>($"api/Buying/Buy", Protocol.Https, json);
+            }
+            catch (UndefinedProtocolException)
+            {
+                response = await _commManager.SendMessageRest<bool>($"api/Buying/Buy", Protocol.Http, json);
+            }
+
+            return response.data;
+        }
     }
+
+
 }
