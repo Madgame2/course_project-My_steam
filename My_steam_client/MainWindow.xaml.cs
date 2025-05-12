@@ -18,6 +18,7 @@ namespace My_steam_client
         private Shop_Component? shopPage = null;
         private LibraryComponent? libraryPage = null;
 
+
         public MainWindow()
         {
             InitializeComponent();
@@ -55,6 +56,11 @@ namespace My_steam_client
             NavigateTo(libraryPage);
         }
 
+        private void ToBasket(object sender, RoutedEventArgs e)
+        {
+            NavigateTo(new BasketComponent());
+        }
+
         private void toStat(object sender, RoutedEventArgs e)
         {
             NavigateTo(null);
@@ -69,6 +75,12 @@ namespace My_steam_client
         {
             SideButtonGroup.setAllUncehceked("MainNav");
             NavigateTo(new ProductComponent(dto));
+        }
+
+        private void MyAccount(object sender, RoutedEventArgs e)
+        {
+            var aacountWindow = new MyAccountWindow();
+            aacountWindow.Show();
         }
 
         private async void LogOut (object sender,RoutedEventArgs e)

@@ -16,7 +16,13 @@
     <Compile Update="AuthWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="MyAccountWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Templates\Activity.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Templates\BasketComponent.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Templates\DownLoadInfo.xaml.cs">
@@ -111,6 +117,9 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="MyAccountWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="ShowcaseItemStyles.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -118,6 +127,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\Activity.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Templates\BasketComponent.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\DownLoadInfo.xaml">

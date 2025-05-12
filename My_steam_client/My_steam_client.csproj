@@ -16,6 +16,7 @@
     <None Remove="resources\Gif\Ping_icon.gif" />
     <None Remove="resources\images\330e1029061501db08c7bf7e9b37a9a2.jpg" />
     <None Remove="resources\images\33usgd94xncz.png" />
+    <None Remove="resources\images\basket-shopping-svgrepo-com.svg" />
     <None Remove="resources\images\cart-trolley-ui-5-svgrepo-com.svg" />
     <None Remove="resources\images\cat2.jpg" />
     <None Remove="resources\images\community-group-leader-svgrepo-com.svg" />
@@ -35,6 +36,7 @@
     <None Remove="resources\images\shopping-cart-svgrepo-com.png" />
     <None Remove="resources\images\test.jpg" />
     <None Remove="resources\images\trash.svg" />
+    <None Remove="resources\images\user-svgrepo-com.svg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -58,6 +60,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\images\33usgd94xncz.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\images\basket-shopping-svgrepo-com.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\images\cart-trolley-ui-5-svgrepo-com.svg">
@@ -118,6 +123,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\images\trash.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\images\user-svgrepo-com.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

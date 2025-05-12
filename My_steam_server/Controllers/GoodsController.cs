@@ -58,7 +58,7 @@ namespace My_steam_server.Controllers
                 ReleaseDate = game.ReleaseDate,
                 rating = game.ratinng,
                 imagesLinks = new List<string> ( game.imageSource )  ,
-                PurchaseOptions = new List<PurchaseOption> ( game.PurchaseOption )
+                PurchaseOptions = new List<Game_Net_DTOLib.PurchaseOption> ( game.PurchaseOption )
             };
 
             var response = new NetResponse<ProductDto> { Success = true, data=GameDto };

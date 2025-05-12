@@ -72,6 +72,12 @@
                         Margin="0,22,0,0"
                         Style="{StaticResource SideBar_styles}">
 
+                        <StackPanel VerticalAlignment="Top" Margin="0,50,0,0">
+
+                            <local:SimpleSideButton Click="MyAccount" Height="60" IconHeight="30" Icon="images/user-svgrepo-com.svg" Title="My account"/>
+                            <local:SideButton Click="ToBasket" Height="60" IconHeight="30" Icon="images/basket-shopping-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav" Title="My basket"/>
+                        </StackPanel>
+
                         <StackPanel Style="{StaticResource Main_buttons}">
                             <local:SideButton Click="toShop" IsChecked="True" Height="60" IconHeight="30" Icon="images/cart-trolley-ui-5-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav" Title="Shop"/>
                             <local:SideButton Click="toLib" Height="60" IconHeight="30" Icon="images/game-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav" Title="Library"/>
