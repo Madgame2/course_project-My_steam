@@ -29,9 +29,9 @@ namespace My_steam_server.Repositories
             return Task.FromResult(_users.AsEnumerable());
         }
 
-        public Task<User?> GetByIdAsync(long id)
+        public Task<User?> GetByIdAsync(string id)
         {
-            var user = _users.FirstOrDefault(u => Convert.ToInt32(u.Id) == id);
+            var user = _users.FirstOrDefault(u => u.Id == id);
             return Task.FromResult(user);
         }
 
@@ -54,7 +54,7 @@ namespace My_steam_server.Repositories
             await File.WriteAllTextAsync(_filePath, json);
         }
 
-        public async Task AddToCartAsync(long userId, PurchaseOption purchaseOption)
+        public async Task AddToCartAsync(string userId, PurchaseOption purchaseOption)
         {
             var user = _users.FirstOrDefault(u => u.Id == userId.ToString());
             if (user != null)
@@ -78,7 +78,7 @@ namespace My_steam_server.Repositories
         }
 
 
-        public async Task RemoveFromCartAsync(long userId,long CartItemId)
+        public async Task RemoveFromCartAsync(string userId,long CartItemId)
         {
             var user = _users.FirstOrDefault(u => u.Id == userId.ToString());
             if (user != null)
@@ -92,7 +92,7 @@ namespace My_steam_server.Repositories
             }
         }
 
-        public Task<List<CartItem>> GetCartAsync(long userId)
+        public Task<List<CartItem>> GetCartAsync(string userId)
         {
             var user = _users.FirstOrDefault(u => u.Id == userId.ToString());
             if (user != null)

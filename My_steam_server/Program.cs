@@ -35,6 +35,15 @@ try
     builder.Services.AddSingleton<IRefreshTokenRepository, JsonRefreshTokenRepository>(provider => new JsonRefreshTokenRepository(TokenFilepath));
     builder.Services.AddSingleton<IGoodRepository<Game>>(provider => new JsonGoodsRepository<Game>(GoodsFilepath));
     builder.Services.AddSingleton<ICartService, CartService>();
+    builder.Services.AddSingleton<IBoughtService, BoughtService>(provider =>
+    {
+        var UserRep = provider.GetRequiredService<IUserRepository>();
+        var PurhcouseOptions = provider.GetRequiredService<IPurchaseOptionRepository>();
+        var GoodRepository = provider.GetRequiredService<IGoodRepository<Game>>();
+        var LibRepos = provider.GetRequiredService<IUserLibraryRepository>();
+
+        return new BoughtService(UserRep, PurhcouseOptions, GoodRepository, LibRepos);
+    });
     builder.Services.AddControllers();
 
     builder.Services.AddScoped<IAuthService, AuthService>();

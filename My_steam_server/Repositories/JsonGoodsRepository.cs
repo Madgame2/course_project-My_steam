@@ -37,7 +37,7 @@ namespace My_steam_server.Repositories
             return result;
         }
 
-        public async Task<T?> GetByIdAsync(int id)
+        public async Task<T?> GetByIdAsync(long id)
         {
             var objects = await GetObjets();
 

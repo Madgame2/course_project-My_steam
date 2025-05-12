@@ -90,7 +90,7 @@ namespace My_steam_server.Services
                 };
             }
 
-            var user = await _userRepository.GetByIdAsync(existingRefrashToken.UserId);
+            var user = await _userRepository.GetByIdAsync(existingRefrashToken.UserId.ToString());
             var newAccessToken = await GenerateAccessTokenAsync(user);
             var newRefreshToken = await GenerateRefreshTokenAsync(user);
 
