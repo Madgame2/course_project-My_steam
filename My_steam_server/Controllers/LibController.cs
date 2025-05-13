@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Game_Net_DTOLib;
 using My_steam_server.Interfaces;
+using My_steam_server.Models;
 
 namespace My_steam_server.Controllers
 {
@@ -12,11 +13,13 @@ namespace My_steam_server.Controllers
     {
         private readonly IUserLibraryRepository _userLibraryRepository;
         private readonly IGamesRespository gamesRespository;
+        private readonly IGoodRepository<Game> goodRepository;
 
-        public LibController(IUserLibraryRepository userLibraryRepository, IGamesRespository gamesRespository)
+        public LibController(IUserLibraryRepository userLibraryRepository, IGamesRespository gamesRespository, IGoodRepository<Game>  goodRepository  )
         {
             _userLibraryRepository = userLibraryRepository;
-            this.gamesRespository = gamesRespository;   
+            this.gamesRespository = gamesRespository;  
+            this.goodRepository = goodRepository;
         }
 
         [HttpGet("Synchronize/{userId}")]
@@ -27,12 +30,14 @@ namespace My_steam_server.Controllers
 
             foreach(var libElem in UserLib)
             {
+
+                var gameInfo = libElem.Game != null ? libElem.Game : await goodRepository.GetByIdAsync(libElem.GameId);
                 var newDtoItem = new SynchronizeLibDto
                 {
                     UserId = userId,
                     GameId = libElem.GameId,
-                    Gamename = libElem.Game.Name,
-                    DownloadSource =libElem.Game.DownloadSource,
+                    Gamename = gameInfo.Name,
+                    DownloadSource = gameInfo.DownloadSource,
                     SpaceRequered = await gamesRespository.GetUncompressedSize(libElem.GameId)
                 };
 

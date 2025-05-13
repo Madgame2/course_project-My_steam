@@ -17,9 +17,13 @@ namespace My_steam_client.Scripts
 {
     public class LibMannager
     {
+        public delegate void LibContains(List<ManifestRecord> localLib);
+
         public event Action<long, long>? UnpackProgressChanged;
         public event Action<long>? UnpackCompleted;
         public event Action<long, Exception>? UnpackFailed;
+
+        public event LibContains LibResynchronized;
 
         private readonly string[] _executableExtensions = { ".exe", ".bat", ".cmd" };
 
@@ -59,13 +63,15 @@ namespace My_steam_client.Scripts
             var DetachedLib = await libraryService.GerDetachedLib(AppServices.UserId.ToString());
             var localLib = await repository.GetAllRecordsAsync();
 
+
+            
             foreach (var libItem in DetachedLib)
             {
                 var localgameInfo = localLib.Where(p=>p.GameId == libItem.GameId).FirstOrDefault();
 
                 if (localgameInfo==null)
                 {
-                    createNewRecord(libItem);
+                    localLib.Add(createNewRecord(libItem));
                 }
                 else
                 {
@@ -76,6 +82,8 @@ namespace My_steam_client.Scripts
             await checkStaticLibResources(localLib);
 
             await repository.saveChanges(localLib);
+
+            LibResynchronized?.Invoke(localLib);
         }
 
         private async Task checkStaticLibResources(List<ManifestRecord> records)

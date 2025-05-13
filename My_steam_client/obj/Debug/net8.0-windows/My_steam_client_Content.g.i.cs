@@ -34,6 +34,7 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/test.jpg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/trash.svg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/user-svgrepo-com.svg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/whiteuser.svg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("webview2loader.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("webview2loader.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("webview2loader.dll")]

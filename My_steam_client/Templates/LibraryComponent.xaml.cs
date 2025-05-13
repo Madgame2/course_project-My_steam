@@ -33,6 +33,7 @@ namespace My_steam_client.Templates
         public LibraryComponent()
         {
             _LibMannager = AppServices.Provider.GetRequiredService<LibMannager>();
+            _LibMannager.LibResynchronized += UpdateLib;
 
             InitializeComponent();
             DataContext = this;
@@ -66,6 +67,16 @@ namespace My_steam_client.Templates
                 Library.Add(item);
         }
 
+
+        private async void UpdateLib(List<ManifestRecord> localLib)
+        {
+            Library.Clear();
+
+            var libItems = await _LibMannager.getLibAsync();
+
+            foreach (var item in libItems)
+                Library.Add(item);
+        }
 
         private void OnItemClick(object sender, MouseButtonEventArgs e)
         {
