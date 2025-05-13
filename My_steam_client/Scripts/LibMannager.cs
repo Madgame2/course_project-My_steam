@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using My_steam_client.Scripts.Models;
 using System.IO.Compression;
 using Game_Net_DTOLib;
+using My_steam_server.Interfaces;
 
 namespace My_steam_client.Scripts
 {
@@ -23,6 +24,7 @@ namespace My_steam_client.Scripts
 
         public string manifestFilePath { get; private set; }
         public string LibRootPath {  get; private set; }
+        public string ResureDirectoryPath {  get; private set; }
         public bool isOfflineMode { get; set; } = false;
 
         private readonly HashSet<string> _execExt = new(StringComparer.OrdinalIgnoreCase)
@@ -30,13 +32,16 @@ namespace My_steam_client.Scripts
 
         public LibRepository repository { get; private set; } = new LibRepository();
         public DownloadQueueManager downloadQueueManager;
-        public LibraryService libraryService;
+        private LibraryService libraryService;
+        private DownloadingLibStaticResourcesService downloadingLibStaticResourcesService;
         public LibMannager()
         {
+            downloadingLibStaticResourcesService = AppServices.Provider.GetRequiredService<DownloadingLibStaticResourcesService>();
             libraryService = AppServices.Provider.GetRequiredService<LibraryService>();
             downloadQueueManager = AppServices.Provider.GetRequiredService<DownloadQueueManager>();
             LibRootPath = Path.Combine(Directory.GetCurrentDirectory(), "Common");
             manifestFilePath = Path.Combine(LibRootPath, "Lib/LibInit.json");
+            ResureDirectoryPath = Path.Combine(LibRootPath, "LidResources");
 
             if (!isLibInited()) initLib();
             checkLibStuct();
@@ -65,19 +70,57 @@ namespace My_steam_client.Scripts
                 }
             }
 
+            await checkStaticLibResources(localLib);
+
             await repository.saveChanges(localLib);
         }
 
-        private void checkStaticLibResources(List<ManifestRecord> recors)
+        private async Task checkStaticLibResources(List<ManifestRecord> records)
         {
-            foreach (var record in recors)
+            for (int i = 0; i < records.Count; i++)
             {
-                if(record.LibIconSource == null)
-                {
+                var record = records[i];
 
+                if (record.LibIconSource == null || record.HeaderImageSource == null)
+                {
+                    var invalidChars = Path.GetInvalidFileNameChars();
+                    var safeGameName = string.Concat(record.GameName.Where(c => !invalidChars.Contains(c)));
+                    var localGameresourcesPath = Path.Combine(ResureDirectoryPath, safeGameName);
+
+                    // Создаём директорию, если её нет
+                    if (!Directory.Exists(localGameresourcesPath))
+                        Directory.CreateDirectory(localGameresourcesPath);
+
+                    // Очищаем директорию от файлов
+                    if (Directory.Exists(localGameresourcesPath))
+                    {
+                        foreach (string file in Directory.GetFiles(localGameresourcesPath))
+                        {
+                            File.Delete(file);
+                        }
+                    }
+
+                    // Скачиваем и распаковываем архив
+                    await downloadingLibStaticResourcesService.InstallArchiveAsync(localGameresourcesPath, record.GameId);
+
+                    // Поиск и установка путей для изображений
+                    foreach (string file in Directory.GetFiles(localGameresourcesPath))
+                    {
+                        string fileName = Path.GetFileName(file);
+
+                        if (fileName.Contains("icon"))
+                        {
+                            record.LibIconSource = file;
+                        }
+                        else if (fileName.Contains("head"))
+                        {
+                            record.HeaderImageSource = file;
+                        }
+                    }
                 }
             }
         }
+
 
         private void ChekcTheecord(ManifestRecord manifestRecord,SynchronizeLibDto dto)
         {

@@ -9,12 +9,10 @@ namespace My_steam_server.Repositories
     public class GamesStaticFilesRepository : IGamesStaticFilesRepository
     {
         private readonly string _gamesDirectory;
-        private readonly ILogger<GamesStaticFilesRepository> _logger;
 
-        public GamesStaticFilesRepository(ILogger<GamesStaticFilesRepository> logger)
+        public GamesStaticFilesRepository()
         {
-            _logger = logger;
-            _gamesDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "resoures", "gamesResources");
+            _gamesDirectory = Path.Combine(Directory.GetCurrentDirectory(), "resoures", "gamesResources");
             
             // Ensure directory exists
             if (!Directory.Exists(_gamesDirectory))
@@ -30,7 +28,6 @@ namespace My_steam_server.Repositories
                 var filePath = GetGameFilePath(gameId);
                 if (!File.Exists(filePath))
                 {
-                    _logger.LogWarning("Game file not found for game ID: {GameId}", gameId);
                     return null;
                 }
 
@@ -38,7 +35,6 @@ namespace My_steam_server.Repositories
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error getting game file for game ID: {GameId}", gameId);
                 return null;
             }
         }
@@ -64,7 +60,6 @@ namespace My_steam_server.Repositories
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error getting file size for game ID: {GameId}", gameId);
                 return Task.FromResult<long?>(null);
             }
         }

@@ -1,4 +1,5 @@
 ﻿using My_steam_server.Interfaces;
+using My_steam_server.Repositories;
 using System.ComponentModel.Design;
 
 namespace My_steam_server.Services
@@ -6,17 +7,17 @@ namespace My_steam_server.Services
     public class ResourcesService : IResources
     {
         private readonly string RepositoryPath;
+        private readonly IGamesStaticFilesRepository _gamesStaticFilesRepository;
 
-        public ResourcesService()
+        public ResourcesService(IGamesStaticFilesRepository gamesStaticFilesRepository)
         {
             RepositoryPath = Path.Combine(Directory.GetCurrentDirectory(), "resoures");
+            _gamesStaticFilesRepository = gamesStaticFilesRepository;
         }
 
-        public Task<Stream?> GetLibsStaticFiles(long GameId)
+        public async Task<Stream?> GetLibsStaticFiles(long GameId)
         {
-
-
-            return Task.FromResult<Stream?>(null);
+            return await _gamesStaticFilesRepository.GetGameFileAsync((int)GameId);
         }
 
         public Task<Stream?> GetMarkdownStreamAsync(string FileName)

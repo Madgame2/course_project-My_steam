@@ -7,11 +7,9 @@ using My_steam_server.Repositories;
 using My_steam_server.Services;
 using System.Text;
 
-try
-{
+
     var builder = WebApplication.CreateBuilder(args);
 
-    // Загрузка конфигурации
     builder.Configuration
         .SetBasePath(Directory.GetCurrentDirectory())
         .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
@@ -29,7 +27,12 @@ try
 
 
     builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-    builder.Services.AddSingleton<IResources, ResourcesService>();
+    builder.Services.AddSingleton<IGamesStaticFilesRepository, GamesStaticFilesRepository>();
+    builder.Services.AddSingleton<IResources>(provider => 
+    {
+        var staticFilesRepository = provider.GetRequiredService<IGamesStaticFilesRepository>();
+        return new ResourcesService(staticFilesRepository);
+    });
     builder.Services.AddSingleton<IGamesRespository, GamesRepository>();
     builder.Services.AddSingleton<IUserLibraryRepository, JsonLibRepository>(provider => new JsonLibRepository(LibFilepath));
     builder.Services.AddSingleton<IPurchaseOptionRepository, JsonPurchaseOptionRepository>(provider=> new JsonPurchaseOptionRepository(PurchousesFilepath));
@@ -79,7 +82,7 @@ try
         };
     });
 
-    // Добавление CORS для работы с фронтендом
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ CORS пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     builder.Services.AddCors(options =>
     {
         options.AddPolicy("AllowAll", policy =>
@@ -92,7 +95,7 @@ try
 
     var app = builder.Build();
 
-    // Использование CORS
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ CORS
     app.UseCors("AllowAll");
 
     app.UseRouting();
@@ -104,9 +107,3 @@ try
 
     app.Run();
 
-}
-catch (Exception ex)
-{
-    Console.WriteLine("Сервер упал с ошибкой:");
-    Console.WriteLine(ex.ToString());
-}

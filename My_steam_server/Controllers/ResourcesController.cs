@@ -27,5 +27,18 @@ namespace My_steam_server.Controllers
 
             return File(stream, "text/plain", fileName);
         }
+
+        [HttpGet("Game/{gameId}")]
+        public async Task<IActionResult> GetGameFile(long gameId)
+        {
+            var stream = await resources.GetLibsStaticFiles(gameId);
+
+            if (stream == null)
+            {
+                return NotFound($"Game file with ID {gameId} not found");
+            }
+
+            return File(stream, "application/zip", $"game_{gameId}.zip");
+        }
     }
 }

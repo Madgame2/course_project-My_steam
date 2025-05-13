@@ -141,6 +141,22 @@ namespace Game_Net
            return stream;
             
         }
+
+        public async Task<Stream?> GetResourcesAsyc(string endPoint,Protocol protocol)
+        {
+            if (ServerUrls.TryGetValue(protocol, out var settings))
+            {
+                string fullUrl = settings.fullUrl(endPoint);
+
+                var stream = await _restClient.GetStreamAsync(fullUrl, JWT_token);
+                return stream;
+            }
+            else
+            {
+                throw new UndefinedProtocolException(protocol, "");
+            }
+
+        }
         public async Task<Stream?> GetResourcesAsyc(string endPoint, Dictionary<string, string>? headers = null)
         {
             return await _restClient.GetStreamAsync(endPoint, JWT_token, headers);

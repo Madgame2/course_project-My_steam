@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace My_steam_server.Interfaces
+namespace My_steam_server.Repositories
 {
     public interface IGamesStaticFilesRepository
     {
@@ -25,4 +25,4 @@ namespace My_steam_server.Interfaces
         /// <returns>Size of the file in bytes if exists, null otherwise</returns>
         Task<long?> GetGameFileSizeAsync(int gameId);
     }
-}
+} 
