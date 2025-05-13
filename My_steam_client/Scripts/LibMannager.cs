@@ -11,6 +11,7 @@ using My_steam_client.Scripts.Models;
 using System.IO.Compression;
 using Game_Net_DTOLib;
 using My_steam_server.Interfaces;
+using System.Windows;
 
 namespace My_steam_client.Scripts
 {
@@ -48,6 +49,8 @@ namespace My_steam_client.Scripts
 
             LibRepository.ManifestFilePath = manifestFilePath;
 
+            checkGamesFiles();
+
             downloadQueueManager.DownloadCompleted += UnPacageGame;
         }
 
@@ -66,7 +69,7 @@ namespace My_steam_client.Scripts
                 }
                 else
                 {
-                    ChekcTheecord(localgameInfo, libItem);
+                    ChekcRheecord(localgameInfo, libItem);
                 }
             }
 
@@ -81,7 +84,7 @@ namespace My_steam_client.Scripts
             {
                 var record = records[i];
 
-                if (record.LibIconSource == null || record.HeaderImageSource == null)
+                if (record.LibIconSource == null || record.HeaderImageSource == null|| !File.Exists(record.LibIconSource)|| !File.Exists(record.HeaderImageSource))
                 {
                     var invalidChars = Path.GetInvalidFileNameChars();
                     var safeGameName = string.Concat(record.GameName.Where(c => !invalidChars.Contains(c)));
@@ -100,9 +103,17 @@ namespace My_steam_client.Scripts
                         }
                     }
 
-                    // Скачиваем и распаковываем архив
-                    await downloadingLibStaticResourcesService.InstallArchiveAsync(localGameresourcesPath, record.GameId);
+                    try
+                    {
+                        // Скачиваем и распаковываем архив
+                        await downloadingLibStaticResourcesService.InstallArchiveAsync(localGameresourcesPath, record.GameId);
 
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Failed to load static resources: {record.GameName}");
+                        continue;
+                    }
                     // Поиск и установка путей для изображений
                     foreach (string file in Directory.GetFiles(localGameresourcesPath))
                     {
@@ -122,7 +133,7 @@ namespace My_steam_client.Scripts
         }
 
 
-        private void ChekcTheecord(ManifestRecord manifestRecord,SynchronizeLibDto dto)
+        private void ChekcRheecord(ManifestRecord manifestRecord,SynchronizeLibDto dto)
         {
             if (!manifestRecord.UserId.Contains(Convert.ToInt64(dto.UserId)))
             {   
@@ -339,6 +350,25 @@ namespace My_steam_client.Scripts
         {
             var LibResourses = Path.Combine(LibRootPath, "LidResources");
             if (!Directory.Exists(LibResourses)) Directory.CreateDirectory(LibResourses);
+        }
+
+        private async void checkGamesFiles()
+        {
+            var ManifestRecords = await repository.GetAllRecordsAsync();
+
+            for (int i = 0; i < ManifestRecords.Count; i++)
+            {
+
+                var record = ManifestRecords[i];
+
+                if (!string.IsNullOrEmpty(record.ExecuteFileSource) && !File.Exists(record.ExecuteFileSource))
+                {
+                    record.ExecuteFileSource = null;
+                    record.libElemStaus = LibElemStatuses.Not_instaled;
+                }
+            }
+            await repository.saveChanges(ManifestRecords);
+
         }
     }
 }

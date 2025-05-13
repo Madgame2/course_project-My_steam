@@ -29,6 +29,7 @@ namespace My_steam_client.Templates
     {
         private float _finalCost = 0.0f;
         private readonly CartService _cartService;
+        private readonly LibMannager _libMannager;
 
         public ObservableCollection<BasketElemModel> BasketElems { get; set; } = new();
         public float FinalCost
@@ -47,6 +48,7 @@ namespace My_steam_client.Templates
         public BasketComponent()
         {
             _cartService = AppServices.Provider.GetRequiredService<CartService>();
+            _libMannager = AppServices.Provider.GetRequiredService<LibMannager>();
 
             InitializeComponent();
             DataContext = this;
@@ -109,6 +111,7 @@ namespace My_steam_client.Templates
 
             if (result)
             {
+                _libMannager.SynnchronizeLibs();
                 BasketElems.Clear();
                 FinalCost = 0;
             }
