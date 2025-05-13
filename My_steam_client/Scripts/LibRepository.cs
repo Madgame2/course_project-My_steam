@@ -38,11 +38,11 @@ namespace My_steam_client.Scripts
         {
             var objects = await GetAllRecordsAsync();
 
-            return objects.Where(p=>p.UserId==userId).ToArray();
+            return objects.Where(p=>p.UserId.Contains(userId)).ToArray();
         }
 
 
-        private async  Task<List<ManifestRecord>> GetAllRecordsAsync()
+        public async  Task<List<ManifestRecord>> GetAllRecordsAsync()
         {
             var json = await File.ReadAllTextAsync(ManifestFilePath);
 
@@ -59,7 +59,7 @@ namespace My_steam_client.Scripts
 
             return Current_id;
         }
-        private async Task saveChanges(List<ManifestRecord> objects)
+        public async Task saveChanges(List<ManifestRecord> objects)
         {
             objects.Sort((a, b) => a.RecordId.CompareTo(b.RecordId));
 

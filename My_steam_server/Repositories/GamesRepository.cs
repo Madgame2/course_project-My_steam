@@ -1,4 +1,5 @@
 ﻿using My_steam_server.Interfaces;
+using System.IO.Compression;
 
 namespace My_steam_server.Repositories
 {
@@ -15,6 +16,28 @@ namespace My_steam_server.Repositories
         public Task<string> GetGameFilePathAsync(int gameId)
         {
             return Task.FromResult(Path.Combine(basePath, $"game_{gameId}.zip"));
+        }
+
+        public async Task<long> GetUncompressedSize(long gameId)
+        {
+            return await Task.Run(() =>
+            {
+                var filePath = Path.Combine(basePath, $"game_{gameId}.zip");
+                long totalSize = 0;
+
+                using (ZipArchive archive = ZipFile.OpenRead(filePath))
+                {
+                    foreach (var entry in archive.Entries)
+                    {
+                        if (!string.IsNullOrEmpty(entry.Name))
+                        {
+                            totalSize += entry.Length;
+                        }
+                    }
+                }
+
+                return totalSize;
+            });
         }
     }
 }

@@ -12,6 +12,13 @@ namespace My_steam_server.Services
             RepositoryPath = Path.Combine(Directory.GetCurrentDirectory(), "resoures");
         }
 
+        public Task<Stream?> GetLibsStaticFiles(long GameId)
+        {
+
+
+            return Task.FromResult<Stream?>(null);
+        }
+
         public Task<Stream?> GetMarkdownStreamAsync(string FileName)
         {
             if (string.IsNullOrEmpty(FileName))

@@ -9,6 +9,7 @@ using Game_Net;
 using Microsoft.Extensions.DependencyInjection;
 using My_steam_client.Scripts.Models;
 using System.IO.Compression;
+using Game_Net_DTOLib;
 
 namespace My_steam_client.Scripts
 {
@@ -29,8 +30,10 @@ namespace My_steam_client.Scripts
 
         public LibRepository repository { get; private set; } = new LibRepository();
         public DownloadQueueManager downloadQueueManager;
+        public LibraryService libraryService;
         public LibMannager()
         {
+            libraryService = AppServices.Provider.GetRequiredService<LibraryService>();
             downloadQueueManager = AppServices.Provider.GetRequiredService<DownloadQueueManager>();
             LibRootPath = Path.Combine(Directory.GetCurrentDirectory(), "Common");
             manifestFilePath = Path.Combine(LibRootPath, "Lib/LibInit.json");
@@ -41,6 +44,74 @@ namespace My_steam_client.Scripts
             LibRepository.ManifestFilePath = manifestFilePath;
 
             downloadQueueManager.DownloadCompleted += UnPacageGame;
+        }
+
+        public async void SynnchronizeLibs()
+        {
+            var DetachedLib = await libraryService.GerDetachedLib(AppServices.UserId.ToString());
+            var localLib = await repository.GetAllRecordsAsync();
+
+            foreach (var libItem in DetachedLib)
+            {
+                var localgameInfo = localLib.Where(p=>p.GameId == libItem.GameId).FirstOrDefault();
+
+                if (localgameInfo==null)
+                {
+                    createNewRecord(libItem);
+                }
+                else
+                {
+                    ChekcTheecord(localgameInfo, libItem);
+                }
+            }
+
+            await repository.saveChanges(localLib);
+        }
+
+        private void checkStaticLibResources(List<ManifestRecord> recors)
+        {
+            foreach (var record in recors)
+            {
+                if(record.LibIconSource == null)
+                {
+
+                }
+            }
+        }
+
+        private void ChekcTheecord(ManifestRecord manifestRecord,SynchronizeLibDto dto)
+        {
+            if (!manifestRecord.UserId.Contains(Convert.ToInt64(dto.UserId)))
+            {   
+                manifestRecord.UserId.Add(Convert.ToInt64(dto.UserId));
+            }
+
+            if (manifestRecord.GameName != dto.Gamename)
+            {
+                manifestRecord.GameName = dto.Gamename;
+            }
+
+            if (manifestRecord.DownloadSource != dto.DownloadSource)
+            {
+                manifestRecord.DownloadSource = dto.DownloadSource;
+            }
+
+            if (manifestRecord.SpaceRequered != dto.SpaceRequered)
+            {
+                manifestRecord.SpaceRequered = dto.SpaceRequered;
+            }
+        }
+        private ManifestRecord createNewRecord(SynchronizeLibDto dto)
+        {
+            return new ManifestRecord
+            {
+                UserId = new List<long> { AppServices.UserId },
+                GameId = dto.GameId,
+                GameName = dto.Gamename,
+                DownloadSource = dto.DownloadSource,
+                SpaceRequered = dto.SpaceRequered,
+                lastPlayed = DateTime.UtcNow,
+            };
         }
 
         public async void DeleteGame(ManifestRecord manifestRecord)

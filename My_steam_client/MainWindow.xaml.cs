@@ -24,6 +24,9 @@ namespace My_steam_client
             InitializeComponent();
             HeaderContaner.Content = new Header(this);
 
+            var libmannager = AppServices.Provider.GetRequiredService<LibMannager>();
+            libmannager.SynnchronizeLibs();
+
             openShopPage();
         }
 

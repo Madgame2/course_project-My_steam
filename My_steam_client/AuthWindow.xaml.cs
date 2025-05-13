@@ -68,6 +68,16 @@ namespace My_steam_client
             }
         }
 
+        private void SwapToMainWindow()
+        {
+            var mainWindow = new MainWindow();
+            Application.Current.MainWindow = mainWindow;
+            mainWindow.Show();
+
+
+            this.Close();
+        }
+
         private async Task TryAuthorization()
         {
             var tokens = TokenStorage.LoadTokens();
@@ -87,13 +97,9 @@ namespace My_steam_client
                 if (result.Success)
                 {
 
-                    var mainWindow = new MainWindow();
-                    Application.Current.MainWindow = mainWindow;
-                    mainWindow.Show();
-
                     AppServices.UserId = result.data;
 
-                    this.Close();
+                    SwapToMainWindow();
                 }
             }
             catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.Unauthorized)
@@ -110,14 +116,9 @@ namespace My_steam_client
                         manager.RefrashToken = tokens.Refresh;
                         TokenStorage.SaveTokens(tokens);
 
-
-                        var mainWindow = new MainWindow();
-                        Application.Current.MainWindow = mainWindow;
-                        mainWindow.Show();
-
                         AppServices.UserId = result.data.id;
 
-                        this.Close();
+                        SwapToMainWindow();
                     }
                 }
                 catch (HttpRequestException ex1) when (ex1.StatusCode == HttpStatusCode.Unauthorized)

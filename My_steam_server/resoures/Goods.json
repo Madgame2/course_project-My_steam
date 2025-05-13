@@ -12,6 +12,7 @@
     "MdFileSorce": "http://localhost:5254/Resources/Markdown/Test.md",
     "ratinng": 1,
     "ReleaseDate": "2025-05-03T14:30:00",
+    "DownloadSource": "http://localhost:5254/Download/1",
     "PurchaseOptions": [
       {
         "OptionId": 1,

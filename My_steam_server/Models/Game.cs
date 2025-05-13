@@ -10,6 +10,7 @@ namespace My_steam_server.Models
         public string HeaderImageSource { get; set; }
 
         public string MdFileSorce {  get; set; }
+        public string DownloadSource { get; set; }
         public Ratinng ratinng { get; set; }
 
         public DateTime ReleaseDate { get; set; }

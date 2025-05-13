@@ -4,5 +4,7 @@
     {
         Task<string> GetGameFilePathAsync(int gameId);
         Task<bool> GameExistsAsync(int gameId);
+
+        Task<long> GetUncompressedSize(long gameId);
     }
 }

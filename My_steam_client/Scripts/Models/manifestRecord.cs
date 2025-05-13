@@ -9,7 +9,7 @@ namespace My_steam_client.Scripts.Models
     public class ManifestRecord
     {
         public long RecordId {  get; set; }
-        public long UserId {  get; set; }
+        public List<long> UserId {  get; set; }
         public long GameId {  get; set; }
         public string GameName { get; set; }
         public string DownloadSource {  get; set; }
