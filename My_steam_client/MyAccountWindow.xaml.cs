@@ -1,4 +1,5 @@
-﻿using My_steam_client.Templates;
+﻿using My_steam_client.Scripts;
+using My_steam_client.Templates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +21,15 @@ namespace My_steam_client
     /// </summary>
     public partial class MyAccountWindow : Window
     {
+        public string NickName {  get; set; }
+
         public MyAccountWindow()
         {
+            NickName = AppServices.UsserNickNmae;
+
             InitializeComponent();
             HeaderContaner.Content = new Header(this);
+            DataContext = this;
         }
     }
 }

@@ -1,6 +1,8 @@
 [
   {
     "Nickname": null,
+    "Role": 0,
+    "RigisterDate": "0001-01-01T00:00:00",
     "CartItems": [],
     "Library": [],
     "Id": "1",
@@ -21,6 +23,8 @@
   },
   {
     "Nickname": null,
+    "Role": 0,
+    "RigisterDate": "0001-01-01T00:00:00",
     "CartItems": [],
     "Library": [],
     "Id": "2",
@@ -41,6 +45,8 @@
   },
   {
     "Nickname": null,
+    "Role": 0,
+    "RigisterDate": "0001-01-01T00:00:00",
     "CartItems": [],
     "Library": [],
     "Id": "3",
@@ -61,6 +67,8 @@
   },
   {
     "Nickname": null,
+    "Role": 0,
+    "RigisterDate": "2025-05-14T04:58:45.0924341Z",
     "CartItems": [],
     "Library": [],
     "Id": "4",
@@ -81,6 +89,8 @@
   },
   {
     "Nickname": null,
+    "Role": 1,
+    "RigisterDate": "2025-05-14T04:58:45.0924341Z",
     "CartItems": [],
     "Library": [],
     "Id": "5",
@@ -92,6 +102,28 @@
     "PasswordHash": "AQAAAAIAAYagAAAAEEzXmIjimD13i0p6X9bI/mQGiSqhA0L5CQWWyxjChuVG25KrQBMIXYxTZVm3m7V8Kw==",
     "SecurityStamp": "62bb0eed-3aa3-4da3-9123-d6757733f5db",
     "ConcurrencyStamp": "5609fc7f-5a08-4383-8bef-e028f0a5b58c",
+    "PhoneNumber": null,
+    "PhoneNumberConfirmed": false,
+    "TwoFactorEnabled": false,
+    "LockoutEnd": null,
+    "LockoutEnabled": false,
+    "AccessFailedCount": 0
+  },
+  {
+    "Nickname": null,
+    "Role": 0,
+    "RigisterDate": "0001-01-01T00:00:00",
+    "CartItems": [],
+    "Library": [],
+    "Id": "6",
+    "UserName": "AndreyProGamer",
+    "NormalizedUserName": null,
+    "Email": "andrey.chiruk33676@gmail.com",
+    "NormalizedEmail": null,
+    "EmailConfirmed": false,
+    "PasswordHash": "AQAAAAIAAYagAAAAEIpeuYcIMY0Z7Cx62KXyMmWeCNrQeV14fr1WvH5mpip1Yt7SktgJsXr4\u002BR9\u002BU91Gng==",
+    "SecurityStamp": "b77fb60d-392f-4b1a-b32b-5b3183745e86",
+    "ConcurrencyStamp": "3fb5ce4a-1964-4dc4-9e19-4ccec45d8ae2",
     "PhoneNumber": null,
     "PhoneNumberConfirmed": false,
     "TwoFactorEnabled": false,

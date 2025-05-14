@@ -162,6 +162,11 @@ namespace My_steam_client.Scripts
             {
                 manifestRecord.SpaceRequered = dto.SpaceRequered;
             }
+
+            if (manifestRecord.PurhcaseDate != dto.PurchaseDate)
+            {
+                manifestRecord.PurhcaseDate = dto.PurchaseDate;
+            }
         }
         private ManifestRecord createNewRecord(SynchronizeLibDto dto)
         {
@@ -173,6 +178,7 @@ namespace My_steam_client.Scripts
                 DownloadSource = dto.DownloadSource,
                 SpaceRequered = dto.SpaceRequered,
                 lastPlayed = DateTime.UtcNow,
+                PurhcaseDate = dto.PurchaseDate
             };
         }
 

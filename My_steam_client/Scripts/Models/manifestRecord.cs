@@ -20,6 +20,8 @@ namespace My_steam_client.Scripts.Models
         public string? ExecuteFileSource {  get; set; }
 
         public long SpaceRequered {  get; set; }
+
+        public DateTime PurhcaseDate { get; set; }
         public DateTime lastPlayed { get; set; }
         public TimeSpan playedTime { get; set; }
     }

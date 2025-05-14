@@ -62,7 +62,12 @@ namespace My_steam_server.Services
             return new NetResponse<LogInSecsessDto?>
             {
                 Success = true,
-                data = new LogInSecsessDto {id=Convert.ToInt64(user.Id) ,tokens = new { AccessToken = tokenHandler.WriteToken(accessToken), RefreshToken = refreshToken }.ToString() }
+                data = new LogInSecsessDto 
+                {id=Convert.ToInt64(user.Id),
+                NickName = user.UserName,
+                UserRole= user.Role,
+                RegisterDate = user.RigisterDate,
+                tokens = new { AccessToken = tokenHandler.WriteToken(accessToken), RefreshToken = refreshToken }.ToString() }
             };
         }
 
@@ -97,7 +102,13 @@ namespace My_steam_server.Services
             return new NetResponse<LogInSecsessDto?>
             {
                 Success = true,
-                data = new LogInSecsessDto { id=Convert.ToInt64(user.Id), tokens= new { AccessToken = newAccessToken, RefreshToken = newRefreshToken }.ToString() }
+                data = new LogInSecsessDto {
+                    id=Convert.ToInt64(user.Id),
+                    tokens= new { AccessToken = newAccessToken, RefreshToken = newRefreshToken }.ToString(),
+                    RegisterDate = user.RigisterDate,
+                    UserRole = user.Role,
+                    NickName = user.UserName
+                }
             };
         }
 

@@ -1,4 +1,6 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -10,7 +12,7 @@ namespace My_steam_client.Templates
     /// <summary>
     /// Логика взаимодействия для Showcase.xaml
     /// </summary>
-    public partial class Showcase : UserControl
+    public partial class Showcase : UserControl, INotifyPropertyChanged
     {
         public static readonly DependencyProperty ElementHeightProperty =
             DependencyProperty.Register(nameof(ElementHeight),typeof(double),typeof(Showcase),new PropertyMetadata(150.0));
@@ -24,6 +26,11 @@ namespace My_steam_client.Templates
 
         public static readonly DependencyProperty HoverAnimationProperty =
             DependencyProperty.Register(nameof(HoverAnimation),typeof(Storyboard),typeof(Showcase), new PropertyMetadata(null));
+
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         public Storyboard HoverAnimation
         {
@@ -55,10 +62,21 @@ namespace My_steam_client.Templates
         public ObservableCollection<ShowCaseObject> Items { get; set; } = new();
 
         public event EventHandler Clicked;
+        public event EventHandler ShowMoreClicked;
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        public static DependencyProperty canShowModeProperty =
+            DependencyProperty.Register(nameof(canShowMore), typeof(bool), typeof(Showcase), new PropertyMetadata(false));
+
+        public bool canShowMore {
+            get=>(bool) GetValue(canShowModeProperty);
+            set=> SetValue(canShowModeProperty, value);
+        }
 
         public Showcase()
         {
             InitializeComponent();
+            DataContext = this;
         }
 
         public void addObject(ShowCaseObject obj) {
@@ -137,6 +155,11 @@ namespace My_steam_client.Templates
             {
                 Clicked?.Invoke(dataContext, e);
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ShowMoreClicked?.Invoke(this, e);
         }
     }
 }

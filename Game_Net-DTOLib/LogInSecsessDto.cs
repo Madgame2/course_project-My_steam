@@ -9,6 +9,10 @@ namespace Game_Net_DTOLib
     public class LogInSecsessDto
     {
         public long id {  get; set; }
+
+        public string NickName {  get; set; }
+        public DateTime RegisterDate;
+        public UserRole UserRole { get; set; }
         public string tokens { get; set; }
     }
 }

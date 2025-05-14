@@ -109,6 +109,12 @@ namespace My_steam_client.AuthComponents
                 return;
             }
 
+
+            AppServices.UserId = result.data.id;
+            AppServices.UsserNickNmae = result.data.NickName;
+            AppServices.userRole = result.data.UserRole;
+            AppServices.UserRegisterDate = result.data.RegisterDate;
+
             Tokens.TryParse(result.data.tokens, out var tokens);
 
             if (StayOnline.IsChecked == true)

@@ -58,24 +58,30 @@
             <ColumnDefinition Width="300"/>
         </Grid.ColumnDefinitions>
 
-        <ItemsControl Grid.Column="0" x:Name="ItemHost" ItemsSource="{Binding Items, ElementName=Root}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <VirtualizingStackPanel  Orientation="Vertical"/>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Border>
-                        <Border.Effect>
-                            <DropShadowEffect
+        <Grid Grid.Column="0" Margin="0,0,0,25">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <ItemsControl Grid.Row="0" x:Name="ItemHost" ItemsSource="{Binding Items, ElementName=Root}" Margin="0,0,0,25">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel  Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border>
+                            <Border.Effect>
+                                <DropShadowEffect
                             Color="#80023B6D"
                             BlurRadius="15"
                             ShadowDepth="4"
                             Direction="240"
                                 />
-                        </Border.Effect>
-                        <Border x:Name="BorderElement" 
+                            </Border.Effect>
+                            <Border x:Name="BorderElement" 
                             Height="{Binding ElementHeight, RelativeSource={RelativeSource AncestorType=UserControl}}"
                             Margin="{Binding ElementMargin, RelativeSource={RelativeSource AncestorType=UserControl}}"
                             ClipToBounds="True"
@@ -83,65 +89,104 @@
                             MouseLeave="OnMouseLeave"
                             MouseLeftButtonUp="OnItemClicked">
 
-                            <Border.Background>
-                                <SolidColorBrush Color="{Binding ShowCaseElementBackGround, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
-                            </Border.Background>
+                                <Border.Background>
+                                    <SolidColorBrush Color="{Binding ShowCaseElementBackGround, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+                                </Border.Background>
 
 
-                            <Border.Style>
-                                <Style TargetType="Border">
-                                    <Setter Property="Cursor" Value="Arrow"/>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Cursor" Value="Hand"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Border.Style>
+                                <Border.Style>
+                                    <Style TargetType="Border">
+                                        <Setter Property="Cursor" Value="Arrow"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Cursor" Value="Hand"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
 
-                            <Border.Clip>
-                                <MultiBinding Converter="{StaticResource ClipConverter}">
-                                    <Binding Path="ActualWidth" RelativeSource="{RelativeSource Self}"/>
-                                    <Binding Path="ActualHeight" RelativeSource="{RelativeSource Self}"/>
-                                    <Binding Path="BorderRadius" ElementName="Root"/>
-                                </MultiBinding>
-                            </Border.Clip>
-                            <Grid>
+                                <Border.Clip>
+                                    <MultiBinding Converter="{StaticResource ClipConverter}">
+                                        <Binding Path="ActualWidth" RelativeSource="{RelativeSource Self}"/>
+                                        <Binding Path="ActualHeight" RelativeSource="{RelativeSource Self}"/>
+                                        <Binding Path="BorderRadius" ElementName="Root"/>
+                                    </MultiBinding>
+                                </Border.Clip>
+                                <Grid>
 
 
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="250"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="150"/>
-                                </Grid.ColumnDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="250"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="150"/>
+                                    </Grid.ColumnDefinitions>
 
-                                <Grid Grid.Column="0" ClipToBounds="True">
-                                    <Image Stretch="Fill"
+                                    <Grid Grid.Column="0" ClipToBounds="True">
+                                        <Image Stretch="Fill"
                                        HorizontalAlignment="Stretch"
                                         VerticalAlignment="Stretch" 
                                         Source="{Binding ImageURL, Converter={StaticResource ImageUniversalConverter}}"/>
-                                </Grid>
-                                <Grid Grid.Column="1" ClipToBounds="True">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="0.3*"/>
-                                        <RowDefinition Height="0.3*"/>
-                                        <RowDefinition Height="0.2*"/>
-                                    </Grid.RowDefinitions>
+                                    </Grid>
+                                    <Grid Grid.Column="1" ClipToBounds="True">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.3*"/>
+                                            <RowDefinition Height="0.3*"/>
+                                            <RowDefinition Height="0.2*"/>
+                                        </Grid.RowDefinitions>
 
-                                    <TextBlock Grid.Row="0" Style="{StaticResource TilteBox}" Text="{Binding Title}"/>
-                                    <TextBlock Grid.Row="1" Style="{StaticResource DescriptionBox}" Text="{Binding Description}"/>
-                                </Grid>
-                                <Grid Grid.Column="2"  ClipToBounds="True">
-                                    <TextBlock 
+                                        <TextBlock Grid.Row="0" Style="{StaticResource TilteBox}" Text="{Binding Title}"/>
+                                        <TextBlock Grid.Row="1" Style="{StaticResource DescriptionBox}" Text="{Binding Description}"/>
+                                    </Grid>
+                                    <Grid Grid.Column="2"  ClipToBounds="True">
+                                        <TextBlock 
                                            Style="{StaticResource CoastBox}"
                                            Text="{Binding Coast}"/>
+                                    </Grid>
                                 </Grid>
-                            </Grid>
+                            </Border>
                         </Border>
-                    </Border>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <Button Click="Button_Click"
+        IsEnabled="{Binding canShowMore}"
+        Margin="0,2"
+        Grid.Row="1" Content="Show more"
+        Width="150" Height="40"
+        Background="Transparent"
+        Foreground="White"
+        BorderThickness="2">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                    CornerRadius="4"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Margin="{TemplateBinding Margin}"
+                    Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Content="{TemplateBinding Content}"
+                                  ContentTemplate="{TemplateBinding ContentTemplate}"/>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="#FF146186"/>
+                                <Setter Property="Foreground" Value="#FF146186"/>
+                            </Trigger>
+
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="border" Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+        </Grid>
         <Templates:SideFilters 
             x:Name="FiltersLable"
             Grid.Column="1"

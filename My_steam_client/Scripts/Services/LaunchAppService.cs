@@ -61,8 +61,7 @@ namespace My_steam_client.Scripts.Services
                     WorkingDirectory = gameRoot,
                     UseShellExecute = false,          // прямой запуск
                     RedirectStandardOutput = true,
-                    RedirectStandardError = true,
-                    CreateNoWindow = false          // покажем консоль, чтобы увидеть ошибки
+                    RedirectStandardError = true,      
                 };
                 
                 var gameProcess = new Process{ StartInfo = startInfo};

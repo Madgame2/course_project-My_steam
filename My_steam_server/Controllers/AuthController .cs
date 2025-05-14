@@ -15,10 +15,13 @@ namespace My_steam_server.Controllers
     {
 
         private readonly IAuthService _authService;
+        private readonly IUserRepository _userRepository;
 
-        public AuthController(IAuthService authService)
+        public AuthController(IAuthService authService, IUserRepository userRepository)
         {
             _authService = authService;
+            _userRepository = userRepository;
+
         }
 
         [HttpPost("register")]
@@ -57,12 +60,21 @@ namespace My_steam_server.Controllers
 
         [HttpGet("CheckToken")]
         [Authorize]
-        public IActionResult IsValidToken()
+        public async Task<IActionResult> IsValidToken()
         {
             var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
 
             if(userIdClaim != null && long.TryParse(userIdClaim.Value, out var userId)){
-                return Ok(new Game_Net_DTOLib.NetResponse<long> { Success = true, data = userId});
+                var user = await _userRepository.GetByIdAsync(userId.ToString());
+
+                return Ok(new Game_Net_DTOLib.NetResponse<LogInSecsessDto>
+                { Success = true, 
+                    data = new LogInSecsessDto 
+                    { id = userId,
+                    NickName=user.UserName,
+                    UserRole=user.Role,
+                    RegisterDate=user.RigisterDate,
+                    tokens=null} });
 
             }
             return Unauthorized();

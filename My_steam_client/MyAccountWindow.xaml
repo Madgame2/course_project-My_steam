@@ -125,7 +125,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Image Grid.Column="0" Style="{StaticResource UserImage}" Source="{Binding Source='images/WhiteUser.svg', Converter={StaticResource ImageUniversalConverter}}"/>
-                        <TextBlock Grid.Column="1" Style="{StaticResource NikNameStyle}" Text="TestNamme"/>
+                        <TextBlock Grid.Column="1" Style="{StaticResource NikNameStyle}" Text="{Binding NickName}"/>
                     </Grid>
                     <Grid Grid.Row="1" Margin="0,20,0,0">
                         <Grid.RowDefinitions>

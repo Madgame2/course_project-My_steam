@@ -78,11 +78,11 @@ namespace Game_Net
             }
         }
 
-        public async Task<NetResponse<long>> isValid_JWT_Token()
+        public async Task<NetResponse<LogInSecsessDto>> isValid_JWT_Token()
         {
             try
             {
-                return await _comMannager.SendMessageRest<long>("api/auth/CheckToken", Protocol.Https);
+                return await _comMannager.SendMessageRest<LogInSecsessDto>("api/auth/CheckToken", Protocol.Https);
             }
             catch (UndefinedProtocolException ex)
             {
@@ -90,12 +90,12 @@ namespace Game_Net
 
                 try
                 {
-                    return await _comMannager.SendMessageRest<long>("api/auth/CheckToken", Protocol.Http);
+                    return await _comMannager.SendMessageRest<LogInSecsessDto>("api/auth/CheckToken", Protocol.Http);
                 }
                 catch (UndefinedProtocolException innerEx)
                 {
                     Debug.WriteLine($"HTTP also failed: {innerEx.Message}");
-                    return new NetResponse<long> { Success = false, Message = "Unable to connect via HTTPS or HTTP." };
+                    return new NetResponse<LogInSecsessDto> { Success = false, Message = "Unable to connect via HTTPS or HTTP." };
                 }
             }
             catch (Exception ex)

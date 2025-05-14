@@ -38,7 +38,8 @@ namespace My_steam_server.Controllers
                     GameId = libElem.GameId,
                     Gamename = gameInfo.Name,
                     DownloadSource = gameInfo.DownloadSource,
-                    SpaceRequered = await gamesRespository.GetUncompressedSize(libElem.GameId)
+                    SpaceRequered = await gamesRespository.GetUncompressedSize(libElem.GameId),
+                    PurchaseDate = libElem.PurchaseDate
                 };
 
                 outList.Add(newDtoItem);

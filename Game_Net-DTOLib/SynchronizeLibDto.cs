@@ -13,6 +13,7 @@ namespace Game_Net_DTOLib
         public string Gamename {  get; set; }
         public string DownloadSource {  get; set; }
 
+        public DateTime PurchaseDate { get; set; }
         public long SpaceRequered {  get; set; }
     }
 }

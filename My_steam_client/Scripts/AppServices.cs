@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Game_Net_DTOLib;
 
 namespace My_steam_client.Scripts
 {
@@ -14,6 +15,9 @@ namespace My_steam_client.Scripts
     {
         public static ServiceProvider Provider { get; private set; }
         public static long UserId { get; set; }
+        public static string UsserNickNmae {  get; set; }
+        public static DateTime UserRegisterDate { get; set; }
+        public static UserRole userRole { get; set; }
 
         public static void Init()
         {

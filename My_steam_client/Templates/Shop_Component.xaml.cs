@@ -42,9 +42,6 @@ namespace My_steam_client.Templates
             InitializeComponent();
 
             InitShowCase();
-
-            var obj1 = new ShowCaseObject();
-            var pbj2 = new ShowCaseObject();
         }
 
         private async void InitShowCase()
@@ -78,7 +75,8 @@ namespace My_steam_client.Templates
                 }
 
             scroll.ScrollChanged += ScrollViewer_ScrollChanged;
-            showCase.FiltersLable.applyedFilters += filtersChaged;
+            showCase.FiltersLable.applyedFilters += filtersChanged;
+            showCase.ShowMoreClicked += ShowMore;
         }
 
         private async void InitSlider()
@@ -150,6 +148,7 @@ namespace My_steam_client.Templates
                 var result = await _storeService.tryGetProducts($"{filters}&{QueryString}");
 
                 HasMoreProduct = result.Item1;
+                showCase.canShowMore = HasMoreProduct;
 
                 if (result.Item2 != null)
                     foreach (var item in result.Item2)
@@ -172,20 +171,27 @@ namespace My_steam_client.Templates
 
         private async void ScrollViewer_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {
-            var scrollViewer = sender as ScrollViewer;
+            //var scrollViewer = sender as ScrollViewer;
 
-            if(scrollViewer != null)
-            {
-                bool isABottom = scrollViewer.VerticalOffset >= scrollViewer.ScrollableHeight;
+            //if(scrollViewer != null)
+            //{
+            //    bool isABottom = scrollViewer.VerticalOffset >= scrollViewer.ScrollableHeight;
 
-                if (isABottom)
-                {
-                    await AddToShowcase();
-                }
-            }
+            //    if (isABottom)
+            //    {
+            //        await AddToShowcase();
+            //    }
+            //}
         }
 
-        private async void filtersChaged(object? sender, EventArgs e)
+        private async void ShowMore(object sender, EventArgs e)
+        {
+
+            await AddToShowcase();
+       
+        }
+
+        private async void filtersChanged(object? sender, EventArgs e)
         {
             var sideFilters = sender as SideFilters;
             if (sideFilters == null) return;
@@ -198,7 +204,7 @@ namespace My_steam_client.Templates
             lastId = 0;
             showCase.Items.Clear();
 
-            //await AddToShowcase();
+            await AddToShowcase();
         }
     }
 }
