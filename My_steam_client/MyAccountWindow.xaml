@@ -7,7 +7,8 @@
         xmlns:local="clr-namespace:My_steam_client"
         mc:Ignorable="d"
         WindowStyle="None"
-        Title="MyAccountWindow" Height="450" Width="300">
+        Title="MyAccountWindow" Height="450" Width="300"
+        ResizeMode="NoResize">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FF051430"/>
@@ -30,14 +31,64 @@
             <Setter Property="Height" Value="60"/>
         </Style>
 
-
-        
         <Style x:Key="NikNameStyle" TargetType="TextBlock" BasedOn="{StaticResource DefoultTextStyles}">
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="Margin" Value="15,0,0,0"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="FontSize" Value="18"/>
+        </Style>
+
+
+        <Style x:Key="LeftPart" TargetType="TextBlock" BasedOn="{StaticResource DefoultTextStyles}">
+            <Setter Property="Foreground" Value="Gray"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="RightPart" TargetType="TextBlock" BasedOn="{StaticResource DefoultTextStyles}">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Margin" Value="10,0,0,0"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+        <Style x:Key="BalamceBorder" TargetType="Border">
+            <Setter Property="Margin" Value="10,0,0,0"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0,0.5" StartPoint="1,0.5">
+                        <GradientStop Color="#FF26AC38"/>
+                        <GradientStop Color="#FF02470E" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Padding" Value="5,2.5,5,2.5"/>
+            <Setter Property="CornerRadius" Value="4"/>
+        </Style>
+        
+        <Style x:Key="TabelColmsnStyle" TargetType="Grid">
+            <Setter Property="Margin" Value="0,5,0,5"/>
+        </Style>
+        <Style x:Key="Balance" TargetType="TextBlock" BasedOn="{StaticResource DefoultTextStyles}">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontSize" Value="14"/>
+
+        </Style>
+
+        <Style x:Key="ButtonStyles" TargetType="Button">
+            <Setter Property="FontFamily" Value="pack://application:,,,/resources/Fonts/#Rajdhani"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,2.5,0,2.5"/>
+            <Setter Property="Padding" Value="0,5,0,5"/>
+            <Setter Property="Cursor" Value="Hand"/>
         </Style>
     </Window.Resources>
     
@@ -64,6 +115,7 @@
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="100"/>
+                        <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
@@ -74,6 +126,190 @@
 
                         <Image Grid.Column="0" Style="{StaticResource UserImage}" Source="{Binding Source='images/WhiteUser.svg', Converter={StaticResource ImageUniversalConverter}}"/>
                         <TextBlock Grid.Column="1" Style="{StaticResource NikNameStyle}" Text="TestNamme"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Margin="0,20,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" Style="{StaticResource TabelColmsnStyle}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.4*"/>
+                                <ColumnDefinition Width="0.6*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Style="{StaticResource LeftPart}" Grid.Column="0" Text="Balance:"/>
+                            <Border Grid.Column="1" Style="{StaticResource BalamceBorder}">
+                                <TextBlock Style="{StaticResource Balance}"  Text="0.00"/>
+                            </Border>
+                        </Grid>
+
+
+                        <Grid Grid.Row="1" Style="{StaticResource TabelColmsnStyle}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.4*"/>
+                                <ColumnDefinition Width="0.6*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Style="{StaticResource LeftPart}" Grid.Column="0" Text="Account rights: "/>
+                            <TextBlock Style="{StaticResource RightPart}" Grid.Column="1" Text="General"/>
+                        </Grid>
+
+                        <Grid Grid.Row="2" Style="{StaticResource TabelColmsnStyle}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.4*"/>
+                                <ColumnDefinition Width="0.6*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Style="{StaticResource LeftPart}" Grid.Column="0" Text="Date of registration: "/>
+                            <TextBlock Style="{StaticResource RightPart}" Grid.Column="1" Text="10.04.2025"/>
+                        </Grid>
+
+                        <Grid Grid.Row="3" Style="{StaticResource TabelColmsnStyle}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.4*"/>
+                                <ColumnDefinition Width="0.6*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Style="{StaticResource LeftPart}" Grid.Column="0" Text="Last purchase: "/>
+                            <TextBlock Style="{StaticResource RightPart}" Grid.Column="1" Text="10.04.2025"/>
+                        </Grid>
+
+                        <Grid Grid.Row="4" Style="{StaticResource TabelColmsnStyle}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.4*"/>
+                                <ColumnDefinition Width="0.6*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Style="{StaticResource LeftPart}" Grid.Column="0" Text="Number of games: "/>
+                            <TextBlock Style="{StaticResource RightPart}" Grid.Column="1" Text="3"/>
+                        </Grid>
+
+                        <Grid Grid.Row="5" Style="{StaticResource TabelColmsnStyle}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.4*"/>
+                                <ColumnDefinition Width="0.6*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Style="{StaticResource LeftPart}" Grid.Column="0" Text="Time in game: "/>
+                            <TextBlock Style="{StaticResource RightPart}" Grid.Column="1" Text="131341"/>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="2" Margin="0,20,0,0">
+                        <StackPanel Orientation="Vertical">
+                            <Button Content="Top up balance" 
+                                    Style="{StaticResource ButtonStyles}">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border
+                                            CornerRadius="2"
+                                            Height="{TemplateBinding Height}"
+                                            Width="{TemplateBinding Width}"
+                                            Margin="{TemplateBinding Margin}"
+                                            Padding="{TemplateBinding Padding}"
+                                            >
+                                            <Border.Background>
+                                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.50,1">
+                                                    <GradientStop x:Name="startColor" Color="#FF959595" Offset="0"/>
+                                                    <GradientStop x:Name="endColor" Color="#FF5C5C5C" Offset="1"/>
+                                                </LinearGradientBrush>
+                                            </Border.Background>
+                                            <ContentPresenter
+                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                    RecognizesAccessKey="True"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Trigger.EnterActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <ColorAnimation Storyboard.TargetName="startColor"
+                                                            Storyboard.TargetProperty="Color"
+                                                            To="#FF6D6D6D" Duration="0:0:0.3"/>
+                                                            <ColorAnimation Storyboard.TargetName="endColor"
+                                                            Storyboard.TargetProperty="Color"
+                                                            To="#FF8C8C8C" Duration="0:0:0.3"/>
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.EnterActions>
+                                                <Trigger.ExitActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <ColorAnimation Storyboard.TargetName="startColor"
+                                                            Storyboard.TargetProperty="Color"
+                                                            To="#FF959595" Duration="0:0:0.3"/>
+                                                            <ColorAnimation Storyboard.TargetName="endColor"
+                                                            Storyboard.TargetProperty="Color"
+                                                            To="#FF5C5C5C" Duration="0:0:0.3"/>
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.ExitActions>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <Button Content="Support service" Style="{StaticResource ButtonStyles}">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border
+                                            CornerRadius="2"
+                                            Height="{TemplateBinding Height}"
+                                            Width="{TemplateBinding Width}"
+                                            Margin="{TemplateBinding Margin}"
+                                            Padding="{TemplateBinding Padding}"
+                                            >
+                                            <Border.Background>
+                                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.50,1">
+                                                    <GradientStop x:Name="startColor" Color="#FF959595" Offset="0"/>
+                                                    <GradientStop x:Name="endColor" Color="#FF5C5C5C" Offset="1"/>
+                                                </LinearGradientBrush>
+                                            </Border.Background>
+                                            <ContentPresenter
+                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                    RecognizesAccessKey="True"/>
+                                        </Border>
+
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Trigger.EnterActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <ColorAnimation Storyboard.TargetName="startColor"
+                                                            Storyboard.TargetProperty="Color"
+                                                            To="#FF6D6D6D" Duration="0:0:0.3"/>
+                                                            <ColorAnimation Storyboard.TargetName="endColor"
+                                                            Storyboard.TargetProperty="Color"
+                                                            To="#FF8C8C8C" Duration="0:0:0.3"/>
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.EnterActions>
+                                                <Trigger.ExitActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <ColorAnimation Storyboard.TargetName="startColor"
+                                                            Storyboard.TargetProperty="Color"
+                                                            To="#FF959595" Duration="0:0:0.3"/>
+                                                            <ColorAnimation Storyboard.TargetName="endColor"
+                                                            Storyboard.TargetProperty="Color"
+                                                            To="#FF5C5C5C" Duration="0:0:0.3"/>
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.ExitActions>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </StackPanel>
                     </Grid>
                 </Grid>
             </Grid>

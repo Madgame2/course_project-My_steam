@@ -78,5 +78,25 @@
     "LockoutEnd": null,
     "LockoutEnabled": false,
     "AccessFailedCount": 0
+  },
+  {
+    "Nickname": null,
+    "CartItems": [],
+    "Library": [],
+    "Id": "5",
+    "UserName": "Some_Publisher",
+    "NormalizedUserName": null,
+    "Email": "Test@test.test",
+    "NormalizedEmail": null,
+    "EmailConfirmed": false,
+    "PasswordHash": "AQAAAAIAAYagAAAAEEzXmIjimD13i0p6X9bI/mQGiSqhA0L5CQWWyxjChuVG25KrQBMIXYxTZVm3m7V8Kw==",
+    "SecurityStamp": "62bb0eed-3aa3-4da3-9123-d6757733f5db",
+    "ConcurrencyStamp": "5609fc7f-5a08-4383-8bef-e028f0a5b58c",
+    "PhoneNumber": null,
+    "PhoneNumberConfirmed": false,
+    "TwoFactorEnabled": false,
+    "LockoutEnd": null,
+    "LockoutEnabled": false,
+    "AccessFailedCount": 0
   }
 ]
