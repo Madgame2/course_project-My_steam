@@ -38,7 +38,7 @@ namespace My_steam_client.Scripts
         {
             var objects = await GetAllRecordsAsync();
 
-            return objects.Where(p=>p.UserId.Contains(userId)).ToArray();
+            return objects.Where(p=>p.UserId==userId).ToArray();
         }
 
 

@@ -69,7 +69,7 @@ namespace My_steam_client.Scripts
             {
                 var localgameInfo = localLib.Where(p=>p.GameId == libItem.GameId).FirstOrDefault();
 
-                if (localgameInfo==null)
+                if (localgameInfo==null||localgameInfo.UserId!= AppServices.UserId)
                 {
                     localLib.Add(createNewRecord(libItem));
                 }
@@ -80,12 +80,127 @@ namespace My_steam_client.Scripts
             }
 
             await checkStaticLibResources(localLib);
-
+            await CheckGamesFiles(localLib);
             await repository.saveChanges(localLib);
 
             LibResynchronized?.Invoke(localLib);
         }
+        public async Task<List<LibraryListItem>> getLibAsync()
+        {
+            var objeccts = await repository.getRecordsByUserIdAsync(AppServices.UserId);
 
+            var list = new List<LibraryListItem>();
+            foreach (var item in objeccts)
+            {
+                var newItem = new LibraryListItem();
+
+                newItem.id = item.GameId;
+                newItem.GameName = item.GameName;
+                newItem.ImageLink = item.LibIconSource;
+                newItem.RecordId = item.RecordId;
+
+                list.Add(newItem);
+            }
+
+            return list;
+        }
+        public async void DeleteGame(ManifestRecord manifestRecord)
+        {
+            try
+            {
+                var gameDir = Path.Combine(LibRootPath, "Lib", manifestRecord.GameName.Replace(":", "-"));
+
+                if (Directory.Exists(gameDir))
+                {
+                    Directory.Delete(gameDir, true);
+                }
+
+                manifestRecord.libElemStaus = LibElemStatuses.Not_instaled;
+                manifestRecord.ExecuteFileSource = null;
+                await repository.UpdateRecordAsync(manifestRecord.RecordId, manifestRecord);
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine($"Error deleting game: {ex.Message}");
+                throw;
+            }
+        }
+        public void addToInstalatinQueue(ManifestRecord record)
+        {
+            var LibPath = Path.Combine(LibRootPath, "Lib");
+            var gameDir = Path.Combine(LibPath, record.GameName.Replace(":", "-"));
+            var savePath = Path.Combine(gameDir, $"{record.GameName.Replace(":", "-")}.zip");
+
+            if (!Directory.Exists(gameDir)) Directory.CreateDirectory(gameDir);
+
+            downloadQueueManager.EnqueueDownload(record.RecordId, record.DownloadSource, savePath);
+        }
+        public async Task<DateTime?> GetLastPurchase()
+        {
+            var libItemms= await repository.getRecordsByUserIdAsync(AppServices.UserId);
+            return libItemms.OrderByDescending(e => e.PurhcaseDate).FirstOrDefault()?.PurhcaseDate;
+        }
+        public async Task<int> GetGamesCount()
+        {
+            return (await repository.getRecordsByUserIdAsync(AppServices.UserId)).Length;
+        }
+        public async Task<TimeSpan> GetTimeInGames()
+        {
+            var lib = await repository.getRecordsByUserIdAsync(AppServices.UserId);
+
+            var time = TimeSpan.Zero;
+
+            foreach (var record in lib)
+            {
+                time += record.playedTime;
+            }
+
+            return time;
+        }
+
+        private Task CheckGamesFiles(List<ManifestRecord> records)
+        {
+            var LibPath = Path.Combine(LibRootPath, "Lib");
+
+
+            for (int i = 0; i < records.Count; i++)
+            {
+                var record = records[i];
+                var directoryPath = Path.Combine(LibPath, record.GameName);
+
+                if (string.IsNullOrEmpty(record.ExecuteFileSource) && Directory.Exists(directoryPath))
+                {
+                    var execPath = FindExecutableFile(directoryPath);
+
+                    if (execPath != null)
+                    {
+                        record.ExecuteFileSource = execPath;
+                        record.libElemStaus = LibElemStatuses.Installed;
+                    }
+                }
+            }
+
+            return Task.CompletedTask;
+        }
+        private async void checkGamesFiles()
+        {
+            var ManifestRecords = await repository.GetAllRecordsAsync();
+
+            for (int i = 0; i < ManifestRecords.Count; i++)
+            {
+
+                var record = ManifestRecords[i];
+
+                if (!string.IsNullOrEmpty(record.ExecuteFileSource) && !File.Exists(record.ExecuteFileSource))
+                {
+                    record.ExecuteFileSource = null;
+                    record.libElemStaus = LibElemStatuses.Not_instaled;
+                }
+            }
+            await repository.saveChanges(ManifestRecords);
+
+        }
         private async Task checkStaticLibResources(List<ManifestRecord> records)
         {
             for (int i = 0; i < records.Count; i++)
@@ -139,14 +254,12 @@ namespace My_steam_client.Scripts
                 }
             }
         }
-
-
         private void ChekcRheecord(ManifestRecord manifestRecord,SynchronizeLibDto dto)
         {
-            if (!manifestRecord.UserId.Contains(Convert.ToInt64(dto.UserId)))
-            {   
-                manifestRecord.UserId.Add(Convert.ToInt64(dto.UserId));
-            }
+            //if (!manifestRecord.UserId.Contains(Convert.ToInt64(dto.UserId)))
+            //{   
+            //    manifestRecord.UserId.Add(Convert.ToInt64(dto.UserId));
+            //}
 
             if (manifestRecord.GameName != dto.Gamename)
             {
@@ -172,7 +285,7 @@ namespace My_steam_client.Scripts
         {
             return new ManifestRecord
             {
-                UserId = new List<long> { AppServices.UserId },
+                UserId = AppServices.UserId,
                 GameId = dto.GameId,
                 GameName = dto.Gamename,
                 DownloadSource = dto.DownloadSource,
@@ -181,41 +294,6 @@ namespace My_steam_client.Scripts
                 PurhcaseDate = dto.PurchaseDate
             };
         }
-
-        public async void DeleteGame(ManifestRecord manifestRecord)
-        {
-            try
-            {
-                var gameDir = Path.Combine(LibRootPath, "Lib", manifestRecord.GameName.Replace(":", "-"));
-                
-                if (Directory.Exists(gameDir))
-                {
-                    Directory.Delete(gameDir, true);
-                }
-
-                manifestRecord.libElemStaus = LibElemStatuses.Not_instaled;
-                manifestRecord.ExecuteFileSource = null;
-                await repository.UpdateRecordAsync(manifestRecord.RecordId, manifestRecord);
-            }
-            catch (Exception ex)
-            {
-
-                Console.WriteLine($"Error deleting game: {ex.Message}");
-                throw; 
-            }
-        }
-
-        public void addToInstalatinQueue(ManifestRecord record)
-        {
-            var LibPath = Path.Combine(LibRootPath, "Lib");
-            var gameDir = Path.Combine(LibPath, record.GameName.Replace(":", "-"));
-            var savePath = Path.Combine(gameDir, $"{record.GameName.Replace(":", "-")}.zip");
-
-            if (!Directory.Exists(gameDir)) Directory.CreateDirectory(gameDir);
-
-            downloadQueueManager.EnqueueDownload(record.RecordId, record.DownloadSource, savePath);
-        }
-
         private async void UnPacageGame(DownloadRequest request)
         {
             try
@@ -286,7 +364,6 @@ namespace My_steam_client.Scripts
                 throw;
             }
         }
-
         private string? FindExecutableFile(string rootDir)
         {
             if (!Directory.Exists(rootDir))
@@ -315,12 +392,10 @@ namespace My_steam_client.Scripts
                 return null;
             }
         }
-
         private bool isLibInited()
         {
            return File.Exists(manifestFilePath);
         }
-
         private void initLib()
         {
             var directoryPath = Path.GetDirectoryName(manifestFilePath);
@@ -340,49 +415,11 @@ namespace My_steam_client.Scripts
             writer.Write("[]");
             stream.Flush();
         }
-
-        public async Task<List<LibraryListItem>> getLibAsync()
-        {
-            var objeccts = await repository.getRecordsByUserIdAsync(AppServices.UserId);
-
-            var list = new List<LibraryListItem>();
-            foreach (var item in objeccts) { 
-                var newItem = new LibraryListItem();
-
-                newItem.id = item.GameId;
-                newItem.GameName = item.GameName;
-                newItem.ImageLink = item.LibIconSource;
-                newItem.RecordId = item.RecordId;
-
-                list.Add(newItem);
-            }
-
-            return list;
-        }
-
         private void checkLibStuct()
         {
             var LibResourses = Path.Combine(LibRootPath, "LidResources");
             if (!Directory.Exists(LibResourses)) Directory.CreateDirectory(LibResourses);
         }
 
-        private async void checkGamesFiles()
-        {
-            var ManifestRecords = await repository.GetAllRecordsAsync();
-
-            for (int i = 0; i < ManifestRecords.Count; i++)
-            {
-
-                var record = ManifestRecords[i];
-
-                if (!string.IsNullOrEmpty(record.ExecuteFileSource) && !File.Exists(record.ExecuteFileSource))
-                {
-                    record.ExecuteFileSource = null;
-                    record.libElemStaus = LibElemStatuses.Not_instaled;
-                }
-            }
-            await repository.saveChanges(ManifestRecords);
-
-        }
     }
 }

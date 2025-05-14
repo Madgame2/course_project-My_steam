@@ -18,6 +18,9 @@
 
     <Window.Resources>
         <conv:ImageUniversalConverter x:Key="ImageUniversalConverter"/>
+        <conv:Enum_to_string x:Key="Enum_to_string"/>
+        <conv:DateTimeToSting x:Key="DateTimeToSting"/>
+        <conv:TimeSpanFormatConverter x:Key="TimeSpanFormatConverter"/>
 
         <Style x:Key="DefoultTextStyles" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="pack://application:,,,/resources/Fonts/#Rajdhani"/>
@@ -157,7 +160,7 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Style="{StaticResource LeftPart}" Grid.Column="0" Text="Account rights: "/>
-                            <TextBlock Style="{StaticResource RightPart}" Grid.Column="1" Text="General"/>
+                            <TextBlock Style="{StaticResource RightPart}" Grid.Column="1" Text="{Binding Role,Converter={StaticResource Enum_to_string}}"/>
                         </Grid>
 
                         <Grid Grid.Row="2" Style="{StaticResource TabelColmsnStyle}">
@@ -167,7 +170,7 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Style="{StaticResource LeftPart}" Grid.Column="0" Text="Date of registration: "/>
-                            <TextBlock Style="{StaticResource RightPart}" Grid.Column="1" Text="10.04.2025"/>
+                            <TextBlock Style="{StaticResource RightPart}" Grid.Column="1" Text="{Binding RegisterDate, Converter={StaticResource DateTimeToSting}}"/>
                         </Grid>
 
                         <Grid Grid.Row="3" Style="{StaticResource TabelColmsnStyle}">
@@ -177,7 +180,7 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Style="{StaticResource LeftPart}" Grid.Column="0" Text="Last purchase: "/>
-                            <TextBlock Style="{StaticResource RightPart}" Grid.Column="1" Text="10.04.2025"/>
+                            <TextBlock Style="{StaticResource RightPart}" Grid.Column="1" Text="{Binding LastPurchase, Converter={StaticResource DateTimeToSting}}"/>
                         </Grid>
 
                         <Grid Grid.Row="4" Style="{StaticResource TabelColmsnStyle}">
@@ -187,7 +190,7 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Style="{StaticResource LeftPart}" Grid.Column="0" Text="Number of games: "/>
-                            <TextBlock Style="{StaticResource RightPart}" Grid.Column="1" Text="3"/>
+                            <TextBlock Style="{StaticResource RightPart}" Grid.Column="1" Text="{Binding GamesCount}"/>
                         </Grid>
 
                         <Grid Grid.Row="5" Style="{StaticResource TabelColmsnStyle}">
@@ -197,7 +200,7 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Style="{StaticResource LeftPart}" Grid.Column="0" Text="Time in game: "/>
-                            <TextBlock Style="{StaticResource RightPart}" Grid.Column="1" Text="131341"/>
+                            <TextBlock Style="{StaticResource RightPart}" Grid.Column="1" Text="{Binding TimeInGames, Converter={StaticResource TimeSpanFormatConverter}}"/>
                         </Grid>
                     </Grid>
                     <Grid Grid.Row="2" Margin="0,20,0,0">

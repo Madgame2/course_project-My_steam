@@ -11,7 +11,7 @@ namespace Game_Net_DTOLib
         public long id {  get; set; }
 
         public string NickName {  get; set; }
-        public DateTime RegisterDate;
+        public DateTime RegisterDate { get; set; }
         public UserRole UserRole { get; set; }
         public string tokens { get; set; }
     }

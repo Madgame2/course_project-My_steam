@@ -120,7 +120,6 @@ namespace My_steam_client
                         TokenStorage.SaveTokens(tokens);
 
                         AppServices.UserId = result.data.id;
-                        AppServices.UserId = result.data.id;
                         AppServices.UsserNickNmae = result.data.NickName;
                         AppServices.userRole = result.data.UserRole;
                         AppServices.UserRegisterDate = result.data.RegisterDate;
