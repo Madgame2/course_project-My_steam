@@ -40,4 +40,11 @@ namespace Game_Net_DTOLib
         Publisher,
         Admin
     }
+
+
+    public enum ReportToppic
+    {
+        Complaint,
+        ReQuest_for_publisher
+    }
 }

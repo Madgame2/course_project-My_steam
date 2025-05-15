@@ -24,9 +24,11 @@ using System.Text;
     var GoodsFilepath = config["JsonRepository:GoodsFilePath"];
     var PurchousesFilepath = config["JsonRepository:PurchousesFilePath"];
     var LibFilepath = config["JsonRepository:LibFilePath"];
+    var ReportsFilepath = config["JsonRepository:ReportsFilePath"];
 
 
-    builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
     builder.Services.AddSingleton<IGamesStaticFilesRepository, GamesStaticFilesRepository>();
     builder.Services.AddSingleton<IResources>(provider => 
     {
@@ -35,6 +37,7 @@ using System.Text;
     });
     builder.Services.AddSingleton<IGamesRespository, GamesRepository>();
     builder.Services.AddSingleton<IUserLibraryRepository, JsonLibRepository>(provider => new JsonLibRepository(LibFilepath));
+    builder.Services.AddSingleton<IReportsRepository, JsonReportsRepository>(provider => new JsonReportsRepository(ReportsFilepath));
     builder.Services.AddSingleton<IPurchaseOptionRepository, JsonPurchaseOptionRepository>(provider=> new JsonPurchaseOptionRepository(PurchousesFilepath));
     builder.Services.AddSingleton<IUserRepository, JsonUserRepository>(provider => new JsonUserRepository(filePath));
     builder.Services.AddSingleton<IRefreshTokenRepository, JsonRefreshTokenRepository>(provider => new JsonRefreshTokenRepository(TokenFilepath));
