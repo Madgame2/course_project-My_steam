@@ -259,7 +259,7 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <Button Content="Support service" Style="{StaticResource ButtonStyles}">
+                            <Button Click="Button_Click" Content="Support service" Style="{StaticResource ButtonStyles}">
                                 <Button.Template>
                                     <ControlTemplate TargetType="Button">
                                         <Border

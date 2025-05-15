@@ -103,6 +103,12 @@ namespace My_steam_client
             GamesCount = await lib.GetGamesCount();
             TimeInGames= await lib.GetTimeInGames();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            (new SupportMesageForm()).Show();
+            this.Close();
+        }
     }
 
 }

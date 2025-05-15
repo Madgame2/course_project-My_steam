@@ -19,6 +19,9 @@
     <Compile Update="MyAccountWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="SupportMesageForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Templates\Activity.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -124,6 +127,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Styles.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SupportMesageForm.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\Activity.xaml">
