@@ -29,7 +29,7 @@ namespace My_steam_client
         private string nickName;
         private UserRole role;
         private DateTime registerDate;
-        private DateTime lastPurchase;
+        private DateTime? lastPurchase;
         private int gamesCount;
         private TimeSpan timeInGames;
 
@@ -63,7 +63,7 @@ namespace My_steam_client
             set => SetProperty(ref registerDate, value);
         }
 
-        public DateTime LastPurchase
+        public DateTime? LastPurchase
         {
             get => lastPurchase;
             set => SetProperty(ref lastPurchase, value);
@@ -86,7 +86,9 @@ namespace My_steam_client
 
         protected bool SetProperty<T>(ref T field, T value, [CallerMemberName] string propertyName = "")
         {
-            if (Equals(field, value)) return false;
+            if (EqualityComparer<T>.Default.Equals(field, value))
+                return false;
+
             field = value;
             OnPropertyChanged(propertyName);
             return true;
@@ -99,7 +101,7 @@ namespace My_steam_client
             RegisterDate = AppServices.UserRegisterDate;
 
             var lib = AppServices.Provider.GetRequiredService<LibMannager>();
-            LastPurchase = (await lib.GetLastPurchase()).Value;
+            LastPurchase = await lib.GetLastPurchase();
             GamesCount = await lib.GetGamesCount();
             TimeInGames= await lib.GetTimeInGames();
         }

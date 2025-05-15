@@ -6,6 +6,8 @@ using Game_Net_DTOLib;
 using My_steam_client.Scripts;
 using Microsoft.Extensions.DependencyInjection;
 using My_steam_server.Services;
+using System.Security.Policy;
+using System.Windows.Media;
 
 namespace My_steam_client
 {
@@ -24,10 +26,43 @@ namespace My_steam_client
             InitializeComponent();
             HeaderContaner.Content = new Header(this);
 
-            var libmannager = AppServices.Provider.GetRequiredService<LibMannager>();
+             var libmannager = AppServices.Provider.GetRequiredService<LibMannager>();
             libmannager.SynnchronizeLibs();
 
             openShopPage();
+        }
+
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (AppServices.userRole == UserRole.General)
+            {
+                var button = FindVisualChildren<SimpleSideButton>(this)
+                    .FirstOrDefault(b => (string)b.Tag == "ProjectsButton");
+
+                if (button != null)
+                {
+                    button.IsEnabled = false;
+                    button.Visibility = Visibility.Collapsed;
+                }
+            }
+        }
+
+
+        public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        {
+            if (depObj != null)
+            {
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+                {
+                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+                    if (child != null && child is T t)
+                        yield return t;
+
+                    foreach (T childOfChild in FindVisualChildren<T>(child))
+                        yield return childOfChild;
+                }
+            }
         }
 
         private void openShopPage()
@@ -81,6 +116,12 @@ namespace My_steam_client
         }
 
         private void MyAccount(object sender, RoutedEventArgs e)
+        {
+            var aacountWindow = new MyAccountWindow();
+            aacountWindow.Show();
+        }
+
+        private void Myprojects(object sender, RoutedEventArgs e)
         {
             var aacountWindow = new MyAccountWindow();
             aacountWindow.Show();

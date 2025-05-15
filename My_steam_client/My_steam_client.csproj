@@ -31,6 +31,7 @@
     <None Remove="resources\images\no-image.svg" />
     <None Remove="resources\images\NoConnetion.png" />
     <None Remove="resources\images\play.svg" />
+    <None Remove="resources\images\publisher.svg" />
     <None Remove="resources\images\Right.png" />
     <None Remove="resources\images\Search.svg" />
     <None Remove="resources\images\shopping-cart-svgrepo-com.png" />
@@ -130,6 +131,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\images\WhiteUser.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="resources\images\publisher.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

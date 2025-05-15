@@ -130,5 +130,27 @@
     "LockoutEnd": null,
     "LockoutEnabled": false,
     "AccessFailedCount": 0
+  },
+  {
+    "Nickname": null,
+    "Role": 0,
+    "RigisterDate": "0001-01-01T00:00:00",
+    "CartItems": [],
+    "Library": [],
+    "Id": "7",
+    "UserName": "GameStore",
+    "NormalizedUserName": null,
+    "Email": "publisher@gmail.com",
+    "NormalizedEmail": null,
+    "EmailConfirmed": false,
+    "PasswordHash": "AQAAAAIAAYagAAAAEPEq1YiT7v8iM/c64ck5n2H9YIsKgC6EiG2EUsxmzACnokCTXEN0xIC8yQO8JoHyhQ==",
+    "SecurityStamp": "32fc644d-2b31-4baf-a44f-c750ea610f49",
+    "ConcurrencyStamp": "ecfe5777-d4d4-43f0-90cb-45a764ee993a",
+    "PhoneNumber": null,
+    "PhoneNumberConfirmed": false,
+    "TwoFactorEnabled": false,
+    "LockoutEnd": null,
+    "LockoutEnabled": false,
+    "AccessFailedCount": 0
   }
 ]

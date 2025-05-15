@@ -144,7 +144,7 @@
 
     <Style x:Key="Main_buttons" TargetType="StackPanel">
         <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="Margin" Value="0,0,0,100"/>
+        <Setter Property="Margin" Value="0,0,0,0"/>
     </Style>
 
     <DropShadowEffect x:Key="NoShadow" ShadowDepth="0" BlurRadius="0" Opacity="0"/>

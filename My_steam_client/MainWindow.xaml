@@ -12,7 +12,8 @@
         MinHeight="600"
         MinWidth="1300"
         Width="1099"
-        Background="#FF1B1A25">
+        Background="#FF1B1A25"
+        Loaded="MainWindow_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -76,6 +77,7 @@
 
                             <local:SimpleSideButton Click="MyAccount" Height="60" IconHeight="30" Icon="images/user-svgrepo-com.svg" Title="My account"/>
                             <local:SideButton Click="ToBasket" Height="60" IconHeight="30" Icon="images/basket-shopping-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav" Title="My basket"/>
+                            <local:SimpleSideButton Tag="ProjectsButton" Click="Myprojects" Height="60" IconHeight="30" Icon="images/publisher.svg" Title="My Projects"/>
                         </StackPanel>
 
                         <StackPanel Style="{StaticResource Main_buttons}">
