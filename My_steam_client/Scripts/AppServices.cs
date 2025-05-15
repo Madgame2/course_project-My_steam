@@ -79,6 +79,11 @@ namespace My_steam_client.Scripts
                 var commManager = provider.GetRequiredService<Game_Net.ComunitationMannageer>();
                 return new DownloadingLibStaticResourcesService(commManager);
             });
+            services.AddSingleton<ReportsService>(provider =>
+            {
+                var commManager = provider.GetRequiredService<Game_Net.ComunitationMannageer>();
+                return new ReportsService(commManager);
+            });
 
             Provider = services.BuildServiceProvider();
         }

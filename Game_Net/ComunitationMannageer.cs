@@ -135,6 +135,49 @@ namespace Game_Net
             }
         }
 
+
+        public async Task SendMessageRest(string endpoint, Protocol protocol, string jsonData)
+        {
+
+            if (ServerUrls.TryGetValue(protocol, out var settings))
+            {
+
+                string fullUrl = settings.fullUrl(endpoint);
+
+                if (string.IsNullOrEmpty(jsonData))
+                {
+                    await _restClient.GetAsync(fullUrl, JWT_token);
+
+
+                }
+                else
+                {
+                    await _restClient.PostAsync(fullUrl, JWT_token, jsonData);
+                }
+
+            }
+            else
+            {
+                throw new UndefinedProtocolException(protocol, "");
+            }
+        }
+
+        public async Task SendMessageRest(string endpoint, Protocol protocol)
+        {
+
+            if (ServerUrls.TryGetValue(protocol, out var settings))
+            {
+                string fullUrl = settings.fullUrl(endpoint);
+
+                await _restClient.GetAsync(fullUrl, JWT_token);
+            }
+            else
+            {
+                throw new UndefinedProtocolException(protocol, "");
+            }
+        }
+
+
         public async Task<Stream?> GetResourcesAsyc(string endPoint)
         {
            var stream = await _restClient.GetStreamAsync(endPoint, JWT_token);

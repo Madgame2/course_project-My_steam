@@ -52,6 +52,7 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
         return new BoughtService(UserRep, PurhcouseOptions, GoodRepository, LibRepos);
     });
+    builder.Services.AddSingleton<IReportsService, ReportService>();
     builder.Services.AddControllers();
 
     builder.Services.AddScoped<IAuthService, AuthService>();

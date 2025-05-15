@@ -298,7 +298,7 @@
                             <ComboBoxItem Content="complaint"/>
                             <ComboBoxItem Content="Publisher Status Request"/>
                         </ComboBox>
-                        <Button Content="Send" Style="{StaticResource AccentButtonStyle}" Width="200" Height="40"/>
+                        <Button Click="Button_Click" Content="Send" Style="{StaticResource AccentButtonStyle}" Width="200" Height="40"/>
                     </StackPanel>
                 </Grid>
                 <Grid Grid.Column="1">
@@ -309,7 +309,7 @@
 
 
                     <TextBlock Grid.Row="0" Text="Describe your topic:" Style="{StaticResource Header}"/>
-                    <TextBox Grid.Row="1" Style="{StaticResource AccentTextBoxStyle}" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Height="100"/>
+                    <TextBox x:Name="TextPlace"  Grid.Row="1" Style="{StaticResource AccentTextBoxStyle}" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Height="100"/>
                 </Grid>
             </Grid>
         </Grid>

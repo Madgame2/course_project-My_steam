@@ -47,16 +47,27 @@ namespace My_steam_server.Repositories
             await _lock.WaitAsync();
             try
             {
-                var reports = (await GetAllAsync()).ToList();
+                List<ReportMessageModel> reports;
+
+                if (File.Exists(_filePath))
+                {
+                    var json = await File.ReadAllTextAsync(_filePath);
+                    reports = JsonSerializer.Deserialize<List<ReportMessageModel>>(json) ?? new List<ReportMessageModel>();
+                }
+                else
+                {
+                    reports = new List<ReportMessageModel>();
+                }
+
                 reports.Add(report);
 
-                var json = JsonSerializer.Serialize(reports, new JsonSerializerOptions
+                var updatedJson = JsonSerializer.Serialize(reports, new JsonSerializerOptions
                 {
                     WriteIndented = true,
                     Converters = { new JsonStringEnumConverter() }
                 });
 
-                await File.WriteAllTextAsync(_filePath, json);
+                await File.WriteAllTextAsync(_filePath, updatedJson);
             }
             finally
             {
