@@ -123,8 +123,8 @@ namespace My_steam_client
 
         private void Myprojects(object sender, RoutedEventArgs e)
         {
-            var aacountWindow = new MyAccountWindow();
-            aacountWindow.Show();
+            var myProjects = new MyprojectsWindow();
+            myProjects.Show();
         }
 
         private async void LogOut (object sender,RoutedEventArgs e)

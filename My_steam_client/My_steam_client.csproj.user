@@ -16,7 +16,13 @@
     <Compile Update="AuthWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="CreateRedactProjectWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="MyAccountWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MyprojectsWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="SupportMesageForm.xaml.cs">
@@ -117,10 +123,16 @@
     <Page Update="AuthWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="CreateRedactProjectWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MyAccountWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MyprojectsWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ShowcaseItemStyles.xaml">
