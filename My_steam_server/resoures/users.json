@@ -91,7 +91,14 @@
     "Nickname": null,
     "Role": 1,
     "RigisterDate": "2025-05-14T04:58:45.0924341Z",
-    "CartItems": [],
+    "CartItems": [
+      {
+        "CartItemId": 1,
+        "UserId": "5",
+        "PurchaseOptionId": 1,
+        "PurchaseDate": "0001-01-01T00:00:00"
+      }
+    ],
     "Library": [],
     "Id": "5",
     "UserName": "Some_Publisher",

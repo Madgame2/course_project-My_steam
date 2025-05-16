@@ -21,11 +21,32 @@ namespace My_steam_client
     /// </summary>
     public partial class MyprojectsWindow : Window
     {
+        private CreateRedactProjectWindow _editWindow;
+
         public MyprojectsWindow()
         {
             InitializeComponent();
             HeaderContaner.Content = new Header(this, "My projects");
-            DataContext = new ProjectsViewModel();
+            var vm = new ProjectsViewModel();
+            DataContext = vm;
+
+            vm.OnAddProjectRequested += OpenProjectsWindow;
+        }
+
+
+        private void OpenProjectsWindow()
+        {
+            if (_editWindow == null || !_editWindow.IsLoaded)
+            {
+                _editWindow = new CreateRedactProjectWindow("New project");
+                _editWindow.Owner = this;
+                _editWindow.Closed += (_, _) => _editWindow = null;
+                _editWindow.Show();
+            }
+            else
+            {
+                _editWindow.Activate();
+            }
         }
     }
 }

@@ -27,6 +27,8 @@ namespace My_steam_client.ViewModels
         public ICommand EditCommand { get; }
         public ICommand DeleteCommand { get; }
 
+        public Action? OnAddProjectRequested { get; set; }
+
         public ProjectsViewModel()
         {
 
@@ -39,7 +41,7 @@ namespace My_steam_client.ViewModels
 
         private void AddProject()
         {
-            // здесь логика добавления
+            OnAddProjectRequested?.Invoke();
         }
 
         private void EditProject()

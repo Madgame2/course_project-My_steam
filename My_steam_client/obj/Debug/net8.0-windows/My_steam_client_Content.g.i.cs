@@ -26,6 +26,7 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/log-out-1-svgrepo-com.svg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/no-image.svg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/noconnetion.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/noimage.svg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/pause-svgrepo-com.svg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/play.svg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/right.png")]
