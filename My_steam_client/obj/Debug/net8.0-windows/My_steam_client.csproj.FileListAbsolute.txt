@@ -183,3 +183,4 @@ D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\
 D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\obj\Debug\net8.0-windows\UploadingWindow.baml
 D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\bin\Debug\net8.0-windows\resources\Gif\Loading.gif
 D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\obj\Debug\net8.0-windows\Templates\SendingErrorComponent.g.cs
+D:\projects\cs\Course_project(my_steam)\course_project-My_steam\My_steam_client\obj\Debug\net8.0-windows\Templates\SendingErrorComponent.baml

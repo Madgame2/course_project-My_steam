@@ -38,6 +38,8 @@ namespace My_steam_client.ViewModels
 
         public ObservableCollection<string> ScrinShots { get; set; } = new();
 
+
+
         public string SelectedScreenshot
         {
             get => _selectedScreenshot;
@@ -135,6 +137,8 @@ namespace My_steam_client.ViewModels
         public event Action<ProjectUploadDto>? ShowLoadingWindowRequested;
         public event Action? CloseLoadingWindowRequested;
 
+        public event Action? CloseWindow;
+
         public EditProjectDataViewModel()
         {
 
@@ -178,11 +182,11 @@ namespace My_steam_client.ViewModels
         }
         private void SendData()
         {
-            //if(!CanSend())
-            //{
-            //    MessageBox.Show("Please. fill in all fields before sending.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
-            //    return;
-            //}
+            if (!CanSend())
+            {
+                MessageBox.Show("Please. fill in all fields before sending.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
             var dto = new ProjectUploadDto
             {
@@ -202,6 +206,7 @@ namespace My_steam_client.ViewModels
             }
 
             ShowLoadingWindowRequested?.Invoke(dto);
+            CloseWindow?.Invoke();
         }
         private void SelectFile(FileType fileTyoe)
         {

@@ -17,6 +17,7 @@ namespace My_steam_client
             InitializeComponent();
             var Service= AppServices.Provider.GetRequiredService<Game_Net.ComunitationMannageer>();
             var Vm = new UploadingViewModel(dto, Service);
+            Vm.CloseWindow += ()=> this.Close();
 
             DataContext = Vm;
         }

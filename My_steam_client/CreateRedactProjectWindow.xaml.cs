@@ -30,6 +30,7 @@ namespace My_steam_client
             HeaderContaner.Content = new Header(this, header_Titel);
             var vm = new EditProjectDataViewModel();
             vm.ShowLoadingWindowRequested += OnShowLoadingWindowRequested;
+            vm.CloseWindow += () => this.Close();
             DataContext = vm;
         }
 
