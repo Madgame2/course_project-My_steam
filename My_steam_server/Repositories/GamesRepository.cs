@@ -18,6 +18,11 @@ namespace My_steam_server.Repositories
             return Task.FromResult(Path.Combine(basePath, $"game_{gameId}.zip"));
         }
 
+        public string getRepositoryPath()
+        {
+            return basePath;
+        }
+
         public async Task<long> GetUncompressedSize(long gameId)
         {
             return await Task.Run(() =>

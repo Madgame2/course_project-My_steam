@@ -11,5 +11,7 @@ namespace My_steam_server.Interfaces
         Task<bool> HasObject(T entity);
 
         Task<List<T>> GetPagesAsync(ProductFilterDto filter);
+
+        Task<T> CreateEmptyModel();
     }
 }

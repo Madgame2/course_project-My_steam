@@ -24,5 +24,6 @@ namespace My_steam_server.Repositories
         /// <param name="gameId">The ID of the game</param>
         /// <returns>Size of the file in bytes if exists, null otherwise</returns>
         Task<long?> GetGameFileSizeAsync(int gameId);
+        Task SaveNewFile(MemoryStream stream ,int gameId);
     }
 } 

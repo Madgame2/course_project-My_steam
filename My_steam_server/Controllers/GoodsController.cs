@@ -57,10 +57,9 @@ namespace My_steam_server.Controllers
                 GameName = game.Name,
                 Description = game.Description,
                 ImageLink = game.HeaderImageSource,
-                MdFileSourcce = game.MdFileSorce, // Проверь, чтобы название было одинаковым
                 ReleaseDate = game.ReleaseDate,
                 rating = game.ratinng, // Убедись, что свойство в DTO называется правильно
-                imagesLinks = game.imageSource.ToList(), // Преобразование массива в список
+                imagesLinks = game.imageSource.Select(p=>p.Path).ToList(), // Преобразование массива в список
                 PurchaseOptions = game.PurchaseOptions.Select(po => new Game_Net_DTOLib.PurchaseOption
                 {
                     PurchaseId = po.OptionId, // Преобразуем из модели в DTO

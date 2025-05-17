@@ -2,6 +2,8 @@
 {
     public interface IGamesRespository
     {
+        string getRepositoryPath();
+
         Task<string> GetGameFilePathAsync(int gameId);
         Task<bool> GameExistsAsync(int gameId);
 

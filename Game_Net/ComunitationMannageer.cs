@@ -221,5 +221,22 @@ namespace Game_Net
 
             return result;
         }
+
+        public  async Task<NetResponse<bool>> SendUrlEncodedContent(string endpoint, Protocol protocol, FormUrlEncodedContent content)
+        {
+            if (!ServerUrls.TryGetValue(protocol, out var settings))
+                throw new UndefinedProtocolException(protocol, "");
+
+            string fullUrl = settings.fullUrl(endpoint);
+
+            string json = await _restClient.PostAsync(fullUrl, JWT_token, content);
+
+            var result = JsonSerializer.Deserialize<NetResponse<bool>>(json, new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            });
+
+            return result;
+        }
     }
 }

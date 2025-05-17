@@ -2,6 +2,7 @@
 using Microsoft.VisualBasic.FileIO;
 using Microsoft.Win32;
 using My_steam_client.Controls;
+using My_steam_client.Scripts;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -190,23 +191,26 @@ namespace My_steam_client.ViewModels
 
             var dto = new ProjectUploadDto
             {
+                UserId = AppServices.UserId.ToString(),
                 ProjectName = _projectName,
                 Description = _projectDescription,
                 Price = Convert.ToSingle(_price),
-                HeaderImage = File.ReadAllBytes(_headerImageSource),
+                HeaderImage = File.OpenRead(_headerImageSource),
                 ZIPFile = File.OpenRead(_ZIPPath),
-                LibHeader = File.ReadAllBytes(_libHeaderPath),
-                LibIcon = File.ReadAllBytes(_libIconPath),
-                Screenshots = new List<byte[]>()
+                LibHeader = File.OpenRead(_libHeaderPath),
+                LibIcon = File.OpenRead(_libIconPath),
+                Screenshots = new List<Stream>()
             };
 
             foreach (var path in ScrinShots)
             {
-                dto.Screenshots.Add(File.ReadAllBytes(path));
+                dto.Screenshots.Add(File.OpenRead(path));
             }
 
-            ShowLoadingWindowRequested?.Invoke(dto);
-            CloseWindow?.Invoke();
+ 
+                CloseWindow?.Invoke();
+                ShowLoadingWindowRequested?.Invoke(dto);
+
         }
         private void SelectFile(FileType fileTyoe)
         {

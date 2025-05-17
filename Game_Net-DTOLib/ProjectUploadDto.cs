@@ -8,15 +8,16 @@ namespace Game_Net_DTOLib
 {
     public class ProjectUploadDto
     {
+        public string UserId {  get; set; }
         public string ProjectName { get; set; }
         public string Description { get; set; }
         public float Price { get; set; }
 
-        public byte[] HeaderImage { get; set; }
+        public Stream HeaderImage { get; set; }
         public Stream ZIPFile { get; set; }
-        public byte[] LibHeader { get; set; }
-        public byte[] LibIcon { get; set; }
+        public Stream LibHeader { get; set; }
+        public Stream LibIcon { get; set; }
 
-        public List<byte[]> Screenshots { get; set; }
+        public List<Stream> Screenshots { get; set; }
     }
 }

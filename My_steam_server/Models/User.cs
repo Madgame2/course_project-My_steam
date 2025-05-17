@@ -11,6 +11,6 @@ namespace My_steam_server.Models
 
         public List<CartItem> CartItems { get; set; } = new();
         public List<UserLibraryEntry> Library { get; set; } = new();
-
+        public List<Game> Games { get; set; } = new();
     }
 }

@@ -68,5 +68,27 @@ namespace My_steam_server.Repositories
         {
             return Path.Combine(_gamesDirectory, $"game_{gameId}.zip");
         }
+
+        public async Task SaveNewFile(MemoryStream stream, int gameId)
+        {
+            if (stream == null || stream.Length == 0)
+                throw new ArgumentException("Stream is null or empty", nameof(stream));
+
+            string fileName = $"game_{gameId}.zip";
+            string fullPath = Path.Combine(_gamesDirectory, fileName);
+
+            // Убедимся, что директория существует
+            if (!Directory.Exists(_gamesDirectory))
+                Directory.CreateDirectory(_gamesDirectory);
+
+            // Перед записью нужно установить позицию потока в начало
+            stream.Position = 0;
+
+            // Записываем поток в файл асинхронно
+            using (var fileStream = new FileStream(fullPath, FileMode.Create, FileAccess.Write, FileShare.None, 4096, true))
+            {
+                await stream.CopyToAsync(fileStream);
+            }
+        }
     }
 } 

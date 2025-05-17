@@ -1,10 +1,13 @@
 ﻿using Game_Net;
 using Game_Net_DTOLib;
+using Microsoft.Extensions.DependencyInjection;
 using My_steam_client.Controls;
+using My_steam_client.Scripts;
 using My_steam_client.Templates;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -63,25 +66,21 @@ namespace My_steam_client.ViewModels
 
             try
             {
-                var content = new MultipartFormDataContent();
-
-                content.Add(new StringContent(_dto.ProjectName), "ProjectName");
-                content.Add(new StringContent(_dto.Description), "Description");
-                content.Add(new StringContent(_dto.Price.ToString()), "Price");
-
-                content.Add(new ByteArrayContent(_dto.HeaderImage), "HeaderImage");
-                content.Add(new StreamContent(_dto.ZIPFile), "ZIPFile");
-                content.Add(new ByteArrayContent(_dto.LibHeader), "LibHeader");
-                content.Add(new ByteArrayContent(_dto.LibIcon), "LibIcon");
-
-                for (int i = 0; i < _dto.Screenshots.Count; i++)
-                {
-                    content.Add(new ByteArrayContent(_dto.Screenshots[i]), "Screenshots", $"screenshot_{i}.png");
-                }
 
                 try
                 {
-                    await _comManager.SendMultipartAsync<bool>("api/upload", Protocol.Http, content);
+                    var service = AppServices.Provider.GetRequiredService<UploadData>();
+
+                    var key= await service.UploadMetadataAsync(_dto);
+                    await service.UploadZipInChunksAsync(_dto.ZIPFile, key);
+
+
+                    _dto.HeaderImage?.Dispose();
+                    _dto.ZIPFile?.Dispose();
+                    _dto.LibHeader?.Dispose();
+                    _dto.LibIcon?.Dispose();
+                    foreach (var s in _dto.Screenshots)
+                        s?.Dispose();
                     StatusText = "Secsses sended!";
                 }
                 catch

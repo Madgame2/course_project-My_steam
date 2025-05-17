@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using My_steam_server.Interfaces;
@@ -25,9 +26,18 @@ using System.Text;
     var PurchousesFilepath = config["JsonRepository:PurchousesFilePath"];
     var LibFilepath = config["JsonRepository:LibFilePath"];
     var ReportsFilepath = config["JsonRepository:ReportsFilePath"];
+var Screenpath = config["JsonRepository:ScreeensPath"];
 
 
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.Limits.MaxRequestBodySize = 512 * 1024 * 1024; // 512 MB
+});
 
+builder.Services.Configure<FormOptions>(options =>
+{
+    options.MultipartBodyLengthLimit = 512 * 1024 * 1024; // 512 MB
+});
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
     builder.Services.AddSingleton<IGamesStaticFilesRepository, GamesStaticFilesRepository>();
     builder.Services.AddSingleton<IResources>(provider => 
@@ -43,6 +53,11 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
     builder.Services.AddSingleton<IRefreshTokenRepository, JsonRefreshTokenRepository>(provider => new JsonRefreshTokenRepository(TokenFilepath));
     builder.Services.AddSingleton<IGoodRepository<Game>>(provider => new JsonGoodsRepository<Game>(GoodsFilepath));
     builder.Services.AddSingleton<ICartService, CartService>();
+builder.Services.AddSingleton<IScreenShotsRepository, ScreenShotsRepository>(provider =>
+{
+
+    return new ScreenShotsRepository(Screenpath);
+});
     builder.Services.AddSingleton<IBoughtService, BoughtService>(provider =>
     {
         var UserRep = provider.GetRequiredService<IUserRepository>();
@@ -53,6 +68,15 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         return new BoughtService(UserRep, PurhcouseOptions, GoodRepository, LibRepos);
     });
     builder.Services.AddSingleton<IReportsService, ReportService>();
+builder.Services.AddSingleton<IPublisherService, PublisherService>(provider =>
+{
+    var gameRep = provider.GetRequiredService<IGamesRespository>();
+    var httpContextAccessor = provider.GetRequiredService<IHttpContextAccessor>();
+    var staticFiles = provider.GetRequiredService<IGamesStaticFilesRepository>();
+    var screenShtots = provider.GetRequiredService<IScreenShotsRepository>();
+
+    return new PublisherService(gameRep, screenShtots, httpContextAccessor, staticFiles);
+});
     builder.Services.AddControllers();
 
     builder.Services.AddScoped<IAuthService, AuthService>();

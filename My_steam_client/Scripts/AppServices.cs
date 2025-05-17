@@ -84,6 +84,11 @@ namespace My_steam_client.Scripts
                 var commManager = provider.GetRequiredService<Game_Net.ComunitationMannageer>();
                 return new ReportsService(commManager);
             });
+            services.AddSingleton<UploadData>(provider =>
+            {
+                var commManager = provider.GetRequiredService<Game_Net.ComunitationMannageer>();
+                return new UploadData(commManager);
+            });
 
             Provider = services.BuildServiceProvider();
         }

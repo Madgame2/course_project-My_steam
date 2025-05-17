@@ -5,7 +5,7 @@ using System.Text.Json;
 
 namespace My_steam_server.Repositories
 {
-    public class JsonGoodsRepository<T> : IGoodRepository<T> where T: Good
+    public class JsonGoodsRepository<T> : IGoodRepository<T> where T : Good, new()
     {
         public static string _filePath=string.Empty;
 
@@ -90,6 +90,24 @@ namespace My_steam_server.Repositories
             return curentId;
         }
 
+        private async Task<int> getFreeId()
+        {
+
+            var objects = await GetObjets();
+            int curentId = 1;
+
+            if (objects.Count == 1) return curentId;
+
+            foreach (var obj in objects)
+            {
+                if (obj.Id != curentId) return curentId;
+
+                curentId++;
+            }
+
+            return curentId;
+        }
+
         public async Task<bool> HasObject(T entity)
         {
 
@@ -127,6 +145,11 @@ namespace My_steam_server.Repositories
             return query
                 .Take(filter.PageSize)
                 .ToList();
+        }
+
+        public async Task<T> CreateEmptyModel()
+        {
+            return new T { Id = await getFreeId() };
         }
     }
 }

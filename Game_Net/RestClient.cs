@@ -99,5 +99,23 @@ namespace Game_Net
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
+
+        public async Task<string> PostAsync(string endPoint, string token, FormUrlEncodedContent formData)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Post, endPoint)
+            {
+                Content = formData
+            };
+
+            if (!string.IsNullOrEmpty(token))
+            {
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            }
+
+            HttpResponseMessage response = await _httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
+        }
+
     }
 }

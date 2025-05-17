@@ -6,10 +6,12 @@ namespace My_steam_server.Models
     {
 
         public string Description { get; set; }
-        public string[] imageSource {  get; set; }
+        public List<Screenshot> imageSource {  get; set; } = new();
         public string HeaderImageSource { get; set; }
+        
+        public string UserId {  get; set; }
+        public User User { get; set; }
 
-        public string MdFileSorce {  get; set; }
         public string DownloadSource { get; set; }
         public Ratinng ratinng { get; set; }
 
