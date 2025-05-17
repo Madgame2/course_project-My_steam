@@ -204,5 +204,22 @@ namespace Game_Net
         {
             return await _restClient.GetStreamAsync(endPoint, JWT_token, headers);
         }
+
+        public async Task<NetResponse<T>?> SendMultipartAsync<T>(string endpoint, Protocol protocol, MultipartFormDataContent content)
+        {
+            if (!ServerUrls.TryGetValue(protocol, out var settings))
+                throw new UndefinedProtocolException(protocol, "");
+
+            string fullUrl = settings.fullUrl(endpoint);
+
+            string json = await _restClient.PostMultipartAsync(fullUrl,JWT_token, content);
+
+            var result = JsonSerializer.Deserialize<NetResponse<T>>(json, new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            });
+
+            return result;
+        }
     }
 }

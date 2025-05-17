@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="My_steam_client.Templates.SendingComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:conv="clr-namespace:My_steam_client.Converters"
+             xmlns:local="clr-namespace:My_steam_client.Templates"
+             mc:Ignorable="d" 
+             d:DesignHeight="250" d:DesignWidth="500">
+    <UserControl.Resources>
+        <conv:ImageUniversalConverter x:Key="ImageSourceConverter"/>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition Width="0.6*"/>
+        </Grid.ColumnDefinitions>
+
+        <Image x:Name="GifImage"/>
+        <TextBlock x:Name="LoadingTextBlock" Grid.Column="1"
+            Text="Uploading"
+                   Foreground="#FF959595"
+                   FontFamily="pack://application:,,,/resources/Fonts/#Rajdhani"
+                   FontSize="25"
+                   Margin="25,0,0,0"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   Panel.ZIndex="2"/>
+    </Grid>
+</UserControl>

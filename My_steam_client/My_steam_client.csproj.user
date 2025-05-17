@@ -88,6 +88,12 @@
     <Compile Update="Templates\SearchLable.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Templates\SendingComponent.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Templates\SendingErrorComponent.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Templates\Shop_Component.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -107,6 +113,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Templates\StopButton.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UploadingWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="YesNoDialog.xaml.cs">
@@ -204,6 +213,12 @@
     <Page Update="Templates\SearchLable.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Templates\SendingComponent.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Templates\SendingErrorComponent.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Templates\Shop_Component.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -226,6 +241,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\Templates.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UploadingWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="YesNoDialog.xaml">

@@ -12,5 +12,6 @@ namespace Game_Net.Interfaces
         Task<string> PostAsync(string endPoint, string token, string jsonData);
         Task<Stream> GetStreamAsync(string endPoint, string token);
         Task<Stream> GetStreamAsync(string endPoint, string token, Dictionary<string, string>? headers);
+        Task<string> PostMultipartAsync(string endPoint, string token, MultipartFormDataContent content);
     }
 }

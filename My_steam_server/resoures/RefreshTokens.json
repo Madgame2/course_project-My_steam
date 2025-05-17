@@ -1216,5 +1216,33 @@
     "isActive": true,
     "userId": 5,
     "user": null
+  },
+  {
+    "id": 0,
+    "token": "6a72cd6e-adf0-4591-8f2a-141f4b8643e6",
+    "expires": "2025-05-24T10:40:31.0885949Z",
+    "isExpired": false,
+    "created": "2025-05-17T10:40:31.0885944Z",
+    "createdByIp": "::1",
+    "revoked": null,
+    "revokedByIp": null,
+    "replacedByToken": null,
+    "isActive": true,
+    "userId": 5,
+    "user": null
+  },
+  {
+    "id": 0,
+    "token": "29c53a8a-0b45-4aad-abd1-284d5e3a7948",
+    "expires": "2025-05-24T12:15:10.3289765Z",
+    "isExpired": false,
+    "created": "2025-05-17T12:15:10.3289762Z",
+    "createdByIp": "127.0.0.1",
+    "revoked": null,
+    "revokedByIp": null,
+    "replacedByToken": null,
+    "isActive": true,
+    "userId": 5,
+    "user": null
   }
 ]

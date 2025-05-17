@@ -13,6 +13,7 @@
     <None Remove="AuthComponents\Icon.png" />
     <None Remove="resources\Fonts\Rajdhani-Regular.ttf" />
     <None Remove="resources\Gif\cute-cat.gif" />
+    <None Remove="resources\Gif\Loading.gif" />
     <None Remove="resources\Gif\Ping_icon.gif" />
     <None Remove="resources\images\330e1029061501db08c7bf7e9b37a9a2.jpg" />
     <None Remove="resources\images\33usgd94xncz.png" />
@@ -54,6 +55,9 @@
 
   <ItemGroup>
     <Content Include="resources\Gif\cute-cat.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\Gif\Loading.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="resources\Gif\Ping_icon.gif">

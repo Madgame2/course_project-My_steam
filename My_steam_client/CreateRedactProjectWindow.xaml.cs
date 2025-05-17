@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Globalization;
 using System.Text.RegularExpressions;
+using Game_Net_DTOLib;
 
 namespace My_steam_client
 {
@@ -28,9 +29,15 @@ namespace My_steam_client
             InitializeComponent();
             HeaderContaner.Content = new Header(this, header_Titel);
             var vm = new EditProjectDataViewModel();
+            vm.ShowLoadingWindowRequested += OnShowLoadingWindowRequested;
             DataContext = vm;
         }
 
+        private void OnShowLoadingWindowRequested(ProjectUploadDto dto)
+        {
+            var loadingWindow = new UploadingWindow(dto);
+            loadingWindow.Show();
+        }
 
         private void PriceTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {

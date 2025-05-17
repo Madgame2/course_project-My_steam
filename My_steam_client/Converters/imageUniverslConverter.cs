@@ -40,8 +40,8 @@ namespace My_steam_client.Converters
                     return extension switch
                     {
                         ".svg" => LoadSvgImage(fullPath),
-                        _ => LoadBitmapImage(fullPath,
-                                             isWeb: false)
+                        ".gif" => LoadGifImage(fullPath),
+                        _ => LoadBitmapImage(fullPath, isWeb: false)
                     };
                 }
             }
@@ -96,7 +96,6 @@ namespace My_steam_client.Converters
             }
         }
 
-
         private DrawingImage? LoadSvgImage(string path)
         {
             try
@@ -127,10 +126,30 @@ namespace My_steam_client.Converters
             return null;
         }
 
+        private ImageSource? LoadGifImage(string path)
+        {
+            try
+            {
+                var bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(path, UriKind.Absolute);
+                bitmap.CacheOption = BitmapCacheOption.OnLoad; // Важно, чтобы поток не блокировался
+                bitmap.EndInit();
+                bitmap.Freeze();
+                return bitmap;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"[ImageConverter] Ошибка загрузки GIF: {ex.Message}");
+                return null;
+            }
+        }
+
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         }
     }
+
 }
 

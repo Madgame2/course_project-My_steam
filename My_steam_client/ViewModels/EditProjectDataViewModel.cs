@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualBasic.FileIO;
+﻿using Game_Net_DTOLib;
+using Microsoft.VisualBasic.FileIO;
 using Microsoft.Win32;
 using My_steam_client.Controls;
 using System;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace My_steam_client.ViewModels
@@ -129,8 +131,13 @@ namespace My_steam_client.ViewModels
         public ICommand SelectFileCommand { get; }
         public ICommand RemoveScreenshotCommand { get; }
 
+
+        public event Action<ProjectUploadDto>? ShowLoadingWindowRequested;
+        public event Action? CloseLoadingWindowRequested;
+
         public EditProjectDataViewModel()
         {
+
             SelectFileCommand = new RelayCommand<string>(param =>
             {
                 if (Enum.TryParse<FileType>(param, out var fileType))
@@ -154,8 +161,48 @@ namespace My_steam_client.ViewModels
                 OnPropertyChanged(nameof(CanRemoveScreenshot));
                 CommandManager.InvalidateRequerySuggested();
             };
+
+            SubmitCommand = new RelayCommand(SendData);
         }
 
+
+        private bool CanSend()
+        {
+            return !string.IsNullOrEmpty(_projectName) &&
+                   !string.IsNullOrEmpty(_headerImageSource) &&
+                   !string.IsNullOrEmpty(_ZIPPath) &&
+                   !string.IsNullOrEmpty(_libHeaderPath) &&
+                   !string.IsNullOrEmpty(_libIconPath) &&
+                   !(ScrinShots.Count== 0) &&
+                   !string.IsNullOrEmpty(_price);
+        }
+        private void SendData()
+        {
+            //if(!CanSend())
+            //{
+            //    MessageBox.Show("Please. fill in all fields before sending.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            //    return;
+            //}
+
+            var dto = new ProjectUploadDto
+            {
+                ProjectName = _projectName,
+                Description = _projectDescription,
+                Price = Convert.ToSingle(_price),
+                HeaderImage = File.ReadAllBytes(_headerImageSource),
+                ZIPFile = File.OpenRead(_ZIPPath),
+                LibHeader = File.ReadAllBytes(_libHeaderPath),
+                LibIcon = File.ReadAllBytes(_libIconPath),
+                Screenshots = new List<byte[]>()
+            };
+
+            foreach (var path in ScrinShots)
+            {
+                dto.Screenshots.Add(File.ReadAllBytes(path));
+            }
+
+            ShowLoadingWindowRequested?.Invoke(dto);
+        }
         private void SelectFile(FileType fileTyoe)
         {
             var dialog = new OpenFileDialog();
