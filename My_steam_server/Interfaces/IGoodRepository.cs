@@ -19,5 +19,7 @@ namespace My_steam_server.Interfaces
         Task<List<Game>> GetGamesByUserIdAsync(string userId);
 
         Task<bool> DeleteAsync(long id);
+
+        Task<bool> DeleteScreenshotsByGameIdAsync(long gameId);
     }
 }

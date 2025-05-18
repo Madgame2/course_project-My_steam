@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using My_steam_client.Controls;
 using My_steam_client.Scripts;
 using My_steam_client.Templates;
+using My_steam_server.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,6 +24,7 @@ namespace My_steam_client.ViewModels
         private readonly ProjectUploadDto _dto;
         private readonly ComunitationMannageer _comManager;
 
+        private long? GameID;
 
         public Action CloseWindow;
 
@@ -43,14 +45,16 @@ namespace My_steam_client.ViewModels
         }
 
 
-        public UploadingViewModel(ProjectUploadDto dto, ComunitationMannageer comManager)
+        public UploadingViewModel(ProjectUploadDto dto,long? GameID, ComunitationMannageer comManager)
         {
+            this.GameID = GameID;
             _dto = dto;
             _comManager = comManager;
 
             RetryCommand = new RelayCommand(async () => await SendAsync());
 
             _ = SendAsync(); // Запускаем отправку при создании
+            
         }
 
         protected void OnPropertyChanged([CallerMemberName] string name = null)
@@ -71,19 +75,16 @@ namespace My_steam_client.ViewModels
                 {
                     var service = AppServices.Provider.GetRequiredService<UploadData>();
 
-                    var key= await service.UploadMetadataAsync(_dto);
-                    await service.UploadZipInChunksAsync(_dto.ZIPFile, key);
-
-
-                    _dto.HeaderImage?.Dispose();
-                    _dto.ZIPFile?.Dispose();
-                    _dto.LibHeader?.Dispose();
-                    _dto.LibIcon?.Dispose();
-                    foreach (var s in _dto.Screenshots)
-                        s?.Dispose();
-                    StatusText = "Secsses sended!";
-
-                    CloseWindow?.Invoke();
+                    if (GameID == null)
+                    {
+                        var key = await service.UploadMetadataAsync(_dto);
+                        await service.UploadZipInChunksAsync(_dto.ZIPFile, key);
+                    }
+                    else
+                    {
+                        var key = await service.UpdateMettadataAsync(_dto, GameID.Value);
+                        await service.UploadZipInChunksAsync(_dto.ZIPFile, key);
+                    }
                 }
                 catch
                 {
@@ -100,6 +101,16 @@ namespace My_steam_client.ViewModels
                 StatusText = $"System error: {ex.Message}";
                 IsError = true;
             }
+
+            _dto.HeaderImage?.Dispose();
+            _dto.ZIPFile?.Dispose();
+            _dto.LibHeader?.Dispose();
+            _dto.LibIcon?.Dispose();
+            foreach (var s in _dto.Screenshots)
+                s?.Dispose();
+            StatusText = "Secsses sended!";
+
+            CloseWindow?.Invoke();
         }
     }
 }

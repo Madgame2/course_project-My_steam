@@ -31,9 +31,23 @@ namespace My_steam_client
             DataContext = vm;
 
             vm.OnAddProjectRequested += OpenProjectsWindow;
+            vm.OnEditButtonPressed += OpenEditWindow;
         }
 
-
+        private void OpenEditWindow(long GameID)
+        {
+            if (_editWindow == null || !_editWindow.IsLoaded)
+            {
+                _editWindow = new CreateRedactProjectWindow("New project", GameID);
+                _editWindow.Owner = this;
+                _editWindow.Closed += (_, _) => _editWindow = null;
+                _editWindow.Show();
+            }
+            else
+            {
+                _editWindow.Activate();
+            }
+        }
         private void OpenProjectsWindow()
         {
             if (_editWindow == null || !_editWindow.IsLoaded)

@@ -97,6 +97,21 @@ namespace My_steam_server.Repositories.DB
             var result = await _context.SaveChangesAsync();
             return result > 0;
         }
+
+        public async Task<bool> DeleteScreenshotsByGameIdAsync(long gameId)
+        {
+            var screenshots = await _context.Set<Screenshot>()
+                .Where(s => s.GameId == gameId)
+                .ToListAsync();
+
+            if (screenshots.Count == 0)
+                return false;
+
+            _context.Set<Screenshot>().RemoveRange(screenshots);
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
     }
 
 }

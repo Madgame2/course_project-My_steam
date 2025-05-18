@@ -12,11 +12,11 @@ namespace My_steam_client
     /// </summary>
     public partial class UploadingWindow : Window
     {
-        public UploadingWindow(ProjectUploadDto dto)
+        public UploadingWindow(ProjectUploadDto dto, long? GameID)
         {
             InitializeComponent();
             var Service= AppServices.Provider.GetRequiredService<Game_Net.ComunitationMannageer>();
-            var Vm = new UploadingViewModel(dto, Service);
+            var Vm = new UploadingViewModel(dto, GameID, Service);
             Vm.CloseWindow += ()=> this.Close();
 
             DataContext = Vm;

@@ -24,19 +24,19 @@ namespace My_steam_client
     /// </summary>
     public partial class CreateRedactProjectWindow : Window
     {
-        public CreateRedactProjectWindow(string header_Titel)
+        public CreateRedactProjectWindow(string header_Titel,long? GameID=null)
         {
             InitializeComponent();
             HeaderContaner.Content = new Header(this, header_Titel);
-            var vm = new EditProjectDataViewModel();
+            var vm = new EditProjectDataViewModel(GameID);
             vm.ShowLoadingWindowRequested += OnShowLoadingWindowRequested;
             vm.CloseWindow += () => this.Close();
             DataContext = vm;
         }
 
-        private void OnShowLoadingWindowRequested(ProjectUploadDto dto)
+        private void OnShowLoadingWindowRequested(ProjectUploadDto dto, long? GameId)
         {
-            var loadingWindow = new UploadingWindow(dto);
+            var loadingWindow = new UploadingWindow(dto, GameId);
             loadingWindow.Show();
         }
 

@@ -166,5 +166,10 @@ namespace My_steam_server.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public Task<bool> DeleteScreenshotsByGameIdAsync(long gameId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

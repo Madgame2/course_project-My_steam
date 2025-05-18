@@ -38,6 +38,7 @@ namespace My_steam_client.ViewModels
         private bool _isPriceValid = true;
         private string _selectedScreenshot;
 
+        private long? SelectedGameID;
         public ObservableCollection<string> ScrinShots { get; set; } = new();
 
 
@@ -136,13 +137,13 @@ namespace My_steam_client.ViewModels
         public ICommand RemoveScreenshotCommand { get; }
 
 
-        public event Action<ProjectUploadDto>? ShowLoadingWindowRequested;
+        public event Action<ProjectUploadDto, long?>? ShowLoadingWindowRequested;
         public event Action? CloseLoadingWindowRequested;
-
         public event Action? CloseWindow;
 
-        public EditProjectDataViewModel()
+        public EditProjectDataViewModel(long? GameID=null)
         {
+            SelectedGameID = GameID;
 
             SelectFileCommand = new RelayCommand<string>(param =>
             {
@@ -169,6 +170,7 @@ namespace My_steam_client.ViewModels
             };
 
             SubmitCommand = new RelayCommand(SendData);
+
         }
 
 
@@ -210,7 +212,7 @@ namespace My_steam_client.ViewModels
 
  
                 CloseWindow?.Invoke();
-                ShowLoadingWindowRequested?.Invoke(dto);
+                ShowLoadingWindowRequested?.Invoke(dto,SelectedGameID);
 
         }
         private void SelectFile(FileType fileTyoe)

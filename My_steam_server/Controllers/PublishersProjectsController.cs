@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using My_steam_server.Interfaces;
 using My_steam_server.Models;
+using My_steam_server.Repositories.DB;
 using My_steam_server.Services;
 using System.Globalization;
 
@@ -127,6 +128,80 @@ namespace My_steam_server.Controllers
         }
 
 
+        [HttpPost("Update/metadata")]
+        public async Task<IActionResult> UpdateMetadata(
+               [FromForm] string UserId,
+               [FromForm] long GameId,
+               [FromForm] Guid uploadId,
+               [FromForm] string projectName,
+               [FromForm] string description,
+               [FromForm(Name = "price")] string priceStr,
+               [FromForm] IFormFile headerImage,
+               [FromForm] IFormFile libHeader,
+               [FromForm] IFormFile libIcon,
+               [FromForm] List<IFormFile> screenshots)
+        {
+            if (!float.TryParse(priceStr, NumberStyles.Float, CultureInfo.InvariantCulture, out var price))
+            {
+                return BadRequest("Invalid price format");
+            }
+
+            if (!_publisherService.Processed_goods.ContainsKey(uploadId))
+            {
+                var newGoodModel = await _goodRepository.GetByIdAsync(GameId);
+                _publisherService.Processed_goods[uploadId] = newGoodModel;
+            }
+
+            var currentGood = _publisherService.Processed_goods[uploadId];
+
+            //currentGood.UserId = UserId;
+            currentGood.Name = projectName;
+            currentGood.Description = description;
+            currentGood.Price = price;
+
+            await _goodRepository.DeleteScreenshotsByGameIdAsync(GameId);
+            var LinksList = await _publisherService.DeployScreenShotsFiles(screenshots, currentGood.Name);
+            var outList = new List<Screenshot>();
+            foreach (var link in LinksList)
+            {
+                var newItem = new Screenshot
+                {
+                    Game = currentGood,
+                    Path = link
+                };
+                outList.Add(newItem);
+            }
+            currentGood.imageSource = outList;
+
+            currentGood.HeaderImageSource = await _publisherService.DeployHeaderImageAsync(headerImage, currentGood.Name);
+
+            var newPurchaseOption = currentGood.PurchaseOptions[0];
+
+            newPurchaseOption= new Models.PurchaseOption
+            {
+                Game = currentGood,
+                GameId = currentGood.Id,  // желательно, если Id уже есть
+                Price = currentGood.Price,
+                PurchaseName = $"Buy {currentGood.Name}",
+                ImageLink = currentGood.HeaderImageSource
+            };
+
+            newPurchaseOption.GoodsReceived.Add(new GoodReceived
+            {
+                GoodId = currentGood.Id,
+                PurchaseOption = newPurchaseOption,
+                // PurchaseOptionId будет установлен автоматически после сохранения
+            });
+
+            //currentGood.PurchaseOptions.Add(newPurchaseOption);
+
+            await _publisherService.DeployLibImages(libIcon, libHeader, currentGood.Id);
+
+
+            return Ok(new NetResponse<bool> { Success = true });
+        }
+
+
         [HttpPost("upload/chunk")]
         public async Task<IActionResult> UploadChunk(
                 [FromForm] Guid uploadId,
@@ -162,6 +237,7 @@ namespace My_steam_server.Controllers
 
             await _goodRepository.UpdateAsync(currentObj);
 
+            _publisherService.Processed_goods.Remove(uploadId);
             return Ok(new NetResponse<bool> {Success=true});
         }
 

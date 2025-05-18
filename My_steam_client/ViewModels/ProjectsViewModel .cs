@@ -31,6 +31,7 @@ namespace My_steam_client.ViewModels
         public ICommand DeleteCommand { get; }
 
         public Action? OnAddProjectRequested { get; set; }
+        public Action<long>? OnEditButtonPressed { get; set; }
 
         public ProjectsViewModel()
         {
@@ -62,7 +63,7 @@ namespace My_steam_client.ViewModels
 
         private void EditProject()
         {
-            // здесь логика редактирования
+            OnEditButtonPressed?.Invoke(SelectedProject.ProjectId);
         }
 
         private async void DeleteProject()
