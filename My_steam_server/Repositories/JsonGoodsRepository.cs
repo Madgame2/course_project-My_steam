@@ -5,7 +5,7 @@ using System.Text.Json;
 
 namespace My_steam_server.Repositories
 {
-    public class JsonGoodsRepository<T> : IGoodRepository<T> where T : Good, new()
+    public class JsonGoodsRepository : IGoodRepository
     {
         public static string _filePath=string.Empty;
 
@@ -21,47 +21,47 @@ namespace My_steam_server.Repositories
             
         }
 
-        private async Task<List<T>> GetObjets()
+        private async Task<List<Game>> GetObjets()
         {
             string json = await File.ReadAllTextAsync(_filePath);
 
-            var result = JsonSerializer.Deserialize<List<T>>(json) ?? new List<T>();
+            var result = JsonSerializer.Deserialize<List<Game>>(json) ?? new List<Game>();
 
             return result;
         }
 
-        public async Task<List<T>> GetAll()
+        public async Task<List<Game>> GetAll()
         {
             var result = await GetObjets();
 
             return result;
         }
 
-        public async Task<T?> GetByIdAsync(long id)
+        public async Task<Game?> GetByIdAsync(long id)
         {
             var objects = await GetObjets();
 
             return objects.FirstOrDefault(e => e.Id == id);
         }
 
-        public async Task<bool> addAsync(T entity)
+        public async Task<bool> addAsync(Game entity)
         {
             var objects = await GetObjets();
 
-            int id = getFreeId(objects);
+            //int id = getFreeId(objects);
 
-            entity.Id = id;
+            //entity.Id = id;
 
             objects.Add(entity);
             objects.Sort((a,b)=>a.Id.CompareTo(b.Id));
 
-            await saveAsync(objects);
+            //await saveAsync(objects);
 
 
             return true;
         }
 
-        private async Task saveAsync(List<T> data)
+        private async Task saveAsync(List<Game> data)
         {
             await using var stream = File.Create(_filePath);
 
@@ -74,7 +74,7 @@ namespace My_steam_server.Repositories
         }
 
 
-        private int getFreeId(List<T> objects)
+        private int getFreeId(List<Game> objects)
         {
             int curentId = 0;
 
@@ -108,7 +108,7 @@ namespace My_steam_server.Repositories
             return curentId;
         }
 
-        public async Task<bool> HasObject(T entity)
+        public async Task<bool> HasObject(Game entity)
         {
 
             var objects = await GetObjets();
@@ -116,7 +116,7 @@ namespace My_steam_server.Repositories
             return objects.Any(obj => obj.Equals(entity)) ? true : false;
         }
 
-        public async Task<List<T>> GetPagesAsync(ProductFilterDto filter)
+        public async Task<List<Game>> GetPagesAsync(ProductFilterDto filter)
         {
             var all = await GetObjets(); // предположим, что возвращает List<T>
 
@@ -147,9 +147,15 @@ namespace My_steam_server.Repositories
                 .ToList();
         }
 
-        public async Task<T> CreateEmptyModel()
+        public async Task<Game> CreateEmptyModel(string id)
         {
-            return new T { Id = await getFreeId() };
+            return new Game { Id = await getFreeId() };
         }
+
+        public Task<bool> UpdateAsync(Game entity)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

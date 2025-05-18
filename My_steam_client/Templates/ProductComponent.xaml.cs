@@ -57,16 +57,6 @@ namespace My_steam_client.Templates
 
         }
 
-        //private async void WebWiew()
-        //{
-        //    if (_productDto.MdFileSourcce == null) return;
-
-        //    var service = AppServices.Provider.GetRequiredService<Game_Net.ResourcesService>();
-        //    var mdString = await service.GetMarkdownStreamAsync(_productDto.MdFileSourcce);
-        //    //markdownViewer.Markdown = mdString;
-
-        //}
-
         private ObservableCollection<SliderImage> InitSlider(List<string> imagesSource)
         {
             var result = new ObservableCollection<SliderImage>();

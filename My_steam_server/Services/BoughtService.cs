@@ -8,11 +8,11 @@ namespace My_steam_server.Services
     {
         private readonly IUserRepository _userRepository;
         private readonly IPurchaseOptionRepository _purchaseOptionRepository;
-        private readonly IGoodRepository<Game> _goodsRepository;
+        private readonly IGoodRepository _goodsRepository;
         private readonly IUserLibraryRepository _userLibraryRepository;
 
 
-        public BoughtService(IUserRepository userRepository, IPurchaseOptionRepository purchaseOptionRepository, IGoodRepository<Game> goodsRepository, IUserLibraryRepository userLibraryRepository)
+        public BoughtService(IUserRepository userRepository, IPurchaseOptionRepository purchaseOptionRepository, IGoodRepository goodsRepository, IUserLibraryRepository userLibraryRepository)
         {
             _userRepository = userRepository;
             _purchaseOptionRepository = purchaseOptionRepository;

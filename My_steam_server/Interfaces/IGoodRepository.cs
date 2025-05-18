@@ -1,17 +1,19 @@
 ﻿using Game_Net_DTOLib;
+using My_steam_server.Models;
 
 namespace My_steam_server.Interfaces
 {
-    public interface IGoodRepository<T>
+    public interface IGoodRepository
     {
-        Task<List<T>> GetAll();
-        Task<T?> GetByIdAsync(long id);
-        Task<bool> addAsync(T entity);
+        Task<List<Game>> GetAll();
+        Task<Game?> GetByIdAsync(long id);
+        Task<bool> addAsync(Game entity);
 
-        Task<bool> HasObject(T entity);
+        Task<bool> UpdateAsync(Game entity);
+        Task<bool> HasObject(Game entity);
 
-        Task<List<T>> GetPagesAsync(ProductFilterDto filter);
+        Task<List<Game>> GetPagesAsync(ProductFilterDto filter);
 
-        Task<T> CreateEmptyModel();
+        Task<Game> CreateEmptyModel(string UssrId);
     }
 }

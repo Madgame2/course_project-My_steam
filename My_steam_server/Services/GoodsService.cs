@@ -5,15 +5,15 @@ using My_steam_server.Models;
 
 namespace My_steam_server.Services
 {
-    public class GoodsService<T> : IGoodsService<T> where T : Good
+    public class GoodsService : IGoodsService
     {
-        private readonly IGoodRepository<T> _goodRepository;
+        private readonly IGoodRepository _goodRepository;
 
-        public GoodsService(IGoodRepository<T> goodRepository) { 
+        public GoodsService(IGoodRepository goodRepository) { 
             _goodRepository = goodRepository;
         }
 
-        public async Task<NetResponse<bool>> addGoodAsync(T good)
+        public async Task<NetResponse<bool>> addGoodAsync(Game good)
         {
             var existing = await _goodRepository.HasObject(good);
 
@@ -26,19 +26,19 @@ namespace My_steam_server.Services
             return new NetResponse<bool> { Success= false, resultCode=ResultCode.UnKnowError};
         }
 
-        public async Task<NetResponse<List<T>>> GetAll()
+        public async Task<NetResponse<List<Game>>> GetAll()
         {
             var result = await _goodRepository.GetAll();
 
-            return new NetResponse<List<T>> { Success = true, data = result };
+            return new NetResponse<List<Game>> { Success = true, data = result };
         }
 
-        public async Task<NetResponse<T?>> GetGoodByIdAsync(int goodId)
+        public async Task<NetResponse<Game?>> GetGoodByIdAsync(int goodId)
         {
             var good = await _goodRepository.GetByIdAsync(goodId);
 
             if (good == null) {
-                return new NetResponse<T?>
+                return new NetResponse<Game?>
                 {
                     Success = false,
                     resultCode = ResultCode.WrongGoodId,
@@ -46,20 +46,20 @@ namespace My_steam_server.Services
                 };
             }
 
-            return new NetResponse<T?>
+            return new NetResponse<Game?>
             {
                 Success = true,
                 data = good
             };
         }
 
-        public async Task<NetResponse<List<T>>> GetProductsAsync(ProductFilterDto filters)
+        public async Task<NetResponse<List<Game>>> GetProductsAsync(ProductFilterDto filters)
         {
             var ProductsList = await _goodRepository.GetPagesAsync(filters);
 
-            if (ProductsList.Count <= filters.PageSize) return new NetResponse<List<T>> { Success = true, resultCode = ResultCode.noMoreProducts, data = ProductsList };
+            if (ProductsList.Count <= filters.PageSize) return new NetResponse<List<Game>> { Success = true, resultCode = ResultCode.noMoreProducts, data = ProductsList };
 
-            return new NetResponse<List<T>> { Success=true, data = ProductsList };
+            return new NetResponse<List<Game>> { Success=true, data = ProductsList };
         }
     }
 }

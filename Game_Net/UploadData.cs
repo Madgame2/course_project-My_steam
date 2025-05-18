@@ -1,4 +1,5 @@
 ﻿using Game_Net_DTOLib;
+using My_steam_server.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -25,7 +26,7 @@ namespace Game_Net
 
 
 
-            content.Add(new StringContent(dto.UserId), "userId"); 
+            content.Add(new StringContent(dto.UserId), "UserId"); 
             content.Add(new StringContent(uploadId.ToString()), "uploadId");
             content.Add(new StringContent(dto.ProjectName), "projectName");
             content.Add(new StringContent(dto.Description), "description");
@@ -38,7 +39,7 @@ namespace Game_Net
             for (int i = 0; i < dto.Screenshots.Count; i++)
             {
                 var screenshotStream = dto.Screenshots[i];
-                var fileName = $"screenshot_{i + 1}.jpg"; 
+                var fileName = $"screenshot_{i + 1}.jpg";
                 content.Add(new StreamContent(screenshotStream), "screenshots", fileName);
             }
 

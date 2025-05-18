@@ -68,6 +68,8 @@ namespace My_steam_server.Controllers
                 var userId = userIdClaim.Value;
                 var user = await _userRepository.GetByIdAsync(userId);
 
+                if (user == null) return Unauthorized();
+
                 return Ok(new Game_Net_DTOLib.NetResponse<LogInSecsessDto>
                 { Success = true, 
                     data = new LogInSecsessDto 

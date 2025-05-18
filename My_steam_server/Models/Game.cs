@@ -5,14 +5,13 @@ namespace My_steam_server.Models
     public class Game : Good
     {
 
-        public string Description { get; set; }
+        public string? Description { get; set; } = string.Empty;
         public List<Screenshot> imageSource {  get; set; } = new();
-        public string HeaderImageSource { get; set; }
+        public string? HeaderImageSource { get; set; } = string.Empty;
         
-        public string UserId {  get; set; }
-        public User User { get; set; }
+        public User? User { get; set; }
 
-        public string DownloadSource { get; set; }
+        public string? DownloadSource { get; set; } = string.Empty;
         public Ratinng ratinng { get; set; }
 
         public DateTime ReleaseDate { get; set; }

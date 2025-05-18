@@ -82,6 +82,8 @@ namespace My_steam_client.ViewModels
                     foreach (var s in _dto.Screenshots)
                         s?.Dispose();
                     StatusText = "Secsses sended!";
+
+                    CloseWindow?.Invoke();
                 }
                 catch
                 {

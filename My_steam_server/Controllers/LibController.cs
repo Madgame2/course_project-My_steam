@@ -13,9 +13,9 @@ namespace My_steam_server.Controllers
     {
         private readonly IUserLibraryRepository _userLibraryRepository;
         private readonly IGamesRespository gamesRespository;
-        private readonly IGoodRepository<Game> goodRepository;
+        private readonly IGoodRepository goodRepository;
 
-        public LibController(IUserLibraryRepository userLibraryRepository, IGamesRespository gamesRespository, IGoodRepository<Game>  goodRepository  )
+        public LibController(IUserLibraryRepository userLibraryRepository, IGamesRespository gamesRespository, IGoodRepository  goodRepository  )
         {
             _userLibraryRepository = userLibraryRepository;
             this.gamesRespository = gamesRespository;  

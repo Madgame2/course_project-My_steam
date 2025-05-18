@@ -124,7 +124,8 @@ namespace My_steam_server.Services
             var user = new User
             {
                 UserName = dto.Username,
-                Email = dto.Email
+                Email = dto.Email,
+                RigisterDate=DateTime.Now,
             };
 
             user.PasswordHash = _passwordHasher.HashPassword(user, dto.Password);

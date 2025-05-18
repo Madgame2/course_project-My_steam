@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using My_steam_server.Interfaces;
 using My_steam_server.Models;
 using My_steam_server.Services;
+using System.Globalization;
 
 namespace My_steam_server.Controllers
 {
@@ -12,9 +13,9 @@ namespace My_steam_server.Controllers
     {
 
         private readonly string repository = "ProcessedFiles";
-        private readonly IGoodRepository<Game> _goodRepository;
+        private readonly IGoodRepository _goodRepository;
         private readonly IPublisherService _publisherService;
-        public PublishersProjectsController(IGoodRepository<Game> goodRepository, IPublisherService publisherService)
+        public PublishersProjectsController(IGoodRepository goodRepository, IPublisherService publisherService)
         {
             _goodRepository = goodRepository;
             _publisherService= publisherService;
@@ -26,21 +27,26 @@ namespace My_steam_server.Controllers
                 [FromForm] Guid uploadId,
                 [FromForm] string projectName,
                 [FromForm] string description,
-                [FromForm] float price,
+                [FromForm(Name = "price")] string priceStr,
                 [FromForm] IFormFile headerImage,
                 [FromForm] IFormFile libHeader,
                 [FromForm] IFormFile libIcon,
                 [FromForm] List<IFormFile> screenshots)
         {
+            if (!float.TryParse(priceStr, NumberStyles.Float, CultureInfo.InvariantCulture, out var price))
+            {
+                return BadRequest("Invalid price format");
+            }
+
             if (!_publisherService.Processed_goods.ContainsKey(uploadId))
             {
-                var newGoodModel = await _goodRepository.CreateEmptyModel();
+                var newGoodModel = await _goodRepository.CreateEmptyModel(UserId);
                 _publisherService.Processed_goods[uploadId] = newGoodModel;
             }
 
             var currentGood = _publisherService.Processed_goods[uploadId];
 
-            currentGood.UserId = UserId;
+            //currentGood.UserId = UserId;
             currentGood.Name = projectName;
             currentGood.Description = description;
             currentGood.Price = price;
@@ -118,7 +124,7 @@ namespace My_steam_server.Controllers
 
             Directory.Delete(dir, true);
 
-            await _goodRepository.addAsync(currentObj);
+            await _goodRepository.UpdateAsync(currentObj);
 
             return Ok(new NetResponse<bool> {Success=true});
         }

@@ -23,7 +23,7 @@ namespace My_steam_server.Repositories
                 Directory.CreateDirectory(targetDirAbsolute);
 
             var rootDir = Directory.GetCurrentDirectory();
-            var CommonPart = Path.GetRelativePath(rootDir, _repositoryRootPath);
+            var CommonPart = "images";
 
             var extension = Path.GetExtension(file.FileName);
             var fileName = $"ss_{Guid.NewGuid():N}{extension}";
@@ -35,8 +35,7 @@ namespace My_steam_server.Repositories
                 await file.CopyToAsync(stream);
             }
 
-            var relativePath = Path.Combine(CommonPart, directoryName, fileName).Replace("\\", "/");
-
+            var relativePath = $"{CommonPart}/{directoryName}/{fileName.Replace('\\', '/')}";
             return relativePath;
         }
 
@@ -56,7 +55,7 @@ namespace My_steam_server.Repositories
 
 
             var rootDir = Directory.GetCurrentDirectory();
-            var CommonPart = Path.GetRelativePath(rootDir, _repositoryRootPath);
+            var CommonPart = "images";
             for (int i = 0; i < files.Count; i++)
             {
                 var file = files[i];
@@ -70,7 +69,7 @@ namespace My_steam_server.Repositories
                     await file.CopyToAsync(stream);
                 }
 
-                var relativePath = Path.Combine(CommonPart, directoryName, fileName).Replace("\\", "/");
+                var relativePath = $"{CommonPart}/{directoryName}/{fileName.Replace('\\', '/')}";
                 relativePaths.Add(relativePath);
             }
 

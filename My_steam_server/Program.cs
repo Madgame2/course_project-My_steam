@@ -60,7 +60,7 @@ builder.Services.AddScoped<IReportsRepository, EfReportsRepository>();
 builder.Services.AddScoped<IReportsService, ReportService>();
 builder.Services.AddScoped<IRefreshTokenRepository, EfRefreshTokenRepository>();
 builder.Services.AddScoped<IPurchaseOptionRepository, EfPurchaseOptionRepository>();
-builder.Services.AddScoped<IGoodRepository<Game>, EfGoodRepository<Game>>();
+builder.Services.AddScoped<IGoodRepository, EfGoodRepository>();
 
 
 
@@ -82,7 +82,7 @@ builder.Services.AddSingleton<IScreenShotsRepository, ScreenShotsRepository>(pro
     {
         var UserRep = provider.GetRequiredService<IUserRepository>();
         var PurhcouseOptions = provider.GetRequiredService<IPurchaseOptionRepository>();
-        var GoodRepository = provider.GetRequiredService<IGoodRepository<Game>>();
+        var GoodRepository = provider.GetRequiredService<IGoodRepository>();
         var LibRepos = provider.GetRequiredService<IUserLibraryRepository>();
 
         return new BoughtService(UserRep, PurhcouseOptions, GoodRepository, LibRepos);
@@ -99,7 +99,7 @@ builder.Services.AddSingleton<IPublisherService, PublisherService>(provider =>
     builder.Services.AddControllers();
 
     builder.Services.AddScoped<IAuthService, AuthService>();
-    builder.Services.AddScoped<IGoodsService<Game>>(provider => new GoodsService<Game>(provider.GetRequiredService<IGoodRepository<Game>>()));
+    builder.Services.AddScoped<IGoodsService>(provider => new GoodsService(provider.GetRequiredService<IGoodRepository>()));
     builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 
 

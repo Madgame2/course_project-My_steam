@@ -6,42 +6,51 @@ using System;
 
 namespace My_steam_server.Repositories.DB
 {
-    public class EfGoodRepository<T> : IGoodRepository<T> where T : Good, new()
+    public class EfGoodRepository : IGoodRepository
     {
         private readonly ApplicationDbContext _context;
-        private readonly DbSet<T> _dbSet;
+        private readonly DbSet<Game> _dbSet;
 
         public EfGoodRepository(ApplicationDbContext context)
         {
             _context = context;
-            _dbSet = context.Set<T>(); // DbSet<Game> если T=Game
+            _dbSet = context.Set<Game>(); // DbSet<Game> если T=Game
         }
 
-        public async Task<List<T>> GetAll()
+        public async Task<List<Game>> GetAll()
         {
             return await _dbSet.ToListAsync();
         }
 
-        public async Task<T?> GetByIdAsync(long id)
+        public async Task<Game?> GetByIdAsync(long id)
         {
-            return await _dbSet.FindAsync(id);
+            return await _context.Games
+                .Include(g => g.imageSource)
+                .Include(g => g.PurchaseOptions)
+                .FirstOrDefaultAsync(g => g.Id == id);
         }
 
-        public async Task<bool> addAsync(T entity)
+        public async Task<bool> addAsync(Game entity)
         {
             await _dbSet.AddAsync(entity);
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<bool> HasObject(T entity)
+        public async Task<bool> UpdateAsync(Game entity)
+        {
+            _dbSet.Update(entity);
+            return await _context.SaveChangesAsync() > 0;
+        }
+
+        public async Task<bool> HasObject(Game entity)
         {
             // Проверка на равенство может быть кастомной, здесь сравниваем по Id
             return await _dbSet.AnyAsync(e => e.Id == entity.Id);
         }
 
-        public async Task<List<T>> GetPagesAsync(ProductFilterDto filter)
+        public async Task<List<Game>> GetPagesAsync(ProductFilterDto filter)
         {
-            IQueryable<T> query = _dbSet.OrderBy(x => x.Id);
+            IQueryable<Game> query = _dbSet.OrderBy(x => x.Id);
 
             if (filter.LastSeenId.HasValue)
                 query = query.Where(x => x.Id > filter.LastSeenId.Value);
@@ -60,19 +69,13 @@ namespace My_steam_server.Repositories.DB
                 .ToListAsync();
         }
 
-        public async Task<T> CreateEmptyModel()
+        public async Task<Game> CreateEmptyModel(string UssrId)
         {
-            long newId = 0;
+            var newEntity = new Game(); // Id не задаём, БД сгенерирует
+            newEntity.UserId = UssrId;
 
-            if (await _dbSet.AnyAsync())
-            {
-                newId = await _dbSet.MaxAsync(e => e.Id) + 1;
-            }
-
-            var newEntity = new T
-            {
-                Id = newId
-            };
+            await _dbSet.AddAsync(newEntity);
+            await _context.SaveChangesAsync();
 
             return newEntity;
         }

@@ -3,12 +3,12 @@ using My_steam_server.Models;
 
 namespace My_steam_server.Interfaces
 {
-    public interface IGoodsService<T> where T : Good
+    public interface IGoodsService
     {
-        Task<NetResponse<T?>> GetGoodByIdAsync(int goodId); 
-        Task<NetResponse<bool>> addGoodAsync(T good);
+        Task<NetResponse<Game?>> GetGoodByIdAsync(int goodId); 
+        Task<NetResponse<bool>> addGoodAsync(Game good);
 
-        Task<NetResponse<List<T>>> GetAll();
-        Task<NetResponse<List<T>>> GetProductsAsync(ProductFilterDto filters);
+        Task<NetResponse<List<Game>>> GetAll();
+        Task<NetResponse<List<Game>>> GetProductsAsync(ProductFilterDto filters);
     }
 }

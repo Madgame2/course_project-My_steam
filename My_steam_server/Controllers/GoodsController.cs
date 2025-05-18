@@ -11,9 +11,9 @@ namespace My_steam_server.Controllers
     [Route("api/[controller]")]
     public class GoodsController : ControllerBase
     {
-        private readonly IGoodsService<Game> _goodsService_games;
+        private readonly IGoodsService _goodsService_games;
 
-        public GoodsController(IGoodsService<Game> goodsService_games)
+        public GoodsController(IGoodsService goodsService_games)
         {
             _goodsService_games = goodsService_games;
         }

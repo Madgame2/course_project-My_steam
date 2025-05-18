@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -192,9 +193,9 @@ namespace My_steam_client.ViewModels
             var dto = new ProjectUploadDto
             {
                 UserId = AppServices.UserId.ToString(),
-                ProjectName = _projectName,
+                ProjectName = _projectName.Trim(),
                 Description = _projectDescription,
-                Price = Convert.ToSingle(_price),
+                Price = float.Parse(_price, CultureInfo.InvariantCulture),
                 HeaderImage = File.OpenRead(_headerImageSource),
                 ZIPFile = File.OpenRead(_ZIPPath),
                 LibHeader = File.OpenRead(_libHeaderPath),
