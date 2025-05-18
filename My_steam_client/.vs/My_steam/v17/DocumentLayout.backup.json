@@ -3,6 +3,91 @@
   "WorkspaceRootPath": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\admincomponents\\modelsview\\userviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:admincomponents\\modelsview\\userviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\admincomponents\\templates\\userdbcomponent.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:admincomponents\\templates\\userdbcomponent.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2A9327B5-2926-40E7-9BEF-6B591CE41D6B}|..\\My_steam_server\\My_steam_server.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_server\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{83B2EFD0-D333-40DA-A23E-8223E9883D71}|..\\Game_Net\\Game_Net.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\game_net\\adminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\adminwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:adminwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\adminwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:adminwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\scripts\\appservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:scripts\\appservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8EA44E3-A397-4F92-B4C7-A266D96D84B1}|..\\Game_Net-DTOLib\\Game_Net-DTOLib.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\game_net-dtolib\\resivedgoodsdb_dto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\admincomponents\\models\\resivedgoods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:admincomponents\\models\\resivedgoods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8EA44E3-A397-4F92-B4C7-A266D96D84B1}|..\\Game_Net-DTOLib\\Game_Net-DTOLib.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\game_net-dtolib\\detachetlibdb_dto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\admincomponents\\models\\detachedlib.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:admincomponents\\models\\detachedlib.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8EA44E3-A397-4F92-B4C7-A266D96D84B1}|..\\Game_Net-DTOLib\\Game_Net-DTOLib.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\game_net-dtolib\\purhcaseoptionsdb_dto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\admincomponents\\models\\purchseoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:admincomponents\\models\\purchseoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8EA44E3-A397-4F92-B4C7-A266D96D84B1}|..\\Game_Net-DTOLib\\Game_Net-DTOLib.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\game_net-dtolib\\userdb_dto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8EA44E3-A397-4F92-B4C7-A266D96D84B1}|..\\Game_Net-DTOLib\\Game_Net-DTOLib.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\game_net-dtolib\\gamesdb_dto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\admincomponents\\models\\games.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:admincomponents\\models\\games.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\admincomponents\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:admincomponents\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\admincomponents\\modelsview\\detachedlibmodelview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:admincomponents\\modelsview\\detachedlibmodelview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\admincomponents\\modelsview\\gamesviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:admincomponents\\modelsview\\gamesviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\admincomponents\\modelsview\\goodresivedmodelview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:admincomponents\\modelsview\\goodresivedmodelview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\admincomponents\\modelsview\\purchaseoptionsmodelview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:admincomponents\\modelsview\\purchaseoptionsmodelview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\admincomponents\\templates\\userdetachedlibdbcomponent.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:admincomponents\\templates\\userdetachedlibdbcomponent.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
@@ -11,32 +96,12 @@
       "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:admincomponents\\templates\\userdetachedlibdbcomponent.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\admincomponents\\modelsview\\detachedlibmodelview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:admincomponents\\modelsview\\detachedlibmodelview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\admincomponents\\templates\\userdbcomponent.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:admincomponents\\templates\\userdbcomponent.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\admincomponents\\templates\\userdbcomponent.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:admincomponents\\templates\\userdbcomponent.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\admincomponents\\templates\\purchaseoptionsdbconmponent.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:admincomponents\\templates\\purchaseoptionsdbconmponent.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\admincomponents\\modelsview\\gamesviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:admincomponents\\modelsview\\gamesviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\admincomponents\\models\\detachedlib.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:admincomponents\\models\\detachedlib.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\admincomponents\\models\\games.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:admincomponents\\models\\games.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\admincomponents\\templates\\resivedgoodsdbcomponent.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -47,24 +112,8 @@
       "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:admincomponents\\templates\\resivedgoodsdbcomponent.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\admincomponents\\modelsview\\goodresivedmodelview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:admincomponents\\modelsview\\goodresivedmodelview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\admincomponents\\models\\resivedgoods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:admincomponents\\models\\resivedgoods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\admincomponents\\models\\purchseoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:admincomponents\\models\\purchseoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\admincomponents\\templates\\purchaseoptionsdbconmponent.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:admincomponents\\templates\\purchaseoptionsdbconmponent.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\admincomponents\\modelsview\\purchaseoptionsmodelview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:admincomponents\\modelsview\\purchaseoptionsmodelview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\admincomponents\\templates\\goodsdbcomponent.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -73,22 +122,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\admincomponents\\templates\\goodsdbcomponent.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:admincomponents\\templates\\goodsdbcomponent.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\admincomponents\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:admincomponents\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\adminwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:adminwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\admincomponents\\modelsview\\userviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:admincomponents\\modelsview\\userviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_client\\adminwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{6F93C7C9-AE8C-4B30-BDCA-DC6F221755BD}|My_steam_client.csproj|solutionrelative:adminwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2A9327B5-2926-40E7-9BEF-6B591CE41D6B}|..\\My_steam_server\\My_steam_server.csproj|d:\\projects\\cs\\course_project(my_steam)\\course_project-my_steam\\my_steam_server\\controllers\\publishersprojectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -215,17 +248,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 5,
               "Title": "AdminWindow.xaml.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminWindow.xaml.cs",
               "RelativeDocumentMoniker": "AdminWindow.xaml.cs",
               "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminWindow.xaml.cs",
               "RelativeToolTip": "AdminWindow.xaml.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAcwCEAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAwBoAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-18T19:33:19.184Z",
               "IsPinned": true,
@@ -233,7 +266,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 4,
               "Title": "AdminWindow.xaml",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminWindow.xaml",
               "RelativeDocumentMoniker": "AdminWindow.xaml",
@@ -245,152 +278,219 @@
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UserDetachedLibDBComponent.xaml.cs",
-              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Templates\\UserDetachedLibDBComponent.xaml.cs",
-              "RelativeDocumentMoniker": "AdminComponents\\Templates\\UserDetachedLibDBComponent.xaml.cs",
-              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Templates\\UserDetachedLibDBComponent.xaml.cs",
-              "RelativeToolTip": "AdminComponents\\Templates\\UserDetachedLibDBComponent.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAyAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "..\\My_steam_server\\Controllers\\AdminController.cs",
+              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "..\\My_steam_server\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAawCkAAABcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T20:21:24.75Z",
+              "WhenOpened": "2025-05-18T22:04:53.984Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "UserDetachedLibDBComponent.xaml",
-              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Templates\\UserDetachedLibDBComponent.xaml",
-              "RelativeDocumentMoniker": "AdminComponents\\Templates\\UserDetachedLibDBComponent.xaml",
-              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Templates\\UserDetachedLibDBComponent.xaml",
-              "RelativeToolTip": "AdminComponents\\Templates\\UserDetachedLibDBComponent.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-18T19:17:49.282Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DetachedLibModelView.cs",
-              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\ModelsView\\DetachedLibModelView.cs",
-              "RelativeDocumentMoniker": "AdminComponents\\ModelsView\\DetachedLibModelView.cs",
-              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\ModelsView\\DetachedLibModelView.cs",
-              "RelativeToolTip": "AdminComponents\\ModelsView\\DetachedLibModelView.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA5AAAAAAAAAA==",
+              "Title": "UserViewModel.cs",
+              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\ModelsView\\UserViewModel.cs",
+              "RelativeDocumentMoniker": "AdminComponents\\ModelsView\\UserViewModel.cs",
+              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\ModelsView\\UserViewModel.cs",
+              "RelativeToolTip": "AdminComponents\\ModelsView\\UserViewModel.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAiwBUAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T20:41:55.917Z",
+              "WhenOpened": "2025-05-18T20:00:15.357Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UserDBComponent.xaml",
-              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Templates\\UserDBComponent.xaml",
-              "RelativeDocumentMoniker": "AdminComponents\\Templates\\UserDBComponent.xaml",
-              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Templates\\UserDBComponent.xaml",
-              "RelativeToolTip": "AdminComponents\\Templates\\UserDBComponent.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-18T19:14:24.669Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "UserDBComponent.xaml.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Templates\\UserDBComponent.xaml.cs",
               "RelativeDocumentMoniker": "AdminComponents\\Templates\\UserDBComponent.xaml.cs",
               "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Templates\\UserDBComponent.xaml.cs",
               "RelativeToolTip": "AdminComponents\\Templates\\UserDBComponent.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-18T20:04:20.849Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "PurchaseOptionsDBConmponent.xaml.cs",
-              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Templates\\PurchaseOptionsDBConmponent.xaml.cs",
-              "RelativeDocumentMoniker": "AdminComponents\\Templates\\PurchaseOptionsDBConmponent.xaml.cs",
-              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Templates\\PurchaseOptionsDBConmponent.xaml.cs",
-              "RelativeToolTip": "AdminComponents\\Templates\\PurchaseOptionsDBConmponent.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "AdminService.cs",
+              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\Game_Net\\AdminService.cs",
+              "RelativeDocumentMoniker": "..\\Game_Net\\AdminService.cs",
+              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\Game_Net\\AdminService.cs",
+              "RelativeToolTip": "..\\Game_Net\\AdminService.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABYAAABhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T20:31:10.982Z",
+              "WhenOpened": "2025-05-18T20:51:21.851Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "GamesViewModel.cs",
-              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\ModelsView\\GamesViewModel.cs",
-              "RelativeDocumentMoniker": "AdminComponents\\ModelsView\\GamesViewModel.cs",
-              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\ModelsView\\GamesViewModel.cs",
-              "RelativeToolTip": "AdminComponents\\ModelsView\\GamesViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAMAAAAAAAAAA==",
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "MainWindow.xaml.cs",
+              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MainWindow.xaml.cs",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAiwIEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T20:19:36.108Z",
+              "WhenOpened": "2025-05-18T21:46:58.187Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MainWindow.xaml",
+              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\MainWindow.xaml",
+              "RelativeToolTip": "MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-18T21:46:56.27Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AppServices.cs",
+              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\Scripts\\AppServices.cs",
+              "RelativeDocumentMoniker": "Scripts\\AppServices.cs",
+              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\Scripts\\AppServices.cs",
+              "RelativeToolTip": "Scripts\\AppServices.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAswGQAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T21:42:34.157Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ResivedGoodsDB_dto.cs",
+              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\Game_Net-DTOLib\\ResivedGoodsDB_dto.cs",
+              "RelativeDocumentMoniker": "..\\Game_Net-DTOLib\\ResivedGoodsDB_dto.cs",
+              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\Game_Net-DTOLib\\ResivedGoodsDB_dto.cs",
+              "RelativeToolTip": "..\\Game_Net-DTOLib\\ResivedGoodsDB_dto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T21:38:53.344Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ResivedGoods.cs",
+              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Models\\ResivedGoods.cs",
+              "RelativeDocumentMoniker": "AdminComponents\\Models\\ResivedGoods.cs",
+              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Models\\ResivedGoods.cs",
+              "RelativeToolTip": "AdminComponents\\Models\\ResivedGoods.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T20:33:40.949Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "DetachetLibDB_dto.cs",
+              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\Game_Net-DTOLib\\DetachetLibDB_dto.cs",
+              "RelativeDocumentMoniker": "..\\Game_Net-DTOLib\\DetachetLibDB_dto.cs",
+              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\Game_Net-DTOLib\\DetachetLibDB_dto.cs",
+              "RelativeToolTip": "..\\Game_Net-DTOLib\\DetachetLibDB_dto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T21:37:29.063Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "DetachedLib.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Models\\DetachedLib.cs",
               "RelativeDocumentMoniker": "AdminComponents\\Models\\DetachedLib.cs",
               "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Models\\DetachedLib.cs",
               "RelativeToolTip": "AdminComponents\\Models\\DetachedLib.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAyAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-18T20:39:27.279Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ResivedGoodsDBComponent.xaml.cs",
-              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Templates\\ResivedGoodsDBComponent.xaml.cs",
-              "RelativeDocumentMoniker": "AdminComponents\\Templates\\ResivedGoodsDBComponent.xaml.cs",
-              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Templates\\ResivedGoodsDBComponent.xaml.cs",
-              "RelativeToolTip": "AdminComponents\\Templates\\ResivedGoodsDBComponent.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAyAAAAAAAAAA==",
+              "DocumentIndex": 13,
+              "Title": "PurhcaseOptionsDB_dto.cs",
+              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\Game_Net-DTOLib\\PurhcaseOptionsDB_dto.cs",
+              "RelativeDocumentMoniker": "..\\Game_Net-DTOLib\\PurhcaseOptionsDB_dto.cs",
+              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\Game_Net-DTOLib\\PurhcaseOptionsDB_dto.cs",
+              "RelativeToolTip": "..\\Game_Net-DTOLib\\PurhcaseOptionsDB_dto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T20:37:27.048Z",
+              "WhenOpened": "2025-05-18T21:36:19.762Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 14,
+              "Title": "PurchseOptions.cs",
+              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Models\\PurchseOptions.cs",
+              "RelativeDocumentMoniker": "AdminComponents\\Models\\PurchseOptions.cs",
+              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Models\\PurchseOptions.cs",
+              "RelativeToolTip": "AdminComponents\\Models\\PurchseOptions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T20:27:05.183Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "UserDB_dto.cs",
+              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\Game_Net-DTOLib\\UserDB_dto.cs",
+              "RelativeDocumentMoniker": "..\\Game_Net-DTOLib\\UserDB_dto.cs",
+              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\Game_Net-DTOLib\\UserDB_dto.cs",
+              "RelativeToolTip": "..\\Game_Net-DTOLib\\UserDB_dto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T20:53:51.866Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "GamesDB_dto.cs",
+              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\Game_Net-DTOLib\\GamesDB_dto.cs",
+              "RelativeDocumentMoniker": "..\\Game_Net-DTOLib\\GamesDB_dto.cs",
+              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\Game_Net-DTOLib\\GamesDB_dto.cs",
+              "RelativeToolTip": "..\\Game_Net-DTOLib\\GamesDB_dto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T21:34:19.549Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
               "Title": "Games.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Models\\Games.cs",
               "RelativeDocumentMoniker": "AdminComponents\\Models\\Games.cs",
               "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Models\\Games.cs",
               "RelativeToolTip": "AdminComponents\\Models\\Games.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAsAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-18T20:14:19.824Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ResivedGoodsDBComponent.xaml",
-              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Templates\\ResivedGoodsDBComponent.xaml",
-              "RelativeDocumentMoniker": "AdminComponents\\Templates\\ResivedGoodsDBComponent.xaml",
-              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Templates\\ResivedGoodsDBComponent.xaml",
-              "RelativeToolTip": "AdminComponents\\Templates\\ResivedGoodsDBComponent.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-18T19:16:39.585Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 21,
               "Title": "GoodResivedModelView.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\ModelsView\\GoodResivedModelView.cs",
               "RelativeDocumentMoniker": "AdminComponents\\ModelsView\\GoodResivedModelView.cs",
@@ -403,33 +503,134 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "ResivedGoods.cs",
-              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Models\\ResivedGoods.cs",
-              "RelativeDocumentMoniker": "AdminComponents\\Models\\ResivedGoods.cs",
-              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Models\\ResivedGoods.cs",
-              "RelativeToolTip": "AdminComponents\\Models\\ResivedGoods.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAyAAAAAAAAAA==",
+              "DocumentIndex": 18,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Models\\User.cs",
+              "RelativeDocumentMoniker": "AdminComponents\\Models\\User.cs",
+              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Models\\User.cs",
+              "RelativeToolTip": "AdminComponents\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T20:33:40.949Z",
+              "WhenOpened": "2025-05-18T19:56:07.446Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "PurchseOptions.cs",
-              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Models\\PurchseOptions.cs",
-              "RelativeDocumentMoniker": "AdminComponents\\Models\\PurchseOptions.cs",
-              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Models\\PurchseOptions.cs",
-              "RelativeToolTip": "AdminComponents\\Models\\PurchseOptions.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAgAAAAAAAAAA==",
+              "DocumentIndex": 20,
+              "Title": "GamesViewModel.cs",
+              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\ModelsView\\GamesViewModel.cs",
+              "RelativeDocumentMoniker": "AdminComponents\\ModelsView\\GamesViewModel.cs",
+              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\ModelsView\\GamesViewModel.cs",
+              "RelativeToolTip": "AdminComponents\\ModelsView\\GamesViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T20:27:05.183Z",
+              "WhenOpened": "2025-05-18T20:19:36.108Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 19,
+              "Title": "DetachedLibModelView.cs",
+              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\ModelsView\\DetachedLibModelView.cs",
+              "RelativeDocumentMoniker": "AdminComponents\\ModelsView\\DetachedLibModelView.cs",
+              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\ModelsView\\DetachedLibModelView.cs",
+              "RelativeToolTip": "AdminComponents\\ModelsView\\DetachedLibModelView.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T20:41:55.917Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "PurchaseOptionsModelView.cs",
+              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\ModelsView\\PurchaseOptionsModelView.cs",
+              "RelativeDocumentMoniker": "AdminComponents\\ModelsView\\PurchaseOptionsModelView.cs",
+              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\ModelsView\\PurchaseOptionsModelView.cs",
+              "RelativeToolTip": "AdminComponents\\ModelsView\\PurchaseOptionsModelView.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAABcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T20:29:27.701Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "UserDetachedLibDBComponent.xaml",
+              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Templates\\UserDetachedLibDBComponent.xaml",
+              "RelativeDocumentMoniker": "AdminComponents\\Templates\\UserDetachedLibDBComponent.xaml",
+              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Templates\\UserDetachedLibDBComponent.xaml",
+              "RelativeToolTip": "AdminComponents\\Templates\\UserDetachedLibDBComponent.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-18T19:17:49.282Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "UserDetachedLibDBComponent.xaml.cs",
+              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Templates\\UserDetachedLibDBComponent.xaml.cs",
+              "RelativeDocumentMoniker": "AdminComponents\\Templates\\UserDetachedLibDBComponent.xaml.cs",
+              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Templates\\UserDetachedLibDBComponent.xaml.cs",
+              "RelativeToolTip": "AdminComponents\\Templates\\UserDetachedLibDBComponent.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T20:21:24.75Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "UserDBComponent.xaml",
+              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Templates\\UserDBComponent.xaml",
+              "RelativeDocumentMoniker": "AdminComponents\\Templates\\UserDBComponent.xaml",
+              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Templates\\UserDBComponent.xaml",
+              "RelativeToolTip": "AdminComponents\\Templates\\UserDBComponent.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-18T19:14:24.669Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "PurchaseOptionsDBConmponent.xaml.cs",
+              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Templates\\PurchaseOptionsDBConmponent.xaml.cs",
+              "RelativeDocumentMoniker": "AdminComponents\\Templates\\PurchaseOptionsDBConmponent.xaml.cs",
+              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Templates\\PurchaseOptionsDBConmponent.xaml.cs",
+              "RelativeToolTip": "AdminComponents\\Templates\\PurchaseOptionsDBConmponent.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T20:31:10.982Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "ResivedGoodsDBComponent.xaml.cs",
+              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Templates\\ResivedGoodsDBComponent.xaml.cs",
+              "RelativeDocumentMoniker": "AdminComponents\\Templates\\ResivedGoodsDBComponent.xaml.cs",
+              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Templates\\ResivedGoodsDBComponent.xaml.cs",
+              "RelativeToolTip": "AdminComponents\\Templates\\ResivedGoodsDBComponent.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T20:37:27.048Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "ResivedGoodsDBComponent.xaml",
+              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Templates\\ResivedGoodsDBComponent.xaml",
+              "RelativeDocumentMoniker": "AdminComponents\\Templates\\ResivedGoodsDBComponent.xaml",
+              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Templates\\ResivedGoodsDBComponent.xaml",
+              "RelativeToolTip": "AdminComponents\\Templates\\ResivedGoodsDBComponent.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-18T19:16:39.585Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
               "Title": "PurchaseOptionsDBConmponent.xaml",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Templates\\PurchaseOptionsDBConmponent.xaml",
               "RelativeDocumentMoniker": "AdminComponents\\Templates\\PurchaseOptionsDBConmponent.xaml",
@@ -441,20 +642,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "PurchaseOptionsModelView.cs",
-              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\ModelsView\\PurchaseOptionsModelView.cs",
-              "RelativeDocumentMoniker": "AdminComponents\\ModelsView\\PurchaseOptionsModelView.cs",
-              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\ModelsView\\PurchaseOptionsModelView.cs",
-              "RelativeToolTip": "AdminComponents\\ModelsView\\PurchaseOptionsModelView.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T20:29:27.701Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 30,
               "Title": "GoodsDBComponent.xaml",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Templates\\GoodsDBComponent.xaml",
               "RelativeDocumentMoniker": "AdminComponents\\Templates\\GoodsDBComponent.xaml",
@@ -466,7 +654,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 31,
               "Title": "GoodsDBComponent.xaml.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Templates\\GoodsDBComponent.xaml.cs",
               "RelativeDocumentMoniker": "AdminComponents\\Templates\\GoodsDBComponent.xaml.cs",
@@ -479,33 +667,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "User.cs",
-              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Models\\User.cs",
-              "RelativeDocumentMoniker": "AdminComponents\\Models\\User.cs",
-              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\Models\\User.cs",
-              "RelativeToolTip": "AdminComponents\\Models\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T19:56:07.446Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "UserViewModel.cs",
-              "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\ModelsView\\UserViewModel.cs",
-              "RelativeDocumentMoniker": "AdminComponents\\ModelsView\\UserViewModel.cs",
-              "ToolTip": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_client\\AdminComponents\\ModelsView\\UserViewModel.cs",
-              "RelativeToolTip": "AdminComponents\\ModelsView\\UserViewModel.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAACAAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T20:00:15.357Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 49,
               "Title": "EfPurchaseOptionRepository .cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Repositories\\DB\\EfPurchaseOptionRepository .cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Repositories\\DB\\EfPurchaseOptionRepository .cs",
@@ -517,7 +679,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 38,
               "Title": "IUserRepository.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Interfaces\\IUserRepository.cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Interfaces\\IUserRepository.cs",
@@ -530,7 +692,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 32,
               "Title": "PublishersProjectsController.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Controllers\\PublishersProjectsController.cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Controllers\\PublishersProjectsController.cs",
@@ -543,7 +705,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 33,
               "Title": "JsonGoodsRepository.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Repositories\\JsonGoodsRepository.cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Repositories\\JsonGoodsRepository.cs",
@@ -556,7 +718,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 34,
               "Title": "EfCoreGoodsRepository.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Repositories\\DB\\EfCoreGoodsRepository.cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Repositories\\DB\\EfCoreGoodsRepository.cs",
@@ -569,7 +731,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 35,
               "Title": "IGoodRepository.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Interfaces\\IGoodRepository.cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Interfaces\\IGoodRepository.cs",
@@ -582,7 +744,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 36,
               "Title": "ScreenShotsRepository.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Repositories\\ScreenShotsRepository.cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Repositories\\ScreenShotsRepository.cs",
@@ -595,7 +757,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 37,
               "Title": "ApplicationDbContext .cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\ApplicationDbContext .cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\ApplicationDbContext .cs",
@@ -608,7 +770,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 39,
               "Title": "GamesRepository.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Repositories\\GamesRepository.cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Repositories\\GamesRepository.cs",
@@ -621,7 +783,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 40,
               "Title": "UploadData.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\Game_Net\\UploadData.cs",
               "RelativeDocumentMoniker": "..\\Game_Net\\UploadData.cs",
@@ -633,7 +795,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 41,
               "Title": "EFUserRepository.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Repositories\\DB\\EFUserRepository.cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Repositories\\DB\\EFUserRepository.cs",
@@ -645,7 +807,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 43,
               "Title": "BuyingController.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Controllers\\BuyingController.cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Controllers\\BuyingController.cs",
@@ -658,7 +820,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 46,
               "Title": "CartItem.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Models\\CartItem.cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Models\\CartItem.cs",
@@ -670,7 +832,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 42,
               "Title": "BoughtService.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Services\\BoughtService.cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Services\\BoughtService.cs",
@@ -683,7 +845,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 44,
               "Title": "CartController.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Controllers\\CartController.cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Controllers\\CartController.cs",
@@ -696,7 +858,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 45,
               "Title": "GoodsService.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Services\\GoodsService.cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Services\\GoodsService.cs",
@@ -708,7 +870,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 47,
               "Title": "EfUserLibraryRepository .cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Repositories\\DB\\EfUserLibraryRepository .cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Repositories\\DB\\EfUserLibraryRepository .cs",
@@ -720,7 +882,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 48,
               "Title": "CartService .cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Services\\CartService .cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Services\\CartService .cs",
@@ -732,7 +894,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 50,
               "Title": "GoodsController.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Controllers\\GoodsController.cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Controllers\\GoodsController.cs",
@@ -744,7 +906,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 51,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Program.cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Program.cs",
@@ -756,7 +918,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 53,
               "Title": "IGoodsService.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Interfaces\\IGoodsService.cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Interfaces\\IGoodsService.cs",
@@ -768,7 +930,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 52,
               "Title": "LibController.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Controllers\\LibController.cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Controllers\\LibController.cs",
@@ -780,7 +942,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 55,
               "Title": "PublisherService.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Services\\PublisherService.cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Services\\PublisherService.cs",
@@ -792,7 +954,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 54,
               "Title": "Screenshot.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Models\\Screenshot.cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Models\\Screenshot.cs",
@@ -804,7 +966,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 56,
               "Title": "ReportmessgeModel.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Models\\ReportmessgeModel.cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Models\\ReportmessgeModel.cs",
@@ -816,7 +978,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 57,
               "Title": "GamesStaticFilesRepository.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Repositories\\GamesStaticFilesRepository.cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Repositories\\GamesStaticFilesRepository.cs",
@@ -828,7 +990,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 58,
               "Title": "ReportService .cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Services\\ReportService .cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Services\\ReportService .cs",
@@ -840,7 +1002,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 61,
               "Title": "AuthController .cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Controllers\\AuthController .cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Controllers\\AuthController .cs",
@@ -852,7 +1014,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 60,
               "Title": "Good.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Models\\Good.cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Models\\Good.cs",
@@ -864,7 +1026,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 59,
               "Title": "Game.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Models\\Game.cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Models\\Game.cs",
@@ -876,7 +1038,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 66,
               "Title": "PurchaseOptions.json",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\resoures\\PurchaseOptions.json",
               "RelativeDocumentMoniker": "..\\My_steam_server\\resoures\\PurchaseOptions.json",
@@ -888,7 +1050,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 63,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Models\\User.cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Models\\User.cs",
@@ -900,7 +1062,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 62,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\appsettings.json",
               "RelativeDocumentMoniker": "..\\My_steam_server\\appsettings.json",
@@ -912,7 +1074,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 65,
               "Title": "users.json",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\resoures\\users.json",
               "RelativeDocumentMoniker": "..\\My_steam_server\\resoures\\users.json",
@@ -924,7 +1086,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 67,
               "Title": "Lib.json",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\resoures\\Lib.json",
               "RelativeDocumentMoniker": "..\\My_steam_server\\resoures\\Lib.json",
@@ -936,7 +1098,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 64,
               "Title": "Goods.json",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\resoures\\Goods.json",
               "RelativeDocumentMoniker": "..\\My_steam_server\\resoures\\Goods.json",
@@ -948,7 +1110,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 68,
               "Title": "UserController.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Controllers\\UserController.cs",
@@ -960,7 +1122,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 69,
               "Title": "AuthService .cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Services\\AuthService .cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Services\\AuthService .cs",
@@ -972,7 +1134,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 70,
               "Title": "PurchaseOption.cs",
               "DocumentMoniker": "D:\\projects\\cs\\Course_project(my_steam)\\course_project-My_steam\\My_steam_server\\Models\\PurchaseOption.cs",
               "RelativeDocumentMoniker": "..\\My_steam_server\\Models\\PurchaseOption.cs",

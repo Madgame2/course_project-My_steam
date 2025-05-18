@@ -7,5 +7,6 @@ namespace My_steam_server.Interfaces
         Task<List<UserLibraryEntry>> GetLibraryByUserIdAsync(string userId);
         Task AddToLibraryAsync(UserLibraryEntry entry);
         Task<bool> IsGameInLibraryAsync(string userId, long gameId);
+        Task<List<UserLibraryEntry>> GetAllAsync();
     }
 }

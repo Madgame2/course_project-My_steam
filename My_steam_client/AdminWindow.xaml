@@ -14,7 +14,12 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Button Content="Log out" Width="80" Margin="14" Click="LogOut"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
+                <Button Content="Synchronize" Width="120"/>
+            </StackPanel>
         </Grid>
         <Grid Grid.Row="1">
             <StackPanel Orientation="Horizontal">

@@ -31,5 +31,11 @@ namespace My_steam_server.Repositories.DB
             return await _context.UserLibraryEntries
                 .AnyAsync(e => e.UserId == userId && e.GameId == gameId);
         }
+
+        public async Task<List<UserLibraryEntry>> GetAllAsync()
+        {
+            return await _context.UserLibraryEntries.ToListAsync();
+        }
     }
+}
 }

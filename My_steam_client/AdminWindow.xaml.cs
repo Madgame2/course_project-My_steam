@@ -1,18 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.Extensions.DependencyInjection;
 using My_steam_client.AdminComponents.Templates;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using My_steam_client.Scripts;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace My_steam_client
 {
@@ -34,6 +24,27 @@ namespace My_steam_client
             ToPage<GoodsDBComponent>();
         }
 
+        private async void LogOut(object sender, RoutedEventArgs e)
+        {
+
+            var auth_service = AppServices.Provider.GetRequiredService<Game_Net.AuthService>();// .Provider.GetRequiredService<Game_Net.AuthService>();
+                var result = await auth_service.LogOutAsync();
+
+                if (result.Success)
+                {
+                    TokenStorage.DeleteTokens();
+
+                    var authWindow = new AuthWindow();
+                    Application.Current.MainWindow = authWindow;
+                    this.Close();
+
+                    authWindow.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Unadebel to Log out");
+                }
+        }
 
         public void ToPage<T>() where T : UserControl, new()
         {

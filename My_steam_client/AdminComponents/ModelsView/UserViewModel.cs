@@ -1,4 +1,7 @@
-﻿using My_steam_client.AdminComponents.Models;
+﻿using Game_Net;
+using Microsoft.Extensions.DependencyInjection;
+using My_steam_client.AdminComponents.Models;
+using My_steam_client.Scripts;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,10 +17,34 @@ namespace My_steam_client.AdminComponents.ModelsView
     internal class UserViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<User> Users { get; set; } = new();
-
+        private AdminService adminService;
 
         public UserViewModel()
         {
+            adminService = AppServices.Provider.GetRequiredService<AdminService>();
+
+            
+
+            Init();
+        }
+
+        private async void Init()
+        {
+            var Dto = await adminService.GetUsers();
+
+            foreach (var user in Dto)
+            {
+                var newItem = new User
+                {
+                    Email = user.Email,
+                    UserName = user.UserName,
+                    Role = user.Role,
+                    registerDate = user.registerDate,
+                    UserId = user.UserId
+                };
+                Users.Add(newItem);
+            }
+
 
             Users.CollectionChanged += OnCollectionChanged;
         }
