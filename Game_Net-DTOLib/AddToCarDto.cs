@@ -8,7 +8,7 @@ namespace Game_Net_DTOLib
 {
     public class AddToCarDto
     {
-        public long useerId {  get; set; }
+        public string useerId {  get; set; }
         public long purchouseID { get; set; }
     }
 }

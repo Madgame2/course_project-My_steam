@@ -40,7 +40,7 @@ namespace Game_Net
 
         
 
-        public async Task<List<CartItemDto>> getCart(long userId)
+        public async Task<List<CartItemDto>> getCart(string userId)
         {
             NetResponse<List<CartItemDto>> response;
             try

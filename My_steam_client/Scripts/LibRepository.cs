@@ -34,7 +34,7 @@ namespace My_steam_client.Scripts
             return true;
         }
 
-        public async Task<ManifestRecord[]> getRecordsByUserIdAsync(long userId)
+        public async Task<ManifestRecord[]> getRecordsByUserIdAsync(string userId)
         {
             var objects = await GetAllRecordsAsync();
 

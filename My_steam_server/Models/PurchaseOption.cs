@@ -1,7 +1,10 @@
-﻿namespace My_steam_server.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace My_steam_server.Models
 {
     public class PurchaseOption
     {
+        [Key]
         public long OptionId { get; set; }
         public float Price { get; set; }
         public string PurchaseName {  get; set; }

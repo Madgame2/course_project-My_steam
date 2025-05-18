@@ -1,15 +1,18 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using My_steam_server;
 using My_steam_server.Interfaces;
 using My_steam_server.Models;
 using My_steam_server.Repositories;
 using My_steam_server.Services;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
+using My_steam_server.Repositories.DB;
 
-
-    var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args);
 
     builder.Configuration
         .SetBasePath(Directory.GetCurrentDirectory())
@@ -20,12 +23,12 @@ using System.Text;
     var config = builder.Configuration;
 
 
-    var filePath = config["JsonRepository:UserFilePath"];
-    var TokenFilepath = config["JsonRepository:TokenFilePath"];
-    var GoodsFilepath = config["JsonRepository:GoodsFilePath"];
-    var PurchousesFilepath = config["JsonRepository:PurchousesFilePath"];
-    var LibFilepath = config["JsonRepository:LibFilePath"];
-    var ReportsFilepath = config["JsonRepository:ReportsFilePath"];
+//    var filePath = config["JsonRepository:UserFilePath"];
+//    var TokenFilepath = config["JsonRepository:TokenFilePath"];
+//    var GoodsFilepath = config["JsonRepository:GoodsFilePath"];
+//    var PurchousesFilepath = config["JsonRepository:PurchousesFilePath"];
+//    var LibFilepath = config["JsonRepository:LibFilePath"];
+//    var ReportsFilepath = config["JsonRepository:ReportsFilePath"];
 var Screenpath = config["JsonRepository:ScreeensPath"];
 
 
@@ -38,6 +41,29 @@ builder.Services.Configure<FormOptions>(options =>
 {
     options.MultipartBodyLengthLimit = 512 * 1024 * 1024; // 512 MB
 });
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
+builder.Services.AddIdentity<User, IdentityRole>(options =>
+{
+})
+.AddEntityFrameworkStores<ApplicationDbContext>()
+.AddDefaultTokenProviders();
+
+builder.Services.AddScoped<IUserRepository, EFUserRepository>();
+builder.Services.AddScoped<ICartService, CartService>();
+builder.Services.AddScoped<IUserLibraryRepository, EfUserLibraryRepository>();
+builder.Services.AddScoped<IReportsRepository, EfReportsRepository>();
+builder.Services.AddScoped<IReportsService, ReportService>();
+builder.Services.AddScoped<IRefreshTokenRepository, EfRefreshTokenRepository>();
+builder.Services.AddScoped<IPurchaseOptionRepository, EfPurchaseOptionRepository>();
+builder.Services.AddScoped<IGoodRepository<Game>, EfGoodRepository<Game>>();
+
+
+
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
     builder.Services.AddSingleton<IGamesStaticFilesRepository, GamesStaticFilesRepository>();
     builder.Services.AddSingleton<IResources>(provider => 
@@ -45,14 +71,8 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         var staticFilesRepository = provider.GetRequiredService<IGamesStaticFilesRepository>();
         return new ResourcesService(staticFilesRepository);
     });
-    builder.Services.AddSingleton<IGamesRespository, GamesRepository>();
-    builder.Services.AddSingleton<IUserLibraryRepository, JsonLibRepository>(provider => new JsonLibRepository(LibFilepath));
-    builder.Services.AddSingleton<IReportsRepository, JsonReportsRepository>(provider => new JsonReportsRepository(ReportsFilepath));
-    builder.Services.AddSingleton<IPurchaseOptionRepository, JsonPurchaseOptionRepository>(provider=> new JsonPurchaseOptionRepository(PurchousesFilepath));
-    builder.Services.AddSingleton<IUserRepository, JsonUserRepository>(provider => new JsonUserRepository(filePath));
-    builder.Services.AddSingleton<IRefreshTokenRepository, JsonRefreshTokenRepository>(provider => new JsonRefreshTokenRepository(TokenFilepath));
-    builder.Services.AddSingleton<IGoodRepository<Game>>(provider => new JsonGoodsRepository<Game>(GoodsFilepath));
-    builder.Services.AddSingleton<ICartService, CartService>();
+    builder.Services.AddSingleton<IGamesRespository, GamesRepository>();    
+   
 builder.Services.AddSingleton<IScreenShotsRepository, ScreenShotsRepository>(provider =>
 {
 
@@ -67,7 +87,6 @@ builder.Services.AddSingleton<IScreenShotsRepository, ScreenShotsRepository>(pro
 
         return new BoughtService(UserRep, PurhcouseOptions, GoodRepository, LibRepos);
     });
-    builder.Services.AddSingleton<IReportsService, ReportService>();
 builder.Services.AddSingleton<IPublisherService, PublisherService>(provider =>
 {
     var gameRep = provider.GetRequiredService<IGamesRespository>();

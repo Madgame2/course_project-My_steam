@@ -8,7 +8,7 @@ namespace Game_Net_DTOLib
 {
     public class LogInSecsessDto
     {
-        public long id {  get; set; }
+        public string id {  get; set; }
 
         public string NickName {  get; set; }
         public DateTime RegisterDate { get; set; }

@@ -5,6 +5,7 @@ namespace My_steam_server.Models
 {
     public class ReportMessageModel
     {
+        public int Id { get; set; }
         public string UserID { get; set; }
         [JsonIgnore]
         public User User { get; set; }

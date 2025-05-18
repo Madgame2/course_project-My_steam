@@ -16,7 +16,7 @@ namespace My_steam_server.Services
             _purchaseOptionRepository = purchaseOptionRepository;
         }
 
-        public async Task<NetResponse<bool>> AddToCart(long usserId, long purchaseId)
+        public async Task<NetResponse<bool>> AddToCart(string usserId, long purchaseId)
         {
             var user = await _userRepository.GetByIdAsync(usserId.ToString());
             if (user == null) return new NetResponse<bool> { Success = false, data = false, resultCode = ResultCode.UnKnowError };
@@ -37,7 +37,7 @@ namespace My_steam_server.Services
             }
         }
 
-        public async Task<NetResponse<bool>> deleteCartElem(long UserID, long CartId)
+        public async Task<NetResponse<bool>> deleteCartElem(string UserID, long CartId)
         {
             var user = await _userRepository.GetByIdAsync(UserID.ToString());
             if (user == null) return new NetResponse<bool> { Success = false, data = false, resultCode = ResultCode.UnKnowError };
@@ -47,7 +47,7 @@ namespace My_steam_server.Services
             return new NetResponse<bool> {Success = true, data = true};
         }
 
-        public async Task<NetResponse<List<Game_Net_DTOLib.CartItemDto>?>> getUserCart(long userId)
+        public async Task<NetResponse<List<Game_Net_DTOLib.CartItemDto>?>> getUserCart(string userId)
         {
             var user = await _userRepository.GetByIdAsync(userId.ToString());
             if (user == null) return new NetResponse<List<Game_Net_DTOLib.CartItemDto>?> { Success = false, data = default, resultCode = ResultCode.UnKnowError };

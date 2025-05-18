@@ -64,8 +64,9 @@ namespace My_steam_server.Controllers
         {
             var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
 
-            if(userIdClaim != null && long.TryParse(userIdClaim.Value, out var userId)){
-                var user = await _userRepository.GetByIdAsync(userId.ToString());
+            if(userIdClaim != null){
+                var userId = userIdClaim.Value;
+                var user = await _userRepository.GetByIdAsync(userId);
 
                 return Ok(new Game_Net_DTOLib.NetResponse<LogInSecsessDto>
                 { Success = true, 

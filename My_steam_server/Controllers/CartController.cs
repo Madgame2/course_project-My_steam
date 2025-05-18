@@ -29,7 +29,7 @@ namespace My_steam_server.Controllers
         }
 
         [HttpGet("{UserId:long}")]
-        public async Task<IActionResult> GetUseerCart([FromRoute] long UserId)
+        public async Task<IActionResult> GetUseerCart([FromRoute] string UserId)
         {
             var result = await _cartService.getUserCart(UserId);
 

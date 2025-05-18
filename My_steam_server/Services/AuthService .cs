@@ -63,7 +63,7 @@ namespace My_steam_server.Services
             {
                 Success = true,
                 data = new LogInSecsessDto 
-                {id=Convert.ToInt64(user.Id),
+                {id=user.Id,
                 NickName = user.UserName,
                 UserRole= user.Role,
                 RegisterDate = user.RigisterDate,
@@ -103,7 +103,7 @@ namespace My_steam_server.Services
             {
                 Success = true,
                 data = new LogInSecsessDto {
-                    id=Convert.ToInt64(user.Id),
+                    id=user.Id,
                     tokens= new { AccessToken = newAccessToken, RefreshToken = newRefreshToken }.ToString(),
                     RegisterDate = user.RigisterDate,
                     UserRole = user.Role,
@@ -161,7 +161,7 @@ namespace My_steam_server.Services
                 Created = DateTime.UtcNow,
                 Expires = DateTime.UtcNow.AddDays(7),
                 CreatedByIp = GetIpAddress(), // Получаем реальный IP
-                UserId = Convert.ToInt32(user.Id)
+                UserId = user.Id
             };
 
             await _refreshTokenRepository.AddAsync(refreshToken);

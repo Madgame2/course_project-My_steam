@@ -17,13 +17,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="EventFlow.EntityFramework" Version="1.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.16" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.16" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.16" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.16">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.8.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Game_Net-DTOLib\Game_Net-DTOLib.csproj" />
-    <ProjectReference Include="..\My_steam_client\Game_Net-DTOLib\Game_Net-DTOLib.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,6 +34,10 @@
     <Folder Include="resoures\images\five_nights_at_Fredys_3\" />
     <Folder Include="GamesFiles\" />
     <Folder Include="resoures\gamesResources\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Game_Net-DTOLib\Game_Net-DTOLib.csproj" />
   </ItemGroup>
 
 </Project>

@@ -4,10 +4,10 @@ namespace My_steam_server.Interfaces
 {
     public interface ICartService
     {
-        Task<NetResponse<bool>> AddToCart(long usserId, long purchaseId);
+        Task<NetResponse<bool>> AddToCart(string usserId, long purchaseId);
 
-        Task<NetResponse<List<Game_Net_DTOLib.CartItemDto>?>> getUserCart(long userId);
+        Task<NetResponse<List<Game_Net_DTOLib.CartItemDto>?>> getUserCart(string userId);
 
-        Task<NetResponse<bool>> deleteCartElem(long UserID, long CartId);
+        Task<NetResponse<bool>> deleteCartElem(string UserID, long CartId);
     }
 }

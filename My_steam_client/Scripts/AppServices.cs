@@ -14,7 +14,7 @@ namespace My_steam_client.Scripts
     public static class AppServices
     {
         public static ServiceProvider Provider { get; private set; }
-        public static long UserId { get; set; }
+        public static string UserId { get; set; }
         public static string UsserNickNmae {  get; set; }
         public static DateTime UserRegisterDate { get; set; }
         public static UserRole userRole { get; set; }

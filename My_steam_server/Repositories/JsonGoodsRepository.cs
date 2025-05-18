@@ -133,15 +133,15 @@ namespace My_steam_server.Repositories
                 query = query.Where(x =>
                     (x as dynamic).Name.ToString().Contains(filter.Search, StringComparison.OrdinalIgnoreCase));
 
-            
+
             if (filter.minPrice.HasValue)
-                query = query.Where(x => (decimal)(x as dynamic).Price >= filter.minPrice.Value);
+                query = query.Where(x => x .Price >= filter.minPrice.Value);
 
-            
+
             if (filter.maxPrice.HasValue)
-                query = query.Where(x => (decimal)(x as dynamic).Price <= filter.maxPrice.Value);
+                query = query.Where(x => x .Price <= filter.maxPrice.Value);
 
-            
+
             return query
                 .Take(filter.PageSize)
                 .ToList();
