@@ -21,6 +21,41 @@ namespace My_steam_server.Controllers
             _publisherService= publisherService;
         }
 
+        [HttpGet("delite/{UserID}/{GameID:long}")]
+        public async Task<IActionResult> DeliteProject([FromRoute]string UserID, [FromRoute]long GameID)
+        {
+            var myProject = await _goodRepository.GetGamesByUserIdAsync(UserID);
+            var selectedProject = myProject.FirstOrDefault(p=>p.Id== GameID);
+
+            if (selectedProject == null) return NotFound();
+
+            await _goodRepository.DeleteAsync(GameID);
+
+            return Ok( new NetResponse<bool> {Success=true });
+        }
+
+        [HttpGet("{UserID}")]
+        public async Task<IActionResult> GetMyProjects([FromRoute] string UserID) 
+        {
+            var myProject = await _goodRepository.GetGamesByUserIdAsync(UserID);
+
+            var ListItems = new List<ProjectDto>();
+            foreach (var item in myProject)
+            {
+                var newItem = new ProjectDto
+                {
+                    ProjectId = item.Id,
+                    CreatedAt = item.ReleaseDate,
+                    ProjectDescription = item.Description,
+                    ProjectName = item.Name
+                };
+
+                ListItems.Add(newItem);
+            }
+
+            return Ok(new NetResponse<List<ProjectDto>>{ Success=true, data= ListItems });
+        }
+
         [HttpPost("upload/metadata")]
         public async Task<IActionResult> UploadMetadata(
                 [FromForm] string UserId,

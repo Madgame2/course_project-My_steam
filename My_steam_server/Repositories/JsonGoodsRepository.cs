@@ -157,5 +157,14 @@ namespace My_steam_server.Repositories
             throw new NotImplementedException();
         }
 
+        public Task<List<Game>> GetGamesByUserIdAsync(string userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> DeleteAsync(long id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

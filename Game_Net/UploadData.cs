@@ -47,8 +47,6 @@ namespace Game_Net
 
             return uploadId;
         }
-
-
         public async Task UploadZipInChunksAsync(Stream zipStream, Guid uploadId)
         {
             const int ChunkSize = 5 * 1024 * 1024;

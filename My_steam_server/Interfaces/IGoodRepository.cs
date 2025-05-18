@@ -15,5 +15,9 @@ namespace My_steam_server.Interfaces
         Task<List<Game>> GetPagesAsync(ProductFilterDto filter);
 
         Task<Game> CreateEmptyModel(string UssrId);
+
+        Task<List<Game>> GetGamesByUserIdAsync(string userId);
+
+        Task<bool> DeleteAsync(long id);
     }
 }

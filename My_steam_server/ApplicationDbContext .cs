@@ -48,31 +48,31 @@ namespace My_steam_server
                 .HasOne(s => s.Game)
                 .WithMany(g => g.imageSource)
                 .HasForeignKey(s => s.GameId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<PurchaseOption>()
                 .HasOne(po => po.Game)
                 .WithMany(g => g.PurchaseOptions)
                 .HasForeignKey(po => po.GameId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<GoodReceived>()
                 .HasOne(gr => gr.PurchaseOption)
                 .WithMany(po => po.GoodsReceived)
                 .HasForeignKey(gr => gr.PurchaseOptionId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<CartItem>()
                 .HasOne(ci => ci.User)
                 .WithMany(u => u.CartItems)
                 .HasForeignKey(ci => ci.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<CartItem>()
                 .HasOne(ci => ci.PurchaseOption)
                 .WithMany()
                 .HasForeignKey(ci => ci.PurchaseOptionId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<RefreshToken>()
                 .HasOne(rt => rt.User)

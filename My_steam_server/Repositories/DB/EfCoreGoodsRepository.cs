@@ -79,6 +79,24 @@ namespace My_steam_server.Repositories.DB
 
             return newEntity;
         }
+
+        public async Task<List<Game>> GetGamesByUserIdAsync(string userId)
+        {
+            return await _dbSet
+                .Where(g => g.UserId == userId)  // здесь нужно подставить реальное поле
+                .ToListAsync();
+        }
+
+        public async Task<bool> DeleteAsync(long id)
+        {
+            var entity = await _dbSet.FindAsync(id);
+            if (entity == null)
+                return false;
+
+            _context.Games.Remove(entity);
+            var result = await _context.SaveChangesAsync();
+            return result > 0;
+        }
     }
 
 }
