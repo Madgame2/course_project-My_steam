@@ -66,7 +66,8 @@ namespace My_steam_server.Repositories.DB
         {
             var user = await _context.Users
                 .Include(u => u.CartItems)
-                .ThenInclude(c => c.PurchaseOption)
+                    .ThenInclude(c => c.PurchaseOption)
+                        .ThenInclude(po => po.GoodsReceived)
                 .FirstOrDefaultAsync(u => u.Id == userId);
 
             return user?.CartItems ?? new List<CartItem>();
@@ -80,10 +81,10 @@ namespace My_steam_server.Repositories.DB
 
             if (user == null) return;
 
-            var item = user.CartItems.FirstOrDefault(c => c.PurchaseOptionId == purchaseOptionId);
+            var item = user.CartItems.FirstOrDefault(c => c.CartItemId == purchaseOptionId);
             if (item != null)
             {
-                user.CartItems.Remove(item);
+                _context.CartItems.Remove(item); // явно удалить из DbSet<CartItems>
                 await _context.SaveChangesAsync();
             }
         }

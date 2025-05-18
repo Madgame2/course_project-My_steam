@@ -61,7 +61,15 @@ builder.Services.AddScoped<IReportsService, ReportService>();
 builder.Services.AddScoped<IRefreshTokenRepository, EfRefreshTokenRepository>();
 builder.Services.AddScoped<IPurchaseOptionRepository, EfPurchaseOptionRepository>();
 builder.Services.AddScoped<IGoodRepository, EfGoodRepository>();
+builder.Services.AddScoped<IBoughtService, BoughtService>(provider =>
+{
+    var UserRep = provider.GetRequiredService<IUserRepository>();
+    var PurhcouseOptions = provider.GetRequiredService<IPurchaseOptionRepository>();
+    var GoodRepository = provider.GetRequiredService<IGoodRepository>();
+    var LibRepos = provider.GetRequiredService<IUserLibraryRepository>();
 
+    return new BoughtService(UserRep, PurhcouseOptions, GoodRepository, LibRepos);
+});
 
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -78,15 +86,7 @@ builder.Services.AddSingleton<IScreenShotsRepository, ScreenShotsRepository>(pro
 
     return new ScreenShotsRepository(Screenpath);
 });
-    builder.Services.AddSingleton<IBoughtService, BoughtService>(provider =>
-    {
-        var UserRep = provider.GetRequiredService<IUserRepository>();
-        var PurhcouseOptions = provider.GetRequiredService<IPurchaseOptionRepository>();
-        var GoodRepository = provider.GetRequiredService<IGoodRepository>();
-        var LibRepos = provider.GetRequiredService<IUserLibraryRepository>();
 
-        return new BoughtService(UserRep, PurhcouseOptions, GoodRepository, LibRepos);
-    });
 builder.Services.AddSingleton<IPublisherService, PublisherService>(provider =>
 {
     var gameRep = provider.GetRequiredService<IGamesRespository>();

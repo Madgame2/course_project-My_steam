@@ -116,8 +116,9 @@ namespace My_steam_server.Controllers
             var currentObj= _publisherService.Processed_goods[uploadId];
 
             var dir = Path.Combine(repository, uploadId.ToString());
-            var chunkFiles = Directory.GetFiles(dir).OrderBy(f => f);
-
+            var chunkFiles = Directory.GetFiles(dir)
+    .OrderBy(f => int.Parse(Path.GetFileName(f).Split('_')[1]))
+    .ToList();
             using var combinedStream = new ChunkedReadStream(chunkFiles);
 
             currentObj.DownloadSource = await _publisherService.DeployGameFiles(combinedStream, currentObj.Id);
