@@ -36,13 +36,13 @@ namespace My_steam_server
                 .HasOne(ule => ule.User)
                 .WithMany(u => u.Library)
                 .HasForeignKey(ule => ule.UserId)
-                .OnDelete(DeleteBehavior.Restrict); // предотвращает циклы каскадов
+                .OnDelete(DeleteBehavior.Cascade); // предотвращает циклы каскадов
 
             builder.Entity<UserLibraryEntry>()
                 .HasOne(ule => ule.Game)
                 .WithMany()
                 .HasForeignKey(ule => ule.GameId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<Screenshot>()
                 .HasOne(s => s.Game)
