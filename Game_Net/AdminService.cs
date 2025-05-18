@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Game_Net
@@ -77,6 +78,20 @@ namespace Game_Net
                 var result = await Mannager.SendMessageRest<List<ResivedGoodsDB_dto>>("api/Admin/get/ResivedGoods", Protocol.Http);
 
                 return result.data;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public async Task Synchronize( SynchronizeDto dto)
+        {
+
+            var json = JsonSerializer.Serialize(dto);
+            try
+            {
+                var result = await Mannager.SendMessageRest<List<ResivedGoodsDB_dto>>("api/Admin/Synchronize", Protocol.Http, json);
             }
             catch (Exception ex)
             {

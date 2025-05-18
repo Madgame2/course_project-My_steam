@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using My_steam_server.Interfaces;
 using Game_Net_DTOLib;
+using Microsoft.EntityFrameworkCore;
+using My_steam_server.Models;
 
 namespace My_steam_server.Controllers
 {
@@ -117,6 +119,78 @@ namespace My_steam_server.Controllers
             }
 
             return Ok(new NetResponse<List<DetachetLibDB_dto>> { Success = true, data = outList });
+        }
+
+        [HttpPost("Synchronize")]
+        public async Task<IActionResult> Synchronize([FromBody] SynchronizeDto dto)
+        {
+            if (dto.Users != null)
+            {
+                foreach (var user in dto.Users)
+                {
+                    var existingUser = await _userRepository.GetByIdAsync(user.UserId);
+                    if (user.IsNew || existingUser == null)
+                    {
+
+                    }
+                    else
+                    {
+                        existingUser.Email = user.Email;
+                        existingUser.UserName = user.UserName;
+                        existingUser.Role = user.Role;
+                        existingUser.RigisterDate = user.registerDate;
+
+                        await _userRepository.SaveChangesAsync();
+                    }
+                }
+            }
+
+            if (dto.Games != null)
+            {
+                foreach (var game in dto.Games)
+                {
+                    var existingGame = await _goodRepository.GetByIdAsync(game.GameId);
+                    if (game.IsNew || existingGame == null)
+                    {
+                    }
+                    else
+                    {
+                        existingGame.Name = game.GameName;
+                        existingGame.Description = game.Descritption;
+                        existingGame.HeaderImageSource = game.HeaderImageSource;
+                        existingGame.UserId = game.UserId;
+                        existingGame.DownloadSource = game.DownloadedSource;
+                        existingGame.ratinng = game.Rating;
+                        existingGame.ReleaseDate = game.ReliseDate;
+                        existingGame.Price = game.Price;
+
+                        await _goodRepository.UpdateAsync(existingGame);
+                    }
+                }
+            }
+
+            if (dto.Purhcases != null)
+            {
+                foreach (var purchase in dto.Purhcases)
+                {
+
+                    var existing = await _purchaseOptionRepository.GetByIdAsync(purchase.PurhcaseId);
+                    if (purchase.IsNew || existing == null)
+                    {
+
+                    }
+                    else
+                    {
+                        existing.Price = purchase.Price;
+                        existing.PurchaseName = purchase.PurhcaseName;
+                        existing.ImageLink = purchase.imageLinnk;
+                        existing.GameId = purchase.GameID;
+                        await _purchaseOptionRepository.UpdateAsync(existing);
+                    }
+                }
+            }
+
+            return Ok(new NetResponse<bool> { Success = true });
         }
 
         //[HttpGet("get/ResivedGoods")]

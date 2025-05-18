@@ -18,7 +18,7 @@
                 <Button Content="Log out" Width="80" Margin="14" Click="LogOut"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
-                <Button Content="Synchronize" Width="120"/>
+                <Button Content="Synchronize" Width="120" Click="Button_Click"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1">

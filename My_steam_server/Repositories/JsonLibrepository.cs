@@ -52,5 +52,10 @@ namespace My_steam_server.Repositories
             var entries = await ReadAllAsync();
             return entries.Any(e => e.UserId == userId && e.GameId == gameId);
         }
+
+        public Task<List<UserLibraryEntry>> GetAllAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
