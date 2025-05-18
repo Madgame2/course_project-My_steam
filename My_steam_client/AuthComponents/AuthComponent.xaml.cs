@@ -1,4 +1,5 @@
 ﻿using Game_Net;
+using Game_Net_DTOLib;
 using Microsoft.Extensions.DependencyInjection;
 using My_steam_client.Scripts;
 using My_steam_server.DTO_models;
@@ -129,9 +130,19 @@ namespace My_steam_client.AuthComponents
 
             var test = TokenStorage.LoadTokens();
 
-            var mainWindow= new MainWindow();
-            Application.Current.MainWindow = mainWindow;
-            mainWindow.Show();
+            if (AppServices.userRole != UserRole.Admin)
+            {
+
+                var mainWindow = new MainWindow();
+                Application.Current.MainWindow = mainWindow;
+                mainWindow.Show();
+            }
+            else
+            {
+                var mainWindow = new AdminWindow();
+                Application.Current.MainWindow = mainWindow;
+                mainWindow.Show();
+            }
 
 
             AppServices.UserId = result.data.id;

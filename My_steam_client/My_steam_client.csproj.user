@@ -7,6 +7,21 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="AdminComponents\Templates\GoodsDBComponent.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AdminComponents\Templates\PurchaseOptionsDBConmponent.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AdminComponents\Templates\ResivedGoodsDBComponent.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AdminComponents\Templates\UserDBComponent.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AdminComponents\Templates\UserDetachedLibDBComponent.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="AdminWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -126,6 +141,21 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="AdminComponents\Templates\GoodsDBComponent.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AdminComponents\Templates\PurchaseOptionsDBConmponent.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AdminComponents\Templates\ResivedGoodsDBComponent.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AdminComponents\Templates\UserDBComponent.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AdminComponents\Templates\UserDetachedLibDBComponent.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="AdminWindow.xaml">
       <SubType>Designer</SubType>
     </Page>

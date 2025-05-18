@@ -7,6 +7,28 @@
         mc:Ignorable="d"
         Title="AdminWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            
+        </Grid>
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="UsersDB" Width="120" Click="User_DB"/>
+                <Button Content="GamesDB" Width="120" Click="games_DB"/>
+                <Button Content="PurchaseOptionDB" Width="120" Click="PurhcaeOptions_DB"/>
+                <Button Content="ResivedGamesDB" Width="120" Click="ResivedGoods_DB"/>
+                <Button Content="UserDetachedLib" Width="120" Click="UserDetachedLib_DB"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="2">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"> 
+                <ContentPresenter x:Name="dbPresenter"/>
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </Window>

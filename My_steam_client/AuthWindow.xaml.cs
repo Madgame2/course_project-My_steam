@@ -70,9 +70,19 @@ namespace My_steam_client
 
         private void SwapToMainWindow()
         {
-            var mainWindow = new MainWindow();
-            Application.Current.MainWindow = mainWindow;
-            mainWindow.Show();
+
+            if (AppServices.userRole != Game_Net_DTOLib.UserRole.Admin)
+            {
+                var mainWindow = new MainWindow();
+                Application.Current.MainWindow = mainWindow;
+                mainWindow.Show();
+            }
+            else
+            {
+                var mainWindow = new AdminWindow();
+                Application.Current.MainWindow = mainWindow;
+                mainWindow.Show();
+            }
 
 
             this.Close();
