@@ -87,7 +87,7 @@
                             <local:SideButton Click="toCommunity" Height="60" IconHeight="30" Icon="images/community-group-leader-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav" Title="Community"/>
                         </StackPanel>
                         <StackPanel VerticalAlignment="Bottom" Margin="0,0,0,50">
-
+                            <local:SimpleSideButton Click="Settings" Height="60" IconHeight="30" Icon="images/settings-svgrepo-com.svg" Title="Setting"/>
                             <local:SimpleSideButton Click="LogOut" Height="60" IconHeight="30" Icon="images/log-out-1-svgrepo-com.svg" Title="Log out"/>
                         </StackPanel>
                     </local:SideBar>

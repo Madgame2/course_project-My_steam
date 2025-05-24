@@ -19,7 +19,7 @@ namespace My_steam_client
 
         private Shop_Component? shopPage = null;
         private LibraryComponent? libraryPage = null;
-
+        private Settings? SettingsWindow= null;
 
         public MainWindow()
         {
@@ -30,6 +30,8 @@ namespace My_steam_client
             libmannager.SynnchronizeLibs();
 
             openShopPage();
+
+            
         }
 
 
@@ -125,6 +127,25 @@ namespace My_steam_client
         {
             var myProjects = new MyprojectsWindow();
             myProjects.Show();
+        }
+
+        private void Settings(object sender, RoutedEventArgs e)
+        {
+            // Если окно не существует или оно было закрыто — создаём новое
+            if (SettingsWindow == null || !SettingsWindow.IsLoaded)
+            {
+                SettingsWindow = new Settings();
+                SettingsWindow.Owner = this; 
+                SettingsWindow.Closed += (_, _) => SettingsWindow = null; 
+                SettingsWindow.Show();
+            }
+            else
+            {
+                SettingsWindow.Activate(); 
+            }
+
+            SettingsWindow.Topmost = true;
+            SettingsWindow.Topmost = false;
         }
 
         private async void LogOut (object sender,RoutedEventArgs e)

@@ -43,7 +43,7 @@
             <Border MouseLeftButtonUp="OnItemClick">
                 <Grid>
                     <Rectangle Fill="#FF444444">
-                        <Rectangle.Opacity>
+                        <!--<Rectangle.Opacity>
                             <MultiBinding Converter="{StaticResource LibItemConverter}">
                                 <Binding Path="isActive" />
                                 <Binding Path="IsMouseOver" RelativeSource="{RelativeSource AncestorType=Border}"/>
@@ -58,7 +58,27 @@
                                     </Binding.Source>
                                 </Binding>
                             </MultiBinding>
-                        </Rectangle.Opacity>
+                        </Rectangle.Opacity>-->
+                        <Rectangle.Style>
+                            <Style TargetType="Rectangle">
+                                <Setter Property="Opacity" Value="0"/>
+                                <Style.Triggers>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding isActive}" Value="True"/>
+                                            <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType=Border}}" Value="True"/>
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Opacity" Value="0.6"/>
+                                    </MultiDataTrigger>
+                                    <DataTrigger Binding="{Binding isActive}" Value="True">
+                                        <Setter Property="Opacity" Value="0.4"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType=Border}}" Value="True">
+                                        <Setter Property="Opacity" Value="0.2"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Rectangle.Style>
                     </Rectangle>
                     <Border Style="{StaticResource LibItem_border}">
                         <Grid>

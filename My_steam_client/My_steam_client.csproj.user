@@ -49,6 +49,9 @@
     <Compile Update="Templates\Activity.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Templates\AppSetingsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Templates\BasketComponent.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -110,6 +113,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Templates\SendingErrorComponent.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Templates\Settings.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Templates\Shop_Component.xaml.cs">
@@ -192,6 +198,9 @@
     <Page Update="Templates\Activity.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Templates\AppSetingsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Templates\BasketComponent.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -253,6 +262,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\SendingErrorComponent.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Templates\Settings.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Templates\Shop_Component.xaml">

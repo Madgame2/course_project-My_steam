@@ -10,6 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Game_Net-DTOLib\**" />
+    <EmbeddedResource Remove="Game_Net-DTOLib\**" />
+    <None Remove="Game_Net-DTOLib\**" />
+    <Page Remove="Game_Net-DTOLib\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="AuthComponents\Icon.png" />
     <None Remove="resources\Fonts\Rajdhani-Regular.ttf" />
     <None Remove="resources\Gif\cute-cat.gif" />
@@ -36,6 +43,7 @@
     <None Remove="resources\images\publisher.svg" />
     <None Remove="resources\images\Right.png" />
     <None Remove="resources\images\Search.svg" />
+    <None Remove="resources\images\settings-svgrepo-com.svg" />
     <None Remove="resources\images\shopping-cart-svgrepo-com.png" />
     <None Remove="resources\images\test.jpg" />
     <None Remove="resources\images\trash.svg" />
@@ -126,6 +134,9 @@
     <Content Include="resources\images\Search.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="resources\images\settings-svgrepo-com.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="resources\images\shopping-cart-svgrepo-com.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -159,6 +170,10 @@
     <Resource Include="resources\Fonts\Rajdhani-Regular.ttf">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Themes\" />
   </ItemGroup>
 
 </Project>

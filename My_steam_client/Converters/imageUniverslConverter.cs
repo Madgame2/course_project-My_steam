@@ -6,6 +6,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Diagnostics;
 using System.Net;
+using System.IO;
 
 namespace My_steam_client.Converters
 {

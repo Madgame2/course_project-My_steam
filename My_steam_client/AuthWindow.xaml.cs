@@ -18,6 +18,7 @@ using My_steam_client.Scripts.Interfaces;
 using My_steam_client.Templates;
 using Game_Net;
 using System.Net;
+using System.Net.Http;
 
 namespace My_steam_client
 {

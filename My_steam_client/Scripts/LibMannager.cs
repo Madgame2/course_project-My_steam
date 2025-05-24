@@ -12,6 +12,7 @@ using System.IO.Compression;
 using Game_Net_DTOLib;
 using My_steam_server.Interfaces;
 using System.Windows;
+using System.IO;
 
 namespace My_steam_client.Scripts
 {

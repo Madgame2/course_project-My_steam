@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Game_Net_DTOLib;
+using System.Net.Http;
 
 namespace My_steam_client.Scripts
 {

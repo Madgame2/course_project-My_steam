@@ -81,10 +81,10 @@ namespace My_steam_server.Repositories.DB
 
             if (user == null) return;
 
-            var item = user.CartItems.FirstOrDefault(c => c.CartItemId == purchaseOptionId);
+            var item = user.CartItems.FirstOrDefault(c => c.PurchaseOptionId == purchaseOptionId);
             if (item != null)
             {
-                _context.CartItems.Remove(item); // явно удалить из DbSet<CartItems>
+                _context.CartItems.Remove(item); 
                 await _context.SaveChangesAsync();
             }
         }

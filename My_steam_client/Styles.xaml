@@ -111,34 +111,32 @@
         </Setter>
         <Setter Property="Padding" Value="0,0,0,0"/>
 
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <!-- Анимация при наведении -->
-                <Trigger.EnterActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation
-                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
-                            To="-50"
-                            Duration="0:0:0.2">
-                            </DoubleAnimation>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </Trigger.EnterActions>
+        <Style.Resources>
+            <!-- Анимация при наведении -->
+            <Storyboard x:Key="MoveInStoryboard">
+                <DoubleAnimation
+                Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                To="-50"
+                Duration="0:0:0.2"/>
+            </Storyboard>
 
-                <!-- Анимация при уходе -->
-                <Trigger.ExitActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation
-                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
-                            To="-200"
-                            Duration="0:0:0.2">
-                            </DoubleAnimation>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </Trigger.ExitActions>
-            </Trigger>
+            <!-- Анимация при уходе -->
+            <Storyboard x:Key="MoveOutStoryboard">
+                <DoubleAnimation
+                Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                To="-200"
+                Duration="0:0:0.2"/>
+            </Storyboard>
+        </Style.Resources>
+
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="MouseEnter">
+                <BeginStoryboard Storyboard="{StaticResource MoveInStoryboard}"/>
+            </EventTrigger>
+
+            <EventTrigger RoutedEvent="MouseLeave">
+                <BeginStoryboard Storyboard="{StaticResource MoveOutStoryboard}"/>
+            </EventTrigger>
         </Style.Triggers>
     </Style>
 

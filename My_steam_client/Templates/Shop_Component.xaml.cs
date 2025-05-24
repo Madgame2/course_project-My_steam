@@ -77,6 +77,7 @@ namespace My_steam_client.Templates
             scroll.ScrollChanged += ScrollViewer_ScrollChanged;
             showCase.FiltersLable.applyedFilters += filtersChanged;
             showCase.ShowMoreClicked += ShowMore;
+
         }
 
         private async void InitSlider()
