@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 
 namespace My_steam_client.Templates
 {
-    class SideButton : ToggleButton
+    public class SideButton : ToggleButton
     {
 
 

@@ -39,7 +39,12 @@ namespace My_steam_client.Templates
             DependencyProperty.Register(nameof(ComponetnsMargin),typeof(Thickness),typeof(Slider),new PropertyMetadata(new Thickness(10,0,10,0)));
 
         public static readonly DependencyProperty VisibleElementsProperty =
-            DependencyProperty.Register(nameof(VisibleElements),typeof(int),typeof(Slider),new PropertyMetadata(4));
+            DependencyProperty.Register(
+                nameof(VisibleElements),
+                typeof(int),
+                typeof(Slider),
+                new FrameworkPropertyMetadata(4, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, null, CoerceVisibleElements),
+                ValidateVisibleElements);
 
         public static readonly DependencyProperty IndicatorsActiveBrushProperty =
             DependencyProperty.Register("IndicatorsActiveBrush", typeof(Brush), typeof(Slider), new PropertyMetadata(Brushes.DodgerBlue));
@@ -49,6 +54,21 @@ namespace My_steam_client.Templates
 
         public static readonly DependencyProperty IndicatorsHoverBrushProperty =
             DependencyProperty.Register(nameof(IndicatorsHoverBrush), typeof(Brush), typeof(Slider), new PropertyMetadata(Brushes.Gray));
+
+
+        private static bool ValidateVisibleElements(object value)
+        {
+            int val = (int)value;
+            return val > 0; // нельзя установить 0 или меньше
+        }
+
+        private static object CoerceVisibleElements(DependencyObject d, object baseValue)
+        {
+            int val = (int)baseValue;
+            if (val > 10) return 10; // максимум 10
+            return val;
+        }
+
 
         public Brush IndicatorsHoverBrush
         {

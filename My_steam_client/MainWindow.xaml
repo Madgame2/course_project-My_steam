@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:conv="clr-namespace:My_steam_client.Converters"
         xmlns:local="clr-namespace:My_steam_client.Templates"
         xmlns:groups="clr-namespace:My_steam_client.Controls"
         mc:Ignorable="d"
@@ -15,6 +16,45 @@
         Background="{DynamicResource MainWindowBackgroundBrush}"
         Loaded="MainWindow_Loaded">
 
+    <Window.Resources>
+        <conv:ImageUniversalConverter x:Key="ImageUniversalConverter"/>
+
+        <Style TargetType="Button" x:Key="UndoRendButton">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border>
+                            <Image Source="{TemplateBinding Content, Converter={StaticResource ImageUniversalConverter}}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <Style TargetType="Button" x:Key="IconButtonStyle">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="5" Background="{TemplateBinding Background}" 
+                        BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" 
+                        Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#22000000"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -60,8 +100,7 @@
                             ShadowDepth="4"
                             Direction="270"/>
                     </Border.Effect>
-
-                    <!-- Sidebar с отступом сверху, чтобы не залазить на Header -->
+                    
                     <local:SideBar 
                         Width="250" 
                         HeightPercent="90.0" 
@@ -72,9 +111,16 @@
                         RenderTransformOrigin="0,0"
                         Margin="0,22,0,0"
                         Style="{StaticResource SideBar_styles}">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Top">
+                            <Button  Command="{Binding UndoCommand, RelativeSource={RelativeSource AncestorType=Window}}" Margin="5" Padding="10" ToolTip="Отменить">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text="&#xE10E;" />
+                            </Button>
 
+                            <Button Command="{Binding RedoCommand, RelativeSource={RelativeSource AncestorType=Window}}" Margin="5" Padding="10" ToolTip="Повторить">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text="&#xE10D;" />
+                            </Button>
+                        </StackPanel>
                         <StackPanel VerticalAlignment="Top" Margin="0,50,0,0">
-
                             <local:SimpleSideButton Click="MyAccount" Height="60" IconHeight="30" Icon="images/user-svgrepo-com.svg" Title="{Binding [MyAccount]}"/>
                             <local:SideButton Click="ToBasket" Height="60" IconHeight="30" Icon="images/basket-shopping-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav" Title="{Binding [MyBasket]}"/>
                             <local:SimpleSideButton Tag="ProjectsButton" Click="Myprojects" Height="60" IconHeight="30" Icon="images/publisher.svg" Title="{Binding [MyProjects]}"/>

@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using My_steam_server.Services;
 using System.Security.Policy;
 using System.Windows.Media;
+using System.Windows.Input;
 
 namespace My_steam_client
 {
@@ -20,6 +21,39 @@ namespace My_steam_client
         private Shop_Component? shopPage = null;
         private LibraryComponent? libraryPage = null;
         private Settings? SettingsWindow= null;
+
+        private Stack<(SideButton?,UserControl)> UndoStack=new();
+        private Stack<(SideButton?, UserControl)> RedoStack=new();
+
+        private SideButton? currentButton;
+
+        public ICommand UndoCommand { get; set; }
+        public ICommand RedoCommand { get; set; }
+
+
+        private bool CanUndo => UndoStack.Any();
+        private bool CanRedo => RedoStack.Any();
+
+
+        private void Undo()
+        {
+            if (UndoStack.Count > 1)
+            {
+                var current = UndoStack.Peek();
+                if(current.Item1!=null) current.Item1.IsChecked = true;
+                RootContent.Content = current.Item2;
+                RedoStack.Push(current);
+                UndoStack.Pop();
+            }
+        }
+        private void Rend()
+        {
+            var current = RedoStack.Peek();
+            if (current.Item1 != null) current.Item1.IsChecked = true;
+            RootContent.Content = current.Item2;
+            UndoStack.Push(current);
+            RedoStack.Pop();
+        }
 
         public MainWindow()
         {
@@ -35,7 +69,8 @@ namespace My_steam_client
 
             openShopPage();
 
-            
+            UndoCommand = new RelayCommand(Undo, () => CanUndo);
+            RedoCommand = new RelayCommand(Rend, () => CanRedo);
         }
 
 
@@ -78,47 +113,81 @@ namespace My_steam_client
                 shopPage = new Shop_Component(this);
             }
 
+            RedoStack.Clear();
             NavigateTo(shopPage);
         }
 
         public void NavigateTo(UserControl userControl)
         {
+            UndoStack.Push((currentButton, RootContent.Content as UserControl));
             RootContent.Content = userControl;
         }
 
         private void toShop(object sender, RoutedEventArgs e)
         {
-            openShopPage();
+            if (sender is SideButton button) {
+                openShopPage();
+                currentButton = button;
+
+            }
         }
 
         private void toLib(object sender, RoutedEventArgs e)
         {
-            if (libraryPage == null) {
-                libraryPage = new LibraryComponent();
-            }
+            if (sender is SideButton button)
+            {
+                if (libraryPage == null)
+                {
+                    libraryPage = new LibraryComponent();
+                }
+                RedoStack.Clear();
+                NavigateTo(libraryPage);
+                currentButton = button;
 
-            NavigateTo(libraryPage);
+            }
         }
 
         public void ToBasket(object sender, RoutedEventArgs e)
         {
-            NavigateTo(new BasketComponent());
+            if (sender is SideButton button)
+            {
+                var basket = new BasketComponent();
+                RedoStack.Clear();
+                NavigateTo(basket);
+                currentButton = button;
+
+            }
         }
 
         private void toStat(object sender, RoutedEventArgs e)
         {
-            NavigateTo(null);
+            if (sender is SideButton button)
+            {
+                RedoStack.Clear();
+                NavigateTo(null);
+                currentButton = button;
+            }
         }
 
         private void toCommunity(object sender, RoutedEventArgs e)
         {
-            NavigateTo(null);
+            if (sender is SideButton button)
+            {
+                RedoStack.Clear();
+                NavigateTo(null);
+                currentButton = button;
+
+            }
         }
 
         public void toProductPage(ProductDto dto)
         {
             SideButtonGroup.setAllUncehceked("MainNav");
-            NavigateTo(new ProductComponent(dto));
+            var productPage = new ProductComponent(dto);
+            RedoStack.Clear();
+            NavigateTo(productPage);
+            currentButton = null;
+
         }
 
         private void MyAccount(object sender, RoutedEventArgs e)
