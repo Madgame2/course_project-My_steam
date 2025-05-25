@@ -23,6 +23,14 @@
         },
         "runtime": {
           "My_steam_client.dll": {}
+        },
+        "resources": {
+          "en/My_steam_client.resources.dll": {
+            "locale": "en"
+          },
+          "ru/My_steam_client.resources.dll": {
+            "locale": "ru"
+          }
         }
       },
       "Azure.Core/1.38.0": {

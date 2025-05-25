@@ -5,6 +5,7 @@ using My_steam_client.Scripts.Interfaces;
 using My_steam_client.Scripts.Services;
 using System.Configuration;
 using System.Data;
+using System.Globalization;
 using System.Windows;
 
 namespace My_steam_client
@@ -17,8 +18,19 @@ namespace My_steam_client
 
         //public static IServiceProvider Services { get; private set; }
 
+        public static LocalizationProvider Loc { get; } = new();
+
+        public static void ChangeLanguage(string culture)
+        {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo(culture);
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(culture);
+            Loc.Update();
+        }
+
         protected override void OnStartup(StartupEventArgs e)
         {
+
+            ChangeLanguage("en");
             base.OnStartup(e);
 
             AppServices.Init();

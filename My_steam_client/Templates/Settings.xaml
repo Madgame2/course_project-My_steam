@@ -72,10 +72,10 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Style="{StaticResource HeaderText}" Grid.Row="0" Text="Settings"/>
+            <TextBlock Style="{StaticResource HeaderText}" Grid.Row="0" Text="{Binding [Settings]}"/>
             <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
                 <StackPanel>
-                    <Button Content="App settings" Style="{StaticResource SettingsButton}" Click="Button_Click"/>
+                    <Button Content="{Binding [AppSettings]}" Style="{StaticResource SettingsButton}" Click="Button_Click"/>
                 </StackPanel>
             </ScrollViewer>
         </Grid>

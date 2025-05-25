@@ -12,7 +12,7 @@
         MinHeight="600"
         MinWidth="1300"
         Width="1099"
-        Background="#FF1B1A25"
+        Background="{DynamicResource MainWindowBackgroundBrush}"
         Loaded="MainWindow_Loaded">
 
     <Grid>
@@ -65,7 +65,7 @@
                     <local:SideBar 
                         Width="250" 
                         HeightPercent="90.0" 
-                        Background="#FF141414"
+                        Background="{DynamicResource SidBarCollor}"
                         BorderRadius="20" 
                         VerticalAlignment="Top" 
                         HorizontalAlignment="Left"
@@ -75,20 +75,20 @@
 
                         <StackPanel VerticalAlignment="Top" Margin="0,50,0,0">
 
-                            <local:SimpleSideButton Click="MyAccount" Height="60" IconHeight="30" Icon="images/user-svgrepo-com.svg" Title="My account"/>
-                            <local:SideButton Click="ToBasket" Height="60" IconHeight="30" Icon="images/basket-shopping-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav" Title="My basket"/>
-                            <local:SimpleSideButton Tag="ProjectsButton" Click="Myprojects" Height="60" IconHeight="30" Icon="images/publisher.svg" Title="My Projects"/>
+                            <local:SimpleSideButton Click="MyAccount" Height="60" IconHeight="30" Icon="images/user-svgrepo-com.svg" Title="{Binding [MyAccount]}"/>
+                            <local:SideButton Click="ToBasket" Height="60" IconHeight="30" Icon="images/basket-shopping-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav" Title="{Binding [MyBasket]}"/>
+                            <local:SimpleSideButton Tag="ProjectsButton" Click="Myprojects" Height="60" IconHeight="30" Icon="images/publisher.svg" Title="{Binding [MyProjects]}"/>
                         </StackPanel>
 
                         <StackPanel Style="{StaticResource Main_buttons}">
-                            <local:SideButton Click="toShop" IsChecked="True" Height="60" IconHeight="30" Icon="images/cart-trolley-ui-5-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav" Title="Shop"/>
-                            <local:SideButton Click="toLib" Height="60" IconHeight="30" Icon="images/game-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav" Title="Library"/>
-                            <local:SideButton Click="toStat" Height="60" IconHeight="30" Icon="images/graphic-progression-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav" Title="Statistics"/>
-                            <local:SideButton Click="toCommunity" Height="60" IconHeight="30" Icon="images/community-group-leader-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav" Title="Community"/>
+                            <local:SideButton Click="toShop" IsChecked="True" Height="60" IconHeight="30" Icon="images/cart-trolley-ui-5-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav" Title="{Binding [Shop]}"/>
+                            <local:SideButton Click="toLib" Height="60" IconHeight="30" Icon="images/game-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav" Title="{Binding [Library]}"/>
+                            <local:SideButton Click="toStat" Height="60" IconHeight="30" Icon="images/graphic-progression-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav" Title="{Binding [Statistics]}"/>
+                            <local:SideButton Click="toCommunity" Height="60" IconHeight="30" Icon="images/community-group-leader-svgrepo-com.svg" groups:SideButtonGroup.GroupName="MainNav" Title="{Binding [Community]}"/>
                         </StackPanel>
                         <StackPanel VerticalAlignment="Bottom" Margin="0,0,0,50">
-                            <local:SimpleSideButton Click="Settings" Height="60" IconHeight="30" Icon="images/settings-svgrepo-com.svg" Title="Setting"/>
-                            <local:SimpleSideButton Click="LogOut" Height="60" IconHeight="30" Icon="images/log-out-1-svgrepo-com.svg" Title="Log out"/>
+                            <local:SimpleSideButton Click="Settings" Height="60" IconHeight="30" Icon="images/settings-svgrepo-com.svg" Title="{Binding [Settings]}"/>
+                            <local:SimpleSideButton Click="LogOut" Height="60" IconHeight="30" Icon="images/log-out-1-svgrepo-com.svg" Title="{Binding [Logout]}"/>
                         </StackPanel>
                     </local:SideBar>
                 </Border>

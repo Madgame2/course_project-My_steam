@@ -130,10 +130,12 @@
     <Grid Margin="20,0,0,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
@@ -142,11 +144,29 @@
             <StackPanel Grid.Row="1" Orientation="Horizontal">
                 <ComboBox x:Name="ThemeSelector" Style="{StaticResource ModernComboBox}"
                           Width="200"
-                          SelectedIndex="1">
-                    <ComboBoxItem Content="Light" />
-                    <ComboBoxItem Content="Dark" />
+                          SelectedIndex="1"
+                          SelectionChanged="ThemeSelector_SelectionChanged">
                 </ComboBox>
             </StackPanel>
+            <Rectangle Grid.Row="2" Height="2" Margin="10,20,10,20" Fill="Gray"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <TextBlock Text="Language:" Style="{StaticResource PropertyStyle}"/>
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <ComboBox x:Name="LanguageComboBox" Style="{StaticResource ModernComboBox}"
+                          Width="200"
+                          SelectionChanged="LangSelector_SelectionChanged">
+                    <ComboBoxItem IsSelected="True" Content="English" Tag="en"/>
+                    <ComboBoxItem Content="Русский" Tag="ru"/>
+                </ComboBox>
+            </StackPanel>
+            <Rectangle Grid.Row="2" Height="2" Margin="10,20,10,20" Fill="Gray"/>
         </Grid>
     </Grid>
 </UserControl>

@@ -22,6 +22,8 @@ namespace My_steam_client.Templates
         private AppSetingsPage appSetingsPage=new AppSetingsPage();
         public Settings()
         {
+            DataContext = App.Loc;
+
             InitializeComponent();
             SettingsRoot.Content = appSetingsPage;
         }

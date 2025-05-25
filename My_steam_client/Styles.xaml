@@ -17,13 +17,13 @@
 
     <Style TargetType="local:SimpleSideButton" BasedOn="{StaticResource SimapleSideButtonTemplate}">
         <Setter Property="SvgStrokeColor" Value="#A0A0A0"/>
-        <Setter Property="Background" Value="#FF141414"/>
+        <Setter Property="Background" Value="{DynamicResource SidBarCollor}"/>
         <Setter Property="IconTranslateX" Value="135"/>
         <Setter Property="HoverTextBrush" Value="#FF426FFF"/>
         <Setter Property="HoverImageCollor" Value="#FF426FFF"/>
         <Setter Property="ActiveTextColor" Value="#FF426FFF"/>
         <Setter Property="ActiveImageColor" Value="#FF426FFF"/>
-        <Setter Property="ActiveBacground" Value="#FF3F3F3F"/>
+        <Setter Property="ActiveBacground" Value="{DynamicResource SelectedSideButton}"/>
         <Setter Property="TitleFontSize" Value="18"/>
         <Setter Property="TitleFontWeight" Value="Bold"/>
         <Setter Property="TitleFontFamily" Value="pack://application:,,,/resources/Fonts/#Rajdhani"/>
@@ -61,13 +61,13 @@
 
     <Style TargetType="local:SideButton" BasedOn="{StaticResource SideButtonTemplate}">
         <Setter Property="SvgStrokeColor" Value="#A0A0A0"/>
-        <Setter Property="Background" Value="#FF141414"/>
+        <Setter Property="Background" Value="{DynamicResource SidBarCollor}"/>
         <Setter Property="IconTranslateX" Value="135"/>
         <Setter Property="HoverTextBrush" Value="#FF426FFF"/>
         <Setter Property="HoverImageCollor" Value="#FF426FFF"/>
         <Setter Property="ActiveTextColor" Value="#FF426FFF"/>
         <Setter Property="ActiveImageColor" Value="#FF426FFF"/>
-        <Setter Property="ActiveBacground" Value="#FF3F3F3F"/>
+        <Setter Property="ActiveBacground" Value="{DynamicResource SelectedSideButton}"/>
         <Setter Property="TitleFontSize" Value="18"/>
         <Setter Property="TitleFontWeight" Value="Bold"/>
         <Setter Property="TitleFontFamily" Value="pack://application:,,,/resources/Fonts/#Rajdhani"/>

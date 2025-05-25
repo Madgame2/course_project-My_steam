@@ -9,6 +9,7 @@
                 <ResourceDictionary Source="Templates/Templates.xaml"/>
                 <ResourceDictionary Source="Styles.xaml"/>
                 <ResourceDictionary Source="ShowcaseItemStyles.xaml"/>
+                <ResourceDictionary Source="/Themes/DarkTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

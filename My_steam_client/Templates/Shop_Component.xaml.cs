@@ -37,6 +37,7 @@ namespace My_steam_client.Templates
         {
             _mainWindow = window;
             _storeService = AppServices.Provider.GetRequiredService<StoreServices>();
+            DataContext = App.Loc;
             InitSlider();
 
             InitializeComponent();

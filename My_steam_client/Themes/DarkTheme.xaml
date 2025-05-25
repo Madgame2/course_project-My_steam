@@ -1,0 +1,6 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="MainWindowBackgroundBrush" Color="#FF1B1A25"/>
+    <SolidColorBrush x:Key="SidBarCollor" Color="#FF141414"/>
+    <SolidColorBrush x:Key="SelectedSideButton" Color="#FF3F3F3F"/>
+</ResourceDictionary>

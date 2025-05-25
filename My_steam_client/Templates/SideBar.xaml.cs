@@ -28,6 +28,7 @@ namespace My_steam_client.Templates
         public SideBar()
         {
             InitializeComponent();
+            DataContext = App.Loc;
 
 
 

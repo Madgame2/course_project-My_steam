@@ -291,6 +291,12 @@
     <Page Update="Templates\Templates.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Themes\DarkTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\LightTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="UploadingWindow.xaml">
       <SubType>Designer</SubType>
     </Page>

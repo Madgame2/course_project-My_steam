@@ -23,10 +23,14 @@ namespace My_steam_client
 
         public MainWindow()
         {
+            App.ChangeLanguage("en");
+            App.Loc.Update();
+
             InitializeComponent();
+
             HeaderContaner.Content = new Header(this);
 
-             var libmannager = AppServices.Provider.GetRequiredService<LibMannager>();
+            var libmannager = AppServices.Provider.GetRequiredService<LibMannager>();
             libmannager.SynnchronizeLibs();
 
             openShopPage();

@@ -48,12 +48,12 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="1">
-                <TextBlock Margin="-600,30,0,-57"
-                           HorizontalAlignment="Center"
+                <TextBlock Margin="199,30,0,324"
+                           HorizontalAlignment="Left"
                            FontFamily="pack://application:,,,/resources/Fonts/#Rajdhani"
                            Foreground="#FFB5B5B5"
                            FontSize="30"
-                           FontWeight="Bold">Recomend list</TextBlock>
+                           FontWeight="Bold" Text="{Binding [Recomendlist]}"></TextBlock>
                 <local:Slider x:Name="RecomendSlider"
                       PrecentWidth="100"
                       PrecentHeight="100"
